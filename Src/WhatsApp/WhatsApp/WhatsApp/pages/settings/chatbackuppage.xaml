@@ -1,0 +1,161 @@
+﻿<Page
+    x:Class="WhatsApp.ChatBackupPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:WhatsApp"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+
+    <local:ZoomBox x:Name="RootZoomBox">
+        <Grid x:Name="LayoutRoot" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:PageTitlePanel x:Name="TitlePanel"
+                                  Grid.Row="0"
+                                  Mode="NotZoomed"
+                                  SmallTitle="{Binding Path=Strings.Settings, Source={StaticResource Localizable}}"
+                                  LargeTitle="{Binding Path=Strings.ChatBackupTitle, Source={StaticResource Localizable}}"/>
+            <ScrollViewer Grid.Row="1">
+                <StackPanel Margin="24,0,24,0">
+                    <TextBlock x:Name="LastBackupTitleBlock"
+                               Text="{Binding Path=Strings.OneDriveBackupNowCategoryTitle, Source={StaticResource Localizable}}"
+                               FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                               FontSize="24"
+                               Margin="0,0,0,0"/>
+                    <TextBlock x:Name="LocalTimeBlock"
+                               Margin="0,0,0,0"
+                               Style="{StaticResource PhoneTextTitle3Style}" />
+                    <TextBlock x:Name="CloudTimeBlock"
+                               Margin="0,0,0,0"
+                               Style="{StaticResource PhoneTextTitle3Style}" />
+                    <TextBlock x:Name="BackupSizeBlock"
+                               Margin="0,0,0,0"
+                               Style="{StaticResource PhoneTextTitle3Style}" />
+
+                    <Border x:Name="OneDriveBackupError" Visibility="Collapsed" Margin="0,3,0,3"
+                            BorderThickness="3" BorderBrush="Red">
+                        <Grid Margin="6,6,6,6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="OneDriveLastResultText"
+                                       Grid.Column="0"
+                                       TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            <Button x:Name="BackupRetryButton"
+                                    Grid.Column="1"
+                                    Style="{StaticResource BorderlessButton}"
+                                    Click="BackupRetry_Click">
+                                <Image x:Name="BackupRetryButtonIcon"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock x:Name="BackupInfoLabel" Margin="0,12" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Path=Strings.OneDriveBackupGeneralInfoInternal, Source={StaticResource Localizable}}" TextWrapping="Wrap" />
+                    <Button x:Name="BackupButton" Content="{Binding Path=Strings.BackupButton, Source={StaticResource Localizable}}" HorizontalAlignment="Left" Margin="-12,0,0,0" Click="BackupButton_Click"/>
+                    <Grid x:Name="BackupProgressArea" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ProgressBar x:Name="BackupProgressBar" Value="0" Maximum="100" Grid.Column="0"/>
+                        <Button x:Name="BackupCancelButton"
+                                Grid.Column="1"
+                                Style="{StaticResource BorderlessButton}"
+                                Click="BackupCancelButton_Click"
+                                Margin="-12,0,0,0">
+                            <Image x:Name="BackupCancelButtonIcon"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                        </Button>
+                    </Grid>
+                    <TextBlock x:Name="BackupProgressLabel" Visibility="Collapsed" TextWrapping="Wrap" Margin="12,-6,12,0"/>
+                    <TextBlock x:Name="BackupSettingsTitleBlock"
+                               Text="{Binding Path=Strings.OneDriveBackupCategoryTitle, Source={StaticResource Localizable}}"
+                               FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                               FontSize="24"
+                               Margin="0,24,0,0"/>
+                    <StackPanel x:Name="RestoreNetworkPanel" Visibility="Collapsed">
+                        <TextBlock Text="{Binding Path=Strings.OneDriveRestoreNetworkTitle, Source={StaticResource Localizable}}" Style="{StaticResource PhoneTextSubtleStyle}" Margin="0,6,0,0"/>
+                        <toolkit:ListPicker x:Name="RestoreNetworkPicker"
+                                SelectionMode="Single" ExpansionMode="ExpansionAllowed" Margin="0,0,0,0">
+                            <toolkit:ListPicker.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </toolkit:ListPicker.ItemTemplate>
+                        </toolkit:ListPicker>
+                    </StackPanel>
+                    <TextBlock Text="{Binding Path=Strings.OneDriveBackupOptionsTitle, Source={StaticResource Localizable}}" Style="{StaticResource PhoneTextSubtleStyle}" Margin="0,6,0,0"/>
+                    <toolkit:ListPicker x:Name="BackupFrequencyPicker"
+                                SelectionMode="Single" ExpansionMode="ExpansionAllowed" Margin="0,0,0,0">
+                        <toolkit:ListPicker.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </toolkit:ListPicker.ItemTemplate>
+                    </toolkit:ListPicker>
+                    <TextBlock x:Name="BackupAccountTitleLabel" Text="{Binding Path=Strings.OneDriveBackupAccountTitle, Source={StaticResource Localizable}}" Style="{StaticResource PhoneTextSubtleStyle}" Margin="0,6,0,0"/>
+                    <Button x:Name="BackupAccountButton" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Click="BackupAccountButton_Click" Margin="-12,-3,-12,-3"/>
+                    <TextBlock Text="{Binding Path=Strings.OneDriveBackupNetworkTitle, Source={StaticResource Localizable}}" Style="{StaticResource PhoneTextSubtleStyle}" Margin="0,6,0,0"/>
+                    <toolkit:ListPicker x:Name="BackupNetworkPicker"
+                                SelectionMode="Single" ExpansionMode="ExpansionAllowed" Margin="0,0,0,0">
+                        <toolkit:ListPicker.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </toolkit:ListPicker.ItemTemplate>
+                    </toolkit:ListPicker>
+                    <toolkit:ToggleSwitch x:Name="IncludeVideosToggle"
+                                          Header="{Binding Path=Strings.OneDriveBackupIncludeVideos, Source={StaticResource Localizable}}"
+                                          Padding="0"
+                                          Margin="-12,12,-12,-18"/>
+                    <TextBlock x:Name="IncludeVideosTooltipBlock"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,0"/>
+                    <TextBlock x:Name="RevokeLabel"
+                               Margin="0,0,0,0"
+                               TextWrapping="Wrap"/>
+                    <TextBlock x:Name="RevokeLink"
+                               Margin="0,0,0,0"
+                               Foreground="{StaticResource PhoneAccentBrush}"
+                               TextWrapping="Wrap"
+                               Tap="RevokeLink_Tap"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </local:ZoomBox>
+</Page>

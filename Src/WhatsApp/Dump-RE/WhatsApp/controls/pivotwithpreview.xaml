@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="WhatsApp.PivotWithPreview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <Storyboard x:Key="SlideStoryboard">
+                <DoubleAnimation Duration="00:00:00.5" Storyboard.TargetProperty="TranslateX" Storyboard.TargetName="RootXForm" To="0">
+                    <DoubleAnimation.EasingFunction>
+                        <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+
+            <Storyboard x:Key="ScaleStoryboard">
+                <DoubleAnimation Duration="00:00:00.5" Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="RootXForm" To="1">
+                    <DoubleAnimation.EasingFunction>
+                        <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+        </Grid.Resources>
+        
+        <Grid.RenderTransform>
+            <CompositeTransform x:Name="RootXForm"/>
+        </Grid.RenderTransform>
+        
+        <Rectangle Fill="Transparent" Margin="-24,0">
+            <Rectangle.CacheMode>
+                <BitmapCache RenderAtScale="0.001"/>
+            </Rectangle.CacheMode>
+        </Rectangle>
+
+        <Grid CacheMode="BitmapCache">
+            <Grid.RenderTransform>
+                <CompositeTransform/>
+            </Grid.RenderTransform>
+        </Grid>
+
+        <Grid CacheMode="BitmapCache">
+            <Grid.RenderTransform>
+                <CompositeTransform/>
+            </Grid.RenderTransform>
+        </Grid>
+
+        <Grid CacheMode="BitmapCache">
+            <Grid.RenderTransform>
+                <CompositeTransform/>
+            </Grid.RenderTransform>
+        </Grid>
+    </Grid>
+</UserControl>

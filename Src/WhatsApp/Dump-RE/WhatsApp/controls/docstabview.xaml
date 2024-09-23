@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="WhatsApp.DocsTabView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:lls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <shim:JumpListItemBackgroundConverter x:Key="BackgroundConverter"/>
+        <shim:JumpListItemForegroundConverter x:Key="ForegroundConverter"/>
+
+        <Style x:Key="JumpListStyle"
+               TargetType="lls:LongListSelector">
+            <Setter Property="LayoutMode" Value="List" />
+            <Setter Property="Margin" Value="0,24,0,0"/>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid Background="{Binding Converter={StaticResource BackgroundConverter}}"
+                              HorizontalAlignment="Stretch"
+                              Height="64"
+                              Margin="24,6">
+                            <TextBlock Text="{Binding Key}"
+                                       Foreground="{Binding Converter={StaticResource ForegroundConverter}}"
+                                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                       FontSize="28"
+                                       Padding="12,0,0,6"
+                                       VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid Height="56"
+                  Margin="0">
+                <TextBlock Text="{Binding Key}"
+                           Margin="0,0,0,12"
+                           FontSize="24"
+                           Foreground="{StaticResource PhoneAccentBrush}"
+                           FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           Style="{StaticResource JumpListHeader}"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <shim:LongListSelector x:Name="DocsList"
+                           HorizontalAlignment="Stretch"
+                           GroupHeaderTemplate="{StaticResource HeaderTemplate}"
+                           JumpListStyle="{StaticResource JumpListStyle}"
+                           IsGroupingEnabled="True"
+                           toolkit:TiltEffect.IsTiltEnabled="True"
+                           SelectionChanged="DocsList_SelectionChanged">
+        <shim:LongListSelector.ListHeader>
+            <StackPanel>
+                <ProgressBar x:Name="LoadingProgressBar"
+                                  IsIndeterminate="True"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Stretch"
+                                  Margin="24"
+                                  Visibility="Collapsed"/>
+                <!-- TODO: tooltips -->
+            </StackPanel>
+        </shim:LongListSelector.ListHeader>
+        <shim:LongListSelector.ItemTemplate>
+            <DataTemplate>
+                <Grid Margin="0,0,0,24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0"
+                           Stretch="UniformToFill"
+                           Width="48"
+                           Height="61"
+                           Source="{Binding DocListPreviewSource}"/>
+                    <Image Grid.Column="0"
+                           Stretch="UniformToFill"
+                           Width="48"
+                           Source="{Binding DocListIconSource}"/>
+                    <StackPanel Grid.Column="1"
+                                Margin="24,0,24,0"
+                                VerticalAlignment="Top">
+                        <TextBlock Text="{Binding TextStr}"/>
+                        <TextBlock Text="{Binding FooterInfoStr}"
+                                   Opacity="0.65"/>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+        </shim:LongListSelector.ItemTemplate>
+    </shim:LongListSelector>
+</UserControl>

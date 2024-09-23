@@ -1,0 +1,113 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WhatsApp.DeleteAccountPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+    
+    <phone:PhoneApplicationPage.Resources>
+        <local:Localizable x:Key="Localizable"/>
+        <local:ResolutionHelper x:Key="ResolutionHelper"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <local:ZoomBox ZoomFactor="{Binding ZoomFactor,Source={StaticResource ResolutionHelper}}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <local:PageTitlePanel Grid.Row="0"
+                                  Mode="NotZoomed"
+                                  SmallTitle="{Binding Path=Strings.DeleteAccount, Source={StaticResource Localizable}}"/>
+
+            <StackPanel x:Name="IntroPanel"
+                        Grid.Row="1"
+                        Margin="24,24,24,0">
+                <TextBlock Text="{Binding Path=Strings.DeleteAccountDetails0, Source={StaticResource Localizable}}"
+                           Style="{StaticResource PhoneTextTitle2Style}" 
+                           TextWrapping="Wrap"
+                           Margin="0"/>
+                <ListBox x:Name="EffectsListBox"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         SelectionChanged="EffectsListBox_SelectionChanged"
+                         Margin="0">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding .}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,3"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <local:PhoneNumberEntryControl x:Name="PhoneNumberBox"
+                                               Margin="-12,24,-12,0"/>
+            </StackPanel>
+
+            <StackPanel x:Name="FeedbackPanel"
+                        Grid.Row="1"
+                        Margin="24,24,24,0"
+                        Visibility="Collapsed">
+                <TextBlock Text="{Binding Path=Strings.DeleteAccountFeedbackTitle, Source={StaticResource Localizable}}"
+                           Style="{StaticResource PhoneTextTitle2Style}" 
+                           TextWrapping="Wrap"
+                           Margin="0"/>
+                <TextBlock Text="{Binding Path=Strings.DeleteAccountFeedbackSubTitle, Source={StaticResource Localizable}}" 
+                           TextWrapping="Wrap"
+                           Margin="0,12,0,0"/>
+                <TextBox x:Name="FeedbackBox"
+                         InputScope="Text"
+                         MinHeight="112"
+                         Margin="-12,0"
+                         TextWrapping="Wrap"/>
+                <TextBlock Text="{Binding Path=Strings.DeleteAccountFeedbackExplanation, Source={StaticResource Localizable}}" 
+                           Style="{StaticResource PhoneTextSubtleStyle}"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+            
+            <Grid x:Name="ConfirmPanel"
+                  Grid.Row="1"
+                  Visibility="Collapsed"
+                  Margin="24,24,24,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <local:WhiteBlackImage x:Name="SadPhone"
+                                       Grid.Row="0"
+                                       Foreground="DarkGray"/>
+                <TextBlock Grid.Row="1"
+                           Text="{Binding Path=Strings.DeleteAccountConfirmTitle, Source={StaticResource Localizable}}"
+                           Style="{StaticResource PhoneTextTitle2Style}"
+                           TextWrapping="Wrap"
+                           Margin="0"/>
+                <TextBlock Grid.Row="2"
+                           Text="{Binding Path=Strings.DeleteAccountConfirm, Source={StaticResource Localizable}}"
+                           Style="{StaticResource PhoneTextTitle3Style}"
+                           TextWrapping="Wrap"
+                           Margin="0,24"/>
+            </Grid>
+        </Grid>
+    </local:ZoomBox>
+    
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="False">
+            <shell:ApplicationBarIconButton IconUri="/Images/next.png" Text="Continue" Click="Continue_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

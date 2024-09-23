@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC41828C-DD44-45C8-A247-81DEFA40D49B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WhatsAppNative</RootNamespace>
+    <AssemblyName>WhatsAppNative</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <PlatformTarget>ARM64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <PlatformTarget>ARM64</PlatformTarget>
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AudioDriver.cs" />
+    <Compile Include="AudioMetadata.cs" />
+    <Compile Include="AudioOutput.cs" />
+    <Compile Include="AudioRestartReason.cs" />
+    <Compile Include="AxolotlFastRatchetGroupCipherNative.cs" />
+    <Compile Include="AxolotlGroupCipherNative.cs" />
+    <Compile Include="AxolotlNative.cs" />
+    <Compile Include="AxolotlSessionCipherNative.cs" />
+    <Compile Include="Backup.cs" />
+    <Compile Include="BatteryLevel.cs" />
+    <Compile Include="ByteBuffer.cs" />
+    <Compile Include="CallApplicationSettings.cs" />
+    <Compile Include="CallDataUsage.cs" />
+    <Compile Include="CallEndedNativeArgs.cs" />
+    <Compile Include="CallerStatus.cs" />
+    <Compile Include="CallInfoStruct.cs" />
+    <Compile Include="CallLogResult.cs" />
+    <Compile Include="CallParticipantDetailInfo.cs" />
+    <Compile Include="CallParticipantInfo.cs" />
+    <Compile Include="CallParticipantState.cs" />
+    <Compile Include="CallState.cs" />
+    <Compile Include="CameraInformation.cs" />
+    <Compile Include="CameraLocation.cs" />
+    <Compile Include="Capabilities.cs" />
+    <Compile Include="CellInfoFlags.cs" />
+    <Compile Include="CELL_INFO.cs" />
+    <Compile Include="CheckAndRepairResult.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="ClientPlatformName.cs" />
+    <Compile Include="ConnectionType.cs" />
+    <Compile Include="Curve25519.cs" />
+    <Compile Include="DeviceNameSide.cs" />
+    <Compile Include="DiskSpace.cs" />
+    <Compile Include="FieldStatsInterop.cs" />
+    <Compile Include="FRAME_ATTRIBUTES.cs" />
+    <Compile Include="HostShuffleMode.cs" />
+    <Compile Include="IAction.cs" />
+    <Compile Include="IAxolotlGroupCipherNative.cs" />
+    <Compile Include="IAxolotlNative.cs" />
+    <Compile Include="IAxolotlSessionCipherCallbacks.cs" />
+    <Compile Include="IAxolotlSessionCipherNative.cs" />
+    <Compile Include="IAxolotlStore.cs" />
+    <Compile Include="IBackup.cs" />
+    <Compile Include="IByteBuffer.cs" />
+    <Compile Include="ICallbackResult.cs" />
+    <Compile Include="ICallInfo.cs" />
+    <Compile Include="ICurve25519.cs" />
+    <Compile Include="IDeflate.cs" />
+    <Compile Include="IFieldStats.cs" />
+    <Compile Include="IFieldStatsManaged.cs" />
+    <Compile Include="IFSConfig.cs" />
+    <Compile Include="IHost.cs" />
+    <Compile Include="IHostResolver.cs" />
+    <Compile Include="IImageTransform.cs" />
+    <Compile Include="IJpegWriteCallback.cs" />
+    <Compile Include="IKbdWatcher.cs" />
+    <Compile Include="ILogSink.cs" />
+    <Compile Include="IMAGE_OFFSETS.cs" />
+    <Compile Include="IMatch.cs" />
+    <Compile Include="IMbedtls.cs" />
+    <Compile Include="IMediaItem.cs" />
+    <Compile Include="IMediaLibrary.cs" />
+    <Compile Include="IMediaList.cs" />
+    <Compile Include="IMediaMisc.cs" />
+    <Compile Include="IMisc.cs" />
+    <Compile Include="IMp4TrackRemover.cs" />
+    <Compile Include="IMp4Utils.cs" />
+    <Compile Include="IMp4UtilsMetadataReceiver.cs" />
+    <Compile Include="IMp4UtilsOpenCallback.cs" />
+    <Compile Include="IMp4UtilsWriteCallback.cs" />
+    <Compile Include="INativeMediaStorage.cs" />
+    <Compile Include="IOpusEnc.cs" />
+    <Compile Include="IOutOfProcRegistration.cs" />
+    <Compile Include="IRecToken.cs" />
+    <Compile Include="IRegex.cs" />
+    <Compile Include="IRegHelper.cs" />
+    <Compile Include="ISampleSink.cs" />
+    <Compile Include="ISensor.cs" />
+    <Compile Include="IShellButtonCallback.cs" />
+    <Compile Include="ISignalingStruct.cs" />
+    <Compile Include="ISoundPort.cs" />
+    <Compile Include="ISoundSource.cs" />
+    <Compile Include="ISqlite.cs" />
+    <Compile Include="ISqliteBackup.cs" />
+    <Compile Include="ISqlitePreparedStatement.cs" />
+    <Compile Include="ISqliteShell.cs" />
+    <Compile Include="ISqliteShellOutputCallback.cs" />
+    <Compile Include="IStringEnumerationCallback.cs" />
+    <Compile Include="IStringSelector.cs" />
+    <Compile Include="ITranscoder.cs" />
+    <Compile Include="ITranscoderProgress.cs" />
+    <Compile Include="IUserVoipCallbacks.cs" />
+    <Compile Include="IVideoUtils.cs" />
+    <Compile Include="IVoip.cs" />
+    <Compile Include="IVoipCallbacks.cs" />
+    <Compile Include="IVoipFactory.cs" />
+    <Compile Include="IVoipSignalingCallbacks.cs" />
+    <Compile Include="IWAAccountSettingsPane.cs" />
+    <Compile Include="IWAScheduler.cs" />
+    <Compile Include="IWASocket.cs" />
+    <Compile Include="IWASocketHandler.cs" />
+    <Compile Include="IWAStream.cs" />
+    <Compile Include="IWAWebAccount.cs" />
+    <Compile Include="IWAWebAccountProvider.cs" />
+    <Compile Include="IWAWebAccountProviderInvokedEventArgs.cs" />
+    <Compile Include="IWAWebAuthenticationManager.cs" />
+    <Compile Include="IWAWebProviderError.cs" />
+    <Compile Include="IWAWebTokenRequestResult.cs" />
+    <Compile Include="IWAWebTokenResponse.cs" />
+    <Compile Include="IWebCallback.cs" />
+    <Compile Include="IWebp.cs" />
+    <Compile Include="IWebRequest.cs" />
+    <Compile Include="IWebWriter.cs" />
+    <Compile Include="JpegEncoderParams.cs" />
+    <Compile Include="JpegEncoderResult.cs" />
+    <Compile Include="KbdWatcher.cs" />
+    <Compile Include="ManagedCallProperties.cs" />
+    <Compile Include="Mbedtls.cs" />
+    <Compile Include="MediaContainerType.cs" />
+    <Compile Include="MediaItemIntegers.cs" />
+    <Compile Include="MediaItemStrings.cs" />
+    <Compile Include="MediaItemTimes.cs" />
+    <Compile Include="MediaItemTypes.cs" />
+    <Compile Include="MediaLibraryWrapper.cs" />
+    <Compile Include="MediaListTypes.cs" />
+    <Compile Include="MediaMisc.cs" />
+    <Compile Include="MediaType.cs" />
+    <Compile Include="Misc.cs" />
+    <Compile Include="Mp4AudioStreamType.cs" />
+    <Compile Include="Mp4AudioSubType.cs" />
+    <Compile Include="Mp4Utils.cs" />
+    <Compile Include="Mp4VideoStreamType.cs" />
+    <Compile Include="NativeAction.cs" />
+    <Compile Include="NativeDeflate.cs" />
+    <Compile Include="NativeRegex.cs" />
+    <Compile Include="NativeStorage.cs" />
+    <Compile Include="NativeStream.cs" />
+    <Compile Include="NativeWebp.cs" />
+    <Compile Include="NotifyParams.cs" />
+    <Compile Include="OpusApplication.cs" />
+    <Compile Include="OpusEnc.cs" />
+    <Compile Include="OpusEncoderParams.cs" />
+    <Compile Include="OutOfProcRegistration.cs" />
+    <Compile Include="OutOfProc\IOutOfProc.cs" />
+    <Compile Include="OutOfProc\Server.cs" />
+    <Compile Include="PixelFormat.cs" />
+    <Compile Include="PlatformCallParams.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Range.cs" />
+    <Compile Include="RecToken.cs" />
+    <Compile Include="RegexMatch.cs" />
+    <Compile Include="RegexOptions.cs" />
+    <Compile Include="RegHelper.cs" />
+    <Compile Include="ScreenOrientation.cs" />
+    <Compile Include="Sensor.cs" />
+    <Compile Include="ShellButton.cs" />
+    <Compile Include="ShellButtonPressEvent.cs" />
+    <Compile Include="SignalingDataArgs.cs" />
+    <Compile Include="SignalingMessageType.cs" />
+    <Compile Include="SignalingStruct.cs" />
+    <Compile Include="SoundPlaybackCodec.cs" />
+    <Compile Include="SoundPort.cs" />
+    <Compile Include="Sqlite.cs" />
+    <Compile Include="SqliteOpenFlags.cs" />
+    <Compile Include="SqlitePreparedStatement.cs" />
+    <Compile Include="SqliteShell.cs" />
+    <Compile Include="StreamFlags.cs" />
+    <Compile Include="Transcoder.cs" />
+    <Compile Include="TranscoderContainerType.cs" />
+    <Compile Include="UiBatteryLevelSource.cs" />
+    <Compile Include="UiCallParticipantState.cs" />
+    <Compile Include="UiCallState.cs" />
+    <Compile Include="UiUpgradeState.cs" />
+    <Compile Include="UiVideoState.cs" />
+    <Compile Include="UpgradeRequestEndReason.cs" />
+    <Compile Include="VideoCodec.cs" />
+    <Compile Include="VideoOrientation.cs" />
+    <Compile Include="VideoParams.cs" />
+    <Compile Include="VideoState.cs" />
+    <Compile Include="Voip.cs" />
+    <Compile Include="VoipEvent.cs" />
+    <Compile Include="VoipNetworkType.cs" />
+    <Compile Include="VoipSettingsType.cs" />
+    <Compile Include="WAAccountSettingsPane.cs" />
+    <Compile Include="WASocket.cs" />
+    <Compile Include="WAWebAccount.cs" />
+    <Compile Include="WAWebAccountProvider.cs" />
+    <Compile Include="WAWebAccountProviderInvokedEventArgs.cs" />
+    <Compile Include="WAWebAccountState.cs" />
+    <Compile Include="WAWebAuthenticationManager.cs" />
+    <Compile Include="WAWebProviderError.cs" />
+    <Compile Include="WAWebTokenRequestResult.cs" />
+    <Compile Include="WAWebTokenRequestStatus.cs" />
+    <Compile Include="WAWebTokenResponse.cs" />
+    <Compile Include="WebRequest.cs" />
+    <Compile Include="ZMediaNotificationType.cs" />
+    <EmbeddedResource Include="Properties\WhatsAppNative.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="WhatsApp.EmojiTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:WhatsApp"
+             xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480" 
+             d:DesignWidth="480"
+             x:Name="EmojiTB">
+
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+      
+        <!-- Row 0: option to move the character counter to be above the box -->
+    
+        <!-- Row 1: text box and emoji button -->
+        <Border Grid.Row="1"
+                Margin="0"
+                Background="{Binding TextBoxBorderBrush}"
+                BorderBrush="{Binding TextBoxBorderBrush}">
+            <Grid Margin="3"
+                  Background="{Binding TextBoxBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="TextBox"
+                         Grid.Column="0"
+                         MaxHeight="200"
+                         Margin="-6,-12,-12,-12"
+                         HorizontalAlignment="Stretch"
+                         TextWrapping="Wrap"
+                         InputScope="Text"
+                         BorderThickness="0"
+                         BorderBrush="{Binding TextBoxBrush}"
+                         Background="{Binding TextBoxBrush}"
+                         TextChanged="TextBox_TextChanged"
+                         KeyDown="TextBox_KeyDown"
+                         FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                         VerticalScrollBarVisibility="Visible"
+                         HorizontalScrollBarVisibility="Disabled"
+                         AutomationProperties.AutomationId="EmojiText"/>
+                <TextBlock x:Name="TextInputTooltipBlock"
+                           Padding="6,0,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           TextWrapping="NoWrap"
+                           TextTrimming="WordEllipsis"
+                           IsHitTestVisible="False"
+                           Foreground="{StaticResource PhoneChromeBrush}"
+                           Opacity="0.35"
+                           Visibility="{Binding ElementName=EmojiTB, Path=TextInputTooltipVisibility}"/>
+
+                <Button x:Name="ActionButton"
+                        Grid.Column="1"
+                        Margin="0"
+                        Padding="0,0,8,8"
+                        Style="{StaticResource BorderlessButton}"
+                        VerticalContentAlignment="Bottom"
+                        HorizontalContentAlignment="Right"
+                        Click="ActionButton_Tap"
+                        Width="40"
+                        AutomationProperties.AutomationId="EmojiButton">
+                    <Button.Content>
+                        <Image Source="{Binding ActionButtonIcon}"
+                               Opacity="{Binding ActionButtonIconOpacity}"
+                               Width="25"
+                               Height="25"
+                               Stretch="UniformToFill"/>
+                    </Button.Content>
+                </Button>
+
+            </Grid>
+        </Border>
+
+        <!-- Row 2: tail -->
+        <Polygon x:Name="OuterPolygon" Grid.Row="2"
+                 Fill="{Binding TextBoxBorderBrush}"
+                 Points="0,-1 16,-1 16,11" Margin="0,0,12,0"
+                 HorizontalAlignment="Right" VerticalAlignment="Top"
+                 Visibility="Collapsed"/>
+        <Polygon x:Name="InnerPolygon" Grid.Row="2"
+                 Fill="{Binding TextBoxBrush}"
+                 Points="1,-4 13,-4 13,5" Margin="0,0,15,0"
+                 HorizontalAlignment="Right" VerticalAlignment="Top"
+                 Visibility="Collapsed"/>
+
+        <!-- Row 3: text length hint -->
+        <StackPanel x:Name="LengthHintPanel" Grid.Row="3" Orientation="Horizontal"
+                    Visibility="{Binding LengthHintPanelVisibility}"
+                    HorizontalAlignment="Right">
+            <TextBlock Text="{Binding CurrentTextLengthStr}" Margin="0"
+                       Style="{StaticResource PhoneTextSubtleStyle}"
+                       Foreground="{Binding LengthHintForeground}"/>
+            <TextBlock Text="{Binding MaxLengthText}" Margin="0"
+                       Style="{StaticResource PhoneTextSubtleStyle}"
+                       Foreground="{Binding LengthHintForeground}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+    

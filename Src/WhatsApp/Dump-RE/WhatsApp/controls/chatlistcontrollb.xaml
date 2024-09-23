@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="WhatsApp.ChatListControlLB"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <UserControl.Resources>
+        <Style x:Name="ListItemTransform" TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="TooltipPanel" Grid.Row="0" Visibility="Collapsed" Margin="0">
+            <TextBlock x:Name="TooltipBlock" Margin="24,24,24,0" TextWrapping="Wrap"
+                       Style="{StaticResource PhoneTextLargeStyle}"
+                       HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+        <ListBox x:Name="ChatList"
+                 Grid.Row="1"
+                 Margin="0"
+                 ScrollViewer.ManipulationMode="System"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 ItemContainerStyle="{StaticResource ListItemTransform}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.Column="0"
+                                   Width="24"
+                                   Opacity="0"
+                                   Margin="0,24,0,0"
+                                   Fill="{StaticResource PhoneAccentBrush}"
+                                   ManipulationStarted="HintPanel_ManipulationStarted"
+                                   ManipulationDelta="HintPanel_ManipulationDelta"
+                                   ManipulationCompleted="HintPanel_ManipulationCompleted"/>
+                        <local:ChatItemControl Grid.Column="1"
+                                               Margin="0,24,24,0"
+                                               ViewModel="{Binding}"
+                                               Tap="ChatListItem_Tap"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,143 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WhatsApp.ContactSupportPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.Opacity="0"
+    toolkit:TiltEffect.IsTiltEnabled="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+        <local:Localizable x:Key="Localizable"/>
+        <local:ToLowerConverter x:Key="ToLowerCase"/>
+        <DataTemplate x:Key="FaqTemplate">
+            <TextBlock Text="{Binding Title}" Tag="{Binding}" Tap="SearchResult_Tap" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Foreground="{StaticResource PhoneAccentBrush}" Margin="12" TextWrapping="Wrap"/>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+    
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <local:PageTitlePanel x:Name="TitlePanel" Grid.Row="0" Margin="0"/>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Grid.RowSpan="2" Margin="12,20,12,0">
+            <ScrollViewer>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="FeedbackTooltip" Grid.Row="0" Margin="12,6,12,0"/>
+                    <toolkit:PhoneTextBox x:Name="DescriptionBlock" Grid.Row="1" TextWrapping="Wrap" InputScope="Text"
+                        AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="200"
+                        GotFocus="DescriptionBlock_GotFocus" LostFocus="DescriptionBlock_LostFocus"
+                        TextChanged="DescriptionBlock_TextChanged"/>
+
+                    <Grid Grid.Row="2" Margin="20,0" Visibility="Collapsed" x:Name="ScreenshotPanel">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.ColumnSpan="3" Text="{Binding Path=Strings.AlbumTileScreenshots, Source={StaticResource Localizable}}"/>
+                        <Button Grid.Row="1" Height="160" Margin="10,0" Padding="0" Click="ChooseScreenshot_Click" Background="{StaticResource PhoneTextBoxBrush}" BorderThickness="0">
+                            <Image Source="../Images/assets/notheme/add.png"/>
+                        </Button>
+                        <Button Grid.Row="1" Grid.Column="1" Height="160" Margin="10,0" Padding="0" Click="ChooseScreenshot_Click" Background="{StaticResource PhoneTextBoxBrush}" BorderThickness="0">
+                            <Image Source="../Images/assets/notheme/add.png"/>
+                        </Button>
+                        <Button Grid.Row="1" Grid.Column="2" Height="160" Margin="10,0" Padding="0" Click="ChooseScreenshot_Click" Background="{StaticResource PhoneTextBoxBrush}" BorderThickness="0">
+                            <Image Source="../Images/assets/notheme/add.png"/>
+                        </Button>
+                    </Grid>
+
+                    <HyperlinkButton x:Name="FaqTooltip" Grid.Row="3" Tap="Faq_Tap"
+                        HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                    <Button x:Name="QuickEmailButton" Grid.Row="3"
+                        Visibility="Collapsed" Padding="12,6"
+                        Click="QuickEmail_Click"/>
+                    <Button x:Name="QuickSendButton" Grid.Row="4"
+                        Visibility="Collapsed" Padding="12,6"
+                        Click="QuickSend_Click"/>
+                    <TextBlock x:Name="BetaDescriptionBlock" Grid.Row="5" Text="{Binding Path=Strings.BetaContactSupportText, Source={StaticResource Localizable}}" TextWrapping="Wrap" Margin="12" Visibility="Collapsed"/>
+                    <local:WhiteBlackImage x:Name="SupportImage" Grid.Row="3" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+        <Grid x:Name="SearchResultsPanel" Grid.Row="1" Visibility="Collapsed" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="SearchResultsTitle" Grid.Row="0" Text="{Binding Path=Strings.FaqSearchHeader, Source={StaticResource Localizable}}" Style="{StaticResource PhoneTextExtraLargeStyle}" 
+                       Foreground="Black" TextWrapping="Wrap" Margin="24,36,0,12"/>
+            <ListBox x:Name="SearchResultsListBox" Grid.Row="1" ItemTemplate="{StaticResource FaqTemplate}" Margin="12,0"/>
+        </Grid>
+        <Grid x:Name="SendButtonPanel" Grid.Row="2" Height="114" Margin="0,0,0,-2"
+              VerticalAlignment="Bottom" Background="Black" Visibility="Collapsed">
+            <Button x:Name="SendButton" Padding="0" Style="{StaticResource BorderlessButton}"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top"
+                    Click="Send_Click" Margin="12,0,0,0">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <c4f:RoundButton ImageSource="../Images/contact-support-send-icon.png" VerticalAlignment="Bottom" 
+                                             BorderBrush="White" Foreground="White" Click="Send_Click"/>
+                        <StackPanel VerticalAlignment="Bottom" Margin="0,12,0,0">
+                            <TextBlock Text="{Binding Path=Strings.SendMessage, Source={StaticResource Localizable}, Converter={StaticResource ToLowerCase}}" 
+                                           Style="{StaticResource PhoneTextExtraLargeStyle}" Foreground="White"/>
+                            <TextBlock Text="{Binding Path=Strings.FaqSearchNotUseful, Source={StaticResource Localizable}, Converter={StaticResource ToLowerCase}}" 
+                                           Style="{StaticResource PhoneTextSmallStyle}" Foreground="White" Opacity="0.6" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/contact-support-send-icon.png" Text="Send" Click="Next_Click" IsEnabled="False" x:Name="AppBarSendButton"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

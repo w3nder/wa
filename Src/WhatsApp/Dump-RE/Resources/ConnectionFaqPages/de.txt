@@ -1,0 +1,14 @@
+Es sieht aus, als ob du keine Verbindung hast!
+<p>Wenn du diese Nachricht siehst, bedeutet es, dass du nicht mit dem Internet verbunden bist. Bitte folge der Anleitung unten, um das Problem so schnell, wie möglich zu beheben:</p>
+<ul>
+<li>Stelle sicher, dass dein Gerät Empfang im Netz deines Mobilfunkanbieter hat oder mit einem WLAN verbunden ist. Die Verbindung muss stabil und gut sein.</li>
+<li>Stelle sicher, dass du einen Datentarif im Netz deines Mobilfunkanbieter hast, oder eine WLAN-Verbindung mit funktionierendem Internet-Zugang. HINWEIS: Um WhatsApp auf einem Windows Phone zu verwenden, benötigst du einen Datenvertrag. Es kann Problem mit Geräten geben, die nur WLAN verwenden können. </li>
+<li>Starte dein Telefon neu (schalte es aus, warte 30 Sekunden, schalte es wieder an).</li>
+</ul>
+<p>WEITERE SCHRITTE ZUR PROBLEMLÖSUNG</p>
+<p>Wenn Webseiten und andere Applikationen funktionieren, aber WhatsApp sich nicht verbinden kann, ist es möglich, dass deine Netzwerk-Konfiguration nicht die Verbindungsart, die WhatsApp benötigt (non-HTTP/non-web Socket-Verbindungen), zulässt.</p>
+<ul>
+<li>Prüfe die Zugangspunkt Namen (Access Point Name/APN) deines Mobilfunkanbieters. Es kann sein, dass dein Mobilfunkanbieter einen anderen APN hat, der non-HTTP-Verbindungen, wie WhatsApp, zulässt. Um herauszufinden, wie du die APN-Einstellungen deines Geräts ändern kannst, gehe hier für  <a href="https://www.windowsphone.com/de-de/How-to/wp7/start/cellular-settings">Windows Phone 7</a> und <a href="https://www.windowsphone.com/de-de/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>. Nachdem du die APN-Einstellungen geändert hast, starte dein Telefon neu, damit die Änderungen übernommen werden.</li>
+<li>Wenn du ein Windows Phone verwendest, das von Nokia hergestellt wurde, versuche, die App <a href="https://www.microsoft.com/de-de/store/apps/connection-setup/9wzdncrfhwzl">
+Verbindungssetup</a> aus der Nokia Collection im Store zu verwenden (es kann sein, dass diese App in verschiedenen Ländern nicht verfügbar ist).</li>
+</ul>

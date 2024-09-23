@@ -1,0 +1,39 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.LoginBanned"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"    
+    xmlns:system="clr-namespace:System;assembly=mscorlib"    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <local:Localizable x:Key="Localizable"/>
+        <system:Double x:Key="CircleSize">200</system:Double>
+        <system:Double x:Key="CircleThickness">60</system:Double>
+    </phone:PhoneApplicationPage.Resources>
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="ContentPanel" Margin="24,0">
+            <TextBlock Text="{Binding Path=Strings.LoginBannedTitle, Source={StaticResource Localizable}}" Style="{StaticResource PhoneTextNormalStyle}" FontSize="24" Margin="0,24" />
+            <TextBlock x:Name="ExplanationTextBlock" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="Segoe WP Light" FontSize="24" Margin="0,24,0,48"/>
+            <StackPanel Orientation="Horizontal" Margin="0,24">
+                <Canvas Width="{StaticResource CircleSize}" Height="{StaticResource CircleSize}" Grid.Column="0">
+                    <Ellipse Stroke="{StaticResource PhoneChromeBrush}" StrokeThickness="{StaticResource CircleThickness}" Width="{StaticResource CircleSize}" Height="{StaticResource CircleSize}" />
+                    <Ellipse x:Name="AccentEllipse" Stroke="{StaticResource PhoneAccentBrush}" StrokeThickness="{StaticResource CircleThickness}" Width="{StaticResource CircleSize}" Height="{StaticResource CircleSize}"/>
+                </Canvas>
+                <TextBlock x:Name="TimerTextBlock" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="24,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+            </StackPanel>
+            <Button x:Name="LearnMoreButton" Margin="-10,36,0,0" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Content="{Binding Path=Strings.LearnMoreButton, Source={StaticResource Localizable}}" Click="LearnMore_Click"/>
+        </StackPanel>
+    </Grid>
+</phone:PhoneApplicationPage>

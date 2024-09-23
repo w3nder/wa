@@ -1,0 +1,25 @@
+﻿<!--
+Copyright (c) Microsoft Corporation.  All rights reserved.
+-->
+<configuration>
+  <MapControl version="v1">
+    <!--  MapMode Uri Format   -->
+    <add key="RoadUriFormat" value="{UriScheme}://ecn.t{subdomain}.tiles.virtualearth.net/tiles/r{quadkey}.png?g={generation}&amp;mkt={Culture}&amp;shading=hill&amp;n=z" />
+    <add key="AerialUriFormat" value="{UriScheme}://ecn.t{subdomain}.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g={generation}&amp;n=z" />
+    <add key="AerialWithLabelsUriFormat" value="{UriScheme}://ecn.t{subdomain}.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g={generation}&amp;mkt={Culture}&amp;n=z" />
+    <add key="AerialLabelsUriFormat" value="{UriScheme}://ecn.t{subdomain}.tiles.virtualearth.net/tiles/ho{quadkey}.jpeg?g={generation}&amp;mkt={Culture}&amp;n=z" />
+    <!--  Subdomains   -->
+    <add key="RoadUriSubdomains" value="0,2,4,6 1,3,5,7" />
+    <add key="AerialUriSubdomains" value="0,2,4,6 1,3,5,7" />
+    <add key="AerialWithLabelsUriSubdomains" value="0,2,4,6 1,3,5,7" />
+    <add key="AerialLabelsUriSubdomains" value="0,2,4,6 1,3,5,7" />
+    <!--  Coverage Map   
+    <add key="RoadCoverageMap" value="{UriScheme}://ecn.t0.tiles.virtualearth.net/tiles/coverage?imagetype=r&amp;g={generation}&amp;gzipOK=true" />
+    <add key="AerialCoverageMap" value="{UriScheme}://ecn.t0.tiles.virtualearth.net/tiles/coverage?imagetype=a&amp;g={generation}&amp;gzipOK=true" />
+    -->
+    <!--  Service Uri   
+    <add key="ImageryServiceUri" value="{UriScheme}://dev.virtualearth.net/webservices/v1/ImageryService/ImageryService.svc/binaryHttp" />
+    <add key="LogServiceUriFormat" value="{UriScheme}://dev.virtualearth.net/webservices/v1/LoggingService/LoggingService.svc/Log?entry={0}&amp;auth={1}&amp;fmt=1&amp;type=3&amp;group=MapControl&amp;name=SL&amp;version={2}&amp;session={3}&amp;mkt={4}&amp;image=1" />
+    -->
+  </MapControl>
+</configuration>

@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="WhatsApp.MediaGalleryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:local="clr-namespace:WhatsApp"
+    
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <Page.Resources>
+        <local:ResolutionHelper x:Key="ResolutionHelper"/>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RenderTransform>
+            <CompositeTransform TranslateX="0" TranslateY="0"/>
+        </Grid.RenderTransform>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:PageTitlePanel x:Name="PageTitle"
+                              Grid.Row="0"
+                              Mode="Zoomed"/>
+
+        <controls:Pivot x:Name="Pivot"
+                        Grid.Row="1"
+                        Margin="0,-12,0,0"
+                        SelectionChanged="Pivot_SelectionChanged">
+
+            <controls:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <local:ZoomBox ZoomFactor="{Binding ZoomFactor, Source={StaticResource ResolutionHelper}}"
+                                   Margin="{Binding ZoomedPivotHeaderMargin, Source={StaticResource ResolutionHelper}}">
+                        <TextBlock Text="{Binding}"
+                                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                                   FontSize="54"
+                                   Margin="0"/>
+                    </local:ZoomBox>
+                </DataTemplate>
+            </controls:Pivot.HeaderTemplate>
+
+            <controls:PivotItem x:Name="MediaTab">
+                <local:MediaTabView x:Name="MediaView"/>
+            </controls:PivotItem>
+
+            <controls:PivotItem x:Name="LinkTab">
+                <local:LinksTabView x:Name="LinksView"/>
+            </controls:PivotItem>
+
+            <controls:PivotItem x:Name="DocsTab">
+                <local:DocsTabView x:Name="DocsView"/>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+</Page>

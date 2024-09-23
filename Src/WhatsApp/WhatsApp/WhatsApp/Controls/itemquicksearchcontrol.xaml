@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="WhatsApp.ItemQuickSearchControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot" Margin="0">
+        <toolkit:AutoCompleteBox x:Name="SearchField" Margin="-12" Height="80" Padding="6,4,0,0"
+                                 Foreground="Black" CacheMode="BitmapCache"
+                                 TextChanged="SearchField_TextChanged"
+                                 GotFocus="SearchField_GotFocus"
+                                 LostFocus="SearchField_LostFocus"
+                                 SelectionChanged="ResultList_SelectionChanged">
+            <toolkit:AutoCompleteBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="8,0,0,8">
+                        <Image Source="{Binding PictureSource}" Width="48" Height="48" 
+                               Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <StackPanel Margin="0,-2,0,0">
+                            <TextBlock Text="{Binding TitleStr}" Style="{StaticResource PhoneTextNormalStyle}"
+                                       VerticalAlignment="Top" Foreground="Black"/>
+                            <TextBlock Text="{Binding SubtitleStr}" Style="{StaticResource PhoneTextSubtleStyle}"
+                                       VerticalAlignment="Top" Foreground="Gray"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </toolkit:AutoCompleteBox.ItemTemplate>
+        </toolkit:AutoCompleteBox>
+        <TextBlock x:Name="WatermarkBlock" Margin="12,10,0,0" FontSize="24"
+                   Tap="WatermarkBlock_Tap" CacheMode="BitmapCache"/>
+    </Grid>
+</UserControl>

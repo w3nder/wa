@@ -1,0 +1,921 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.CallScreenPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:WhatsApp"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SwivelTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SwivelTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SwivelTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+        <Storyboard x:Key="minimizePreview">
+            <DoubleAnimation Storyboard.TargetName="remoteScale" Storyboard.TargetProperty="ScaleX" To="1.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="remoteScale" Storyboard.TargetProperty="ScaleY" To="1.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="previewScale" Storyboard.TargetProperty="ScaleX" To="0.2">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="previewScale" Storyboard.TargetProperty="ScaleY" To="0.2">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="remoteTranslation" Storyboard.TargetProperty="X" To="0.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="remoteTranslation" Storyboard.TargetProperty="Y" To="0.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="previewVideoGrid" Storyboard.TargetProperty="(Canvas.ZIndex)">
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="0" />
+                    <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="1" />
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="remoteVideoGrid" Storyboard.TargetProperty="(Canvas.ZIndex)">
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="0" />
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="maximizePreview">
+            <DoubleAnimation Storyboard.TargetName="remoteScale" Storyboard.TargetProperty="ScaleX" To="0.2">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="remoteScale" Storyboard.TargetProperty="ScaleY" To="0.2">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="previewScale" Storyboard.TargetProperty="ScaleX" To="1.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="previewScale" Storyboard.TargetProperty="ScaleY" To="1.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="previewTranslation" Storyboard.TargetProperty="X" To="0.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="previewTranslation" Storyboard.TargetProperty="Y" To="0.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="previewIconTranslation" Storyboard.TargetProperty="X" To="0.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="previewIconTranslation" Storyboard.TargetProperty="Y" To="0.0">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="remoteVideoGrid" Storyboard.TargetProperty="(Canvas.ZIndex)">
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="0" />
+                    <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="1" />
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="previewVideoGrid" Storyboard.TargetProperty="(Canvas.ZIndex)">
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="0" />
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="hideUi" Duration="00:00:00.3">
+            <DoubleAnimation Storyboard.TargetName="PeerProfile" Storyboard.TargetProperty="Opacity" To="0" Duration="00:00:00.3" />
+            <DoubleAnimation Storyboard.TargetName="LogoPanel" Storyboard.TargetProperty="Opacity" To="0" Duration="00:00:00.3"  />
+            <DoubleAnimation Storyboard.TargetName="UpperGradient" Storyboard.TargetProperty="Opacity" To="0" Duration="00:00:00.3"  />
+            <DoubleAnimation Storyboard.TargetName="CallButtons" Storyboard.TargetProperty="Opacity" To="0" Duration="00:00:00.3"  />
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PeerProfile" Storyboard.TargetProperty="Visibility" Duration="00:00:00.3" >
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                        <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.3">
+                        <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Collapsed</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CallButtons" Storyboard.TargetProperty="Visibility" Duration="00:00:00.3" >
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                        <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.3">
+                        <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Collapsed</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="{Binding PageBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="105" />
+            <RowDefinition Height="295" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="360" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="remoteVideoGrid"
+              Visibility="{Binding VideoVisibility}"
+              Grid.Row="0" Grid.RowSpan="5"
+              Background="Transparent"
+              Margin="0" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.0" ScaleY="1.0" x:Name="remoteScale" />
+                    <TranslateTransform x:Name="remoteTranslation" X="0" Y="0" />
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <MediaElement x:Name="remoteVideo"
+                      Margin="0"
+                      Stretch="Uniform"
+                      IsHitTestVisible="False"
+                      Source="ms-media-stream-id:MediaStreamer-867"
+                      RenderTransformOrigin="0.5,0.5">
+                <MediaElement.RenderTransform>
+                    <TransformGroup>
+                        <RotateTransform Angle="{Binding RemoteVideoRotation}" />
+                        <ScaleTransform ScaleX="{Binding RemoteVideoScale}" ScaleY="{Binding RemoteVideoScale}" />
+                    </TransformGroup>
+                </MediaElement.RenderTransform>
+            </MediaElement>
+        </Grid>
+
+        <Grid x:Name="previewVideoGrid"
+              Visibility="{Binding PreviewVisibility}"
+              Grid.Row="0"
+              Grid.RowSpan="5"
+              Margin="0"
+              RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TranslateTransform x:Name="previewTranslation" X="0" Y="0" />
+            </Grid.RenderTransform>
+            <Grid Background="Transparent"
+                  RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <ScaleTransform ScaleX="1.0" ScaleY="1.0" x:Name="previewScale" />
+                </Grid.RenderTransform>
+                <MediaElement x:Name="previewVideo"
+                          FlowDirection="{Binding PreviewMirror}"
+                          IsHitTestVisible="False"
+                          Margin="0"
+                          AutoPlay="False"
+                          Stretch="Uniform"
+                          Source="{Binding LocalCameraSource}"
+                          RenderTransformOrigin="0.5,0.5">
+                    <MediaElement.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="{Binding LocalVideoRotation}" />
+                            <ScaleTransform ScaleX="{Binding LocalVideoScale}" ScaleY="{Binding LocalVideoScale}"/>
+                        </TransformGroup>
+                    </MediaElement.RenderTransform>
+                </MediaElement>
+            </Grid>
+            <Grid x:Name="previewVideoIconGrid"
+                  Visibility="{Binding PreviewIconVisibility}"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Width="50"
+                  Height="50"
+                  IsHitTestVisible="False"
+                  Margin="0" >
+                <Ellipse>
+                    <Ellipse.Fill>
+                        <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                            <GradientStop Color="#40000000" Offset="0" />
+                            <GradientStop Color="#20000000" Offset="0.7" />
+                            <GradientStop Color="#01000000" Offset="1" />
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Image Source="{Binding MuteButtonIcon}" Margin="0,0,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Height="32"
+                                   Width="32"
+                                   Stretch="Uniform"
+                                   Visibility="{Binding PreviewIconVisibility}"
+                                   RenderTransformOrigin="0.5,0.5">
+                </Image>
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="previewIconTranslation" X="0" Y="0" />
+                    </TransformGroup>
+                </Grid.RenderTransform>
+            </Grid>
+        </Grid>
+
+        <Rectangle x:Name="UpperGradient" IsHitTestVisible="False" Grid.RowSpan="3">
+            <Rectangle.Fill>
+                <LinearGradientBrush Opacity="0.5" StartPoint="0.5,1" EndPoint="0.5,0">
+                    <GradientStop Color="{Binding GradientColor}" Offset="1.0" />
+                    <GradientStop Color="Transparent" Offset="0.0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <StackPanel Grid.Row="0"
+                    Canvas.ZIndex="2"
+                    Orientation="Horizontal"
+                    CacheMode="BitmapCache"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="{Binding WhatsAppLogoAlignment}"
+                    x:Name="LogoPanel"
+                    Margin="{Binding WhatsAppCallHeaderMargin}">
+            <Image x:Name="WhatsAppIcon"
+                   Stretch="Uniform"
+                   Margin="0"
+                   Source="{Binding WhatsAppIconSource}"
+                   Width="{Binding WhatsAppIconSize}"
+                   Height="{Binding WhatsAppIconSize}"/>
+            <TextBlock x:Name="TitleBlock"
+                       VerticalAlignment="Bottom"
+                       TextWrapping="NoWrap"
+                       FontWeight="SemiBold"
+                       Margin="12,0,0,0"
+                       Foreground="{Binding TextForegroundBrush}"
+                       FontSize="{Binding TitleBlockFontSize}"/>
+        </StackPanel>
+
+        <local:ZoomBox Grid.Row="1" x:Name="PeerProfile" ZoomFactor="{Binding ZoomFactor}" Canvas.ZIndex="2">
+            <Grid Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding ParticipantIconRadius}" />
+                    <RowDefinition Height="{Binding ParticipantInterval}" />
+                    <RowDefinition Height="{Binding ParticipantIconRadius}" />
+                    <RowDefinition Height="{Binding ParticipantInterval}" />
+                    <RowDefinition Height="{Binding ParticipantIconRadius}" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="PeerOne" Grid.Row="0" Margin="20,0,20,0" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding ParticipantIconRadius}" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Width="{Binding ParticipantIconRadius}" Height="{Binding ParticipantIconRadius}">
+                        <Ellipse x:Name="MuteIconOverlayOne" Margin="5,0,0,0" Visibility="Collapsed" Canvas.ZIndex="2">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding MuteButtonIconOverlay}" Stretch="None" AlignmentX="Center" AlignmentY="Center"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Canvas.ZIndex="1">
+                            <Ellipse.Fill>
+                                <ImageBrush x:Name="AvatarOne" ImageSource="{Binding PictureSourceOne}" Opacity="1"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Margin="12,4,4,4" VerticalAlignment="Center">
+                        <TextBlock FontSize="36" Text="{Binding NameStrOne}" Foreground="{Binding TextForegroundBrush}" />
+                        <TextBlock x:Name="StateAndDurationBlockOne" Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding StateAndDurationStr}" />
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="PeerTwo" Grid.Row="2" Margin="20,0,20,0" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding ParticipantIconRadius}" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Width="{Binding ParticipantIconRadius}" Height="{Binding ParticipantIconRadius}">
+                        <Ellipse x:Name="MuteIconOverlayTwo" Margin="5,0,0,0" Visibility="Collapsed" Canvas.ZIndex="2">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding MuteButtonIconOverlay}" Stretch="None" AlignmentX="Center" AlignmentY="Center"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Canvas.ZIndex="1">
+                            <Ellipse.Fill>
+                                <ImageBrush x:Name="AvatarTwo" ImageSource="{Binding PictureSourceTwo}" Opacity="1"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Margin="12,4,4,4" VerticalAlignment="Center">
+                        <TextBlock FontSize="36" Text="{Binding NameStrTwo}" Foreground="{Binding TextForegroundBrush}" />
+                        <TextBlock x:Name="StateAndDurationBlockTwo" Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding StateAndDurationStrTwo}" />
+                    </StackPanel>
+                    <!-- Cancel Invitation -->
+                    <Button x:Name="CancelCallButtonTwo" Grid.Column="2" Margin="0,0,20,0" Padding="0" Visibility="{Binding CancelCallButtonTwoVisibility}"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                    Style="{StaticResource BorderlessButton}">
+                        <Button.Content>
+                            <Image Source="{Binding CancelInvitationIcon}" Margin="0,0,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Left"
+                               Height="32" Width="40" Stretch="Uniform"/>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+                <Grid x:Name="PeerThree" Grid.Row="4" Margin="20,0,20,0" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding ParticipantIconRadius}" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Width="{Binding ParticipantIconRadius}" Height="{Binding ParticipantIconRadius}">
+                        <Ellipse x:Name="MuteIconOverlayThree" Margin="5,0,0,0" Visibility="Collapsed" Canvas.ZIndex="2">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding MuteButtonIconOverlay}" Stretch="None" AlignmentX="Center" AlignmentY="Center"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Canvas.ZIndex="1">
+                            <Ellipse.Fill>
+                                <ImageBrush x:Name="AvatarThree" ImageSource="{Binding PictureSourceThree}" Opacity="1"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Margin="12,4,4,4" VerticalAlignment="Center">
+                        <TextBlock FontSize="36" Text="{Binding NameStrThree}" Foreground="{Binding TextForegroundBrush}" />
+                        <TextBlock x:Name="StateAndDurationBlockThree" Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding StateAndDurationStrThree}" />
+                    </StackPanel>
+                    <!-- Cancel Invitation -->
+                    <Button x:Name="CancelCallButtonThree" Grid.Column="2" Margin="0,0,20,0" Padding="0" Visibility="{Binding CancelCallButtonThreeVisibility}"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                    Style="{StaticResource BorderlessButton}">
+                        <Button.Content>
+                            <Image Source="{Binding CancelInvitationIcon}" Margin="0,0,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Left"
+                               Height="32" Width="40" Stretch="Uniform"/>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+            </Grid>
+        </local:ZoomBox>
+
+        <local:ZoomBox Grid.Row="1"  Grid.RowSpan="4" x:Name="IncomingPeerProfileOne" Visibility="Collapsed"
+                       ZoomFactor="{Binding ZoomFactor}" Canvas.ZIndex="2" VerticalAlignment="Top" Margin="0,20,0,0">
+            <StackPanel VerticalAlignment="Center">
+                <Ellipse HorizontalAlignment="Center" Width="292" Height="292">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding PictureSourceOne}" />
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Grid Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" FontSize="36" LineHeight="40" MaxHeight="122" TextWrapping="Wrap" TextTrimming="WordEllipsis" Text="{Binding NameStrIncoming}" TextAlignment="Center" />
+                </Grid>
+                <TextBlock TextAlignment="Center" Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding IncomingCallString}" />
+            </StackPanel>
+        </local:ZoomBox>
+
+        <local:ZoomBox Grid.Row="1"  Grid.RowSpan="4" x:Name="IncomingPeerProfileTwo" Visibility="Collapsed"
+                       ZoomFactor="{Binding ZoomFactor}" Canvas.ZIndex="2" VerticalAlignment="Top" Margin="0,20,0,0">
+            <StackPanel VerticalAlignment="Center">
+                <Grid HorizontalAlignment="Center" Margin="0, 62, 0, 62">
+                    <Path Grid.Column="1" HorizontalAlignment="Center" Margin="110,0,0,0" Stretch="Fill" Width="144" Height="144" Data="M8.17826,32.241 L9.46077,34.0445 C14.852,42.0246 18,51.6447 18,62 C18,72.3553 14.852,81.9754 9.46077,89.9555 L8.17827,91.759 L7.92272,91.3145 C3.18891,82.6004 0.499998,72.6142 0.5,62 C0.499998,51.3858 3.18891,41.3996 7.92272,32.6854 z M62.3992,0.5 C96.3647,0.500001 123.9,28.0345 123.9,62 C123.9,95.9655 96.3647,123.5 62.3992,123.5 C45.4165,123.5 30.0415,116.616 18.9122,105.487 L18.1005,104.636 L18.9422,103.664 C28.2861,92.3418 33.8992,77.8264 33.8992,62 C33.8992,46.1736 28.2861,31.6582 18.9422,20.3359 L18.1005,19.3642 L18.9122,18.5129 C30.0415,7.38362 45.4165,0.500001 62.3992,0.5 z">
+                        <Path.Fill>
+                            <ImageBrush ImageSource="{Binding PictureSourceTwo}" />
+                        </Path.Fill>
+                    </Path>
+                    <Ellipse Grid.Column="0" HorizontalAlignment="Center" Width="144" Height="144" Margin="-110,0,0,0">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding PictureSourceOne}" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+                <StackPanel Height="150" VerticalAlignment="Center">
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="8*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" FontSize="36" LineHeight="40" MaxHeight="122" TextWrapping="Wrap" TextTrimming="WordEllipsis" LineStackingStrategy="BlockLineHeight" Text="{Binding NameStrIncoming}" TextAlignment="Center" />
+                    </Grid>
+                    <TextBlock TextAlignment="Center" Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding IncomingGroupCallString}" />
+                </StackPanel>
+            </StackPanel>
+        </local:ZoomBox>
+
+        <local:ZoomBox Grid.Row="1"  Grid.RowSpan="4" x:Name="IncomingPeerProfileThree" Visibility="Collapsed"
+                       ZoomFactor="{Binding ZoomFactor}" Canvas.ZIndex="2" VerticalAlignment="Top" Margin="0,20,0,0">
+            <StackPanel VerticalAlignment="Center">
+                <Grid HorizontalAlignment="Center" Margin="0, 62, 0, 62">
+                    <Path Grid.Column="2" HorizontalAlignment="Center" Margin="188,0,0,0" Width="124" Height="124" Stretch="Fill" Data="M8.17826,32.241 L9.46077,34.0445 C14.852,42.0246 18,51.6447 18,62 C18,72.3553 14.852,81.9754 9.46077,89.9555 L8.17827,91.759 L7.92272,91.3145 C3.18891,82.6004 0.499998,72.6142 0.5,62 C0.499998,51.3858 3.18891,41.3996 7.92272,32.6854 z M62.3992,0.5 C96.3647,0.500001 123.9,28.0345 123.9,62 C123.9,95.9655 96.3647,123.5 62.3992,123.5 C45.4165,123.5 30.0415,116.616 18.9122,105.487 L18.1005,104.636 L18.9422,103.664 C28.2861,92.3418 33.8992,77.8264 33.8992,62 C33.8992,46.1736 28.2861,31.6582 18.9422,20.3359 L18.1005,19.3642 L18.9122,18.5129 C30.0415,7.38362 45.4165,0.500001 62.3992,0.5 z">
+                        <Path.Fill>
+                            <ImageBrush ImageSource="{Binding PictureSourceThree}" />
+                        </Path.Fill>
+                    </Path>
+                    <Path Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" Width="124" Height="124" Stretch="Fill" Data="M8.17826,32.241 L9.46077,34.0445 C14.852,42.0246 18,51.6447 18,62 C18,72.3553 14.852,81.9754 9.46077,89.9555 L8.17827,91.759 L7.92272,91.3145 C3.18891,82.6004 0.499998,72.6142 0.5,62 C0.499998,51.3858 3.18891,41.3996 7.92272,32.6854 z M62.3992,0.5 C96.3647,0.500001 123.9,28.0345 123.9,62 C123.9,95.9655 96.3647,123.5 62.3992,123.5 C45.4165,123.5 30.0415,116.616 18.9122,105.487 L18.1005,104.636 L18.9422,103.664 C28.2861,92.3418 33.8992,77.8264 33.8992,62 C33.8992,46.1736 28.2861,31.6582 18.9422,20.3359 L18.1005,19.3642 L18.9122,18.5129 C30.0415,7.38362 45.4165,0.500001 62.3992,0.5 z">
+                        <Path.Fill>
+                            <ImageBrush ImageSource="{Binding PictureSourceTwo}" />
+                        </Path.Fill>
+                    </Path>
+                    <Ellipse Grid.Column="0" HorizontalAlignment="Center" Width="124" Height="124" Margin="0,0,188,0" d:IsHidden="True">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding PictureSourceOne}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+                <StackPanel Height="150" VerticalAlignment="Center">
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="8*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" FontSize="36" LineHeight="40" MaxHeight="122" TextWrapping="Wrap" TextTrimming="WordEllipsis" LineStackingStrategy="BlockLineHeight" Text="{Binding NameStrIncoming}" TextAlignment="Center" VerticalAlignment="Top" />
+                    </Grid>
+                    <TextBlock TextAlignment="Center" Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding IncomingGroupCallString}" />
+                </StackPanel>
+            </StackPanel>
+        </local:ZoomBox>
+
+        <local:ZoomBox ZoomFactor="{Binding ZoomFactor}" x:Name="videoPausedOverlay" Grid.RowSpan="5"
+                       Canvas.ZIndex="2" Visibility="{Binding VideoOverlayVisibility}">
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <Grid.RenderTransform>
+                    <TranslateTransform X="0" Y="-56" />
+                </Grid.RenderTransform>
+                <Rectangle Fill="Black" Opacity="0.4" />
+                <TextBlock Text="{Binding VideoOverlayStr}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </local:ZoomBox>
+
+        <StackPanel Grid.Row="0" CacheMode="BitmapCache" Opacity="0.35"
+                    HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,72,24,0"
+                    Canvas.ZIndex="2"
+                    Background="Black" Visibility="{Binding DebugPanelVisibility}">
+            <TextBlock Text="{Binding DebugText}" Foreground="White"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.ZIndex="2" Margin="0,120,24,0" Visibility="{Binding VideoInfoButtonVisibility}">
+            <StackPanel.Background>
+                <SolidColorBrush Color="Black" Opacity="0.4" />
+            </StackPanel.Background>
+            <TextBlock Text="(i)" FontWeight="Bold" FontSize="28" Foreground="White" x:Name="videoInfoButton"></TextBlock>
+        </StackPanel>
+
+        <StackPanel x:Name="videoInfoPanel" Grid.Row="0" HorizontalAlignment="Stretch" Margin="0,80,0,0"
+                    VerticalAlignment="Top" Canvas.ZIndex="3" Visibility="{Binding VideoInfoTextVisibility}">
+            <StackPanel.Background>
+                <SolidColorBrush Color="Black" Opacity="0.4" />
+            </StackPanel.Background>
+            <TextBlock Text="{Binding VideoInfoText}" Foreground="White"></TextBlock>
+        </StackPanel>
+
+        <!-- All call buttons -->
+        <Grid x:Name="CallButtons" Grid.Row="3" Canvas.ZIndex="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush Opacity="1.0" StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="{Binding GradientColor}" Offset="1.0" />
+                    <GradientStop Color="Transparent" Offset="0.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <!-- Call incoming buttons -->
+            <Grid x:Name="CallIncomingButtons" Grid.Row="1"
+              Visibility="Collapsed" CacheMode="BitmapCache">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Answer -->
+                <Button x:Name="AnswerButton" Grid.Row="2" Grid.Column="0" Margin="0" Padding="0" Grid.ColumnSpan="2"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Style="{StaticResource BorderlessButton}">
+                    <Button.Content>
+                        <Grid Background="{StaticResource PhoneAccentBrush}">
+                            <Image Source="{Binding AnswerIcon}" Margin="0,16,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Height="32" Width="32" Stretch="Uniform"/>
+                            <TextBlock Text="{Binding AnswerButtonStr}" Margin="0,0,0,24"
+                                   VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="White"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <!-- Message -->
+                <Button x:Name="TextReplyButton" Grid.Row="1" Grid.Column="0"
+                    Margin="0" Padding="0" Style="{StaticResource BorderlessButton}"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                    <Button.Content>
+                        <Grid>
+                            <Image Source="{Binding MessageButtonIcon}" Margin="0,16,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Height="32" Width="32" Stretch="Uniform"/>
+                            <TextBlock Text="{Binding MessageButtonStr}" Margin="0,0,0,24"
+                                   VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="{Binding TextForegroundBrush}"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <!-- Ignore -->
+                <Button x:Name="IgnoreButton" Grid.Row="1" Grid.Column="1" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Style="{StaticResource BorderlessButton}">
+                    <Button.Content>
+                        <Grid>
+                            <Image Source="{Binding IgnoreIcon}" Margin="0,16,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Height="32" Width="32" Stretch="Uniform"/>
+                            <TextBlock Text="{Binding IgnoreButtonStr}" Margin="0,0,0,24"
+                                   VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="{Binding TextForegroundBrush}"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <!-- Call in progress buttons -->
+            <Grid x:Name="CallInProgressButtons" Visibility="Collapsed" Grid.Row="1" VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="105" />
+                </Grid.RowDefinitions>
+                <Grid VerticalAlignment="Bottom">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Message -->
+                    <Button x:Name="MessageButton" Grid.Row="1" Grid.Column="3" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Opacity="{Binding MessageButtonOpacity}"
+                    Style="{StaticResource BorderlessButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="55"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="{Binding MessageButtonIcon}" Margin="0,18,0,5"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   Height="32" Width="32" Stretch="Uniform"/>
+                                <TextBlock Grid.Row="1" Text="{Binding MessageButtonStr}" Padding="0,0,0,16" TextWrapping="Wrap" MaxHeight="60" LineHeight="20"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="{Binding TextForegroundBrush}"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <!-- Speaker -->
+                    <Button x:Name="SpeakerButton" Grid.Row="1" Grid.Column="2" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Visibility="{Binding NonVideoVisibility}"
+                    Style="{StaticResource BorderlessButton}">
+                        <Button.Content>
+                            <Grid Background="{Binding SpeakerButtonBackgroundBrush}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="55"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="{Binding SpeakerButtonIcon}" Margin="0,18,0,5"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   Height="32" Width="32" Stretch="Uniform"/>
+                                <TextBlock Grid.Row="1" Text="{Binding SpeakerButtonStr}"
+                                   Padding="0,0,0,16" TextWrapping="Wrap" MaxHeight="60" LineHeight="20"
+                                   Foreground="{Binding SpeakerButtonForegroundBrush}"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <!-- Switch camera -->
+                    <Button x:Name="SwitchCameraButton" Grid.Row="1" Grid.Column="2" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Opacity="{Binding ToggleCameraOpacity}"
+                    Visibility="{Binding VideoVisibility}"
+                    Style="{StaticResource BorderlessButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="55"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="{Binding SwitchCameraIcon}" Margin="0,18,0,5"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   Height="32" Width="32" Stretch="Uniform"/>
+                                <TextBlock Grid.Row="1" Text="{Binding SwitchCameraButtonStr}"
+                                   Padding="0,0,0,16" TextWrapping="Wrap" MaxHeight="60" LineHeight="20"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="{Binding TextForegroundBrush}"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <!-- Mute -->
+                    <Button x:Name="MuteButton" Grid.Row="1" Grid.Column="1" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Style="{StaticResource BorderlessButton}">
+                        <Button.Content>
+                            <Grid Background="{Binding MuteButtonBackgroundBrush}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="55"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="{Binding MuteButtonIcon}" Margin="0,18,0,5"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   Height="32" Width="32" Stretch="Uniform"/>
+                                <TextBlock Grid.Row="1" Text="{Binding MuteButtonStr}" Padding="0,0,0,16" TextWrapping="Wrap" MaxHeight="60" LineHeight="20"
+                                   Foreground="{Binding MuteButtonForegroundBrush}"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   FontSize="18"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <!-- CameraOn -->
+                    <Button x:Name="UpgradeButton" Grid.Row="1" Grid.Column="0" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Opacity="{Binding EnableVideoOpacity}"
+                    Visibility="{Binding EnableVideoVisibility}"
+                    Style="{StaticResource BorderlessButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="55"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="{Binding AddVideoIcon}" Margin="0,18,0,5"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   Height="32" Width="32" Stretch="Uniform"/>
+                                <TextBlock Grid.Row="1" Text="{Binding AddVideoString}" Padding="0,0,0,16" TextWrapping="Wrap" MaxHeight="60" LineHeight="20"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="{Binding TextForegroundBrush}"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <!-- CameraOff -->
+                    <Button x:Name="DowngradeButton" Grid.Row="1" Grid.Column="0" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Visibility="{Binding DisableVideoVisibility}"
+                    Style="{StaticResource BorderlessButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="55"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="{Binding RemoveVideoIcon}" Margin="0,18,0,5"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   Height="32" Width="32" Stretch="Uniform"/>
+                                <TextBlock Grid.Row="1" Text="{Binding RemoveVideoString}"
+                                   Padding="0,0,0,16" TextWrapping="Wrap" MaxHeight="60" LineHeight="20"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="{Binding TextForegroundBrush}"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <!-- Bluetooth -->
+                    <Button x:Name="BluetoothButton" Grid.Row="0" Grid.Column="0" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Style="{StaticResource BorderlessButton}">
+                        <Button.Content>
+                            <Grid Background="{Binding BluetoothButtonBackgroundBrush}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="55"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="{Binding BluetoothButtonIcon}" Margin="0,18,0,5"
+                                   Opacity="{Binding BluetoothButtonOpacity}"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   Height="32" Width="32" Stretch="Uniform"/>
+                                <TextBlock Grid.Row="1" Text="{Binding BluetoothButtonStr}" Padding="0,0,0,16" TextWrapping="Wrap" MaxHeight="60" LineHeight="20"
+                                   Opacity="{Binding BluetoothButtonOpacity}"
+                                   Foreground="{Binding BluetoothButtonForegroundBrush}"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   FontSize="18"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <!-- Add Participant -->
+                    <Button x:Name="AddParticipantButton" Grid.Row="0" Grid.Column="1" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Style="{StaticResource BorderlessButton}" Visibility="{Binding AddParticipantButtonVisibility}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="55"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="{Binding AddParticipantButtonIcon}" Margin="0,18,0,5"
+                                   Opacity="{Binding AddParticipantButtonOpacity}"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   Height="32" Width="32" Stretch="Uniform"/>
+                                <TextBlock Grid.Row="1" Text="{Binding AddParticipantButtonStr}" Padding="0,0,0,16" TextWrapping="Wrap" MaxHeight="60" LineHeight="20"
+                                   Opacity="{Binding AddParticipantButtonOpacity}"
+                                   Foreground="{Binding TextForegroundBrush}"
+                                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                                   FontSize="18"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+                <!-- End call -->
+                <Button x:Name="EndCallButton" Grid.Row="1"
+                    Margin="0" Padding="0" Style="{StaticResource BorderlessButton}"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                    <Button.Content>
+                        <Grid Background="{StaticResource PhoneAccentBrush}">
+                            <Image Source="{Binding EndCallIcon}" Margin="0,18,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Height="32" Width="40" Stretch="Uniform"/>
+                            <TextBlock Text="{Binding EndCallButtonStr}" Margin="0,0,0,24"
+                                   Foreground="White"
+                                   VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                   FontSize="18"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <!-- Upgrade buttons -->
+            <Grid x:Name="CallUpgradeButtons" Grid.Row="1"
+              Visibility="Collapsed" CacheMode="BitmapCache">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Allow Upgrade -->
+                <Button x:Name="UpgradeConfirmButton" Grid.Row="2" Grid.Column="1" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Style="{StaticResource BorderlessButton}">
+                    <Button.Content>
+                        <Grid Background="{StaticResource PhoneAccentBrush}">
+                            <Image Source="{Binding AnswerIcon}" Margin="0,16,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Height="32" Width="32" Stretch="Uniform"/>
+                            <TextBlock Text="{Binding AnswerButtonStr}" Margin="0,0,0,24"
+                                   VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="White"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <!-- Deny Upgrade -->
+                <Button x:Name="UpgradeDenyButton" Grid.Row="2" Grid.Column="0" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Style="{StaticResource BorderlessButton}">
+                    <Button.Content>
+                        <Grid>
+                            <Image Source="{Binding IgnoreIcon}" Margin="0,16,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Height="32" Width="32" Stretch="Uniform"/>
+                            <TextBlock Text="{Binding IgnoreButtonStr}" Margin="0,0,0,24"
+                                   VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="{Binding TextForegroundBrush}"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <!-- Call ended buttons (redial or cancel) -->
+            <Grid Grid.Row="1" Grid.RowSpan="2" Canvas.ZIndex="2" Visibility="Collapsed" x:Name="CallEndedPanel">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="CancelButton" Grid.Row="1"  Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    Click="CancelButton_Click" Style="{StaticResource BorderlessButton}">
+                    <Button.Content>
+                        <Grid>
+                            <Image Source="{Binding IgnoreIcon}" Margin="0,16,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Height="32" Width="32" Stretch="Uniform"/>
+                            <TextBlock Text="{Binding CancelText}"
+                                   Margin="0,0,0,24"
+                                   VerticalAlignment="Bottom"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18" Foreground="{Binding TextForegroundBrush}"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="RedialButton" Grid.Row="2" Margin="0" Padding="0"
+                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="RedialButton_Click"
+                    Style="{StaticResource BorderlessButton}">
+                    <Button.Content>
+                        <Grid Background="{StaticResource PhoneAccentBrush}">
+                            <Image Source="{Binding RedialIconSource}" Margin="0,16,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Height="32" Width="32" Stretch="Uniform"/>
+                            <TextBlock Text="{Binding RedialText}"
+                               Foreground="White"
+                                   Margin="0,0,0,24"
+                                   VerticalAlignment="Bottom"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
+
+        <local:ZoomBox ZoomFactor="{Binding ZoomFactor}" x:Name="UpgradeRequestOverlay" Grid.RowSpan="5"
+                       Canvas.ZIndex="2" Visibility="{Binding UpgradeRequestOverlayVisibility}">
+            <Border CornerRadius="8" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <Border.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.5" />
+                </Border.Background>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding UpgradeOverlayString}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                           Foreground="White" Grid.Column="0" VerticalAlignment="Center" Margin="8"
+                           TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" />
+                    <Border BorderBrush="White" BorderThickness="3,0,0,0" Grid.Column="1" Background="Transparent"
+                        x:Name="CancelUpgradeButton" Visibility="{Binding UpgradeCancelVisibility}"
+                        Padding="5" >
+                        <TextBlock Text="{Binding CancelText}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                           VerticalAlignment="Center" Foreground="Cornsilk" Grid.Column="2" Margin="8" />
+                    </Border>
+                </Grid>
+            </Border>
+        </local:ZoomBox>
+
+        <toolkit:ListPicker x:Name="MessagePicker" CacheMode="BitmapCache"
+                            SelectionMode="Single" ExpansionMode="FullScreenOnly"
+                            Visibility="Collapsed">
+            <toolkit:ListPicker.FullModeItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Label}" Margin="0,12"
+                               FontSize="{StaticResource PhoneFontSizeExtraLarge}"
+                               FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                               Tap="TextReplyOption_Tap" Tag="{Binding}"/>
+                </DataTemplate>
+            </toolkit:ListPicker.FullModeItemTemplate>
+        </toolkit:ListPicker>
+    </Grid>
+</phone:PhoneApplicationPage>

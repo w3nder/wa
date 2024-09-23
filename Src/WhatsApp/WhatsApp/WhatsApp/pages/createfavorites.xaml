@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="WhatsApp.CreateFavorites"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:PageTitlePanel Grid.Row="0"
+                              SmallTitle="WHATSAPP"
+                              LargeTitle="{Binding Path=Strings.SettingUpPageTitle, Source={StaticResource Localizable}}"/>
+
+        <StackPanel x:Name="ContentPanel"
+                    Grid.Row="1"
+                    Margin="12,0,12,0"
+                    VerticalAlignment="Center">
+            <TextBlock Text="{Binding Path=Strings.SettingUpTooltip, Source={StaticResource Localizable}}"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Center"/>
+            <ProgressBar IsIndeterminate="True"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Center"
+                              Margin="24,24,0,24"/>
+        </StackPanel>
+    </Grid>
+</Page>

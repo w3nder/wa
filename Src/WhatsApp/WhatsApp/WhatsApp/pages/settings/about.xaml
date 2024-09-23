@@ -1,0 +1,184 @@
+﻿<Page
+    x:Class="WhatsApp.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.IsVisible="True"
+    toolkit:TiltEffect.IsTiltEnabled="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/> <!-- Title -->
+            <RowDefinition Height="*"/>
+            <!-- Logo (and update text if applicable) -->
+            <RowDefinition Height="auto"/> <!-- Buttons -->
+            <RowDefinition Height="auto"/> <!-- Version -->
+            <RowDefinition Height="72"/> <!-- Copyright -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Row="0"
+               Grid.RowSpan="5"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Source="../../Images/Background.jpg"
+               Stretch="UniformToFill"
+               Margin="-2"/>
+
+        <local:PageTitlePanel Grid.Row="0" Grid.ColumnSpan="2"
+                              SmallTitle="{Binding PageTitle}"
+                              Margin="{Binding TitlePanelMargin}"
+                              Mode="Zoomed"
+                              TextBrush="White"/>
+
+        <Grid Name="imagePanel" Grid.Row="1"
+                   VerticalAlignment="Center"
+                   Margin="{Binding LogoMargin}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <!-- Logo -->
+                <RowDefinition Height="auto"/>
+                <!-- Upgrade text -->
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0"
+                   Source="../../Images/logo-lr.png"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Width="176" Height="178"/>
+            <local:RichTextBlock Grid.Row="1" x:Name="UpdateOsText"
+                                   AllowLinks="True"
+                                   HorizontalAlignment="Left"
+                                   Foreground="white"
+                                   Opacity="0.6"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Margin="12"
+                                   Visibility="Collapsed"/>
+        </Grid>
+
+        <local:ZoomBox Grid.Row="{Binding ButtonPanelRow}"
+                       Grid.Column="{Binding ButtonPanelCol}"
+                       Margin="{Binding ButtonPanelMargin}"
+                       ZoomFactor="{Binding ZoomFactor}"
+                       VerticalAlignment="Center">
+            <ItemsControl x:Name="ButtonsList" Margin="0" Padding="0">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource BorderlessButton}"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Top"
+                                Tag="{Binding OnClick}"
+                                Click="ActionButton_Click"
+                                Margin="0,0,0,24"
+                                Padding="0">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal"
+                                            Margin="0">
+                                    <local:RoundButton ButtonIcon="{Binding Icon}"
+                                                       ButtonBrush="White"
+                                                       ButtonSize="48"
+                                                       VerticalAlignment="Bottom"
+                                                       HorizontalAlignment="Center"
+                                                       FlowDirection="LeftToRight"
+                                                       IsActivatable="False"/>
+                                    <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}"
+                                               VerticalAlignment="Bottom"
+                                               Foreground="White"
+                                               Margin="16,0,0,0"
+                                               Text="{Binding Text}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </local:ZoomBox>
+
+        <Grid Grid.Row="4"
+              Grid.ColumnSpan="2"
+              Height="74"
+              Margin="-2,0,-2,-2"
+              VerticalAlignment="Bottom"
+              Background="Black"
+              Opacity="0.3"/>
+        <TextBlock Grid.Row="{Binding VersionBlockRow}"
+                   Grid.Column="0"
+                   Style="{StaticResource PhoneTextSmallStyle}"
+                   Foreground="White"
+                   Opacity="0.3"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="{Binding VersionBlockMargin}"
+                   Text="{Binding VersionStr}"/>
+        <StackPanel Grid.Row="4" VerticalAlignment="Center"
+                    Grid.Column="{Binding CopyRightBlockCol}"
+                    Grid.ColumnSpan="{Binding CopyRightBlockColSpan}"
+                    Margin="{Binding CopyRightBlockMargin}" >
+            <StackPanel Orientation="Horizontal" Margin="0"
+                        >
+                <TextBlock x:Name="ViewTermsButton"
+                        Tap="ViewTermsButton_Tap"
+                        Style="{StaticResource PhoneTextSmallStyle}"
+                        Foreground="{StaticResource PhoneAccentBrush}"
+                        ManipulationStarted="Button_ManipulationStarted"
+                        ManipulationCompleted="Button_ManipulationCompleted"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left" />
+                <TextBlock x:Name="ViewLicensesButton"
+                        Tap="ViewLicensesButton_Tap"
+                        Style="{StaticResource PhoneTextSmallStyle}"
+                        Foreground="{StaticResource PhoneAccentBrush}"
+                        ManipulationStarted="Button_ManipulationStarted"
+                        ManipulationCompleted="Button_ManipulationCompleted"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left" />
+            </StackPanel>
+            <TextBlock
+                   Text="{Binding CopyRightStr}"
+                   Style="{StaticResource PhoneTextSmallStyle}"
+                   FlowDirection="LeftToRight"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   Opacity="0.3"/>
+        </StackPanel>
+    </Grid>
+</Page>

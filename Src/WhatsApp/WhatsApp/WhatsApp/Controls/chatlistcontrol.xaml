@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="WhatsApp.ChatListControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:wacontrols="clr-namespace:WhatsApp.Controls"
+    
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid Margin="0">
+        <StackPanel x:Name="TooltipPanel" Visibility="Collapsed" Margin="24">
+            <TextBlock x:Name="TooltipBlock" Margin="0" TextWrapping="Wrap"
+                       Style="{StaticResource PhoneTextLargeStyle}"
+                       HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+        <wacontrols:LongListMultiSelector x:Name="ChatList" Margin="0">
+            <wacontrols:LongListMultiSelector.ItemTemplate>
+                <DataTemplate>
+                    <local:ChatItemControl Margin="0,24,24,0"
+                                           ViewModel="{Binding}"/>
+                </DataTemplate>
+            </wacontrols:LongListMultiSelector.ItemTemplate>
+
+            <wacontrols:LongListMultiSelector.ListFooter>
+                <StackPanel x:Name="FooterPanel" Margin="24,24,24,88">
+                    <!-- "bottom buffer" -->
+                </StackPanel>
+            </wacontrols:LongListMultiSelector.ListFooter>
+        </wacontrols:LongListMultiSelector>
+    </Grid>
+</UserControl>

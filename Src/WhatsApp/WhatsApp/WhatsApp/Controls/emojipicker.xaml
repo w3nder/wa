@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="WhatsApp.EmojiPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:WhatsApp"
+             
+             xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+             xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+             
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480"
+             Unloaded="EmojiPicker_Unloaded">
+
+    <UserControl.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+        </Style>
+
+ 
+        <ItemsPanelTemplate x:Key="HorizontalItemPanelTemplate">
+            <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+ 
+        <DataTemplate x:Key="EmojiRowTemplate">
+            <local:EmojiRow ItemsContext="{Binding}"
+                            Margin="0,-2,0,2"
+                            Height="62" />
+        </DataTemplate>
+
+        <Style TargetType="controls:PivotItem">
+            <Setter Property="Margin"
+                    Value="0" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Background="{StaticResource PhoneBackgroundBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+       
+        <Grid Grid.Row="0" x:Name="CategoryRow" 
+              Background="{StaticResource PhoneInactiveBrush}"
+              CacheMode="BitmapCache">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            
+            <Button x:Name="RecentButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Grid.Column="0" Padding="0"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding RecentBackground}"/>
+                    <Image Source="{Binding RecentImage}" Width="34" Height="34" />
+                </Grid>
+            </Button>
+            <Button x:Name="SmileysAndPeopleButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Grid.Column="1" Padding="0"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding SmileysAndPeopleBackground}"/>
+                    <Image Source="{Binding SmileysAndPeopleImage}" Width="34" Height="34" />
+                </Grid>
+            </Button>
+            <Button x:Name="AnimalsAndNatureButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Grid.Column="2" Padding="0"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding AnimalsAndNatureBackground}"/>
+                    <Image Source="{Binding AnimalsAndNatureImage}" Width="34" Height="34" />
+                </Grid>
+            </Button>
+            <Button x:Name="FoodAndDrinkButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Grid.Column="3" Padding="0"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding FoodAndDrinkBackground}"/>
+                    <Image Source="{Binding FoodAndDrinkImage}" Height="34" Width="34"/>
+                </Grid>
+            </Button>
+            <Button x:Name="ActivityButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Grid.Column="4" Padding="0"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding ActivityBackground}"/>
+                    <Image Source="{Binding ActivityImage}" Height="34" Width="34"/>
+                </Grid>
+            </Button>
+            <Button x:Name="TravelAndPlacesButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Grid.Column="5" Padding="0"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding TravelAndPlacesBackground}"/>
+                    <Image Source="{Binding TravelAndPlacesImage}" Height="34" Width="34"/>
+                </Grid>
+            </Button>
+            <Button x:Name="ObjectsButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Grid.Column="6" Padding="0"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding ObjectsBackground}"/>
+                    <Image Source="{Binding ObjectsImage}" Width="34" Height="34" />
+                </Grid>
+            </Button>
+            <Button x:Name="SymbolsButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Grid.Column="7" Padding="0"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding SymbolsBackground}"/>
+                    <Image Source="{Binding SymbolsImage}" Width="34" Height="34" />
+                </Grid>
+            </Button>
+            <Button x:Name="FlagsButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Grid.Column="8" Padding="0"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding FlagsBackground}"/>
+                    <Image Source="{Binding FlagsImage}" Width="34" Height="34" />
+                </Grid>
+            </Button>
+        </Grid>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,119 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.ShareContactPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+        <local:Localizable x:Key="Localizable"/>
+        <local:ResolutionHelper x:Key="ResolutionHelper"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <local:ZoomBox ZoomFactor="{Binding ZoomFactor}">
+        <Grid x:Name="LayoutRoot" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <local:PageTitlePanel Grid.Row="0"
+                                  SmallTitle="{Binding PageTitle}"
+                                  Subtitle="{Binding PageSubtitle}"
+                                  Mode="NotZoomed"/>
+        
+            <shim:LongListSelector Grid.Row="1"
+                                   x:Name="ContactItemsList"
+                                   IsFlatList="True"
+                                   Margin="24,24,0,0">
+                <shim:LongListSelector.ListHeader>
+                    <!-- Profile Image and Name -->
+                    <Grid x:Name="PicturePanel"
+                          Margin="0,0,0,24"
+                          Tap="ContactPicture_Tap">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image x:Name="ContactPicture"
+                               Width="160"
+                               Height="160"/>
+
+                        <!-- Selected marker: triangle + tick -->
+                        <Polygon x:Name="CheckmarkBackground"
+                                 Fill="{StaticResource PhoneAccentBrush}"
+                                 Points="0,45 45,0 45,45"
+                                 Width="45" Height="45"
+                                 VerticalAlignment="Bottom"
+                                 HorizontalAlignment="Right"/>
+                        <Image x:Name="Checkmark"
+                               Width="21"
+                               Height="19"
+                               Margin="0,0,4,4"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Right"/>
+                    </Grid>
+                </shim:LongListSelector.ListHeader>
+                <shim:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,24,18">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox Grid.Column="0"
+                                      IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                                      Checked="ContactDataItem_SelectionChanged"
+                                      Unchecked="ContactDataItem_SelectionChanged"
+                                      Visibility="{Binding CheckBoxVisibility}"
+                                      Padding="0"
+                                      Margin="-12,-6,0,0"/>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="{Binding Title}"
+                                           FontSize="36"
+                                           FontFamily="{StaticResource PhoneFontFamilySemiLight}"/>
+                                <TextBlock Text="{Binding Value}"
+                                           FontSize="24"
+                                           TextWrapping="NoWrap"
+                                           Foreground="{StaticResource PhoneAccentBrush}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </shim:LongListSelector.ItemTemplate>
+                <shim:LongListSelector.ListFooter>
+                    <StackPanel Height="112"/>
+                </shim:LongListSelector.ListFooter>
+            </shim:LongListSelector>
+        </Grid>
+    </local:ZoomBox>
+
+</phone:PhoneApplicationPage>

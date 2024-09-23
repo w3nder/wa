@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="WhatsApp.TextStatusComposePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <local:ZoomBox x:Name="LayoutRootZoomBox">
+        <Grid x:Name="LayoutRoot">
+            <Grid.RenderTransform>
+                <CompositeTransform TranslateY="0"/>
+            </Grid.RenderTransform>
+            <ScrollViewer x:Name="ContentPanel"
+                          VerticalAlignment="Stretch"
+                          HorizontalScrollBarVisibility="Disabled"
+                          VerticalScrollBarVisibility="Auto"
+                          Padding="0"
+                          CacheMode="BitmapCache"
+                          Margin="24,72,24,72"
+                          Tap="ContentPanel_Tap">
+                <local:RichTextBlock x:Name="DisplayBlock"
+                                     TextAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     TextWrapping="Wrap"
+                                     Foreground="White"
+                                     AllowLinks="True"
+                                     EnableScan="False"/>
+            </ScrollViewer>
+
+            <local:TextStatusInputBar x:Name="InputBar"
+                                      VerticalAlignment="Bottom"
+                                      CacheMode="BitmapCache"/>
+        </Grid>
+    </local:ZoomBox>
+
+</Page>

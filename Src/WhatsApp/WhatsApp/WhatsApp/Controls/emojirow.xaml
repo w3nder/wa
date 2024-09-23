@@ -1,0 +1,226 @@
+﻿<UserControl x:Class="WhatsApp.EmojiRow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="85"
+             d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <Grid Grid.Column="1"
+              Margin="2,0,0,0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <Grid Grid.Column="2"
+              Margin="2,0,0,0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <Grid Grid.Column="3"
+              Margin="2,0,0,0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <Grid Grid.Column="4"
+              Margin="2,0,0,0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <Grid Grid.Column="5"
+              Margin="2,0,0,0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <Grid Grid.Column="6"
+              Margin="2,0,0,0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <Grid Grid.Column="7"
+              Margin="2,0,0,0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        
+        <Grid Grid.Column="8"
+              Margin="2,0,0,0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        
+        <Grid Grid.Column="9"
+              Margin="2,0,0,0"
+              Tap="Emoji_Tap"
+              Hold="Emoji_Hold"
+              ManipulationStarted="Emoji_ManipulationStarted"
+              ManipulationDelta="Emoji_ManipulationDelta"
+              ManipulationCompleted="Emoji_ManipulationCompleted">
+            <Rectangle>
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None"
+                                AlignmentX="Left"
+                                AlignmentY="Top">
+                        <ImageBrush.Transform>
+                            <CompositeTransform />
+                        </ImageBrush.Transform>
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+    </Grid>
+</UserControl>

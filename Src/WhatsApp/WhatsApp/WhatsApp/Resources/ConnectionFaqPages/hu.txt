@@ -1,0 +1,14 @@
+Hoppá, úgy tűnik, hogy nem vagy csatlakozva
+<p>Amennyiben ezt a képernyőt látod, ez azt jelenti, hogy nem vagy csatlakozva az Internet-re. A probléma mielőbbi megoldása érdekében, kérjük kövesd a következő hibaelhárítási ötleteket:</p>
+<ul>
+<li>Bizonyosodj meg róla, hogy a telefonod a mobil szolgáltatód vagy a Wi-Fi hálózat által lefedett területen tartózkodik. A kapcsolatnak megfelelő erősségűnek kell lennie.</li>
+<li>Bizonyosodj meg róla, hogy rendelkezel mobil adathasználattal a szolgáltatód hálózatán vagy internet hozzáféréssel a Wi-Fi hálózaton. MEGJEGYZÉS: Ahhoz, hogy a WhatsApp-ot használni tudd Windows Phone készülékeden, rendelkezned kell mobil adathasználat előfizetéssel. A csak Wi-Fi hálózatot használó készülékek különböző problémákat okozhatnak.</li>
+<li>Indítsd újra a telefonodat (kapcsold ki, majd várj 30 másodpercet).</li>
+</ul>
+<p>TOVÁBBI HIBAELHÁRÍTÁSI ÖTLETEK</p>
+<p>Amennyiben egyéb weboldalak és alkalmazások működnek, de a WhatsApp nem tud csatlakozni, valószínűleg a hálózati beállításaid nem megfelelőek, és nem engedélyezik azt a fajta kapcsolatot(socket vagy non-HTTP kapcsolat), amely a WhatsApp működéséhez szükséges.</p>
+<ul>
+<li>Ellenőrizd a szolgáltatód Hoozáférési pontjainak (APN) beállításait. Lehetséges, hogy egy másik APN is elérhető, amely lehetővé tesz non-HTTP kapcsolatokat, amelyre a WhatsApp-nak szüksége van. Tudj meg többet az APN beállítások testreszabásáról ebből a <a href="https://www.windowsphone.com/hu-hu/How-to/wp7/start/cellular-settings">Windows Phone 7 cikkből</a> és <a href="https://www.windowsphone.com/hu-hu/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8 cikkből</a>. Miután megváltoztattad az APN beállításaidat, kérjük indítsd újra a telefonodat, hogy a változtatások érvénybe lépjenek.</li>
+<li>Amennyiben Nokia által gyártott Windows Phone készülékkel rendelkezel, próbáld ki a <a href="https://www.windowsphone.com/hu-hu/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">
+Csatlakozástelepítő</a> alkalmazást a Nokia Kollekcióból az Áruházból (ez az alkalmazás nem minden országban érhető el).</li>
+</ul>

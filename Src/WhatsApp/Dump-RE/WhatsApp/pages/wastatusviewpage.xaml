@@ -1,0 +1,208 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.WaStatusViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <Grid x:Name="LayoutRoot"
+          Margin="0">
+        <Grid.Projection>
+            <PlaneProjection RotationY="0" CenterOfRotationX="0"/>
+        </Grid.Projection>
+        <Grid.RenderTransform>
+            <CompositeTransform TranslateY="0"/>
+        </Grid.RenderTransform>
+
+        <!-- TODO: side previews for previous/next person's status -->
+        <local:WaStatusViewControl x:Name="StatusView"
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   CacheMode="BitmapCache"
+                                   Margin="0,0,0,-1">
+        </local:WaStatusViewControl>
+
+        <Rectangle x:Name="Mask"
+                   CacheMode="BitmapCache"
+                   Visibility="Collapsed"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Fill="Black"
+                   Opacity="0.3"
+                   Tap="Mask_Tap"/>
+
+        <local:ZoomBox x:Name="ReadRecipientListZoomBox"
+                       CacheMode="BitmapCache"
+                       Visibility="Collapsed"
+                       VerticalAlignment="Bottom"
+                       MaxHeight="600">
+            <Grid CacheMode="BitmapCache"
+                  HorizontalAlignment="Stretch"
+                  Background="#201e21">
+                <Grid.RenderTransform>
+                    <CompositeTransform x:Name="ReadRecipientPanelTransform"/>
+                </Grid.RenderTransform>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="ReadCountBlock"
+                           Grid.Row="0"
+                           Style="{StaticResource PhoneTextNormalStyle}"
+                           Foreground="White"
+                           Margin="24,12,0,0"/>
+
+                <Rectangle Height="1"
+                           Grid.Row="1"
+                           Fill="White"
+                           Opacity="0.65"
+                           Margin="24,12,24,0"/>
+
+                <shim:LongListSelector x:Name="ReadRecipientList"
+                                       Grid.Row="2"
+                                       IsFlatList="True">
+                    <shim:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="24,24,24,0"
+                                  Height="48">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="84"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Column="0"
+                                       Source="{Binding Picture}"
+                                       Width="48"
+                                       Height="48"
+                                       VerticalAlignment="Center">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="24,24"
+                                                         RadiusX="24"
+                                                         RadiusY="24"/>
+                                    </Image.Clip>
+                                </Image>
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding NameStr}"
+                                           Margin="18,0,0,0"
+                                           VerticalAlignment="Center"
+                                           Style="{StaticResource PhoneTextLargeStyle}"
+                                           TextTrimming="WordEllipsis"
+                                           Foreground="White"/>
+                                <TextBlock Grid.Column="2"
+                                           Text="{Binding DateStr}"
+                                           Margin="18,0,0,0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           FontSize="22"
+                                           Foreground="#99ffffff"/>
+                                <TextBlock Grid.Column="3"
+                                           Text="{Binding TimeStr}"
+                                           Margin="0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           FontSize="22"
+                                           Foreground="White"/>
+                            </Grid>
+                        </DataTemplate>
+                    </shim:LongListSelector.ItemTemplate>
+                    <shim:LongListSelector.ListFooter>
+                        <Grid MinHeight="112">
+                            <TextBlock x:Name="ReadRecipientListTooltipBlock"
+                                       Foreground="White"
+                                       Margin="24,24,24,96"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Top"
+                                       TextWrapping="Wrap"
+                                       Visibility="Collapsed"/>
+                        </Grid>
+                    </shim:LongListSelector.ListFooter>
+                </shim:LongListSelector>
+            </Grid>
+        </local:ZoomBox>
+
+        <local:ZoomBox x:Name="BottomBarsZoomBox"
+                       CacheMode="BitmapCache"
+                       VerticalAlignment="Bottom">
+            <Grid x:Name="BottomBar"
+                  CacheMode="BitmapCache"
+                  Height="74"
+                  Margin="0,0,0,-2">
+                <Rectangle x:Name="BottomBarBackground"
+                           Fill="#201e21"
+                           Opacity="0.5"
+                           CacheMode="BitmapCache"/>
+                <Button x:Name="MainButton"
+                        Style="{StaticResource BorderlessButton}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Click="MainButton_Click"
+                        Margin="0"
+                        Padding="0"
+                        CacheMode="BitmapCache">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="MainButtonIcon"
+                                   VerticalAlignment="Center"/>
+                            <TextBlock x:Name="MainButtonCaptionBlock"
+                                       Foreground="White"
+                                       Visibility="Collapsed"
+                                       Margin="12,-1,0,0"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Thin"
+                                       FontSize="23"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <TextBlock x:Name="MoreButton"
+                           Text="⋯"
+                           Visibility="Collapsed"
+                           Foreground="White"
+                           Style="{StaticResource PhoneTextLargeStyle}"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           Margin="0,0,24,0"
+                           CacheMode="BitmapCache"/>
+            </Grid>
+        </local:ZoomBox>
+
+        <StackPanel x:Name="InfoPanel"
+                    CacheMode="BitmapCache"
+                    Background="White"
+                    Visibility="Collapsed"
+                    VerticalAlignment="Top">
+            <StackPanel.RenderTransform>
+                <CompositeTransform x:Name="InfoPanelTransform"/>
+            </StackPanel.RenderTransform>
+            <TextBlock x:Name="InfoBlock"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource PhoneAccentBrush}"
+                       HorizontalAlignment="Center"
+                       Margin="0,6"/>
+        </StackPanel>
+    </Grid>
+</phone:PhoneApplicationPage>

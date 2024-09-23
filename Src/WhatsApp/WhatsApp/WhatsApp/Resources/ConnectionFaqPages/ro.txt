@@ -1,0 +1,13 @@
+Se pare că întâmpinați probleme ce țin de conexiune!
+<p>În cazul în care vedeți acest mesaj, acest lucru înseamnă că nu sunteți conectat la internet. Pentru a vă ajuta să rezolvați această problemă foarte repede, vă rugăm să urmați pașii ajutători de mai jos:  </p>
+<ul>
+<li>Asigurați-vă că dispozitivul se află în zona de acoperire sau că este conectat la o rețea Wi-Fi. Conexiunea trebuie să fie puternică și stabilă. </li>
+<li>Asigurați-vă că aveți un plan de date oferit de furnizorul de telefonie mobilă sau că sunteți conectat la o rețea Wi-Fi. NOTĂ: Pentru a folosi WhatsApp pe Windows Phone, este important să aveți un plan de date. Dispozitivele care funcționează doar pe baza conexiunii la o rețea Wi-Fi pot întâmpina probleme. </li>
+<li>Reporniți telefonul (închideți telefonul, așteptați 30 de secunde, reporniți).</li>
+</ul>
+<p>SOLUȚII AJUTĂTOARE</p>
+<p>În cazul în care pueți accesa alte aplicații și pagini de web dar WhatsApp nu funcționează, este posibil ca configurarea rețelei dvs. să nu permită conexiunile de tip (socket or non-HTTP) care sunt necesare pentru WhatsApp.</p>
+<ul>
+<li>Verificați setările pentru Access Point Name (APN) ale operatorului de telefonie mobilă. Este posibil să existe o setare diferită de APN pe care furnizorul dvs. de telefonie mobilă o permite pentru conexiunile de tip non-HTTP. Pentru a afla cum să schimbați setările pentru APN pe telefonul dumneavoastră,vă rugăm mergeți aici: <a href="https://www.windowsphone.com/en-US/How-to/wp7/start/cellular-settings">Windows Phone 7</a> și <a href="https://www.windowsphone.com/en-us/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>. După ce veți schimba aceste setări APN, vă rugăm să reporniți telefonul pentru ca aceste setări să fie implementate.  </li>
+<li>În cazul în care dețineți un Windows Phone produs de Nokia, încercați să acesați <a href="https://www.windowsphone.com/en-us/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">Connection Setup app</a> de pe Nokia Collection din Store (este posibil ca această aplicație să nu fie disponibilă în anumite țări).</li>
+</ul>

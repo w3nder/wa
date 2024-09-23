@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="WhatsApp.CloudBackupCheckPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <local:ZoomBox x:Name="LayoutRootZoomBox">
+        <Grid x:Name="LayoutRoot" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <local:PageTitlePanel x:Name="PageTitle" Grid.Row="0"/>
+
+            <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                <TextBlock Text="{Binding Path=Strings.CloudBackupCheckPrompt, Source={StaticResource Localizable}}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+                <ProgressBar x:Name="CheckProgress" Margin="12,48,12,0" IsIndeterminate="True" Visibility="Collapsed"/>
+                <TextBlock x:Name="BackupLocateErrorText" Text="" Visibility="Visible" Margin="0,48,0,0" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+            </StackPanel>
+
+            <Grid x:Name="Decision" VerticalAlignment="Bottom" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="CheckForBackupButton" Click="CheckForBackupButton_Click" Grid.Row="3" Grid.Column="0" Margin="12,0,0,6"/>
+                <Button x:Name="SkipButton" Click="SkipButton_Click" Grid.Row="3" Grid.Column="1" Margin="0,0,12,6"/>
+            </Grid>
+        </Grid>
+    </local:ZoomBox>
+    <Page.ApplicationBar>
+        <shell:ApplicationBar IsVisible="False" IsMenuEnabled="True" Opacity="0.99">
+            <shell:ApplicationBarIconButton IconUri="/Images/next.png" Text="Continue" Click="ContinueButton_Click"/>
+        </shell:ApplicationBar>
+    </Page.ApplicationBar>
+</Page>

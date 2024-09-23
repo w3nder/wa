@@ -1,0 +1,84 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WhatsApp.BlockListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </phone:PhoneApplicationPage.Resources>
+    
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <local:PageTitlePanel x:Name="TitlePanel"
+                              Grid.Row="0"
+                              SmallTitle="WHATSAPP"
+                              LargeTitle="{Binding Path=Strings.BlockListSetting, Source={StaticResource Localizable}}"/>
+
+        <shim:LongListSelector x:Name="BlockedListBox"
+                               Grid.Row="1"
+                               Margin="24,12,0,0"
+                               IsFlatList="True"
+                               SelectionChanged="BlockedListBox_SelectionChanged">
+            <shim:LongListSelector.ListHeader>
+                <StackPanel Margin="0">
+                    <StackPanel x:Name="LoadingPanel">
+                        <TextBlock TextAlignment="Center" Text="{Binding Path=Strings.BlockListLoading, Source={StaticResource Localizable}}"/>
+                        <ProgressBar IsIndeterminate="true" />
+                    </StackPanel>
+                    <StackPanel x:Name="NoContactsPanel" Margin="0,12" Visibility="Collapsed">
+                        <TextBlock TextWrapping="Wrap" x:Name="NoContactsTextBlock" />
+                    </StackPanel>
+                    <StackPanel x:Name="ContactsPanel" Margin="0,12" Visibility="Collapsed">
+                        <TextBlock TextWrapping="Wrap" x:Name="ContactsTextBlock" />
+                    </StackPanel>
+                </StackPanel>
+            </shim:LongListSelector.ListHeader>
+            <shim:LongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <local:UserItemControl Margin="0,24,0,0"
+                                           ViewModel="{Binding}"/>
+                </DataTemplate>
+            </shim:LongListSelector.ItemTemplate>
+        </shim:LongListSelector>
+    </Grid>
+    
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="False" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/assets/notheme/add.png" Text="Add" Click="Add_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

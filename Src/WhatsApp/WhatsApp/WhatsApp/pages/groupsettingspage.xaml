@@ -1,0 +1,84 @@
+﻿<Page
+    x:Class="WhatsApp.GroupSettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"
+    Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn" />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut" />
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <local:ZoomBox ZoomFactor="{Binding ZoomFactor}">
+        <StackPanel>
+            <local:PageTitlePanel SmallTitle="{Binding TargetNameStr}"
+                                  KeepOriginalSmallTitleCase="True"
+                                  LargeTitle="{Binding PageTitle}"
+                                  Mode="NotZoomed" />
+
+            <StackPanel Margin="24,0,24,0">
+                <ListBoxItem x:Name="RestrictPanel"
+                             Margin="0,0,0,6"
+                             Tap="RestrictPanel_Tap"
+                             Visibility="{Binding RestrictPanelVisibility}"
+                             toolkit:TiltEffect.IsTiltEnabled="True">
+                    <StackPanel>
+                        <TextBlock x:Name="RestrictTitleBlock"
+                                   Margin="0"
+                                   Text="{Binding RestrictTitleStr}"
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   FontWeight="SemiBold" />
+                        <TextBlock x:Name="RestrictStateBlock"
+                                   Margin="0"
+                                   Text="{Binding RestrictStateStr}"
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   Foreground="{StaticResource PhoneSubtleBrush}" />
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem x:Name="AnnouncePanel"
+                             Margin="0,0,0,6"
+                             Tap="AnnouncePanel_Tap"
+                             Visibility="{Binding AnnouncePanelVisibility}"
+                             toolkit:TiltEffect.IsTiltEnabled="True">
+                    <StackPanel>
+                        <TextBlock x:Name="AnnounceTitleBlock"
+                                   Margin="0"
+                                   Text="{Binding AnnouncementTitleStr}"
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   FontWeight="SemiBold" />
+                        <TextBlock x:Name="AnnounceStateBlock"
+                                   Margin="0"
+                                   Text="{Binding AnnouncementStateStr}"
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   Foreground="{StaticResource PhoneSubtleBrush}" />
+                    </StackPanel>
+                </ListBoxItem>
+            </StackPanel>
+        </StackPanel>
+    </local:ZoomBox>
+
+</Page>

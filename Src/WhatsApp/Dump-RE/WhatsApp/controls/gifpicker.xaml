@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="WhatsApp.GifPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+        </Style>
+
+        <DataTemplate x:Key="GifItemTemplate">
+            <Grid Height="150"
+                  Width="150"
+                  Background="Gray"
+                  Tag="{Binding}"
+                  Tap="GifItem_Tap"
+                  Margin="3">
+                <Rectangle Width="150" Height="150">
+                    <Rectangle.Fill>
+                        <ImageBrush
+                            Stretch="UniformToFill"
+                            AlignmentX="Center"
+                            AlignmentY="Center"
+                            ImageSource="{Binding Thumbnail}"
+                            />
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Background="{StaticResource PhoneBackgroundBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle x:Name="HorizontalBar"
+            Grid.Row="0"
+            Height="2"
+            Fill="{StaticResource PhoneInactiveBrush}"
+            />
+
+        <shim:LongListSelector x:Name="GifSearchResultsList"
+                Grid.Row="1"
+                Margin="0"
+                Padding="4"
+                ItemTemplate="{StaticResource GifItemTemplate}"
+                LayoutMode="Grid"
+                IsFlatList="True"
+                GridCellSize="156,156"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                toolkit:TiltEffect.IsTiltEnabled="True">
+            <shim:LongListSelector.ListFooter>
+                <StackPanel Margin="0,24,0,112">
+                    <TextBlock x:Name="ResultsTooltip"
+                            Margin="4"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Center"
+                            Visibility="Collapsed"
+                            Style="{StaticResource PhoneTextNormalStyle}"
+                            Foreground="{StaticResource PhoneSubtleBrush}"
+                            FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                </StackPanel>
+            </shim:LongListSelector.ListFooter>
+        </shim:LongListSelector>
+
+        <Grid x:Name="LoadingPreviewPage"
+              Grid.RowSpan="2"
+              Visibility="Collapsed">
+            <Rectangle
+                Fill="Black"
+                Opacity="0.4"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"/>
+            <ProgressBar x:Name="LoadingProgressBar"
+                IsIndeterminate="True"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Stretch"/>
+        </Grid>
+        <Grid x:Name="LoadingGif"
+              Margin="0,50,0,0"
+              Grid.Row="1"
+              Visibility="Collapsed">
+            <ProgressBar
+                IsIndeterminate="True"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Stretch"/>
+        </Grid>
+    </Grid>
+</UserControl>

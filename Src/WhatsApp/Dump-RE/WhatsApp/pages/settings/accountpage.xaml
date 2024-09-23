@@ -1,0 +1,95 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.AccountPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid x:Name="Content">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:PageTitlePanel x:Name="TitlePanel"
+                                  Grid.Row="0"
+                                  SmallTitle="{Binding Path=Strings.SettingsTitle, Source={StaticResource Localizable}}"
+                                  LargeTitle="{Binding Path=Strings.AccountSettingsTitle, Source={StaticResource Localizable}}"/>
+            <ScrollViewer Grid.Row="1" >
+                <Grid Margin="12,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0"
+                            x:Name="PrivacyButton"
+                            Content="{Binding Path=Strings.PrivacySettingsTitle, Source={StaticResource Localizable}}"
+                            Click="Privacy_Click"/>
+                    <Button Grid.Row="1"
+                            x:Name="SecurityButton"
+                            Content="{Binding Path=Strings.SecuritySettings, Source={StaticResource Localizable}}"
+                            Click="Security_Click"/>
+                    <Button Grid.Row="2"
+                            x:Name="ChangeNumberButton"
+                            Content="{Binding Path=Strings.ChangeNumberLower, Source={StaticResource Localizable}}"
+                            Click="ChangeNumberButton_Click"/>
+                    <Button Grid.Row="3"
+                            x:Name="TwoFacButton"
+                            Content="{Binding Path=Strings.TwoStepVerification, Source={StaticResource Localizable}}"
+                            Click="TwoFactorButton_Click"/>
+                    <Button Grid.Row="4"
+                            x:Name="DownloadDataButton"
+                            Content="{Binding Path=Strings.GdprReportTitle, Source={StaticResource Localizable}}"
+                            Click="DownloadDataButton_Click"/>
+                    <Button Grid.Row="5"
+                            x:Name="DeleteAccountButton"
+                            Content="{Binding Path=Strings.DeleteAccount, Source={StaticResource Localizable}}"
+                            Click="DeleteAccountButton_Click"/>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>

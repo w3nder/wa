@@ -1,0 +1,194 @@
+﻿<Page
+    x:Class="WhatsApp.NotificationSettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+    
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+            
+        <local:PageTitlePanel x:Name="TitlePanel"
+                              Grid.Row="0"
+                              SmallTitle="{Binding SmallTitleStr}"
+                              LargeTitle="{Binding LargeTitleStr}"
+                              Mode="Zoomed"/>
+
+        <ScrollViewer Grid.Row="1"
+                      HorizontalScrollBarVisibility="Disabled">
+            <!-- Alan said content of scrollviewer appeared to be blurry
+                 if zoombox is placed outside of scrollviewer. -->
+            <local:ZoomBox x:Name="LayoutRootZoomBox">
+                <StackPanel Margin="24,0,24,112">
+                    
+                    <!-- Individual chat notification section -->
+                    <StackPanel Margin="0,0,0,36">
+                        <TextBlock Text="{Binding MessageSectionTitleStr}"
+                                   TextWrapping="Wrap"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   FontSize="24"
+                                   Margin="0"/>
+                        <toolkit:ToggleSwitch IsChecked="{Binding EnableIndividualAlerts, Mode=TwoWay}"
+                                              Padding="0"
+                                              Margin="-12,0,0,-12">
+                            <toolkit:ToggleSwitch.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"
+                                               Margin="0,-6,0,10"
+                                               VerticalAlignment="Top"/>
+                                </DataTemplate>
+                            </toolkit:ToggleSwitch.ContentTemplate>
+                        </toolkit:ToggleSwitch>
+                        <TextBlock Text="{Binding MessageToneSelectionStr}"
+                                   Style="{StaticResource PhoneTextSubtleStyle}"
+                                   TextWrapping="Wrap"
+                                   Margin="0,-12,0,0"/>
+                        <Button HorizontalContentAlignment="Left"
+                                Tap="MessageToneSelectButton_Tap"
+                                Padding="12,6"
+                                Margin="-12,0,0,0"
+                                Content="{Binding MessageToneName}"
+                                IsEnabled="{Binding EnableMessageToneSelectButton}"
+                                AutomationProperties.AutomationId="AIdIndividualButton"/>
+                    </StackPanel>
+                    
+                    <!-- Group notification section -->
+                    <StackPanel Margin="0,0,0,36">
+                        <TextBlock Text="{Binding GroupSectionTitleStr}"
+                                   TextWrapping="Wrap"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   FontSize="24"
+                                   Margin="0"/>
+                        <toolkit:ToggleSwitch IsChecked="{Binding EnableGroupAlerts, Mode=TwoWay}"
+                                              Padding="0"
+                                              Margin="-12,0,0,-12">
+                            <toolkit:ToggleSwitch.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"
+                                               Margin="0,-6,0,10"
+                                               VerticalAlignment="Top"/>
+                                </DataTemplate>
+                            </toolkit:ToggleSwitch.ContentTemplate>
+                        </toolkit:ToggleSwitch>
+                        <TextBlock Text="{Binding GroupToneSelectionStr}"
+                                   TextWrapping="Wrap"
+                                   Style="{StaticResource PhoneTextSubtleStyle}"
+                                   Margin="0,-12,0,0"/>
+                        <Button HorizontalContentAlignment="Left"
+                                Tap="GroupToneSelectButton_Tap"
+                                Padding="12,6"
+                                Margin="-12,0,0,0"
+                                Content="{Binding GroupToneName}"
+                                IsEnabled="{Binding EnableGroupToneSelectButton}"
+                                AutomationProperties.AutomationId="AIdGroupButton"/>
+                    </StackPanel>
+
+                    <!-- Call notification section -->
+                    <StackPanel Margin="0,0,0,36">
+                        <TextBlock Text="{Binding CallSectionTitleStr}"
+                                   TextWrapping="Wrap"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   FontSize="24"/>
+                        <TextBlock Text="{Binding CallToneSelectionStr}"
+                                   Style="{StaticResource PhoneTextSubtleStyle}"
+                                   Margin="0,12,0,0"/>
+                        <Button HorizontalContentAlignment="Left"
+                                Tap="CallToneSelectButton_Tap"
+                                Padding="12,6"
+                                Margin="-12,0,0,0"
+                                Content="{Binding VoipRingtoneName}"
+                                AutomationProperties.AutomationId="AIdVoipButton"/>
+                    </StackPanel>
+
+                    <!-- In-App notification section -->
+                    <StackPanel Margin="0,0,0,24">
+                        <TextBlock Text="{Binding InAppSectionTitleStr}"
+                                   TextWrapping="Wrap"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   FontSize="24"/>
+                        <toolkit:ToggleSwitch Header="{Binding EnableInAppNotificationToastStr}"
+                                              IsChecked="{Binding EnableInAppNotificationToast, Mode=TwoWay}"
+                                              Padding="0"
+                                              Margin="-12,12,0,-12">
+                            <toolkit:ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                                </DataTemplate>
+                            </toolkit:ToggleSwitch.HeaderTemplate>
+                        </toolkit:ToggleSwitch>
+                        <toolkit:ToggleSwitch Header="{Binding EnableInAppNotificationSoundStr}"
+                                              IsChecked="{Binding EnableInAppNotificationSound, Mode=TwoWay}"
+                                              Padding="0"
+                                              Margin="-12,0,0,-12"/>
+                        <toolkit:ToggleSwitch Header="{Binding EnableInAppNotificationVibrateStr}"
+                                              IsChecked="{Binding EnableInAppNotificationVibrate, Mode=TwoWay}"
+                                              Padding="0"
+                                              Margin="-12,0,0,-12"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,24">
+                        <TextBlock Text="{Binding PreviewSectionTitleStr}"
+                                   TextWrapping="Wrap"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   FontSize="24"/>
+                        <toolkit:ToggleSwitch Padding="0"
+                                              Margin="-12,12,0,0"
+                                              Header="{Binding ShowPreviewInNotificationsStr}"
+                                              IsChecked="{Binding ShowPreviewInNotifications, Mode=TwoWay}">
+                            <toolkit:ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                                </DataTemplate>
+                            </toolkit:ToggleSwitch.HeaderTemplate>
+                        </toolkit:ToggleSwitch>
+                    </StackPanel>
+
+                    <Button Content="{Binding ResetButtonLabelStr}"
+                            Padding="12,6"
+                            Margin="-12,0,0,0"
+                            HorizontalAlignment="Left"
+                            Click="ResetAll_Click"
+                            AutomationProperties.AutomationId="AIdReset"/>
+                    <TextBlock Text="{Binding ResetButtonTooltipStr}"
+                               TextWrapping="Wrap"
+                               Margin="0"/>
+                </StackPanel>
+            </local:ZoomBox>
+        </ScrollViewer>
+    </Grid>
+</Page>

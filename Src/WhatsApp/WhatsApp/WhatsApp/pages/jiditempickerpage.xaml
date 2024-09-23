@@ -1,0 +1,87 @@
+﻿<Page
+    x:Class="WhatsApp.JidItemPickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
+    xmlns:local="clr-namespace:WhatsApp"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <local:ZoomBox x:Name="LayoutRootZoomBox">
+        <Grid x:Name="LayoutRoot">
+            <Grid.RenderTransform>
+                <CompositeTransform TranslateY="0"/>
+            </Grid.RenderTransform>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <local:PageTitlePanel x:Name="TitlePanel"
+                                  Grid.Row="0"
+                                  Mode="NotZoomed"
+                                  Visibility="Collapsed"/>
+
+            <local:EmojiTextBox x:Name="SearchBox"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="24,6,24,0"
+                                EnableActionButton="False"
+                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+            <Grid x:Name="PivotHeaderPanel" Grid.Row="2"/>
+
+            <controls:Pivot x:Name="Pivot"
+                            Grid.Row="3"
+                            SelectionChanged="Pivot_SelectionChanged">
+                <controls:Pivot.Template>
+                    <ControlTemplate TargetType="phone:Pivot">
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0"/>
+                                <RowDefinition Height="0"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <ContentControl x:Name="TitleElement" ContentTemplate="{TemplateBinding TitleTemplate}" Content="{TemplateBinding Title}" Height="0"/>
+                            <primitives:PivotHeadersControl x:Name="HeadersListElement" Grid.Row="1" Opacity="0"/>
+                            <ItemsPresenter x:Name="PivotItemPresenter" Margin="{TemplateBinding Padding}" Grid.Row="2"/>
+                        </Grid>
+                    </ControlTemplate>
+                </controls:Pivot.Template>
+                <controls:Pivot.HeaderTemplate>
+                    <DataTemplate/>
+                </controls:Pivot.HeaderTemplate>
+            </controls:Pivot>
+
+
+        </Grid>
+    </local:ZoomBox>
+
+</Page>

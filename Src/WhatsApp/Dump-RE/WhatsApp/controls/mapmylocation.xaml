@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="WhatsApp.MapMyLocation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="AccurateFill" Color="Green"/>
+        <SolidColorBrush x:Key="InaccurateFill" Color="Gray"/>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Ellipse x:Name="AccuracyEllipse" Width="200" Height="200" Fill="#3070FF00" Visibility="Collapsed" IsHitTestVisible="False"/>
+        <Ellipse Width="32" Height="32" Fill="Black"/>
+        <Ellipse x:Name="Inner" Stroke="White" StrokeThickness="2" Width="26" Height="26" Fill="Green"/>
+    </Grid>
+</UserControl>

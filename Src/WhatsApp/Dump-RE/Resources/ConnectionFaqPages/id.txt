@@ -1,0 +1,13 @@
+Oops, tampaknya Anda tidak memiliki koneksi!
+<p>Jika Anda melihat layar ini, berarti Anda tidak terhubung ke Internet. Untuk membantu Anda menyelesaikan masalah ini dengan secepat mungkin, silakan ikuti langkah-langkah berikut:</p>
+<ul>
+<li>Pastikan bahwa perangkat Anda berada dalam cakupan area yang didukung oleh operator layanan seluler atau jaringan Wi-Fi Anda. Koneksi harus stabil dan dapat diandalkan.</li>
+<li>Pastikan bahwa Anda memiliki paket data seluler dari operator atau koneksi Wi-Fi dengan akses Internet yang berfungsi. PERHATIAN: Untuk menggunakan WhatsApp pada Windows Phone, penting bagi Anda untuk memiliki paket data. Perangkat yang hanya menggunakan jaringan Wi-Fi saja dapat mengalami banyak masalah.</li>
+<li>Reboot telepon Anda (matikan, tunggu 30 detik, nyalakan kembali).</li>
+</ul>
+<p>LANGKAH-LANGKAH TAMBAHAN</p>
+<p>Jika Anda dapat membuka halaman web dan aplikasi lain bekerja normal tetapi WhatsApp tidak dapat tersambung, kemungkinan konfigurasi jaringan Anda tidak mengizinkan tipe koneksi (socket atau koneksi non-HTTP) yang diperlukan oleh WhatsApp.</p>
+<ul>
+<li>Periksa pengaturan Access Point Name (APN) operator Anda. Mungkin ada pengaturan APN lain yang diizinkan operator Anda untuk koneksi non-HTTP seperti WhatsApp. Untuk mencari tahu cara mengganti pengaturan APN di perangkat Anda, silakan kunjungi yang berikut untuk: <a href="https://www.windowsphone.com/en-US/How-to/wp7/start/cellular-settings">Windows Phone 7</a> dan <a href="https://www.windowsphone.com/en-us/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>. Setelah Anda mengganti pengaturan APN, mohon pastikan untuk mereboot telepon Anda agar perubahan diterapkan.</li>
+<li>Jika Anda menggunakan Windows Phone yang dibuat oleh Nokia, coba gunakan <a href="https://www.windowsphone.com/id-id/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">aplikasi Penyiapan Sambungan</a> dari Koleksi Nokia di Bursa (aplikasi ini mungkin tidak tersedia pada beberapa negara).</li>
+</ul>

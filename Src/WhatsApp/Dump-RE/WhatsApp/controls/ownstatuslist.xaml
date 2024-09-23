@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="WhatsApp.OwnStatusList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:local="clr-namespace:WhatsApp"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <local:AssetStore x:Key="Assets"/>
+
+        <DataTemplate x:Key="SmallSizeItemTemplate">
+            <Grid Margin="0,0,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <local:StatusItemControl Grid.Column="0"
+                                         Margin="0"
+                                         ViewModel="{Binding}"
+                                         Tap="Item_Tap"
+                                         ItemHeight="52"/>
+                <Button Grid.Column="1"
+                        Style="{StaticResource BorderlessButton}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Click="Forward_Click"
+                        Margin="0"
+                        Padding="0"
+                        Height="52"
+                        Width="52">
+                    <Button.Content>
+                        <Image HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Height="48"
+                               Width="48"
+                               Source="{Binding Path=ForwardIcon, Source={StaticResource Assets}}"/>
+                    </Button.Content>
+                </Button>
+                <Button Grid.Column="2"
+                        Style="{StaticResource BorderlessButton}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Click="Delete_Click"
+                        Margin="0"
+                        Padding="0"
+                        Height="52"
+                        Width="52">
+                    <Button.Content>
+                        <Image HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Height="48"
+                               Width="48"
+                               Source="{Binding Path=DeleteIcon, Source={StaticResource Assets}}"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="RegularSizeItemTemplate">
+            <Grid Margin="0,0,24,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <local:StatusItemControl Grid.Column="0"
+                                         Margin="0"
+                                         ViewModel="{Binding}"
+                                         Tap="Item_Tap"/>
+                <Button Grid.Column="1"
+                        Style="{StaticResource BorderlessButton}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Click="Forward_Click"
+                        Margin="24,0,0,0"
+                        Padding="0"
+                        Height="52"
+                        Width="52">
+                    <Button.Content>
+                        <Image HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Height="48"
+                               Width="48"
+                               Source="{Binding Path=ForwardIcon, Source={StaticResource Assets}}"/>
+                    </Button.Content>
+                </Button>
+                <Button Grid.Column="2"
+                        Style="{StaticResource BorderlessButton}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Click="Delete_Click"
+                        Margin="24,0,0,0"
+                        Padding="0"
+                        Height="52"
+                        Width="52">
+                    <Button.Content>
+                        <Image HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Height="48"
+                               Width="48"
+                               Source="{Binding Path=DeleteIcon, Source={StaticResource Assets}}"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <shim:LongListSelector x:Name="StatusList"
+                           IsFlatList="True"
+                           HorizontalAlignment="Stretch"
+                           ItemTemplate="{StaticResource RegularSizeItemTemplate}">
+        <shim:LongListSelector.ListFooter>
+            <StackPanel MinHeight="60">
+                <StackPanel x:Name="ViewMorePanel"
+                            Height="60"
+                            Background="Transparent"
+                            Tap="ViewMore_Tap"
+                            Visibility="Collapsed">
+                    <TextBlock x:Name="ViewMoreBlock"
+                               FontWeight="SemiBold"
+                               FontSize="24"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock x:Name="BottomTooltipBlock"
+                           Margin="0,24,0,48"
+                           FontSize="24"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Bottom"
+                           Foreground="{StaticResource PhoneSubtleBrush}"/>
+            </StackPanel>
+        </shim:LongListSelector.ListFooter>
+    </shim:LongListSelector>
+</UserControl>

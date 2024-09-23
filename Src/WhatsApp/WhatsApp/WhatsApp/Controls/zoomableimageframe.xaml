@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="WhatsApp.ZoomableImageFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot" Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0">
+            <toolkit:GestureService.GestureListener>
+                <toolkit:GestureListener PinchStarted="OnPinchStarted"
+                                         PinchDelta="OnPinchDelta"
+                                         PinchCompleted="OnPinchCompleted"
+                                         DragStarted="OnDragStarted"
+                                         DragDelta="OnDragDelta"
+                                         DragCompleted="OnDragCompleted"
+                                         DoubleTap="OnDoubleTap"/>
+            </toolkit:GestureService.GestureListener>
+            <Rectangle x:Name="Bg" Canvas.Top="0" Canvas.Left="0" Canvas.ZIndex="1" Fill="Black"/>
+            <Image x:Name="Img" Canvas.Top="0" Canvas.Left="0" Canvas.ZIndex="0" CacheMode="BitmapCache">
+                <Image.RenderTransform>
+                    <CompositeTransform ScaleX="1" ScaleY="1" TranslateX="0" TranslateY="0"/>
+                </Image.RenderTransform>
+            </Image>
+        </Canvas>
+    </Grid>
+</UserControl>

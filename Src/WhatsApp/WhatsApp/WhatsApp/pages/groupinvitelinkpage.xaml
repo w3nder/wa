@@ -1,0 +1,109 @@
+﻿<Page
+    x:Class="WhatsApp.GroupInviteLinkPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid x:Name="Content">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:PageTitlePanel x:Name="TitlePanel"
+                                  Grid.Row="0"
+                                  SmallTitle="{Binding Path=Strings.InviteLinkTitle, Source={StaticResource Localizable}}"/>
+            <Grid Margin="12,0" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="InviteLink" Grid.Row="0"
+                            Style="{StaticResource PhoneTextLargeStyle}"
+                            TextWrapping="Wrap"
+                            Margin="24,10,0,0"
+                            VerticalAlignment="Center"
+                            FlowDirection="LeftToRight" />
+
+                <TextBlock x:Name="InviteLinkDescription" Grid.Row="1"
+                            Style="{StaticResource PhoneTextSubtleStyle}"
+                            Text="{Binding Path=Strings.InviteLinkDescription, Source={StaticResource Localizable}}"
+                            TextWrapping="Wrap"
+                            Margin="24,24,0,0"
+                            VerticalAlignment="Center"/>
+
+                <TextBlock x:Name="ShareViaWhatsApp"  Grid.Row="2"
+                            Style="{StaticResource PhoneTextLargeStyle}"
+                            TextWrapping="NoWrap"
+                            Tap="ShareViaWhatsApp_Tap"
+                            Text="{Binding Path=Strings.SendLinkViaWhatsApp, Source={StaticResource Localizable}}"
+                            Margin="24,24,0,0"
+                            VerticalAlignment="Center"/>
+                <TextBlock x:Name="CopyLink"  Grid.Row="3"
+                            Style="{StaticResource PhoneTextLargeStyle}"
+                            TextWrapping="NoWrap"
+                            Tap="CopyLink_Tap"
+                            Text="{Binding Path=Strings.CopyLink, Source={StaticResource Localizable}}"
+                            Margin="24,24,0,0"
+                            VerticalAlignment="Center"/>
+                <TextBlock x:Name="RevokeLink"  Grid.Row="4"
+                            Style="{StaticResource PhoneTextLargeStyle}"
+                            TextWrapping="NoWrap"
+                            Text="{Binding Path=Strings.RevokeLink, Source={StaticResource Localizable}}"
+                            Tap="RevokeLink_Tap"
+                            Margin="24,24,0,0"
+                            VerticalAlignment="Center"/>
+                <TextBlock x:Name="ShareLink"  Grid.Row="5"
+                            Style="{StaticResource PhoneTextLargeStyle}"
+                            TextWrapping="NoWrap"
+                            Tap="ShareLink_Tap"
+                            Text="{Binding Path=Strings.ShareLink, Source={StaticResource Localizable}}"
+                            Margin="24,24,0,0"
+                            VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

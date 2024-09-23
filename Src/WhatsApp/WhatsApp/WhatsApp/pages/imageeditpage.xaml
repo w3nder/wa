@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="WhatsApp.ImageEditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="False"
+    Background="Black">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Grid x:Name="LayoutRoot" Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <local:ImageEditControl Grid.Row="1"
+            x:Name="EditControl" Margin="2">
+            <local:ImageEditControl.RenderTransform>
+                <CompositeTransform />
+            </local:ImageEditControl.RenderTransform>
+        </local:ImageEditControl>
+        <local:RichTextBlock x:Name="ImageLink" Grid.Row="0"
+                       Margin="12"
+                       AllowLinks="True"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       FontSize="{StaticResource PhoneFontSizeSmall}"
+                       Opacity=".6"/>
+        <local:RichTextBlock x:Name="MaybeCopyright" Grid.Row="2"
+                       Margin="12"
+                       AllowLinks="True"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       FontSize="{StaticResource PhoneFontSizeSmall}"
+                       Opacity=".6"/>
+    </Grid>
+
+    <Page.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True"
+                              ForegroundColor="LightGray" BackgroundColor="Black">
+            <shell:ApplicationBarIconButton IconUri="/Images/check.png" Text="Accept" Click="Accept_Click"/>
+        </shell:ApplicationBar>
+    </Page.ApplicationBar>
+    
+</Page>

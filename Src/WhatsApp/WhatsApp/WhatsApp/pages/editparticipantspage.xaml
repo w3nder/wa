@@ -1,0 +1,105 @@
+﻿<Page
+    x:Class="WhatsApp.EditParticipantsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Page.Resources>
+        <shell:ApplicationBar x:Key="AppBarForNewChat" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/check.png" Text="Create"
+                                            Click="SubmitButton_Click" IsEnabled="False"/>
+        </shell:ApplicationBar>
+        <shell:ApplicationBar x:Key="AppBarForExistingChat" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/check.png" Text="Done"
+                                            Click="SubmitButton_Click" IsEnabled="False"/>
+        </shell:ApplicationBar>
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+    
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <local:PageTitlePanel Grid.Row="0" SmallTitle="{Binding PageTitleStr}"/>
+        
+        <local:ItemQuickSearchControl x:Name="QuickSearch" Margin="24,36,24,0" Grid.Row="1"
+                                      Visibility="{Binding SearchVisibility}"/>
+
+        <Button Grid.Row="2" Padding="0" Margin="12,44,0,0" Style="{StaticResource BorderlessButton}"
+                HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top"
+                Click="AddParticipant_Click"
+                AutomationProperties.AutomationId="AddParticipant">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <c4f:RoundButton ImageSource="../Images/assets/notheme/add.png" VerticalAlignment="Bottom"
+                                     Click="AddParticipant_Click"/>
+                    <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}"
+                               VerticalAlignment="Bottom" Margin="12,0,0,12"
+                               Text="{Binding AddParticipantButtonStr}"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <shim:LongListSelector x:Name="ParticipantList" Margin="24,32,12,0" Grid.Row="3" IsFlatList="True"
+                               ItemsSource="{Binding ParticipantViewModels}">
+            <shim:LongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <local:UserItemControl Margin="0,0,0,24" ViewModel="{Binding}">
+                        <toolkit:ContextMenuService.ContextMenu>
+                            <toolkit:ContextMenu>
+                                <toolkit:MenuItem Header="{Binding Path=Strings.Remove, Source={StaticResource Localizable}}"
+                                                  Command="{Binding DataContext.RemoveParticipantCommand, ElementName=ParticipantList}"
+                                                  CommandParameter="{Binding DataContext, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </toolkit:ContextMenu>
+                        </toolkit:ContextMenuService.ContextMenu>
+                    </local:UserItemControl>
+                </DataTemplate>
+            </shim:LongListSelector.ItemTemplate>
+            <shim:LongListSelector.ListFooter>
+                <TextBlock x:Name="WarningTextBlock" Margin="0,12" TextWrapping="Wrap" FontSize="22"
+                           Style="{StaticResource PhoneTextLargeStyle}"/>
+            </shim:LongListSelector.ListFooter>
+        </shim:LongListSelector>
+    </Grid>
+</Page>
+    

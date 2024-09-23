@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="WhatsApp.StickerPickerItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+
+    <Grid x:Name="LayoutRoot"
+          Height="118"
+          Width="118"
+          Tag="{Binding}"
+          Tap="StickerItem_Tap"
+          Background="{Binding StickerItemBackground}"
+          ManipulationStarted="StickerItem_ManipulationStarted"
+          ManipulationCompleted="StickerItem_ManipulationCompleted"
+          Hold="StickerItem_Hold"
+          Margin="2">
+        <Rectangle Width="96" Height="96">
+            <Rectangle.Fill>
+                <ImageBrush
+                    Stretch="UniformToFill"
+                    AlignmentX="Center"
+                    AlignmentY="Center"
+                    ImageSource="{Binding Thumbnail}"
+                />
+            </Rectangle.Fill>
+        </Rectangle>
+    </Grid>
+
+</UserControl>

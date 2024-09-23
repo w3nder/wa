@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="WhatsApp.GroupCallInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Page.Resources>
+        <local:ResolutionHelper x:Key="ResolutionHelper"/>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="0">
+        <local:PageTitlePanel Grid.Row="0"
+                                KeepOriginalSubtitleCase="True"
+                                SmallTitle="{Binding PageTitle}"
+                                Mode="Zoomed"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" x:Name="TimeStampBlock" Margin="0,30,0,30"></Grid>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <shim:LongListSelector x:Name="ConnectedParticipantList"
+                                    Grid.Row="0"
+                                    IsFlatList="True"
+                                    Margin="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch">
+                        <shim:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <local:GroupParticipantLogItemControl Margin="24,12,24,12" ViewModel="{Binding}">
+                                </local:GroupParticipantLogItemControl>
+                            </DataTemplate>
+                        </shim:LongListSelector.ItemTemplate>
+                    </shim:LongListSelector>
+
+                    <Border x:Name="Separator" Grid.Row="1" Margin="0,12,0,12" BorderThickness="0,1,0,0" Opacity="0.5" Visibility="Collapsed"/>
+
+                    <shim:LongListSelector x:Name="MissedParticipantList"
+                                    Grid.Row="2"
+                                    IsFlatList="True"
+                                    Margin="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch">
+                        <shim:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <local:GroupParticipantLogItemControl Margin="24,12,24,12" ViewModel="{Binding}">
+                                </local:GroupParticipantLogItemControl>
+                            </DataTemplate>
+                        </shim:LongListSelector.ItemTemplate>
+                    </shim:LongListSelector>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

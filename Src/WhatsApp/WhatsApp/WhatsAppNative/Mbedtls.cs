@@ -1,0 +1,36 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: WhatsAppNative.Mbedtls
+// Assembly: WhatsAppNative, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime
+// MVID: B2F38A15-831E-4A18-9B26-41B1DE190E2F
+// Assembly location: C:\Users\Admin\Desktop\RE\WABeta\WhatsAppNative.winmd
+
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Windows.Foundation.Metadata;
+
+
+namespace WhatsAppNative
+{
+  [Version(100794368)]
+  [Activatable(100794368)]
+  [MarshalingBehavior]
+  public sealed class Mbedtls : IMbedtls
+  {
+    [MethodImpl(MethodCodeType = MethodCodeType.Runtime)]
+    public extern Mbedtls();
+
+    [MethodImpl(MethodCodeType = MethodCodeType.Runtime)]
+    public extern IByteBuffer AesGcmEncrypt(
+      [In] IByteBuffer CipherKeyBuffer,
+      [In] IByteBuffer IvBuffer,
+      [In] IByteBuffer AddBuffer,
+      [In] IByteBuffer PlainTextBuffer);
+
+    [MethodImpl(MethodCodeType = MethodCodeType.Runtime)]
+    public extern IByteBuffer AesGcmDecrypt(
+      [In] IByteBuffer CipherKeyBuffer,
+      [In] IByteBuffer IvBuffer,
+      [In] IByteBuffer AddBuffer,
+      [In] IByteBuffer CipherTextBuffer);
+  }
+}

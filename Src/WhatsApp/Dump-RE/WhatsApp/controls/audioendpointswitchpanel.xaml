@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="WhatsApp.AudioEndpointSwitchPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:WhatsApp"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="118" d:DesignWidth="480"
+    toolkit:TiltEffect.IsTiltEnabled="True">
+    <UserControl.Resources>
+        <Storyboard x:Name="DropdownAnimation">
+            <DoubleAnimation Storyboard.TargetName="LayoutRoot"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                             From="-200" To="-82" Duration="00:00:0.3">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseOut" Amplitude="1"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="SlideUpAnimation">
+            <DoubleAnimation Storyboard.TargetName="LayoutRoot"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                             From="-82" To="-200" Duration="00:00:0.25">
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Height="200" VerticalAlignment="Top" 
+          Background="{StaticResource PhoneChromeBrush}">
+        <Grid.RenderTransform>
+            <TranslateTransform Y="-200"/>
+        </Grid.RenderTransform>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Button x:Name="SwitchButton"
+                Grid.Column="0"
+                Style="{StaticResource BorderlessButton}"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Bottom"
+                Command="{Binding SwitchAudioOutputCommand}"
+                Margin="3,6,2,6">
+            <Button.Content>
+                <local:RoundButton x:Name="RoundButton"
+                                   ButtonSize="42"
+                                   VerticalAlignment="Center"
+                                   IsActivatable="false"/>
+            </Button.Content>
+        </Button>
+
+        <TextBlock Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,0,15"
+                   FontSize="19" FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                   Text="{Binding SwitchButtonText}"/>
+    </Grid>
+</UserControl>

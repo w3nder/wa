@@ -1,0 +1,116 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.ChangeNumberNotifyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:WhatsApp"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <local:ZoomBox x:Name="LayoutRootZoomBox">
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:PageTitlePanel x:Name="TitlePanel"
+                              SmallTitle="{Binding Path=Strings.ChangeNumberUPPER, Source={StaticResource Localizable}}"
+                              Mode="NotZoomed"/>
+
+        <Grid Grid.Row="1"
+              Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        Margin="0">
+                <TextBlock x:Name="ConfirmationBlock"
+                           TextWrapping="Wrap"
+                           FontSize="28"/>
+                <TextBlock x:Name="SwitchingCountryWarningBlock"
+                           TextWrapping="Wrap"
+                           Foreground="Red"
+                           Visibility="Collapsed"
+                           Margin="0,24,0,0"
+                           FontSize="20"
+                           Text="{Binding Path=Strings.ChangeNumberBetweenCountries, Source={StaticResource Localizable}}"/>
+                <TextBlock x:Name="NotifyTooltipBlock"
+                           TextWrapping="Wrap"
+                           Margin="0,24,0,0"
+                           FontSize="28"/>
+            </StackPanel>
+
+            <Grid x:Name="NotifyPanel"
+                  Grid.Row="1"
+                  Margin="0,24,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <toolkit:ToggleSwitch x:Name="NotifyContactsToggle"
+                                      Grid.Row="0"
+                                      Padding="0"
+                                      Margin="-12,0,-12,-12">
+                    <toolkit:ToggleSwitch.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock TextWrapping="Wrap"
+                                       Margin="0"
+                                       Text="{Binding Path=Strings.ChangeNumberNotifyContacts, Source={StaticResource Localizable}}"
+                                       Foreground="{StaticResource PhoneForegroundBrush}"/>
+                        </DataTemplate>
+                    </toolkit:ToggleSwitch.HeaderTemplate>
+                </toolkit:ToggleSwitch>
+
+                <toolkit:ListPicker x:Name="NotifyPicker"
+                                    Grid.Row="1"
+                                    Margin="0"/>
+
+                <ProgressBar x:Name="ProgressBar"
+                                  Grid.Row="2"
+                                  HorizontalAlignment="Stretch"
+                                  IsIndeterminate="True"
+                                  Margin="0,18,0,0"/>
+
+                    <Grid x:Name="NotifySummaryPanel"
+                          Grid.Row="2"
+                          Margin="0,24,0,0"
+                          MinHeight="72"
+                          Background="Transparent"
+                          Tap="NotifySummaryBlock_Tap">
+                        <local:RichTextBlock x:Name="NotifySummaryBlock"
+                                             FontSize="20"
+                                             Margin="-12,0"
+                                             VerticalAlignment="Top"
+                                             TextWrapping="Wrap"
+                                             AllowLinks="True"/>
+                    </Grid>
+                </Grid>
+        </Grid>
+    </Grid>
+    </local:ZoomBox>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="False">
+            <shell:ApplicationBarIconButton IconUri="/Images/check.png" Text="Accept" Click="Submit_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

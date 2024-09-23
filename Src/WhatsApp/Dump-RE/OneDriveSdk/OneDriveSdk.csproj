@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Admin\Desktop\RE\WABeta\OneDriveSdk.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF3E667C-DBA9-427F-9329-C540E317B135}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>OneDriveSdk</AssemblyName>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <ApplicationVersion>2.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Microsoft.OneDrive.Sdk</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MsGraphSdk">
+      <HintPath>lib\MsGraphSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Portable.ConcurrentDictionary">
+      <HintPath>lib\Portable.ConcurrentDictionary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.WindowsRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="OneDriveErrorCode.cs" />
+    <Compile Include="Audio.cs" />
+    <Compile Include="ChunkedUploadSessionDescriptor.cs" />
+    <Compile Include="Deleted.cs" />
+    <Compile Include="Drive.cs" />
+    <Compile Include="File.cs" />
+    <Compile Include="FileSystemInfo.cs" />
+    <Compile Include="Folder.cs" />
+    <Compile Include="Hashes.cs" />
+    <Compile Include="Identity.cs" />
+    <Compile Include="IdentitySet.cs" />
+    <Compile Include="Image.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemCopyRequestBody.cs" />
+    <Compile Include="ItemCreateLinkRequestBody.cs" />
+    <Compile Include="ItemCreateSessionRequestBody.cs" />
+    <Compile Include="ItemReference.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="OpenWithApp.cs" />
+    <Compile Include="OpenWithSet.cs" />
+    <Compile Include="Permission.cs" />
+    <Compile Include="Photo.cs" />
+    <Compile Include="Quota.cs" />
+    <Compile Include="SearchResult.cs" />
+    <Compile Include="Share.cs" />
+    <Compile Include="Shared.cs" />
+    <Compile Include="SharingInvitation.cs" />
+    <Compile Include="SharingLink.cs" />
+    <Compile Include="SpecialFolder.cs" />
+    <Compile Include="Thumbnail.cs" />
+    <Compile Include="ThumbnailSet.cs" />
+    <Compile Include="UploadSession.cs" />
+    <Compile Include="Video.cs" />
+    <Compile Include="DriveRequestBuilder.cs" />
+    <Compile Include="DriveSpecialCollectionRequestBuilder.cs" />
+    <Compile Include="IDriveRequestBuilder.cs" />
+    <Compile Include="IDriveSpecialCollectionRequestBuilder.cs" />
+    <Compile Include="IItemRequestBuilder.cs" />
+    <Compile Include="IOneDriveClient.cs" />
+    <Compile Include="IShareRequestBuilder.cs" />
+    <Compile Include="ItemRequestBuilder.cs" />
+    <Compile Include="IThumbnailSetRequestBuilder.cs" />
+    <Compile Include="OneDriveClient.cs" />
+    <Compile Include="ShareRequestBuilder.cs" />
+    <Compile Include="ThumbnailSetRequestBuilder.cs" />
+    <Compile Include="DriveItemsCollectionPage.cs" />
+    <Compile Include="DriveItemsCollectionRequest.cs" />
+    <Compile Include="DriveItemsCollectionRequestBuilder.cs" />
+    <Compile Include="DriveItemsCollectionResponse.cs" />
+    <Compile Include="DriveRecentCollectionPage.cs" />
+    <Compile Include="DriveRecentCollectionResponse.cs" />
+    <Compile Include="DriveRecentRequest.cs" />
+    <Compile Include="DriveRecentRequestBuilder.cs" />
+    <Compile Include="DriveRequest.cs" />
+    <Compile Include="DriveSharedCollectionPage.cs" />
+    <Compile Include="DriveSharedCollectionRequest.cs" />
+    <Compile Include="DriveSharedCollectionRequestBuilder.cs" />
+    <Compile Include="DriveSharedCollectionResponse.cs" />
+    <Compile Include="DriveSpecialCollectionPage.cs" />
+    <Compile Include="DriveSpecialCollectionRequest.cs" />
+    <Compile Include="DriveSpecialCollectionResponse.cs" />
+    <Compile Include="IDriveItemsCollectionPage.cs" />
+    <Compile Include="IDriveItemsCollectionRequest.cs" />
+    <Compile Include="IDriveItemsCollectionRequestBuilder.cs" />
+    <Compile Include="IDriveRecentCollectionPage.cs" />
+    <Compile Include="IDriveRecentRequest.cs" />
+    <Compile Include="IDriveRecentRequestBuilder.cs" />
+    <Compile Include="IDriveRequest.cs" />
+    <Compile Include="IDriveSharedCollectionPage.cs" />
+    <Compile Include="IDriveSharedCollectionRequest.cs" />
+    <Compile Include="IDriveSharedCollectionRequestBuilder.cs" />
+    <Compile Include="IDriveSpecialCollectionPage.cs" />
+    <Compile Include="IDriveSpecialCollectionRequest.cs" />
+    <Compile Include="IItemChildrenCollectionPage.cs" />
+    <Compile Include="IItemChildrenCollectionRequest.cs" />
+    <Compile Include="IItemChildrenCollectionRequestBuilder.cs" />
+    <Compile Include="IItemContentRequest.cs" />
+    <Compile Include="IItemContentRequestBuilder.cs" />
+    <Compile Include="IItemCopyRequest.cs" />
+    <Compile Include="IItemCopyRequestBuilder.cs" />
+    <Compile Include="IItemCreateLinkRequest.cs" />
+    <Compile Include="IItemCreateLinkRequestBuilder.cs" />
+    <Compile Include="IItemCreateSessionRequest.cs" />
+    <Compile Include="IItemCreateSessionRequestBuilder.cs" />
+    <Compile Include="IItemDeltaCollectionPage.cs" />
+    <Compile Include="IItemDeltaRequest.cs" />
+    <Compile Include="IItemDeltaRequestBuilder.cs" />
+    <Compile Include="IItemPermissionsCollectionPage.cs" />
+    <Compile Include="IItemPermissionsCollectionRequest.cs" />
+    <Compile Include="IItemPermissionsCollectionRequestBuilder.cs" />
+    <Compile Include="IItemRequest.cs" />
+    <Compile Include="IItemSearchCollectionPage.cs" />
+    <Compile Include="IItemSearchRequest.cs" />
+    <Compile Include="IItemSearchRequestBuilder.cs" />
+    <Compile Include="IItemThumbnailsCollectionPage.cs" />
+    <Compile Include="IItemThumbnailsCollectionRequest.cs" />
+    <Compile Include="IItemThumbnailsCollectionRequestBuilder.cs" />
+    <Compile Include="IItemVersionsCollectionPage.cs" />
+    <Compile Include="IItemVersionsCollectionRequest.cs" />
+    <Compile Include="IItemVersionsCollectionRequestBuilder.cs" />
+    <Compile Include="IOneDriveDrivesCollectionPage.cs" />
+    <Compile Include="IOneDriveDrivesCollectionRequest.cs" />
+    <Compile Include="IOneDriveDrivesCollectionRequestBuilder.cs" />
+    <Compile Include="IOneDriveSharesCollectionPage.cs" />
+    <Compile Include="IOneDriveSharesCollectionRequest.cs" />
+    <Compile Include="IOneDriveSharesCollectionRequestBuilder.cs" />
+    <Compile Include="IPermissionRequest.cs" />
+    <Compile Include="IPermissionRequestBuilder.cs" />
+    <Compile Include="IShareItemsCollectionPage.cs" />
+    <Compile Include="IShareItemsCollectionRequest.cs" />
+    <Compile Include="IShareItemsCollectionRequestBuilder.cs" />
+    <Compile Include="IShareRequest.cs" />
+    <Compile Include="ItemChildrenCollectionPage.cs" />
+    <Compile Include="ItemChildrenCollectionRequest.cs" />
+    <Compile Include="ItemChildrenCollectionRequestBuilder.cs" />
+    <Compile Include="ItemChildrenCollectionResponse.cs" />
+    <Compile Include="ItemContentRequest.cs" />
+    <Compile Include="ItemContentRequestBuilder.cs" />
+    <Compile Include="ItemCopyRequest.cs" />
+    <Compile Include="ItemCopyRequestBuilder.cs" />
+    <Compile Include="ItemCreateLinkRequest.cs" />
+    <Compile Include="ItemCreateLinkRequestBuilder.cs" />
+    <Compile Include="ItemCreateSessionRequest.cs" />
+    <Compile Include="ItemCreateSessionRequestBuilder.cs" />
+    <Compile Include="ItemDeltaCollectionPage.cs" />
+    <Compile Include="ItemDeltaCollectionResponse.cs" />
+    <Compile Include="ItemDeltaRequest.cs" />
+    <Compile Include="ItemDeltaRequestBuilder.cs" />
+    <Compile Include="ItemPermissionsCollectionPage.cs" />
+    <Compile Include="ItemPermissionsCollectionRequest.cs" />
+    <Compile Include="ItemPermissionsCollectionRequestBuilder.cs" />
+    <Compile Include="ItemPermissionsCollectionResponse.cs" />
+    <Compile Include="ItemRequest.cs" />
+    <Compile Include="ItemSearchCollectionPage.cs" />
+    <Compile Include="ItemSearchCollectionResponse.cs" />
+    <Compile Include="ItemSearchRequest.cs" />
+    <Compile Include="ItemSearchRequestBuilder.cs" />
+    <Compile Include="ItemThumbnailsCollectionPage.cs" />
+    <Compile Include="ItemThumbnailsCollectionRequest.cs" />
+    <Compile Include="ItemThumbnailsCollectionRequestBuilder.cs" />
+    <Compile Include="ItemThumbnailsCollectionResponse.cs" />
+    <Compile Include="ItemVersionsCollectionPage.cs" />
+    <Compile Include="ItemVersionsCollectionRequest.cs" />
+    <Compile Include="ItemVersionsCollectionRequestBuilder.cs" />
+    <Compile Include="ItemVersionsCollectionResponse.cs" />
+    <Compile Include="IThumbnailContentRequest.cs" />
+    <Compile Include="IThumbnailContentRequestBuilder.cs" />
+    <Compile Include="IThumbnailSetRequest.cs" />
+    <Compile Include="OneDriveDrivesCollectionPage.cs" />
+    <Compile Include="OneDriveDrivesCollectionRequest.cs" />
+    <Compile Include="OneDriveDrivesCollectionRequestBuilder.cs" />
+    <Compile Include="OneDriveDrivesCollectionResponse.cs" />
+    <Compile Include="OneDriveSharesCollectionPage.cs" />
+    <Compile Include="OneDriveSharesCollectionRequest.cs" />
+    <Compile Include="OneDriveSharesCollectionRequestBuilder.cs" />
+    <Compile Include="OneDriveSharesCollectionResponse.cs" />
+    <Compile Include="PermissionRequest.cs" />
+    <Compile Include="PermissionRequestBuilder.cs" />
+    <Compile Include="ShareItemsCollectionPage.cs" />
+    <Compile Include="ShareItemsCollectionRequest.cs" />
+    <Compile Include="ShareItemsCollectionRequestBuilder.cs" />
+    <Compile Include="ShareItemsCollectionResponse.cs" />
+    <Compile Include="ShareRequest.cs" />
+    <Compile Include="ThumbnailContentRequest.cs" />
+    <Compile Include="ThumbnailContentRequestBuilder.cs" />
+    <Compile Include="ThumbnailSetRequest.cs" />
+    <Compile Include="IThumbnailRequest.cs" />
+    <Compile Include="IThumbnailRequestBuilder.cs" />
+    <Compile Include="IUploadChunkRequest.cs" />
+    <Compile Include="ThumbnailRequest.cs" />
+    <Compile Include="ThumbnailRequestBuilder.cs" />
+    <Compile Include="UploadChunkRequest.cs" />
+    <Compile Include="UploadChunkResult.cs" />
+    <Compile Include="Helpers\ChunkedUploadProvider.cs" />
+    <Compile Include="Helpers\UploadSessionRequest.cs" />
+    <Compile Include="Authentication\AccountSession.cs" />
+    <Compile Include="Authentication\CredentialCacheNotification.cs" />
+    <Compile Include="Authentication\CredentialCache.cs" />
+    <Compile Include="Authentication\CredentialCacheKey.cs" />
+    <Compile Include="Authentication\CredentialCacheNotificationArgs.cs" />
+    <Compile Include="Authentication\ICredentialVault.cs" />
+    <Compile Include="Authentication\IOAuthRequestStringBuilder.cs" />
+    <Compile Include="Authentication\MsaAuthenticationProvider.cs" />
+    <Compile Include="Authentication\OAuthConstants.cs" />
+    <Compile Include="Authentication\OAuthErrorHandler.cs" />
+    <Compile Include="Authentication\OAuthHelper.cs" />
+    <Compile Include="Authentication\WebAuthenticationBrokerWebAuthenticationUi.cs" />
+    <Compile Include="Authentication\IWebAuthenticationUi.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

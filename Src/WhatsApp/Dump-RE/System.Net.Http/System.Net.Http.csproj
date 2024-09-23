@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Admin\Desktop\RE\WABeta\System.Net.Http.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{18E575B3-8A86-4BD5-B5B8-AAE54E239BB1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>System.Net.Http</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile88</TargetFrameworkProfile>
+    <ApplicationVersion>1.5.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>System</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>lib\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Lightup.cs" />
+    <Compile Include="LightupServices.cs" />
+    <Compile Include="EncodingExtensions.cs" />
+    <Compile Include="ICloneable.cs" />
+    <Compile Include="SerializableAttribute.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="TimeZone.cs" />
+    <Compile Include="NormalizationForm.cs" />
+    <Compile Include="TypeExtensions.cs" />
+    <Compile Include="UriHelper.cs" />
+    <Compile Include="Runtime\CompilerServices\FriendAccessAllowedAttribute.cs" />
+    <Compile Include="Threading\WaitHandleExtensions.cs" />
+    <Compile Include="IO\StreamExtensions.cs" />
+    <Compile Include="IO\Compression\BlockType.cs" />
+    <Compile Include="IO\Compression\CompressionLevel.cs" />
+    <Compile Include="IO\Compression\CompressionMode.cs" />
+    <Compile Include="IO\Compression\Crc32Helper.cs" />
+    <Compile Include="IO\Compression\DeflateStream.cs" />
+    <Compile Include="IO\Compression\DeflateStreamAsyncResult.cs" />
+    <Compile Include="IO\Compression\FastEncoderStatics.cs" />
+    <Compile Include="IO\Compression\IFileFormatWriter.cs" />
+    <Compile Include="IO\Compression\IFileFormatReader.cs" />
+    <Compile Include="IO\Compression\GZipDecoder.cs" />
+    <Compile Include="IO\Compression\GZipStream.cs" />
+    <Compile Include="IO\Compression\GZipConstants.cs" />
+    <Compile Include="IO\Compression\HuffmanTree.cs" />
+    <Compile Include="IO\Compression\Inflater.cs" />
+    <Compile Include="IO\Compression\InflaterState.cs" />
+    <Compile Include="IO\Compression\InputBuffer.cs" />
+    <Compile Include="IO\Compression\OutputWindow.cs" />
+    <Compile Include="IO\Compression\Resources.cs" />
+    <Compile Include="Diagnostics\Contracts\Contract.cs" />
+    <Compile Include="Diagnostics\Contracts\ContractClassAttribute.cs" />
+    <Compile Include="Diagnostics\Contracts\ContractClassForAttribute.cs" />
+    <Compile Include="Net\HttpWebRequestLightup.cs" />
+    <Compile Include="Net\ExceptionHelper.cs" />
+    <Compile Include="Net\HttpKnownHeaderNames.cs" />
+    <Compile Include="Net\HttpStatusDescription.cs" />
+    <Compile Include="Net\HttpVersion.cs" />
+    <Compile Include="Net\Logging.cs" />
+    <Compile Include="Net\ServicePoint.cs" />
+    <Compile Include="Net\TimerThread.cs" />
+    <Compile Include="Net\NclUtilities.cs" />
+    <Compile Include="Net\Mime\MailBnfHelper.cs" />
+    <Compile Include="Net\Mail\DomainLiteralReader.cs" />
+    <Compile Include="Net\Mail\DotAtomReader.cs" />
+    <Compile Include="Net\Mail\MailAddressParser.cs" />
+    <Compile Include="Net\Mail\SR.cs" />
+    <Compile Include="Net\Mail\MailAddress.cs" />
+    <Compile Include="Net\Mail\QuotedPairReader.cs" />
+    <Compile Include="Net\Mail\QuotedStringFormatReader.cs" />
+    <Compile Include="Net\Mail\WhitespaceReader.cs" />
+    <Compile Include="Net\Http\ArgumentOutOfRangeException.cs" />
+    <Compile Include="Net\Http\Capabilities.cs" />
+    <Compile Include="Net\Http\WebResponse.cs" />
+    <Compile Include="Net\Http\HttpWebResponse.cs" />
+    <Compile Include="Net\Http\ExecutionContext.cs" />
+    <Compile Include="Net\Http\HashSet`1.cs" />
+    <Compile Include="Net\Http\HttpWebRequest.cs" />
+    <Compile Include="Net\Http\MemoryStreamExtensions.cs" />
+    <Compile Include="Net\Http\PureAttribute.cs" />
+    <Compile Include="Net\Http\SecurityAction.cs" />
+    <Compile Include="Net\Http\SecurityPermissionFlag.cs" />
+    <Compile Include="Net\Http\SecurityPermissionAttribute.cs" />
+    <Compile Include="Net\Http\WebHeaderCollectionExtensions.cs" />
+    <Compile Include="Net\Http\WindowsImpersonationContext.cs" />
+    <Compile Include="Net\Http\WindowsIdentity.cs" />
+    <Compile Include="Net\Http\SysSR.cs" />
+    <Compile Include="Net\Http\SR.cs" />
+    <Compile Include="Net\Http\HttpContent.cs" />
+    <Compile Include="Net\Http\ByteArrayContent.cs" />
+    <Compile Include="Net\Http\FormUrlEncodedContent.cs" />
+    <Compile Include="Net\Http\MultipartContent.cs" />
+    <Compile Include="Net\Http\MultipartFormDataContent.cs" />
+    <Compile Include="Net\Http\HttpMessageHandler.cs" />
+    <Compile Include="Net\Http\HttpClientHandler.cs" />
+    <Compile Include="Net\Http\DelegatingStream.cs" />
+    <Compile Include="Net\Http\HttpRuleParser.cs" />
+    <Compile Include="Net\Http\HttpParseResult.cs" />
+    <Compile Include="Net\Http\HttpCompletionOption.cs" />
+    <Compile Include="Net\Http\DelegatingHandler.cs" />
+    <Compile Include="Net\Http\HttpRequestException.cs" />
+    <Compile Include="Net\Http\HttpMessageInvoker.cs" />
+    <Compile Include="Net\Http\HttpClient.cs" />
+    <Compile Include="Net\Http\HttpUtilities.cs" />
+    <Compile Include="Net\Http\HttpMethod.cs" />
+    <Compile Include="Net\Http\HttpRequestMessage.cs" />
+    <Compile Include="Net\Http\HttpResponseMessage.cs" />
+    <Compile Include="Net\Http\MessageProcessingHandler.cs" />
+    <Compile Include="Net\Http\StreamContent.cs" />
+    <Compile Include="Net\Http\StreamToStreamCopy.cs" />
+    <Compile Include="Net\Http\StringContent.cs" />
+    <Compile Include="Net\Http\ClientCertificateOption.cs" />
+    <Compile Include="Net\Http\Headers\AuthenticationHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\HttpHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\BaseHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\ByteArrayHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\CacheControlHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\CacheControlHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\ContentDispositionHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\ContentRangeHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\DateHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\EntityTagHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\GenericHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\HeaderUtilities.cs" />
+    <Compile Include="Net\Http\Headers\HttpHeaders.cs" />
+    <Compile Include="Net\Http\Headers\HttpContentHeaders.cs" />
+    <Compile Include="Net\Http\Headers\HttpGeneralHeaders.cs" />
+    <Compile Include="Net\Http\Headers\HttpHeaderValueCollection`1.cs" />
+    <Compile Include="Net\Http\Headers\HttpRequestHeaders.cs" />
+    <Compile Include="Net\Http\Headers\HttpResponseHeaders.cs" />
+    <Compile Include="Net\Http\Headers\Int32NumberHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\Int64NumberHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\MediaTypeHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\MediaTypeHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\MediaTypeWithQualityHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\NameValueHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\NameValueWithParametersHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\ObjectCollection`1.cs" />
+    <Compile Include="Net\Http\Headers\ProductHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\ProductInfoHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\ProductInfoHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\RangeConditionHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\RangeHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\RangeItemHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\RetryConditionHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\StringWithQualityHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\TimeSpanHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\TransferCodingHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\TransferCodingHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\TransferCodingWithQualityHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\UriHeaderParser.cs" />
+    <Compile Include="Net\Http\Headers\ViaHeaderValue.cs" />
+    <Compile Include="Net\Http\Headers\WarningHeaderValue.cs" />
+    <Compile Include="Reflection\AssemblyMetadataAttribute.cs" />
+    <Compile Include="Text\Latin1Encoding.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IO\Compression\Resources.resx" />
+    <EmbeddedResource Include="Net\Http\SR.resx" />
+    <EmbeddedResource Include="Net\Http\SysSR.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

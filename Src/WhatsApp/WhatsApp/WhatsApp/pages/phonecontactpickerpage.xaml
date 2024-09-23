@@ -1,0 +1,173 @@
+﻿<Page
+    x:Class="WhatsApp.PhoneContactPickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:local="clr-namespace:WhatsApp"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    
+    <Page.Resources>
+        <local:ContactToIcon x:Key="ContactToIcon"/>
+        <local:ContactToName x:Key="ContactToName"/>
+        <DataTemplate x:Key="GroupHeaderTemplate">
+            <Border Margin="0,0,0,12"
+                    Background="{StaticResource PhoneAccentBrush}"
+                    Width="62"
+                    Height="62"
+                    HorizontalAlignment="Left">
+                <TextBlock Text="{Binding Key}"
+                           FontSize="48"
+                           Margin="6,0,0,6"
+                           Foreground="White"
+                           FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           Style="{StaticResource JumpListHeader}"
+                           FontWeight="Light"/>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <local:ZoomBox x:Name="LayoutRootZoomBox">
+        <Grid x:Name="LayoutRoot">
+            <Grid.RenderTransform>
+                <CompositeTransform TranslateY="0"/>
+            </Grid.RenderTransform>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <local:PageTitlePanel x:Name="TitlePanel"
+                                  Grid.Row="0"
+                                  Mode="NotZoomed"
+                                  Visibility="Collapsed"/>
+
+            <local:EmojiTextBox x:Name="SearchBox"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="24,6,24,0"
+                                EnableActionButton="False"
+                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+
+            <controls:Pivot x:Name="Pivot"
+                            Grid.Row="2"
+                            Margin="0,-12,0,0">
+                <controls:PivotItem Margin="24,0,0,0">
+                    <shim:LongListSelector x:Name="ListControl"
+                                           IsFlatList="False"
+                                           HorizontalAlignment="Stretch"
+                                           Margin="0,12,0,0"
+                                           ItemRealized="ListControl_ItemRealized">
+                        <shim:LongListSelector.ListHeader>
+                            <StackPanel>
+                                <ProgressBar x:Name="ProgressIndicator"
+                                                  Margin="24,0,24,0"
+                                                  IsHitTestVisible="False"
+                                                  IsIndeterminate="True"
+                                                  VerticalAlignment="Bottom"/>
+                                <Grid x:Name="ShareGroupButton" Visibility="Collapsed" Margin="0,0,0,12" Tap="ShareGroup_Click" Background="Transparent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Column="0" Opacity="0"/>
+                                    <Image x:Name="GroupImage"
+                                           Grid.Column="1"
+                                           Stretch="UniformToFill"
+                                           Width="62"
+                                           Height="62">
+                                        <Image.Clip>
+                                            <EllipseGeometry
+                                                RadiusX="31"
+                                                RadiusY="31"
+                                                Center="31,31"/>
+                                        </Image.Clip>
+                                    </Image>
+                                    <TextBlock Grid.Column="2"
+                                               VerticalAlignment="Center"
+                                               FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                                               FontSize="{StaticResource PhoneFontSizeLarge}"
+                                               Margin="16,0,0,0"
+                                               Text="share this group"
+                                               FontWeight="ExtraLight"/>
+                                </Grid>
+                            </StackPanel>
+                        </shim:LongListSelector.ListHeader>
+                        <shim:LongListSelector.ListFooter>
+                            <StackPanel Margin="0,24,24,112">
+                                <TextBlock x:Name="FooterTextBlock"
+                                           IsHitTestVisible="False"
+                                           Margin="0"
+                                           TextWrapping="Wrap"
+                                           Opacity="0.65"
+                                           FontSize="{StaticResource PhoneFontSizeLarge}"
+                                           Visibility="Collapsed"/>
+                            </StackPanel>
+                        </shim:LongListSelector.ListFooter>
+                        <shim:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,12" Tap="Item_Tap" DoubleTap="Item_Tap" Background="Transparent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Column="0" Visibility="{Binding MultiSelectVisibility}"/>
+                                    <Image Grid.Column="1"
+                                           Stretch="UniformToFill"
+                                           Width="62"
+                                           Height="62"
+                                           Source="{Binding Contact, Converter={StaticResource ContactToIcon}}">
+                                        <Image.Clip>
+                                            <EllipseGeometry
+                                                RadiusX="31"
+                                                RadiusY="31"
+                                                Center="31,31"/>
+                                        </Image.Clip>
+                                    </Image>
+                                    <TextBlock Grid.Column="2"
+                                               Text="{Binding Contact, Converter={StaticResource ContactToName}}"
+                                               VerticalAlignment="Center"
+                                               FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                                               FontSize="{StaticResource PhoneFontSizeLarge}"
+                                               Margin="16,0,0,0"
+                                               FontWeight="ExtraLight"/>
+                                </Grid>
+                            </DataTemplate>
+                        </shim:LongListSelector.ItemTemplate>
+                    </shim:LongListSelector>
+                </controls:PivotItem>
+            </controls:Pivot>
+        </Grid>
+    </local:ZoomBox>
+
+</Page>

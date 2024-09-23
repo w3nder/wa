@@ -1,0 +1,290 @@
+﻿<Page
+    x:Class="WhatsApp.GdprAgreementPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"
+    Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False"
+    toolkit:TiltEffect.IsTiltEnabled="False">
+
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn" />
+            </toolkit:NavigationInTransition.Forward>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn" />
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <local:ZoomBox x:Name="LayoutRootZoomBox"
+                   ZoomFactor="{Binding ZoomFactor}">
+        <Grid x:Name="LayoutRoot"
+              Margin="0">
+            <Grid.RenderTransform>
+                <CompositeTransform />
+            </Grid.RenderTransform>
+
+            <Image Stretch="Uniform"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Top"
+                   Visibility="{Binding BackgroundImageVisibility}"
+                   Source="{Binding BackgroundImageSource}"
+                   CacheMode="BitmapCache"/>
+
+            <!-- Content panel. 
+                 Use a LLS to make it scrollable. 
+                 Reason why we don't use ScrollViewer: LLS automatically disables scrolling if scrolling is not needed.
+            -->
+            <shim:LongListSelector x:Name="Screen1ContentList"
+                                   Margin="24,280,24,0"
+                                   CacheMode="BitmapCache"
+                                   Visibility="{Binding Screen1ContentVisibility}"
+                                   ItemsSource="{Binding Screen1ContentSource}"
+                                   IsFlatList="True">
+                <shim:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <local:RichTextBlock Text="{Binding}"
+                                             Margin="-12,0"
+                                             FontSize="22"
+                                             AllowLinks="True"
+                                             EnableScan="False"
+                                             EnableMentionLinks="False"/>
+                    </DataTemplate>
+                </shim:LongListSelector.ItemTemplate>
+                <shim:LongListSelector.ListFooter>
+                    <StackPanel Height="160"/>
+                    <!-- Reserve visible space for bottom panel plus gap: 112 + 48 -->
+                </shim:LongListSelector.ListFooter>
+            </shim:LongListSelector>
+            
+            <shim:LongListSelector x:Name="Screen2ContentList"
+                                   Margin="20,0,20,0"
+                                   CacheMode="BitmapCache"
+                                   Visibility="{Binding Screen2ContentVisibility}"
+                                   ItemsSource="{Binding Screen2ContentSource}"
+                                   IsFlatList="True"
+                                   Background="{Binding Screen2ContentBackground}">
+                <shim:LongListSelector.ListHeader>
+                    <!-- Hack to display the content list full screen, with gray background color,
+                         but still keeping the "top margin" in phone background color:
+                         1. the canvas with rectangle inside is to cover the extended top area of
+                            the list, which goes beyond the screen edge, but can be seen if user
+                            scroll down. thus we are covering that with this dummy rectangle.
+                         2. the 2nd rectangle is to provide the gap ("top margin")
+                         3. the textblock for the title.
+                         Everything is within the list, but show up as if there was an gap between
+                         the list and page edge initially.
+                    -->
+                    <Grid Margin="0"
+                          IsHitTestVisible="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Canvas Grid.Row="0">
+                            <Rectangle Width="800"
+                                       Height="800"
+                                       Fill="{StaticResource PhoneBackgroundBrush}">
+                                <Rectangle.RenderTransform>
+                                    <CompositeTransform TranslateY="-800"/>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </Canvas>
+                        <Rectangle Grid.Row="0"
+                                   HorizontalAlignment="Stretch"
+                                   Height="64"
+                                   Margin="-2"
+                                   Fill="{StaticResource PhoneBackgroundBrush}"/>
+                        <TextBlock Grid.Row="1"
+                                   Text="{Binding Screen2ContentTitle}"
+                                   Margin="24,18,24,12"
+                                   FontSize="24"
+                                   FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+                    </Grid>
+                </shim:LongListSelector.ListHeader>
+                <shim:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <local:RichTextBlock Text="{Binding}"
+                                             Foreground="{Binding DataContext.Screen2ContentForeground, ElementName=Screen2ContentList}"
+                                             TextWrapping="Wrap"
+                                             Margin="12,0"
+                                             FontSize="22"
+                                             AllowLinks="True"
+                                             EnableScan="False"
+                                             EnableMentionLinks="False"/>
+                    </DataTemplate>
+                </shim:LongListSelector.ItemTemplate>
+                <shim:LongListSelector.ListFooter>
+                    <StackPanel Height="212"/>
+                    <!-- Reserve visible space for bottom panel plus gap: 64 + 92 + 8 + 48 -->
+                </shim:LongListSelector.ListFooter>
+            </shim:LongListSelector>
+
+            <!-- Dismiss button
+                 NB: this needs to be put after the content lists, so that it'd appear floating above them.
+            -->
+            <Button Padding="0"
+                    Style="{StaticResource BorderlessButton}"
+                    Margin="0,12,12,0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Visibility="{Binding DismissButtonVisibility}"
+                    Click="DismissButton_Click"
+                    Background="{StaticResource PhoneBackgroundBrush}"
+                    CacheMode="BitmapCache"
+                    AutomationProperties.AutomationId="DismissButton">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="6,0">
+                        <Image Source="{Binding DimissButtonIcon}"
+                               Width="40"
+                               Height="40"
+                               Margin="0,4"
+                               VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding Path=Strings.GdprTosNotNow, Source={StaticResource Localizable}}"
+                                   Foreground="{Binding DimissPanelForeground}"
+                                   VerticalAlignment="Top"
+                                   FontSize="20"
+                                   Margin="4,9,12,0"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Grid CacheMode="BitmapCache"
+                  VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1"
+                      Background="{Binding BottomPanelBackground}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Age consent panel -->
+                    <StackPanel Grid.Row="0"
+                                Visibility="{Binding Screen2ContentVisibility}"
+                                CacheMode="BitmapCache">
+                        <Grid Margin="24,0"
+                              MinHeight="64"
+                              Background="Transparent"
+                              Tap="AgeConsent_Tap">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Grid.Column="0"
+                                      IsChecked="{Binding IsAgeConsentChecked}"
+                                      Margin="-12,0"
+                                      VerticalAlignment="Top"
+                                      IsHitTestVisible="False"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=Strings.GdprTosAgeConsent, Source={StaticResource Localizable}}"
+                                       FontSize="22"
+                                       TextWrapping="Wrap"
+                                       Margin="6,0,0,0"
+                                       VerticalAlignment="Center"
+                                       IsHitTestVisible="False"/>
+                        </Grid>
+                        <!-- Bottom divider -->
+                        <Rectangle Height="1"
+                                   Margin="24,0"
+                                   HorizontalAlignment="Stretch"
+                                   Fill="{StaticResource PhoneForegroundBrush}"
+                                   Opacity="0.35"
+                                   IsHitTestVisible="False"/>
+                    </StackPanel>
+
+                    <!-- Agree panel -->
+                    <Grid Grid.Row="1"
+                          MinHeight="92">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Margin="24,6,24,10"
+                                   Text="{Binding BottomTooltipStr}"
+                                   FontSize="21"
+                                   FontWeight="SemiBold"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center"
+                                   AutomationProperties.AutomationId="BottomTooltip" />
+
+                        <Button x:Name="ActionButton"
+                                Grid.Column="1"
+                                Margin="12,0"
+                                MinWidth="144"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Click="ActionButton_Click"
+                                AutomationProperties.AutomationId="ActionButton">
+                            <Button.Content>
+                                <TextBlock Text="{Binding ActionButtonStr}"
+                                           VerticalAlignment="Bottom"
+                                           Margin="0,0,0,4"/>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+
+                    <!-- Progress bar -->
+                    <local:StepProgressBar x:Name="ProgressBar"
+                                           Grid.Row="2"
+                                           CacheMode="BitmapCache"
+                                           Margin="8,0,8,8"/>
+                </Grid>
+
+                <!-- Age consent tooltip panel:
+                     this is put after bottom panel so that the tooltip appears floating above bottom panel in ui -->
+                <Grid Grid.Row="0"
+                      MinHeight="48"
+                      Margin="12,0"
+                      Background="{StaticResource PhoneAccentBrush}"
+                      IsHitTestVisible="False"
+                      HorizontalAlignment="Left"
+                      Visibility="{Binding AgeConsentTooltipVisibility}">
+                    <TextBlock Foreground="White"
+                               TextWrapping="Wrap"
+                               FontSize="22"
+                               Margin="16,12,16,18"
+                               VerticalAlignment="Center"
+                               Text="{Binding Path=Strings.GdprTosAgeConsentTooltip, Source={StaticResource Localizable}}"/>
+                    <Polygon Points="0, 0 28, 0 14, 14"
+                             Fill="{StaticResource PhoneAccentBrush}"
+                             VerticalAlignment="Bottom"
+                             Margin="13,0,0,0">
+                        <Polygon.RenderTransform>
+                            <CompositeTransform TranslateY="12"/>
+                        </Polygon.RenderTransform>
+                    </Polygon>
+                </Grid>
+            </Grid>
+        </Grid>
+    </local:ZoomBox>
+
+</Page>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extended:StoreManifest
+  xmlns="http://schemas.microsoft.com/appx/2010/StoreManifest"
+  xmlns:extended="http://schemas.microsoft.com/appx/2015/StoreManifestExtended">
+  <extended:TargetPlatformOverride Min="10.0" />
+</extended:StoreManifest>

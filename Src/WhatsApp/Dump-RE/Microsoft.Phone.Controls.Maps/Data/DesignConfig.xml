@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) Microsoft Corporation.  All rights reserved.
+-->
+<configuration>
+  <WP7SLMapControl version="v1">
+    <add key="RoadUriFormat" value="http://ecn.t{subdomain}.tiles.virtualearth.net/tiles/r{quadkey}.png?g=1&amp;mkt={Culture}&amp;shading=hill&amp;n=z&amp;device=mobile&amp;dpi=d1" />
+    <add key="AerialUriFormat" value="http://ecn.t{subdomain}.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=1&amp;n=z&amp;device=mobile&amp;dpi=d1" />
+    <add key="AerialWithLabelsUriFormat" value="http://ecn.t{subdomain}.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=1&amp;mkt={Culture}&amp;n=z&amp;device=mobile&amp;dpi=d1" />
+    <add key="AerialLabelsUriFormat" value="http://ecn.t{subdomain}.tiles.virtualearth.net/tiles/ho{quadkey}.jpeg?g=1&amp;mkt={Culture}&amp;n=z&amp;device=mobile&amp;dpi=d1" />
+    <add key="RoadUriSubdomains" value="0,2 1,3" />
+    <add key="AerialUriSubdomains" value="0,2 1,3" />
+    <add key="AerialWithLabelsUriSubdomains" value="0,2 1,3" />
+    <add key="AerialLabelsUriSubdomains" value="0,2 1,3" />
+  </WP7SLMapControl>
+</configuration>

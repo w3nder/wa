@@ -1,0 +1,13 @@
+Oops, it appears that you don’t have connection!
+<p>If you are seeing this screen, it means you are not connected to the Internet. To help you fix this problem as fast as possible, please follow these troubleshooting steps:</p>
+<ul>
+<li>Make sure your device is within a coverage area supported by your mobile carrier or Wi-Fi network. The connection should be stable and reliable.</li>
+<li>Make sure you have a data plan with your carrier's network or a Wi-Fi connection with working Internet access. NOTE: To use WhatsApp on a Windows Phone, it is important to have a data plan. Wi-Fi only devices may encounter problems.</li>
+<li>Reboot your phone (power down, wait 30 seconds, power up).</li>
+</ul>
+<p>FURTHER TROUBLESHOOTING</p>
+<p>If websites and other apps are working but WhatsApp cannot connect, it is possible that your network configuration does not permit the type of connections (socket or non-HTTP connections) necessary for WhatsApp.</p>
+<ul>
+<li>Check your carrier's Access Point Name (APN) settings. There may be a different APN your carrier allows for non-HTTP connections like WhatsApp. To find out how to change APN setting on your device, please visit here for: <a href="https://www.windowsphone.com/en-US/How-to/wp7/start/cellular-settings">Windows Phone 7</a> and <a href="https://www.windowsphone.com/en-us/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>. After you change the APN settings, please be sure to reboot your phone for the changes to take effect.</li>
+<li>If you have a Windows Phone made by Nokia, try using the <a href="https://www.windowsphone.com/en-us/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">Connection Setup app</a> from the Nokia Collection in the Store (this application may not be available in some countries).</li>
+</ul>

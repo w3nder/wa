@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Admin\Desktop\RE\WABeta\Microsoft.Phone.Controls.Maps.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E878B3E4-4642-4606-8914-33063232DE78}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Microsoft.Phone.Controls.Maps</AssemblyName>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <ApplicationVersion>8.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Microsoft.Phone.Controls.Maps</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WeakEventListener`3.cs" />
+    <Compile Include="AnimationLevel.cs" />
+    <Compile Include="AttributionCollection.cs" />
+    <Compile Include="AttributionInfo.cs" />
+    <Compile Include="Credentials.cs" />
+    <Compile Include="CredentialsProvider.cs" />
+    <Compile Include="LocationCollection.cs" />
+    <Compile Include="LocationRect.cs" />
+    <Compile Include="MapStyle.cs" />
+    <Compile Include="PositionOrigin.cs" />
+    <Compile Include="ProjectionUpdateLevel.cs" />
+    <Compile Include="QuadKey.cs" />
+    <Compile Include="Range`1.cs" />
+    <Compile Include="MapEventArgs.cs" />
+    <Compile Include="MapInputEventArgs.cs" />
+    <Compile Include="MapZoomEventArgs.cs" />
+    <Compile Include="MapDragEventArgs.cs" />
+    <Compile Include="MapFlickEventArgs.cs" />
+    <Compile Include="ProjectionChangedEventArgs.cs" />
+    <Compile Include="LoadingErrorEventArgs.cs" />
+    <Compile Include="MapLayerBase.cs" />
+    <Compile Include="TileSource.cs" />
+    <Compile Include="MapPolygon.cs" />
+    <Compile Include="MapPolyline.cs" />
+    <Compile Include="MapTileLayer.cs" />
+    <Compile Include="AerialMode.cs" />
+    <Compile Include="RoadMode.cs" />
+    <Compile Include="ApplicationIdCredentialsProvider.cs" />
+    <Compile Include="ExceptionStrings.cs" />
+    <Compile Include="LocationRectTileSource.cs" />
+    <Compile Include="MapItemsControl.cs" />
+    <Compile Include="MapLayer.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="Pushpin.cs" />
+    <Compile Include="AutomationPeers\BaseAutomationPeer.cs" />
+    <Compile Include="AutomationPeers\MapBaseAutomationPeer.cs" />
+    <Compile Include="AutomationPeers\MapAutomationPeer.cs" />
+    <Compile Include="AutomationPeers\MapTileLayerAutomationPeer.cs" />
+    <Compile Include="Platform\Location.cs" />
+    <Compile Include="Platform\ShapeBase.cs" />
+    <Compile Include="Platform\Rectangle.cs" />
+    <Compile Include="Core\MatrixHelper.cs" />
+    <Compile Include="Core\GestureType.cs" />
+    <Compile Include="Core\ManipulationHandler.cs" />
+    <Compile Include="Core\GestureEventArgs.cs" />
+    <Compile Include="Core\TapGestureEventArgs.cs" />
+    <Compile Include="Core\DoubleTapGestureEventArgs.cs" />
+    <Compile Include="Core\TapAndHoldGestureEventArgs.cs" />
+    <Compile Include="Core\PanGestureEventArgs.cs" />
+    <Compile Include="Core\FlickGestureEventArgs.cs" />
+    <Compile Include="Core\ScaleGestureEventArgs.cs" />
+    <Compile Include="Core\PinchGestureEventArgs.cs" />
+    <Compile Include="Core\StretchGestureEventArgs.cs" />
+    <Compile Include="Core\Timeout.cs" />
+    <Compile Include="Core\PhysicsHelper.cs" />
+    <Compile Include="Core\PinchStretchData.cs" />
+    <Compile Include="Core\PinchStretchEventArgs.cs" />
+    <Compile Include="Core\PinchStretchHandler.cs" />
+    <Compile Include="Core\TouchReportedEventArgs.cs" />
+    <Compile Include="Core\TouchEventArgs.cs" />
+    <Compile Include="Core\TouchHandlers.cs" />
+    <Compile Include="Core\TouchHelper.cs" />
+    <Compile Include="Core\UriSchemes.cs" />
+    <Compile Include="Core\MapMode.cs" />
+    <Compile Include="Core\ModeBackground.cs" />
+    <Compile Include="Core\TileSourcePropertyChangedEventArgs.cs" />
+    <Compile Include="Core\ConfigurationNotLoadedException.cs" />
+    <Compile Include="Core\IProjectable.cs" />
+    <Compile Include="Core\TileSourceCollection.cs" />
+    <Compile Include="Core\MapBase.cs" />
+    <Compile Include="Core\BezierHelper.cs" />
+    <Compile Include="Core\TfeCoverageMapCallback.cs" />
+    <Compile Include="Core\TfeCoverageMapState.cs" />
+    <Compile Include="Core\TfeCoverageMap.cs" />
+    <Compile Include="Core\TfeCoverageMapParser.cs" />
+    <Compile Include="Core\TfeZoomLevelRange.cs" />
+    <Compile Include="Core\FlatMapMode.cs" />
+    <Compile Include="Core\IResourceHelper`1.cs" />
+    <Compile Include="Core\MapCore.cs" />
+    <Compile Include="Core\MapInputManager.cs" />
+    <Compile Include="Core\MapShapeBase.cs" />
+    <Compile Include="Core\MercatorUtility.cs" />
+    <Compile Include="Core\MultiScaleQuadTileSource.cs" />
+    <Compile Include="Core\NullMode.cs" />
+    <Compile Include="Core\ResourceUtility.cs" />
+    <Compile Include="Core\MercatorMode.cs" />
+    <Compile Include="Core\CopyrightResult.cs" />
+    <Compile Include="Core\CopyrightRequestState.cs" />
+    <Compile Include="Core\CopyrightKey.cs" />
+    <Compile Include="Core\CopyrightKeyComparer.cs" />
+    <Compile Include="Core\BadFetchState.cs" />
+    <Compile Include="Core\CopyrightManager.cs" />
+    <Compile Include="Core\WebServicesUtility.cs" />
+    <Compile Include="Core\CoreResources.cs" />
+    <Compile Include="Core\CredentialsInvalidException.cs" />
+    <Compile Include="Core\MapConfigurationCallback.cs" />
+    <Compile Include="Core\MapConfigurationLoadedEventArgs.cs" />
+    <Compile Include="Core\MapConfiguration.cs" />
+    <Compile Include="Core\MapConfigurationGetSectionRequest.cs" />
+    <Compile Include="Core\MapConfigurationProvider.cs" />
+    <Compile Include="Core\MapConfigurationFromService.cs" />
+    <Compile Include="Core\MapConfigurationFromFile.cs" />
+    <Compile Include="Core\MapConfigurationFromWeb.cs" />
+    <Compile Include="Core\MapConfigurationSection.cs" />
+    <Compile Include="Core\TfeTileSource.cs" />
+    <Compile Include="Core\TimedPoint.cs" />
+    <Compile Include="Core\UriSchemeNotSupportedException.cs" />
+    <Compile Include="Design\LocationCollectionConverter.cs" />
+    <Compile Include="Design\LocationConverter.cs" />
+    <Compile Include="Design\LocationRectConverter.cs" />
+    <Compile Include="Design\MapModeConverter.cs" />
+    <Compile Include="Design\MapModes.cs" />
+    <Compile Include="Design\PositionOriginConverter.cs" />
+    <Compile Include="Design\ApplicationIdCredentialsProviderConverter.cs" />
+    <Compile Include="Design\RangeConverter.cs" />
+    <Compile Include="Overlays\Overlay.cs" />
+    <Compile Include="Overlays\Copyright.cs" />
+    <Compile Include="Overlays\LoadingErrorMessage.cs" />
+    <Compile Include="Overlays\Logo.cs" />
+    <Compile Include="Overlays\MapCommandEventArgs.cs" />
+    <Compile Include="Overlays\MapCommandBase.cs" />
+    <Compile Include="Overlays\DistanceUnit.cs" />
+    <Compile Include="Overlays\Scale.cs" />
+    <Compile Include="Overlays\ShadowText.cs" />
+    <Compile Include="Overlays\ZoomBar.cs" />
+    <Compile Include="Overlays\ZoomMapCommand.cs" />
+    <Compile Include="Overlays\OverlayResources.cs" />
+    <Compile Include="Overlays\MapForeground.cs" />
+    <Compile Include="PlatformServices\RequestBase.cs" />
+    <Compile Include="PlatformServices\Credentials.cs" />
+    <Compile Include="PlatformServices\ExecutionOptions.cs" />
+    <Compile Include="PlatformServices\UserProfile.cs" />
+    <Compile Include="PlatformServices\MapUriRequest.cs" />
+    <Compile Include="PlatformServices\ImageryMetadataRequest.cs" />
+    <Compile Include="PlatformServices\ImageryMetadataOptions.cs" />
+    <Compile Include="PlatformServices\MapStyle.cs" />
+    <Compile Include="PlatformServices\Heading.cs" />
+    <Compile Include="PlatformServices\Location.cs" />
+    <Compile Include="PlatformServices\UserLocation.cs" />
+    <Compile Include="PlatformServices\ShapeBase.cs" />
+    <Compile Include="PlatformServices\SizeOfint.cs" />
+    <Compile Include="PlatformServices\DeviceType.cs" />
+    <Compile Include="PlatformServices\DistanceUnit.cs" />
+    <Compile Include="PlatformServices\GeocodeLocation.cs" />
+    <Compile Include="PlatformServices\Confidence.cs" />
+    <Compile Include="PlatformServices\SearchPoint.cs" />
+    <Compile Include="PlatformServices\Circle.cs" />
+    <Compile Include="PlatformServices\Rectangle.cs" />
+    <Compile Include="PlatformServices\Polygon.cs" />
+    <Compile Include="PlatformServices\MapUriOptions.cs" />
+    <Compile Include="PlatformServices\Pushpin.cs" />
+    <Compile Include="PlatformServices\ImageType.cs" />
+    <Compile Include="PlatformServices\UriScheme.cs" />
+    <Compile Include="PlatformServices\ResponseBase.cs" />
+    <Compile Include="PlatformServices\ResponseSummary.cs" />
+    <Compile Include="PlatformServices\MapUriResponse.cs" />
+    <Compile Include="PlatformServices\ImageryMetadataResponse.cs" />
+    <Compile Include="PlatformServices\ImageryMetadataResult.cs" />
+    <Compile Include="PlatformServices\AuthenticationResultCode.cs" />
+    <Compile Include="PlatformServices\ResponseStatusCode.cs" />
+    <Compile Include="PlatformServices\RangeOfdateTime.cs" />
+    <Compile Include="PlatformServices\RangeOfint.cs" />
+    <Compile Include="PlatformServices\ImageryMetadataBirdseyeResult.cs" />
+    <Compile Include="PlatformServices\ImageryProvider.cs" />
+    <Compile Include="PlatformServices\CoverageArea.cs" />
+    <Compile Include="PlatformServices\IImageryService.cs" />
+    <Compile Include="PlatformServices\IImageryServiceChannel.cs" />
+    <Compile Include="PlatformServices\GetImageryMetadataCompletedEventArgs.cs" />
+    <Compile Include="PlatformServices\GetMapUriCompletedEventArgs.cs" />
+    <Compile Include="PlatformServices\ImageryServiceClient.cs" />
+    <Compile Include="ConfigService\RequestBase.cs" />
+    <Compile Include="ConfigService\Credentials.cs" />
+    <Compile Include="ConfigService\ExecutionOptions.cs" />
+    <Compile Include="ConfigService\UserProfile.cs" />
+    <Compile Include="ConfigService\MapControlConfigurationRequest.cs" />
+    <Compile Include="ConfigService\Heading.cs" />
+    <Compile Include="ConfigService\Location.cs" />
+    <Compile Include="ConfigService\UserLocation.cs" />
+    <Compile Include="ConfigService\ShapeBase.cs" />
+    <Compile Include="ConfigService\SizeOfint.cs" />
+    <Compile Include="ConfigService\DeviceType.cs" />
+    <Compile Include="ConfigService\DistanceUnit.cs" />
+    <Compile Include="ConfigService\GeocodeLocation.cs" />
+    <Compile Include="ConfigService\Confidence.cs" />
+    <Compile Include="ConfigService\Polygon.cs" />
+    <Compile Include="ConfigService\Circle.cs" />
+    <Compile Include="ConfigService\Rectangle.cs" />
+    <Compile Include="ConfigService\SearchPoint.cs" />
+    <Compile Include="ConfigService\ResponseBase.cs" />
+    <Compile Include="ConfigService\ResponseSummary.cs" />
+    <Compile Include="ConfigService\MapControlConfigurationResponse.cs" />
+    <Compile Include="ConfigService\AuthenticationResultCode.cs" />
+    <Compile Include="ConfigService\ResponseStatusCode.cs" />
+    <Compile Include="ConfigService\IMapControlConfigurationService.cs" />
+    <Compile Include="ConfigService\IMapControlConfigurationServiceChannel.cs" />
+    <Compile Include="ConfigService\GetConfigurationCompletedEventArgs.cs" />
+    <Compile Include="ConfigService\MapControlConfigurationServiceClient.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="overlays\logo_powered_by.png" />
+    <Resource Include="themes\generic.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\CoreResources.resx" />
+    <EmbeddedResource Include="Data\DesignConfig.xml" />
+    <EmbeddedResource Include="Data\MapConfig.xml" />
+    <EmbeddedResource Include="ExceptionStrings.resx" />
+    <EmbeddedResource Include="Overlays\OverlayResources.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

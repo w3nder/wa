@@ -1,0 +1,43 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WhatsApp.LoginInvalid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <local:Localizable x:Key="Localizable"/>
+        <local:ResolutionHelper x:Key="ResolutionHelper"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <local:ZoomBox ZoomFactor="{Binding ZoomFactor,Source={StaticResource ResolutionHelper}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <local:PageTitlePanel Grid.Row="0"
+                              SmallTitle="{Binding Path=Strings.LoginInvalidTitle, Source={StaticResource Localizable}}"/>
+
+        <TextBlock Grid.Row="1"
+                   TextWrapping="Wrap"
+                   Margin="24"
+                   Style="{StaticResource PhoneTextNormalStyle}"
+                   Text="{Binding Path=Strings.LoginInvalidExplanation, Source={StaticResource Localizable}}"/>
+        
+        <Button Grid.Row="2"
+                Margin="12"
+                Content="{Binding Path=Strings.LoginInvalidAction, Source={StaticResource Localizable}}"
+                Click="VerifyButton_Click" />
+    </Grid>
+    </local:ZoomBox>
+</phone:PhoneApplicationPage>

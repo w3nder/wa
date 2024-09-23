@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="WhatsApp.ChangeNumberStartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+
+    <local:ZoomBox x:Name="LayoutRootZoomBox">
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <local:PageTitlePanel Grid.Row="0"
+                              SmallTitle="{Binding Path=Strings.ChangeNumberUPPER, Source={StaticResource Localizable}}"
+                              Mode="NotZoomed"/>
+
+        <Grid Grid.Row="1"
+              Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <local:ColorIcon x:Name="PhonePic1"
+                             Grid.Column="1"
+                             VerticalAlignment="Center"
+                             IconWidth="98"
+                             IconHeight="176"/>
+            <TextBlock Grid.Column="2"
+                       Text="• • • •"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="24"
+                       Margin="24,0"
+                       Foreground="DarkGray"/>
+            <local:ColorIcon x:Name="PhonePic2"
+                             Grid.Column="3"
+                             VerticalAlignment="Center"
+                             IconWidth="98"
+                             IconHeight="176"/>
+            </Grid>
+
+        <TextBlock x:Name="ExplanationTextBlock1"
+                   Grid.Row="2"
+                   Text="{Binding Path=Strings.ChangeNumberExplanation1, Source={StaticResource Localizable}}"
+                   TextWrapping="Wrap"
+                   Margin="24,12"
+                   FontSize="28"/>
+        <TextBlock x:Name="ExplanationTextBlock2"
+                   Grid.Row="3"
+                   Text="{Binding Path=Strings.ChangeNumberExplanation2, Source={StaticResource Localizable}}"
+                   TextWrapping="Wrap"
+                   Margin="24,12,24,36"
+                   FontSize="28"/>
+    </Grid>
+    </local:ZoomBox>
+    
+    <Page.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True"
+                              IsMenuEnabled="False">
+            <shell:ApplicationBarIconButton IconUri="/Images/next.png"
+                                            Text="NextStep"
+                                            Click="Continue_Click"/>
+        </shell:ApplicationBar>
+    </Page.ApplicationBar>
+</Page>

@@ -1,0 +1,374 @@
+﻿<UserControl x:Class="WhatsApp.ChatInputBar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:WhatsApp"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480"
+    d:DesignWidth="480"
+    toolkit:TiltEffect.IsTiltEnabled="True">
+
+    <UserControl.Resources>
+        <Style x:Key="TextBoxWithSend" TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="MainBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="MainBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="ReadOnly">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="MainBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ReadonlyBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ReadonlyBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ReadonlyBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxReadOnlyBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="MainBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBackgroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="MainBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBorderBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="MainBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Margin="{StaticResource PhoneTouchTargetOverhang}"/>
+                            <Border x:Name="ReadonlyBorder" BorderBrush="{StaticResource PhoneDisabledBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Margin="{StaticResource PhoneTouchTargetOverhang}" Visibility="Collapsed"/>
+                            <Border BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Margin="{StaticResource PhoneTouchTargetOverhang}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <Rectangle Grid.Column="1" Loaded="InnerSpacer_Loaded" Fill="Transparent" IsHitTestVisible="False"/>
+                                    <Grid Grid.Column="2" Loaded="InnerAction_Loaded" Background="{Binding RightButtonBackgroundBrush}" VerticalAlignment="Bottom" Tap="InnerAction_Tap" Visibility="Collapsed">
+                                        <Image Source="{Binding RightButtonIconSource}" Opacity="{Binding RightButtonOpacity}" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          CacheMode="BitmapCache">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="1"
+                VerticalAlignment="Bottom">
+            <!-- Footer background, this is usually not visible,
+                 but during input mode transitions, such as during emoji
+                 keyboard open, sometimes it's noticable that there's a gap
+                 between the input bar and bottom of the screen.
+                 Use this footer background to cover it.
+            -->
+            <Rectangle x:Name="FooterCover"
+                       IsHitTestVisible="False"
+                       Width="800"
+                       Height="500"
+                       Fill="{StaticResource PhoneChromeBrush}"/>
+        </Canvas>
+
+        <Canvas Grid.Row="1"
+                VerticalAlignment="Top">
+            <Grid x:Name="ExpansionPanel"
+                  Background="{StaticResource PhoneBackgroundBrush}"
+                  VerticalAlignment="Top"
+                  Canvas.Left="0"
+                  Canvas.Top="0">
+                <Grid.RenderTransform>
+                    <CompositeTransform x:Name="ExpansionPanelTransform"/>
+                </Grid.RenderTransform>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Reply panel at row 0 -->
+
+                <!-- Link preview panel at row 1 -->
+
+            </Grid>
+        </Canvas>
+
+        <!-- Background: place this between bottom panels and expansion panels -->
+
+        <Rectangle Grid.Row="0"
+                   Grid.RowSpan="2"
+                   HorizontalAlignment="Stretch"
+                   Fill="{StaticResource PhoneBackgroundBrush}"
+                   IsHitTestVisible="False"/>
+
+        <!-- Slim divider -->
+
+        <Rectangle x:Name="Divider"
+                   Grid.Row="0"
+                   Height="1"
+                   HorizontalAlignment="Stretch"
+                   Fill="{StaticResource PhoneForegroundBrush}"
+                   Opacity="0.35"
+                   IsHitTestVisible="False"/>
+
+        <!-- Recording panel -->
+
+        <Grid x:Name="RecordingPanel"
+              Grid.Row="1"
+              IsHitTestVisible="False"
+              Opacity="0"
+              CacheMode="BitmapCache">
+            <Grid.RenderTransform>
+                <CompositeTransform x:Name="RecordingPanelTransform"/>
+            </Grid.RenderTransform>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Make sure this is underneath the other stuff in the recording panel -->
+            <Grid x:Name="SlideToCancelPanel"
+                  Grid.Column="2"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch">
+                <local:AdaptiveTextBlock x:Name="SlideToCancelBlock"
+                                         Margin="0"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Stretch">
+                    <local:AdaptiveTextBlock.RenderTransform>
+                        <CompositeTransform x:Name="SlideToCancelBlockTransform"/>
+                    </local:AdaptiveTextBlock.RenderTransform>
+                </local:AdaptiveTextBlock>
+                <!-- We need the canvas here to make scrolling animation work.
+                     Otherwise the long mask will be clipped.
+                -->
+                <Canvas FlowDirection="LeftToRight"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Stretch">
+                    <Rectangle x:Name="SlideToCancelMask"
+                               Stretch="Fill"
+                               Canvas.Left="0"
+                               Canvas.Top="0"
+                               CacheMode="BitmapCache">
+                        <Rectangle.RenderTransform>
+                            <CompositeTransform x:Name="SlideToCancelMaskTransform"
+                                                TranslateX="0"/>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                </Canvas>
+            </Grid>
+
+            <Grid x:Name="RecordingIndicatorPanel"
+                  Grid.Column="0"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  Background="{StaticResource PhoneBackgroundBrush}">
+                <Rectangle x:Name="RecordingIndicator"
+                           Fill="{Binding RecordingIndicatorBrush}"
+                           Opacity="0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush x:Name="RecordingIndicatorIcon"
+                                    Stretch="UniformToFill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Grid>
+
+            <!-- TODO: the reason we have a special font here is it's fixed width, consider create 4 text blocks
+                        with fixed width representing min (may not look good over 10 mins), ":", seconds in tens, and
+                        seconds in ones... which is kinda making things over complicated tho.
+            -->
+            <Grid Grid.Column="1"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Left"
+                  Background="{StaticResource PhoneBackgroundBrush}">
+                <TextBlock x:Name="DurationBlock"
+                           Foreground="{StaticResource PhoneForegroundBrush}"
+                           Text="0:00"
+                           FontFamily="Lucida Sans Unicode"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+        <!-- Main panel: text input, action buttons -->
+
+        <Grid x:Name="MainPanel"
+              Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="AttachButton"
+                    Grid.Column="0"
+                    Margin="0"
+                    Padding="0"
+                    Style="{StaticResource BorderlessButton}"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Click="AttachButton_Click"
+                    AutomationProperties.AutomationId="AidAttachButton">
+                <Button.RenderTransform>
+                    <CompositeTransform x:Name="AttachButtonTransform"/>
+                </Button.RenderTransform>
+                <Button.Content>
+                    <Image x:Name="AttachButtonIcon"
+                           Source="{Binding AttachButtonIconSource}"
+                           Stretch="UniformToFill"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+                </Button.Content>
+            </Button>
+
+            <!--ScrollViewer x:Name="TextBoxContainer"
+                          Grid.Column="1"
+                          HorizontalScrollBarVisibility="Disabled"
+                          VerticalScrollBarVisibility="Auto"
+                          Padding="0"
+                          CacheMode="BitmapCache">
+                <ScrollViewer.RenderTransform>
+                    <CompositeTransform x:Name="TextBoxTransform"/>
+                </ScrollViewer.RenderTransform-->
+            <Grid x:Name="TextBoxContainer"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="3">
+                <Grid.RenderTransform>
+                    <CompositeTransform x:Name="TextBoxTransform"/>
+                </Grid.RenderTransform>
+                <TextBox x:Name="TextBox"
+                         Margin="-12,-9,-12,-9"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         TextWrapping="Wrap"
+                         InputScope="Text"
+                         BorderThickness="0"
+                         AcceptsReturn="True"
+                         BorderBrush="{StaticResource PhoneBackgroundBrush}"
+                         Background="{StaticResource PhoneBackgroundBrush}"
+                         Foreground="{StaticResource PhoneForegroundBrush}"
+                         KeyDown="TextBox_KeyDown"
+                         KeyUp="TextBox_KeyUp"
+                         GotFocus="TextBox_GotFocus"
+                         LostFocus="TextBox_LostFocus"
+                         TextChanged="TextBox_TextChanged"
+                         SelectionChanged="TextBox_SelectionChanged"
+                         FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                         AutomationProperties.AutomationId="AidChatTextBox"
+                         Style="{StaticResource TextBoxWithSend}"/>
+                <TextBlock x:Name="TextInputTooltipBlock"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           TextWrapping="NoWrap"
+                           TextTrimming="WordEllipsis"
+                           IsHitTestVisible="False"
+                           Foreground="{StaticResource PhoneForegroundBrush}"
+                           Opacity="0.35"
+                           Visibility="{Binding TextInputTooltipVisibility}"/>
+            </Grid>
+
+            <Button x:Name="EmojiButton"
+                        Grid.Column="2"
+                        Padding="0"
+                        Style="{StaticResource BorderlessButton}"
+                        HorizontalAlignment="Right"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Click="EmojiButton_Click"
+                        Opacity="1"
+                        AutomationProperties.AutomationId="AidEmojiButton">
+                <Button.Content>
+                    <Image x:Name="EmojiButtonIcon"
+                           Source="{Binding EmojiButtonIconSource}"
+                           Stretch="UniformToFill"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+                </Button.Content>
+            </Button>
+
+            <Button x:Name="RightButton"
+                    Grid.Column="3"
+                    Margin="0"
+                    Padding="0"
+                    Style="{StaticResource BorderlessButton}"
+                    VerticalContentAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalAlignment="Bottom"
+                    Click="RightButton_Click"
+                    ManipulationStarted="RightButton_ManipulationStarted"
+                    ManipulationCompleted="RightButton_ManipulationCompleted"
+                    ManipulationDelta="RightButton_ManipulationDelta"
+                    AutomationProperties.AutomationId="AidRecordingButton">
+                <Button.Content>
+                    <Grid Background="{Binding RightButtonBackgroundBrush}">
+                        <Image x:Name="RightButtonIcon"
+                               Source="{Binding RightButtonIconSource}"
+                               Opacity="{Binding RightButtonOpacity}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

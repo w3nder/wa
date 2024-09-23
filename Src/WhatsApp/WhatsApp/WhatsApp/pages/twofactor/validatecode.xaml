@@ -1,0 +1,58 @@
+﻿<Page 
+    x:Class="WhatsApp.ValidateCode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:PageTitlePanel x:Name="TitlePanel" Grid.Row="0"
+                              SmallTitle="{Binding Path=Strings.TwoStepVerification, Source={StaticResource Localizable}}"/>
+
+        <Grid Grid.Row="1" Margin="24,12" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="290"/>
+                <!-- Approximately the SIP height -->
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="ExplanationText" Grid.Row="0" Text="{Binding Path=Strings.TwoStepVerificationExplanation, Source={StaticResource Localizable}}"
+                       TextWrapping="Wrap" FontSize="24" Margin="0,0,0,24"/>
+            <Grid x:Name="CodeInput" Grid.Row="1"
+                        FlowDirection="LeftToRight" VerticalAlignment="Top" HorizontalAlignment="Center" Background="Transparent" Tap="CodeInput_Tap">
+                <TextBox x:Name="HiddenCode" FontSize="36" Width="0" Opacity="0"
+                         FontFamily="Courier New" InputScope="Number"
+                         KeyDown="Code_KeyDown" TextChanged="Code_TextChanged"
+                         />
+
+                <TextBlock x:Name="VisibleCode" HorizontalAlignment="Center"
+                           FontFamily="Courier New" FontSize="36"/>
+            </Grid>
+            <Button Grid.Row="2" x:Name="ForgotButton" Style="{StaticResource BorderlessButton}" HorizontalAlignment="Right" Click="Forgot_Click" Margin="0" Padding="0">
+                <TextBlock x:Name="EmailText" Text="{Binding Path=Strings.TwoStepVerificationForgot, Source={StaticResource Localizable}}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="{StaticResource PhoneAccentBrush}"/>
+            </Button>
+        </Grid>
+    </Grid>
+    
+</Page>

@@ -1,0 +1,81 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.AddToGroupsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <local:ZoomBox x:Name="RootZoomBox"
+                   Margin="0">
+        <Grid x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <local:PageTitlePanel x:Name="PageTitle"
+                                  Grid.Row="0"
+                                  Mode="NotZoomed"/>
+
+            <shim:LongListSelector x:Name="GroupsList"
+                                   Grid.Row="1"
+                                   Margin="24,-12,0,0"
+                                   IsFlatList="False">
+                <shim:LongListSelector.ListHeader>
+                    <TextBlock x:Name="ListHeader"
+                            Visibility="Collapsed"/>
+                </shim:LongListSelector.ListHeader>
+                <shim:LongListSelector.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding HeaderText}"
+                                       Grid.Row="0"
+                                       DataContext="{Binding Key}"
+                                       Visibility="{Binding DividerVisibility}"
+                                       Margin="0,6,0,6"/>
+                        </Grid>
+
+                    </DataTemplate>
+                </shim:LongListSelector.GroupHeaderTemplate>
+                <shim:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <local:ChatItemControl Margin="0,12,12,12"
+                                               ViewModel="{Binding}"/>
+                    </DataTemplate>
+                </shim:LongListSelector.ItemTemplate>
+                <shim:LongListSelector.ListFooter>
+                    <TextBlock Height="64"></TextBlock>
+                </shim:LongListSelector.ListFooter>
+            </shim:LongListSelector>
+        </Grid>
+    </local:ZoomBox>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,96 @@
+mfgr,model,friendly name,flags
+NOKIA,P4301,Phi eng. device,echo
+CONTOSO LTD.,P4301,Phi eng. device,echo
+NOKIA,RM-803,Lumia 710,echo
+NOKIA,RM-809,Lumia 710,echo
+NOKIA,RM-820,Lumia 920,echo
+NOKIA,RM-821,Lumia 920,echo
+NOKIA,RM-824,Lumia 820,echo
+NOKIA,RM-825,Lumia 820,echo
+NOKIA,RM-826,Lumia 820,echo
+NOKIA,RM-845,Lumia 822,echo
+NOKIA,RM-846,Lumia 620,echo
+NOKIA,RM-875,Lumia 1020,echo
+NOKIA,RM-877,Lumia 1020,echo
+NOKIA,RM-885,Lumia 720,echo
+NOKIA,RM-892,Lumia 925,echo
+NOKIA,RM-893,Lumia 925,echo
+NOKIA,RM-910,Lumia 925,echo
+NOKIA,RM-914,Lumia 520,echo
+NOKIA,RM-915,Lumia 520,echo
+NOKIA,RM-917,Lumia 520,echo
+NOKIA,RM-927,Lumia Icon,echo
+NOKIA,RM-937,Lumia 1520,
+NOKIA,RM-938,Lumia 1520,
+NOKIA,RM-939,Lumia 1520,
+NOKIA,RM-940,Lumia 1520,
+NOKIA,RM-941,Lumia 625,echo
+NOKIA,RM-942,Lumia 625,echo
+NOKIA,RM-943,Lumia 625,echo
+NOKIA,RM-974,Lumia 635,noproximity
+NOKIA,RM-975,Lumia 635,noproximity
+NOKIA,RM-976,Lumia 630,noproximity
+NOKIA,RM-977,Lumia 630,noproximity
+NOKIA,RM-978,Lumia 630,noproximity
+NOKIA,RM-979,Lumia 635,noproximity
+NOKIA,RM-983,Lumia 830,slowproximity
+NOKIA,RM-984,Lumia 830,slowproximity
+NOKIA,RM-985,Lumia 830,slowproximity
+NOKIA,RM-994,Lumia 1320,echo
+NOKIA,RM-995,Lumia 1320,echo
+NOKIA,RM-998,Lumia 525,
+NOKIA,RM-1017,Lumia 530,noproximity
+NOKIA,RM-1018,Lumia 530,noproximity
+NOKIA,RM-1019,Lumia 530,noproximity
+NOKIA,RM-1020,Lumia 530,noproximity
+NOKIA,RM-1027,Lumia 636,noproximity
+NOKIA,RM-1031,Lumia 532,noproximity
+NOKIA,RM-1032,Lumia 532,noproximity
+NOKIA,RM-1034,Lumia 532,noproximity
+NOKIA,RM-1115,Lumia 532,noproximity
+NOKIA,RM-1127,Lumia 550,softnav
+NOKIA,RM-1128,Lumia 550,softnav
+NOKIA,RM-1038,Lumia 735,softnav
+NOKIA,RM-1039,Lumia 735,softnav
+NOKIA,RM-1040,Lumia 730,softnav
+NOKIA,RM-1045,Lumia 930,
+NOKIA,RM-1152,Lumia 650,softnav
+NOKIA,RM-1154,Lumia 650,softnav
+NOKIA,RM-1062,Lumia 640 XL,softnav
+NOKIA,RM-1064,Lumia 640 XL,softnav
+NOKIA,RM-1065,Lumia 640 XL,softnav
+NOKIA,RM-1066,Lumia 640 XL,softnav
+NOKIA,RM-1067,Lumia 640 XL,softnav
+NOKIA,RM-1068,Lumia 435,noproximity
+NOKIA,RM-1069,Lumia 435,noproximity
+NOKIA,RM-1070,Lumia 435,noproximity
+NOKIA,RM-1071,Lumia 435,noproximity
+NOKIA,RM-1072,Lumia 640,slowproximity|softnav
+NOKIA,RM-1073,Lumia 640,slowproximity|softnav
+NOKIA,RM-1074,Lumia 640,slowproximity|softnav
+NOKIA,RM-1075,Lumia 640,slowproximity|softnav
+NOKIA,RM-1077,Lumia 640,slowproximity|softnav
+NOKIA,RM-1109,Lumia 640,slowproximity|softnav
+NOKIA,RM-1078,Lumia 635,noproximity
+NOKIA,RM-1089,Lumia 535,noproximity|softnav
+NOKIA,RM-1090,Lumia 535,noproximity|softnav
+NOKIA,RM-1091,Lumia 535,noproximity|softnav
+NOKIA,RM-1092,Lumia 535,noproximity|softnav
+NOKIA,RM-1099,Lumia 430,noproximity|softnav
+NOKIA,RM-1114,Lumia 435,noproximity
+NOKIA,RM-1141,Lumia 540,
+NOKIA,RM-1085,Lumia 950 XL,
+NOKIA,RM-1104,Lumia 950,softnav
+NOKIA,RM-1116,Lumia 950 XL,softnav
+NOKIA,RM-1118,Lumia 950,softnav
+NOKIA,RM-1105,Lumia 950,softnav
+SAMSUNG,GT-I8750,,echo
+SAMSUNG,SCH-I930,,echo
+SAMSUNG,SGH-T899M,,echo
+HTC,Windows Phone 8S,,echo
+HTC,Windows Phone 8X,,echo
+HUAWEI,HUAWEI W1,,echo
+HUAWEI,HUAWEI W2,,echo
+HUAWEI,HUAWEI H883G,,echo
+HP,Elite x3,,
+MOLY,MolyX1US,Moly,softnav

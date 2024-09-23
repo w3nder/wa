@@ -1,0 +1,13 @@
+Spiacenti, sembra che tu non abbia connessione!
+<p>Se vedi questa schermata, significa che non sei connesso a Internet. Per aiutarti a risolvere questo problema il più velocemente possibile, segui la seguente procedura di risoluzione dei problemi:</p>
+<ul>
+<li>Assicurati che il dispositivo sia in una zona di coperta supportata dal tuo gestore di telefonia mobile o dalla rete Wi-Fi. La connessione deve essere stabile e affidabile.</li>
+<li>Verifica di disporre di un piano dati con la rete del tuo gestore oppure una connessione Wi-Fi con accesso ad Internet. NOTA: Per usare WhatsApp in modo normale su un dispositivo Windows Phone è importante disporre di un piano dati. I dispositivi dotati unicamente della funzione Wi-Fi potrebbero manifestare problemi.</li>
+<li>Riavvia il telefono(spegnilo, attendi 30 secondi, riaccendilo).</li>
+</ul>
+<p>RISOLUZIONE DEI PROBLEMI AVANZATA</p>
+<p>Se altre applicazioni o siti funzionano ma WhatsApp no, è possibile che la tua configurazione di rete non permetta il tipo di connessione necessaria a WhatsApp (connessioni socket o non-HTTP). </p>
+<ul>
+<li>Controlla le impostazioni dell'<strong>APN (Access Point Name)</strong> del tuo gestore. Potrebbe esserci un APN diverso per il tuo gestore che consente le connessioni non-HTTP come WhatsApp. Per scoprire come cambiare le impostazioni APN del dispositivo, visita questi siti per: <a href="https://www.windowsphone.com/it-it/How-to/wp7/start/cellular-settings">Windows Phone 7</a> e <a href="https://www.windowsphone.com/it-it/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>. Dopo aver modificato le impostazioni APN, accertati di riavviare il telefono affinché le modifiche abbiano effetto.</li>
+<li>Se hai un Windows Phone prodotto da Nokia, prova ad usare l'applicazione <a href="https://www.windowsphone.com/it-it/store/app/impostaz-conness/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">Impostaz conness</a> dalla collezione Nokia dello Store (potrebbe non essere disponibile in alcuni Paesi).</li>
+</ul>

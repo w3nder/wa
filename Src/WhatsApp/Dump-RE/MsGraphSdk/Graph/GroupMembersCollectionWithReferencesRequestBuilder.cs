@@ -1,0 +1,47 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: Microsoft.Graph.GroupMembersCollectionWithReferencesRequestBuilder
+// Assembly: MsGraphSdk, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null
+// MVID: B6767127-13D0-4992-B741-2642C0E7F410
+// Assembly location: C:\Users\Admin\Desktop\RE\WABeta\MsGraphSdk.dll
+
+using System.Collections.Generic;
+
+#nullable disable
+namespace Microsoft.Graph
+{
+  public class GroupMembersCollectionWithReferencesRequestBuilder : 
+    BaseRequestBuilder,
+    IGroupMembersCollectionWithReferencesRequestBuilder
+  {
+    public GroupMembersCollectionWithReferencesRequestBuilder(string requestUrl, IBaseClient client)
+      : base(requestUrl, client)
+    {
+    }
+
+    public IGroupMembersCollectionWithReferencesRequest Request()
+    {
+      return this.Request((IEnumerable<Option>) null);
+    }
+
+    public IGroupMembersCollectionWithReferencesRequest Request(IEnumerable<Option> options)
+    {
+      return (IGroupMembersCollectionWithReferencesRequest) new GroupMembersCollectionWithReferencesRequest(this.RequestUrl, this.Client, options);
+    }
+
+    public IDirectoryObjectWithReferenceRequestBuilder this[string id]
+    {
+      get
+      {
+        return (IDirectoryObjectWithReferenceRequestBuilder) new DirectoryObjectWithReferenceRequestBuilder(this.AppendSegmentToRequestUrl(id), this.Client);
+      }
+    }
+
+    public IGroupMembersCollectionReferencesRequestBuilder References
+    {
+      get
+      {
+        return (IGroupMembersCollectionReferencesRequestBuilder) new GroupMembersCollectionReferencesRequestBuilder(this.AppendSegmentToRequestUrl("$ref"), this.Client);
+      }
+    }
+  }
+}

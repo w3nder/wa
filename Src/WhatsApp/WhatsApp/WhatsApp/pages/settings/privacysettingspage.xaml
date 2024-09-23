@@ -1,0 +1,153 @@
+﻿<Page
+    x:Class="WhatsApp.PrivacySettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+        <local:ResolutionHelper x:Key="ResolutionHelper"/>
+    </Page.Resources>
+
+    <local:ZoomBox ZoomFactor="{Binding ZoomFactor,Source={StaticResource ResolutionHelper}}">
+        <Grid x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <local:PageTitlePanel x:Name="TitlePanel"
+                                  Grid.Row="0"
+                                  Mode="NotZoomed"/>
+
+            <Grid x:Name="ErrorMessagePanel"
+                  Grid.Row="1"
+                  Margin="0,0,0,24"
+                  Background="Red"
+                  Visibility="Collapsed">
+                <TextBlock x:Name="ErrorMessageBlock"
+                           Foreground="White"
+                           FontSize="24"
+                           Margin="24"
+                           TextWrapping="Wrap"/>
+            </Grid>
+
+            <shim:LongListSelector x:Name="SettingsList"
+                                   Grid.Row="2"
+                                   IsFlatList="True"
+                                   Margin="24,0,0,0">
+                <shim:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0,0,24,24">
+                            <TextBlock Text="{Binding Title}"
+                                       Margin="0,0,0,6"
+                                       Style="{StaticResource PhoneTextNormalStyle}"
+                                       FontSize="24"/>
+                            <toolkit:ListPicker SelectedIndex="{Binding Selection, Mode=TwoWay}"
+                                                Margin="0">
+                                <toolkit:ListPickerItem Content="{Binding Path=Strings.PrivacySettingsEveryone, Source={StaticResource Localizable}}"/>
+                                <toolkit:ListPickerItem Content="{Binding Path=Strings.PrivacySettingsContacts, Source={StaticResource Localizable}}"/>
+                                <toolkit:ListPickerItem Content="{Binding Path=Strings.PrivacySettingsNobody, Source={StaticResource Localizable}}"/>
+                            </toolkit:ListPicker>
+                            <TextBlock Text="{Binding NoticeStr}"
+                                       Visibility="{Binding NoticeVisibility}"
+                                       Style="{StaticResource PhoneTextNormalStyle}"
+                                       Margin="0,12,0,0"
+                                       TextWrapping="Wrap"
+                                       Foreground="{StaticResource PhoneSubtleBrush}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </shim:LongListSelector.ItemTemplate>
+
+                <shim:LongListSelector.ListFooter>
+                    <StackPanel Margin="0,0,0,112">
+                        <StackPanel x:Name="StatusSection"
+                                    Margin="0,0,24,24"
+                                    Background="Transparent">
+                            <TextBlock x:Name="StatusHeader"
+                                       Margin="0,0,0,6"
+                                       Style="{StaticResource PhoneTextNormalStyle}"
+                                       FontSize="24"/>
+                            <toolkit:ListPicker x:Name="StatusPicker"
+                                                Grid.Column="0"
+                                                Margin="0"
+                                                VerticalAlignment="Center"/>
+                            <TextBlock x:Name="StatusTooltip"
+                                       Margin="0,12,0,0"
+                                       TextWrapping="Wrap"
+                                       Style="{StaticResource PhoneTextNormalStyle}"
+                                       Foreground="{StaticResource PhoneSubtleBrush}"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="LiveLocationSection"
+                                    Margin="0,0,24,24"
+                                    Background="Transparent"
+                                    Visibility="Collapsed">
+                            <TextBlock x:Name="LiveLocationHeader"
+                                       Margin="0,0,0,6"
+                                       Style="{StaticResource PhoneTextNormalStyle}"
+                                       FontSize="24"/>
+                            <TextBlock x:Name="LiveLocationSharingStatus"
+                                       Margin="0"
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Tap="LiveLocationSharingStatus_Tap"/>
+                            <TextBlock x:Name="LiveLocationTooltip"
+                                       Margin="0,12,0,0"
+                                       TextWrapping="Wrap"
+                                       Style="{StaticResource PhoneTextNormalStyle}"
+                                       Foreground="{StaticResource PhoneSubtleBrush}"/>
+                        </StackPanel>
+
+
+                        <toolkit:ToggleSwitch x:Name="EnableReadReceiptToggle"
+                                              Padding="0"
+                                              Margin="-12,0,12,0">
+                            <toolkit:ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap"
+                                               Margin="0"
+                                               Text="{Binding Path=Strings.PrivacySettingsReadReceipts, Source={StaticResource Localizable}}"
+                                               Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                </DataTemplate>
+                            </toolkit:ToggleSwitch.HeaderTemplate>
+                        </toolkit:ToggleSwitch>
+                        <TextBlock Text="{Binding Path=Strings.ReadReceiptReciprocityNotice, Source={StaticResource Localizable}}"
+                                   Style="{StaticResource PhoneTextNormalStyle}"
+                                   Margin="0,-6,24,0"
+                                   TextWrapping="Wrap"
+                                   Foreground="{StaticResource PhoneSubtleBrush}"/>
+                    </StackPanel>
+                </shim:LongListSelector.ListFooter>
+            </shim:LongListSelector>
+        </Grid>
+    </local:ZoomBox>
+</Page>

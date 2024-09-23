@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="WhatsApp.SecuritySettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:local="clr-namespace:WhatsApp"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+    <Page.Resources>
+        <local:Localizable x:Name="Localizable"/>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--TitlePanel contains the name of the application and page title-->
+            <local:PageTitlePanel x:Name="PageTitle" Grid.Row="0" Mode="Zoomed" LargeTitle="{Binding Path=Strings.SecuritySettings, Source={StaticResource Localizable}}"/>
+            <!--ContentPanel - place additional content here-->
+            <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                <Image Width="60" Height="60" x:Name="Padlock" HorizontalAlignment="Left" Margin="12"/>
+                <RichTextBox x:Name="EndToEndText" TextWrapping="Wrap" FontWeight="Light" FontSize="24" Margin="0,12,0,24"/>
+
+                <toolkit:ToggleSwitch x:Name="ShowSecurityToggle" Checked="ShowSecurityToggle_Checked" Unchecked="ShowSecurityToggle_Unchecked">
+                    <toolkit:ToggleSwitch.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Strings.ShowSecurity, Source={StaticResource Localizable}}" />
+                        </DataTemplate>
+                    </toolkit:ToggleSwitch.HeaderTemplate>
+                </toolkit:ToggleSwitch>
+                <TextBlock x:Name="ShowSecurityExplanation" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Foreground="{StaticResource PhoneSubtleBrush}"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+
+</Page>

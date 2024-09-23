@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="WhatsApp.LiveLocationSettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <local:ZoomBox x:Name="RootZoomBox">
+        <StackPanel x:Name="LayoutRoot">
+            <local:PageTitlePanel x:Name="TitlePanel" 
+                                  Mode="NotZoomed"/>
+            <TextBlock x:Name="SharingStatus"
+                       Margin="24,0,24,12"
+                       Style="{StaticResource PhoneTextNormalStyle}"
+                       FontSize="24"/>
+            <shim:LongListSelector x:Name="MainList"
+                                   IsFlatList="True">
+                <shim:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <local:RichTextBlock Foreground="{StaticResource PhoneForegroundBrush}"                                                 FontSize="24"
+                                                 Text="{Binding Title}"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="{Binding Expiration}"
+                                       Style="{StaticResource PhoneTextNormalStyle}"
+                                       FontSize="24"/>
+                        </Grid>
+                    </DataTemplate>
+                </shim:LongListSelector.ItemTemplate>
+            </shim:LongListSelector>
+            <TextBlock x:Name="ExplanationBlock"
+                       Margin="24,12,24,0"
+                       TextWrapping="Wrap"
+                       Style="{StaticResource PhoneTextNormalStyle}"
+                       Foreground="{StaticResource PhoneSubtleBrush}"/>
+            <TextBlock x:Name="StopSharing"
+                       Foreground="Red"
+                       Style="{StaticResource PhoneTextTitle2Style}"
+                       Margin="24,12,24,0"
+                       Tap="StopSharing_Tap"/>
+        </StackPanel>
+    </local:ZoomBox>
+</Page>

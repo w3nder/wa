@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="WhatsApp.Pages.ViewLicensePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:wacontrols="clr-namespace:WhatsApp.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:PageTitlePanel x:Name="TitlePanel" Grid.Row="0"
+                SmallTitle= "{Binding Path=Strings.ViewLicensePageTitle, Source={StaticResource Localizable}}" />
+
+        <wacontrols:TextAsWebControl Grid.Row="1" Margin="14,0,14,0" 
+                                           HtmlFontSize="4" 
+                                           TextFile="Resources/license.txt" />
+    </Grid>
+
+</Page>

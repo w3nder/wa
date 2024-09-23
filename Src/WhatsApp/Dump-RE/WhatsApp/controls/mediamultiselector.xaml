@@ -1,0 +1,219 @@
+﻿<UserControl x:Class="WhatsApp.MediaMultiSelector"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:lls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <local:GridMultiSelectorItemToContextMenuConverter x:Key="Item2Menu"/>
+
+        <shim:JumpListItemBackgroundConverter x:Key="BackgroundConverter"/>
+        <shim:JumpListItemForegroundConverter x:Key="ForegroundConverter"/>
+
+        <Style x:Key="JumpListStyle" TargetType="lls:LongListSelector">
+            <Setter Property="LayoutMode" Value="List" />
+            <Setter Property="Margin" Value="0,24,0,0"/>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid Background="{Binding Converter={StaticResource BackgroundConverter}}"
+                              HorizontalAlignment="Stretch"
+                              Height="64"
+                              Margin="24,6">
+                            <TextBlock Text="{Binding Key}"
+                                       Foreground="{Binding Converter={StaticResource ForegroundConverter}}"
+                                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                       FontSize="28"  
+                                       Padding="12,0,0,6"
+                                       VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid Height="56"
+                  Margin="0">
+                <TextBlock Text="{Binding Key}"
+                           Margin="0,0,0,12"
+                           FontSize="24"
+                           Foreground="{StaticResource PhoneAccentBrush}"
+                           FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           Style="{StaticResource JumpListHeader}"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ItemTemplate">
+            <Grid Height="98"
+                  Width="98"
+                  Margin="0,6,12,6"
+                  Background="{Binding BackgroundBrush}">
+                <Image Width="98"
+                       Height="98"
+                       Stretch="UniformToFill"
+                       Source="{Binding Thumbnail}"
+                       toolkit:ContextMenuService.ContextMenu="{Binding ., Converter={StaticResource Item2Menu}}"/>
+
+                <!-- Play button and shadow overlay -->
+                <Grid Width="98"
+                      Height="98"
+                      Background="Black"
+                      Opacity="0.1"
+                      Visibility="{Binding PlayOverlayVisibility}"
+                      IsHitTestVisible="False"/>
+                <Image Width="42"
+                       Height="42"
+                       Stretch="UniformToFill"
+                       Source="{Binding PlayButtonIcon}"
+                       Visibility="{Binding PlayOverlayVisibility}"
+                       IsHitTestVisible="False"/>
+
+                <!-- GIF overlay -->
+                <Grid Width="98"
+                      Height="98"
+                      Background="Black"
+                      Opacity="0.1"
+                      Visibility="{Binding GifOverlayVisibility}"
+                      IsHitTestVisible="False"/>
+                <Image Width="35"
+					   Height="20"
+                       Margin="4,0,0,4"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Stretch="UniformToFill"
+                       Source="{Binding GifIcon}"
+                       Visibility="{Binding GifOverlayVisibility}"
+                       IsHitTestVisible="False"/>
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="SelectionModeItemTemplate">
+            <Grid Height="98"
+                  Width="98"
+                  Margin="0,6,12,6">
+                <Image Width="98"
+                       Height="98"
+                       Stretch="UniformToFill"
+                       Source="{Binding Thumbnail}"/>
+                <!-- Play button -->
+                <Image Width="42"
+                       Height="42"
+                       Stretch="UniformToFill"
+                       Source="{Binding PlayButtonIcon}"
+                       Visibility="{Binding PlayOverlayVisibility}"/>
+                <!-- GIF overlay -->
+                <Image Width="35"
+					   Height="20"
+                       Margin="4,0,0,4"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Stretch="UniformToFill"
+                       Source="{Binding GifIcon}"
+                       Visibility="{Binding GifOverlayVisibility}"/>
+                <!-- Shadow -->
+                <Grid Width="98"
+                      Height="98"
+                      Background="Black"
+                      Opacity="0.2"/>
+                <!-- Selection box -->
+                <Border BorderThickness="3"
+                        Width="98"
+                        Height="98"
+                        BorderBrush="{StaticResource PhoneAccentBrush}"
+                        Visibility="{Binding SelectionBoxVisibility}"/>
+                <!-- Selected marker: triangle + tick -->
+                <Polygon Visibility="{Binding SelectedVisibility}"
+                         Fill="{StaticResource PhoneAccentBrush}"
+                         Points="0,0 45,0 45,45"
+                         Width="45"
+                         Height="45"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Right"/>
+                <Image Width="21"
+                       Height="19"
+                       Margin="0,4,4,0"
+                       Visibility="{Binding SelectedVisibility}"
+                       Source="{Binding SelectedCheckMark}"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Right"/>
+            </Grid>
+        </DataTemplate>
+
+        <Style x:Key="WhiteScrollBarStyle"
+               TargetType="lls:LongListSelector">
+            <Setter Property="Background"
+                    Value="Transparent"/>
+            <Setter Property="Foreground"
+                    Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="lls:LongListSelector">
+                        <Grid Background="{TemplateBinding Background}" d:DesignWidth="480" d:DesignHeight="800">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="ScrollStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="00:00:00.5"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Scrolling">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="VerticalScrollBar"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="NotScrolling"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ViewportControl x:Name="ViewportControl" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" />
+                                <ScrollBar x:Name="VerticalScrollBar" Background="#FF666666" Grid.Column="1" Margin="4,0,4,0" Opacity="0" Orientation="Vertical"/>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <shim:LongListSelector x:Name="ItemsGrid"
+                           Margin="0,0,0,0"
+                           ItemTemplate="{StaticResource ItemTemplate}"
+                           GroupHeaderTemplate="{StaticResource HeaderTemplate}"
+                           JumpListStyle="{StaticResource JumpListStyle}"
+                           IsGroupingEnabled="True"
+                           LayoutMode="Grid"
+                           GridCellSize="110,110"
+                           SelectionChanged="ItemsGrid_SelectionChanged"
+                           toolkit:TiltEffect.IsTiltEnabled="True">
+        <shim:LongListSelector.ListHeader>
+            <ProgressBar x:Name="LoadingProgressBar"
+                              IsIndeterminate="True"/>
+        </shim:LongListSelector.ListHeader>
+        <shim:LongListSelector.ListFooter>
+            <Grid Margin="12,0,12,72">
+                <TextBlock x:Name="FooterTextBlock"
+                           Style="{StaticResource PhoneTextLargeStyle}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           TextWrapping="Wrap"
+                           Foreground="#FF939393"
+                           Margin="0"/>
+            </Grid>
+        </shim:LongListSelector.ListFooter>
+    </shim:LongListSelector>
+</UserControl>

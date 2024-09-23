@@ -1,0 +1,60 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="WhatsApp" EntryPointType="WhatsApp.App" RuntimeVersion="6.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="WhatsApp" Source="WhatsApp.dll" />
+    <AssemblyPart x:Name="Coding4Fun.Phone.Controls" Source="Coding4Fun.Phone.Controls.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Maps" Source="Microsoft.Phone.Controls.Maps.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
+    <AssemblyPart x:Name="MsGraphSdk" Source="MsGraphSdk.dll" />
+    <AssemblyPart x:Name="Newtonsoft.Json" Source="Newtonsoft.Json.dll" />
+    <AssemblyPart x:Name="OneDriveSdk" Source="OneDriveSdk.dll" />
+    <AssemblyPart x:Name="WhatsAppCommon" Source="WhatsAppCommon.dll" />
+    <AssemblyPart x:Name="WriteableBitmapExWinPhone" Source="WriteableBitmapExWinPhone.dll" />
+    <AssemblyPart x:Name="zxing.wp8.0" Source="zxing.wp8.0.dll" />
+    <AssemblyPart x:Name="System.Net.Http" Source="System.Net.Http.dll" />
+    <AssemblyPart x:Name="Portable.ConcurrentDictionary" Source="Portable.ConcurrentDictionary.dll" />
+    <AssemblyPart x:Name="ICSharpCode.SharpZipLib.WindowsPhone" Source="ICSharpCode.SharpZipLib.WindowsPhone.dll" />
+    <AssemblyPart x:Name="System.Net.Http.Primitives" Source="System.Net.Http.Primitives.dll" />
+    <AssemblyPart x:Name="WhatsAppNative" Source="WhatsAppNative.dll" />
+    <AssemblyPart Source="af/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="ar/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="az-Latn/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="bg/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="cs/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="da/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="de/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="el/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="es/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="fa/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="fi/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="fr/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="he/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="hi/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="hr/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="hu/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="id/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="it/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="lt/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="lv/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="mk/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="ms/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="nl/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="pl/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="pt-BR/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="pt-PT/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="ro/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="ru/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="sk/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="sl/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="sq/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="sr-Latn/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="sv/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="sw/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="th/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="tr/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="uk/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="vi/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="zh-CN/WhatsAppCommon.resources.dll" />
+    <AssemblyPart Source="zh-TW/WhatsAppCommon.resources.dll" />
+  </Deployment.Parts>
+</Deployment>

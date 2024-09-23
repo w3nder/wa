@@ -1,0 +1,20 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: WhatsApp.wam_enum_view_business_profile_action
+// Assembly: WhatsAppCommon, Version=2.18.370.0, Culture=neutral, PublicKeyToken=null
+// MVID: 1D438F5E-0D32-4352-9FB4-5035480A3050
+// Assembly location: C:\Users\Admin\Desktop\RE\WABeta\WhatsAppCommon.dll
+
+
+namespace WhatsApp
+{
+  public enum wam_enum_view_business_profile_action
+  {
+    ACTION_IMPRESSION = 1,
+    ACTION_CLICK_WEBSITE = 2,
+    ACTION_CLICK_LOCATION = 3,
+    ACTION_CLICK_HOURS = 4,
+    ACTION_CLICK_DESCRIPTION = 5,
+    ACTION_CLICK_EMAIL = 6,
+    ACTION_CLICK_ADDTOCONTACT = 7,
+  }
+}

@@ -1,0 +1,2238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{A763D734-A971-47BD-BC16-1D4B6EAB22D7}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WhatsApp</RootNamespace>
+    <AssemblyName>WhatsApp</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Microsoft\Phone\Controls\Primitives\ClipToBounds.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenSizeSupport\DisplayInformationEx.cs" />
+    <Compile Include="ScreenSizeSupport\DisplayInformationSource.cs" />
+    <Compile Include="ScreenSizeSupport\Misc\DisplayConstants.cs" />
+    <Compile Include="ScreenSizeSupport\Misc\MathHelpers.cs" />
+    <Compile Include="ScreenSizeSupport\Misc\SizeHelpers.cs" />
+    <Compile Include="WhatsApp\About.cs" />
+    <Compile Include="WhatsApp\AboutPageViewModel.cs" />
+    <Compile Include="pages\AccountPage.cs" />
+    <Compile Include="WhatsApp\AdaptiveRichTextBlockWrapper.cs" />
+    <Compile Include="WhatsApp\AdaptiveTextBlock.cs" />
+    <Compile Include="WhatsApp\AddToGroupItemViewModel.cs" />
+    <Compile Include="pages\AddToGroupsPage.cs" />
+    <Compile Include="WhatsApp\AggregateMapPoint.cs" />
+    <Compile Include="WhatsApp\AppAsyncExtensions.cs" />
+    <Compile Include="WhatsApp\AppBarWrapper.cs" />
+    <Compile Include="pages\ArchivedChatsPage.cs" />
+    <Compile Include="WhatsApp\AssetStore.cs" />
+    <Compile Include="WhatsApp\AttachButtonViewModel.cs" />
+    <Compile Include="WhatsApp\AttachPanel.cs" />
+    <Compile Include="WhatsApp\AttachPanelViewModel.cs" />
+    <Compile Include="WhatsApp\AttributionControl.cs" />
+    <Compile Include="WhatsApp\AudioEndpointSwitchPanel.cs" />
+    <Compile Include="WhatsApp\AudioEndpointSwitchPanelViewModel.cs" />
+    <Compile Include="WhatsApp\AudioMessageViewModel.cs" />
+    <Compile Include="WhatsApp\AudioMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\AudioPlaybackManager.cs" />
+    <Compile Include="WhatsApp\AudioRecording.cs" />
+    <Compile Include="WhatsApp\AudioRecordingScheduler.cs" />
+    <Compile Include="WhatsApp\AudioUtils.cs" />
+    <Compile Include="pages\AutoDownloadPage.cs" />
+    <Compile Include="WhatsApp\Availability.cs" />
+    <Compile Include="WhatsApp\BackgroundAgentHelper.cs" />
+    <Compile Include="pages\BackgroundDataDisabledPage.cs" />
+    <Compile Include="WhatsApp\BackKeyBroker.cs" />
+    <Compile Include="pages\BlockListPage.cs" />
+    <Compile Include="WhatsApp\BroacastsListTabData.cs" />
+    <Compile Include="pages\BroadcastListInfoPage.cs" />
+    <Compile Include="pages\BroadcastListMainPage.cs" />
+    <Compile Include="pages\BulkContactCardViewPage.cs" />
+    <Compile Include="WhatsApp\BusinessInfoPanel.cs" />
+    <Compile Include="WhatsApp\BusinessInfoViewModel.cs" />
+    <Compile Include="WhatsApp\ButtonFlyout.cs" />
+    <Compile Include="WhatsApp\ButtonWP10.cs" />
+    <Compile Include="WhatsApp\CallHistoryList.cs" />
+    <Compile Include="WhatsApp\CallLogItemControl.cs" />
+    <Compile Include="WhatsApp\CallLogItemTitleBlock.cs" />
+    <Compile Include="pages\CallRatingPage.cs" />
+    <Compile Include="pages\CallRatingPageViewModel.cs" />
+    <Compile Include="WhatsApp\CallScreenHelper.cs" />
+    <Compile Include="pages\CallScreenPage.cs" />
+    <Compile Include="WhatsApp\CameraLoadedState.cs" />
+    <Compile Include="pages\CameraPage.cs" />
+    <Compile Include="WhatsApp\CameraSharingState.cs" />
+    <Compile Include="pages\ChangeDecriptionPage.cs" />
+    <Compile Include="pages\ChangeNumberEntryPage.cs" />
+    <Compile Include="pages\ChangeNumberNotifyPage.cs" />
+    <Compile Include="pages\ChangeNumberStartPage.cs" />
+    <Compile Include="pages\ChangeSubjectPage.cs" />
+    <Compile Include="WhatsApp\Channels.cs" />
+    <Compile Include="WhatsApp\CharGroupingExtensions.cs" />
+    <Compile Include="WhatsApp\CharGroupingFromSystem.cs" />
+    <Compile Include="WhatsApp\CharGroupingImpl.cs" />
+    <Compile Include="WhatsApp\CharGroupings.cs" />
+    <Compile Include="WhatsApp\CharGroupingsLegacy.cs" />
+    <Compile Include="pages\ChatBackupPage.cs" />
+    <Compile Include="WhatsApp\ChatInfoTabHeader.cs" />
+    <Compile Include="WhatsApp\ChatInputBar.cs" />
+    <Compile Include="WhatsApp\ChatInputBarViewModel.cs" />
+    <Compile Include="WhatsApp\ChatItemControl.cs" />
+    <Compile Include="WhatsApp\ChatItemViewModelCollection.cs" />
+    <Compile Include="WhatsApp\ChatListControl.cs" />
+    <Compile Include="WhatsApp\ChatListControlLB.cs" />
+    <Compile Include="pages\ChatMediaPage.cs" />
+    <Compile Include="pages\ChatPage.cs" />
+    <Compile Include="WhatsApp\ChatPageHelper.cs" />
+    <Compile Include="WhatsApp\ChatPageTitlePanel.cs" />
+    <Compile Include="WhatsApp\ChatPageTitlePanelWrapper.cs" />
+    <Compile Include="WhatsApp\ChatPageWrapper.cs" />
+    <Compile Include="pages\ChatSearchPage.cs" />
+    <Compile Include="pages\ChatSettingsPage.cs" />
+    <Compile Include="WhatsApp\ChatsListTabData.cs" />
+    <Compile Include="pages\ClockSkewPage.cs" />
+    <Compile Include="pages\CloudBackupCheckPage.cs" />
+    <Compile Include="WhatsApp\CloudRestoreProgressControl.cs" />
+    <Compile Include="WhatsApp\ColorIcon.cs" />
+    <Compile Include="pages\CommonGroupsPage.cs" />
+    <Compile Include="WhatsApp\CommonOps\AccountManagement.cs" />
+    <Compile Include="WhatsApp\CommonOps\AddContact.cs" />
+    <Compile Include="WhatsApp\CommonOps\AnnouncementGroupPicker.cs" />
+    <Compile Include="WhatsApp\CommonOps\BlockContact.cs" />
+    <Compile Include="WhatsApp\CommonOps\CallContact.cs" />
+    <Compile Include="WhatsApp\CommonOps\ClearAllChatPicker.cs" />
+    <Compile Include="WhatsApp\CommonOps\ClearChatPicker.cs" />
+    <Compile Include="WhatsApp\CommonOps\GroupAminOps.cs" />
+    <Compile Include="WhatsApp\CommonOps\GroupRestrictionPicker.cs" />
+    <Compile Include="WhatsApp\CommonOps\MuteChatPicker.cs" />
+    <Compile Include="WhatsApp\CommonOps\Nag.cs" />
+    <Compile Include="WhatsApp\CommonOps\PinToStart.cs" />
+    <Compile Include="WhatsApp\CommonOps\PlayAudioMessage.cs" />
+    <Compile Include="WhatsApp\CommonOps\PlayAudioMessage7.cs" />
+    <Compile Include="WhatsApp\CommonOps\PlayAudioMessage8.cs" />
+    <Compile Include="WhatsApp\CommonOps\SaveIncomingMediaPicker.cs" />
+    <Compile Include="WhatsApp\CommonOps\SendMessage.cs" />
+    <Compile Include="WhatsApp\CommonOps\SetChatPhoto.cs" />
+    <Compile Include="WhatsApp\CommonOps\TakePicture.cs" />
+    <Compile Include="WhatsApp\CommonOps\ViewMessage.cs" />
+    <Compile Include="WhatsApp\CompatibilityShims\JumpListItemBackgroundConverter.cs" />
+    <Compile Include="WhatsApp\CompatibilityShims\JumpListItemForegroundConverter.cs" />
+    <Compile Include="WhatsApp\CompatibilityShims\LongListSelector.cs" />
+    <Compile Include="WhatsApp\ConnectionHelp.cs" />
+    <Compile Include="WhatsApp\ContactCallLogItemViewModel.cs" />
+    <Compile Include="WhatsApp\ContactCallLogView.cs" />
+    <Compile Include="WhatsApp\ContactDataViewModel.cs" />
+    <Compile Include="pages\ContactInfoPage.cs" />
+    <Compile Include="pages\ContactInfoPageData.cs" />
+    <Compile Include="WhatsApp\ContactInfoPageViewModel.cs" />
+    <Compile Include="WhatsApp\ContactInfoTabView.cs" />
+    <Compile Include="WhatsApp\ContactInfoTabViewModel.cs" />
+    <Compile Include="WhatsApp\ContactMessageViewModel.cs" />
+    <Compile Include="WhatsApp\ContactMessageViewPanel.cs" />
+    <Compile Include="pages\ContactsPage.cs" />
+    <Compile Include="WhatsApp\ContactsPagePivotHeader.cs" />
+    <Compile Include="pages\ContactsSettingsPage.cs" />
+    <Compile Include="WhatsApp\ContactSupportHelper.cs" />
+    <Compile Include="pages\ContactSupportOutagePage.cs" />
+    <Compile Include="WhatsApp\ContactSupportOutagePageViewModel.cs" />
+    <Compile Include="WhatsApp\ContactSupportPage.cs" />
+    <Compile Include="WhatsApp\ContactToIcon.cs" />
+    <Compile Include="WhatsApp\ContactToName.cs" />
+    <Compile Include="WhatsApp\ContactVCardExtensions.cs" />
+    <Compile Include="pages\ContactVCardPage.cs" />
+    <Compile Include="WhatsApp\Controls\EmojiPopup.cs" />
+    <Compile Include="WhatsApp\Controls\InvertedLongListMultiSelector.cs" />
+    <Compile Include="WhatsApp\Controls\LongListMultiSelector.cs" />
+    <Compile Include="WhatsApp\Controls\LongListMultiSelectorItem.cs" />
+    <Compile Include="WhatsApp\Controls\SingleSelectionChangedArgs.cs" />
+    <Compile Include="WhatsApp\Controls\SmallDownloadButton.cs" />
+    <Compile Include="WhatsApp\Controls\TextAsWebControl.cs" />
+    <Compile Include="WhatsApp\Controls\VisualTreeExtensions.cs" />
+    <Compile Include="WhatsApp\ConversationToContextMenuConverter.cs" />
+    <Compile Include="WhatsApp\CountryInfoViewModel.cs" />
+    <Compile Include="WhatsApp\CreateFavorites.cs" />
+    <Compile Include="pages\CustomTonesPage.cs" />
+    <Compile Include="WhatsApp\CustomTonesPageViewModel.cs" />
+    <Compile Include="WhatsApp\DataTemplateSelector.cs" />
+    <Compile Include="WhatsApp\DateDividerViewModel.cs" />
+    <Compile Include="WhatsApp\DeepLinkData.cs" />
+    <Compile Include="pages\DeleteAccountPage.cs" />
+    <Compile Include="WhatsApp\DeviceSpecificSampleRates.cs" />
+    <Compile Include="WhatsApp\DistanceToStringConverter.cs" />
+    <Compile Include="WhatsApp\DocsTabView.cs" />
+    <Compile Include="WhatsApp\DocumentMessageViewModel.cs" />
+    <Compile Include="WhatsApp\DocumentMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\DrawingAction.cs" />
+    <Compile Include="WhatsApp\DrawingArgs.cs" />
+    <Compile Include="pages\EditParticipantsPage.cs" />
+    <Compile Include="WhatsApp\EmailChatHistory.cs" />
+    <Compile Include="WhatsApp\EmailChatHistoryUWP.cs" />
+    <Compile Include="WhatsApp\EmojiKeyboard.cs" />
+    <Compile Include="WhatsApp\EmojiKeyboardViewModel.cs" />
+    <Compile Include="WhatsApp\EmojiModel.cs" />
+    <Compile Include="WhatsApp\EmojiPicker.cs" />
+    <Compile Include="WhatsApp\EmojiPickerModel.cs" />
+    <Compile Include="WhatsApp\EmojiPickerViewModel.cs" />
+    <Compile Include="WhatsApp\EmojiRow.cs" />
+    <Compile Include="WhatsApp\EmojiRowContext.cs" />
+    <Compile Include="WhatsApp\EmojiTextBox.cs" />
+    <Compile Include="WhatsApp\EmojiTextBoxViewModel.cs" />
+    <Compile Include="WhatsApp\EmojiViewModelGroup.cs" />
+    <Compile Include="WhatsApp\EncodeThreadAudioRecordingScheduler.cs" />
+    <Compile Include="WhatsApp\EULA.cs" />
+    <Compile Include="WhatsApp\ExtendedTextInputData.cs" />
+    <Compile Include="WhatsApp\ExternalImagePicker.cs" />
+    <Compile Include="WhatsApp\ExternalShare.cs" />
+    <Compile Include="WhatsApp\ExternalShare81.cs" />
+    <Compile Include="WhatsApp\ExternalShareException.cs" />
+    <Compile Include="WhatsApp\ExternalShareUtils.cs" />
+    <Compile Include="WhatsApp\ExternalSharingState.cs" />
+    <Compile Include="WhatsApp\FavoriteList.cs" />
+    <Compile Include="WhatsApp\FileMessageViewModelBase.cs" />
+    <Compile Include="WhatsApp\FlowPanel.cs" />
+    <Compile Include="WhatsApp\FlyoutCommand.cs" />
+    <Compile Include="pages\FontSizeSettingsPage.cs" />
+    <Compile Include="pages\GdprAgreementPage.cs" />
+    <Compile Include="WhatsApp\GdprAgreementPageViewModel.cs" />
+    <Compile Include="pages\GdprReportPage.cs" />
+    <Compile Include="WhatsApp\GdprReportPageViewModel.cs" />
+    <Compile Include="WhatsApp\GifArgs.cs" />
+    <Compile Include="WhatsApp\GifPicker.cs" />
+    <Compile Include="pages\GifSendingPage.cs" />
+    <Compile Include="WhatsApp\GifSharingState.cs" />
+    <Compile Include="WhatsApp\GlobalProgressIndicator.cs" />
+    <Compile Include="WhatsApp\GridMultiSelectorItemToContextMenuConverter.cs" />
+    <Compile Include="pages\GroupCallInfoPage.cs" />
+    <Compile Include="WhatsApp\GroupCallInfoPageViewModel.cs" />
+    <Compile Include="pages\GroupCreationPage.cs" />
+    <Compile Include="pages\GroupInfoPage.cs" />
+    <Compile Include="pages\GroupInviteLinkPage.cs" />
+    <Compile Include="WhatsApp\GroupParticipantLogItemControl.cs" />
+    <Compile Include="pages\GroupParticipantPickerPage.cs" />
+    <Compile Include="pages\GroupSettingsPage.cs" />
+    <Compile Include="pages\GroupSettingsPageViewModel.cs" />
+    <Compile Include="WhatsApp\GroupsListTabData.cs" />
+    <Compile Include="WhatsApp\HistoryRepair.cs" />
+    <Compile Include="WhatsApp\HistoryRestore.cs" />
+    <Compile Include="WhatsApp\IChatListControl.cs" />
+    <Compile Include="WhatsApp\IconUtils.cs" />
+    <Compile Include="WhatsApp\IExternalShare.cs" />
+    <Compile Include="WhatsApp\IInAppFloatingBannerView.cs" />
+    <Compile Include="WhatsApp\IItemExtensions.cs" />
+    <Compile Include="WhatsApp\ImageBrushExtensions.cs" />
+    <Compile Include="WhatsApp\ImageEditControl.cs" />
+    <Compile Include="pages\ImageEditPage.cs" />
+    <Compile Include="WhatsApp\ImageMessageViewModel.cs" />
+    <Compile Include="WhatsApp\ImageMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\ImageSlideViewControl.cs" />
+    <Compile Include="WhatsApp\ImageUtils.cs" />
+    <Compile Include="WhatsApp\ImageViewControl.cs" />
+    <Compile Include="WhatsApp\IMessageListControl.cs" />
+    <Compile Include="WhatsApp\InAppFloatingBanner.cs" />
+    <Compile Include="WhatsApp\InAppFloatingBannerView.cs" />
+    <Compile Include="WhatsApp\InAppFloatingBannerViewModel.cs" />
+    <Compile Include="WhatsApp\InAppRinger.cs" />
+    <Compile Include="WhatsApp\InAppToast.cs" />
+    <Compile Include="WhatsApp\InAppVoipBanner.cs" />
+    <Compile Include="WhatsApp\InAppVoipBannerView.cs" />
+    <Compile Include="WhatsApp\IndividualMessageDeliveryState.cs" />
+    <Compile Include="WhatsApp\InlineVideoMessageViewModel.cs" />
+    <Compile Include="WhatsApp\InlineVideoMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\ItemControlBase.cs" />
+    <Compile Include="WhatsApp\ItemQuickSearchControl.cs" />
+    <Compile Include="WhatsApp\ItemSearch.cs" />
+    <Compile Include="WhatsApp\IWACamera.cs" />
+    <Compile Include="WhatsApp\IWaInputBar.cs" />
+    <Compile Include="pages\JidItemPickerPage.cs" />
+    <Compile Include="WhatsApp\JidNameControl.cs" />
+    <Compile Include="WhatsApp\LargeEmojiMessageViewModel.cs" />
+    <Compile Include="WhatsApp\LargeEmojiMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\LinkPreviewPanel.cs" />
+    <Compile Include="WhatsApp\LinksTabView.cs" />
+    <Compile Include="pages\ListPickerPage.cs" />
+    <Compile Include="WhatsApp\ListPickerPageViewModel.cs" />
+    <Compile Include="WhatsApp\ListTab.cs" />
+    <Compile Include="WhatsApp\ListTabData.cs" />
+    <Compile Include="WhatsApp\ListTabSearchResult.cs" />
+    <Compile Include="WhatsApp\LiveLocationMessageViewModel.cs" />
+    <Compile Include="WhatsApp\LiveLocationMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\LiveLocationPin.cs" />
+    <Compile Include="WhatsApp\LiveLocationSettingsModel.cs" />
+    <Compile Include="pages\LiveLocationSettingsPage.cs" />
+    <Compile Include="WhatsApp\LiveLocationView.cs" />
+    <Compile Include="WhatsApp\Localizable.cs" />
+    <Compile Include="WhatsApp\LocalizableAppBarMenuItem.cs" />
+    <Compile Include="WhatsApp\LocationMessageViewModel.cs" />
+    <Compile Include="WhatsApp\LocationMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\LocationParticipantControl.cs" />
+    <Compile Include="WhatsApp\LocationView.cs" />
+    <Compile Include="WhatsApp\LoginBanned.cs" />
+    <Compile Include="WhatsApp\LoginInvalid.cs" />
+    <Compile Include="WhatsApp\LongMessageSplitter.cs" />
+    <Compile Include="WhatsApp\LowSpaceWarning.cs" />
+    <Compile Include="WhatsApp\MapControl.cs" />
+    <Compile Include="WhatsApp\MapDraggablePin.cs" />
+    <Compile Include="WhatsApp\MapImplBase.cs" />
+    <Compile Include="WhatsApp\MapImplementation.cs" />
+    <Compile Include="WhatsApp\MapMode.cs" />
+    <Compile Include="WhatsApp\MapMyLocation.cs" />
+    <Compile Include="WhatsApp\MapPlacePin.cs" />
+    <Compile Include="WhatsApp\MapPoint.cs" />
+    <Compile Include="WhatsApp\MapPointStyle.cs" />
+    <Compile Include="WhatsApp\MapSign.cs" />
+    <Compile Include="WhatsApp\MediaElementWrapper.cs" />
+    <Compile Include="pages\MediaGalleryPage.cs" />
+    <Compile Include="WhatsApp\MediaLibraryExtensions.cs" />
+    <Compile Include="WhatsApp\MediaLibrarySpecialFolders.cs" />
+    <Compile Include="WhatsApp\MediaListWithName.cs" />
+    <Compile Include="WhatsApp\MediaMultiSelector.cs" />
+    <Compile Include="pages\MediaPickerAlbumPage.cs" />
+    <Compile Include="pages\MediaPickerPage.cs" />
+    <Compile Include="WhatsApp\MediaPickerState.cs" />
+    <Compile Include="WhatsApp\MediaPlayerHelper.cs" />
+    <Compile Include="WhatsApp\MediaSharingArgs.cs" />
+    <Compile Include="WhatsApp\MediaSharingState.cs" />
+    <Compile Include="WhatsApp\MediaTabView.cs" />
+    <Compile Include="WhatsApp\MentionsListControl.cs" />
+    <Compile Include="WhatsApp\MessageBoxControl.cs" />
+    <Compile Include="WhatsApp\MessageBubble.cs" />
+    <Compile Include="WhatsApp\MessageBubbleContainer.cs" />
+    <Compile Include="WhatsApp\MessageDeliveryState.cs" />
+    <Compile Include="WhatsApp\MessageDeliveryStateItemControl.cs" />
+    <Compile Include="pages\MessageDetailPage.cs" />
+    <Compile Include="WhatsApp\MessageDetailPageViewModel.cs" />
+    <Compile Include="WhatsApp\MessageFooterPanel.cs" />
+    <Compile Include="WhatsApp\MessageListControl.cs" />
+    <Compile Include="WhatsApp\MessageMenu.cs" />
+    <Compile Include="WhatsApp\MessageResultItemControl.cs" />
+    <Compile Include="WhatsApp\MessageViewModel.cs" />
+    <Compile Include="WhatsApp\MessageViewModelCollection.cs" />
+    <Compile Include="WhatsApp\MessageViewPanel.cs" />
+    <Compile Include="WhatsApp\MpnsForeground.cs" />
+    <Compile Include="WhatsApp\MpnsForegroundExtensions.cs" />
+    <Compile Include="WhatsApp\MultiParticipantsMessageDeliveryState.cs" />
+    <Compile Include="pages\MyStatusPage.cs" />
+    <Compile Include="WhatsApp\NativeMediaPickerState.cs" />
+    <Compile Include="WhatsApp\NavUtils.cs" />
+    <Compile Include="pages\NotificationSettingsPage.cs" />
+    <Compile Include="WhatsApp\NotificationSettingsPageViewModel.cs" />
+    <Compile Include="WhatsApp\OptimisticUpload.cs" />
+    <Compile Include="WhatsApp\OptimisticUploadExtensions.cs" />
+    <Compile Include="WhatsApp\OptimisticUploadManager.cs" />
+    <Compile Include="WhatsApp\OpusAudioRecording.cs" />
+    <Compile Include="pages\OwnStatusesPage.cs" />
+    <Compile Include="WhatsApp\OwnStatusList.cs" />
+    <Compile Include="WhatsApp\PageArgs.cs" />
+    <Compile Include="WhatsApp\Pages\ChatCountItemControl.cs" />
+    <Compile Include="WhatsApp\Pages\ChatCountsPage.cs" />
+    <Compile Include="WhatsApp\Pages\IdentityVerificationPage.cs" />
+    <Compile Include="WhatsApp\Pages\VideoPlayerPage.cs" />
+    <Compile Include="WhatsApp\Pages\ViewLicensePage.cs" />
+    <Compile Include="WhatsApp\PageTitlePanel.cs" />
+    <Compile Include="WhatsApp\PageTransitionAnimation.cs" />
+    <Compile Include="WhatsApp\PageWrapper.cs" />
+    <Compile Include="WhatsApp\ParallaxLongListSelector.cs" />
+    <Compile Include="WhatsApp\PaymentMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\PaymentsHelperUi.cs" />
+    <Compile Include="WhatsApp\PcmAudioRecording.cs" />
+    <Compile Include="WhatsApp\PhoneContactItemViewModel.cs" />
+    <Compile Include="WhatsApp\PhoneContactJidItemViewModel.cs" />
+    <Compile Include="WhatsApp\PhoneContactPickerPage.cs" />
+    <Compile Include="WhatsApp\PhoneNumberEntry.cs" />
+    <Compile Include="WhatsApp\PhoneNumberEntryControl.cs" />
+    <Compile Include="WhatsApp\PhoneNumberEntryException.cs" />
+    <Compile Include="WhatsApp\PickerGroupType.cs" />
+    <Compile Include="pages\PicturePreviewPage.cs" />
+    <Compile Include="WhatsApp\PivotHeaderConverter.cs" />
+    <Compile Include="WhatsApp\PivotWithPreview.cs" />
+    <Compile Include="WhatsApp\PlaybackSlider.cs" />
+    <Compile Include="WhatsApp\PopupManager.cs" />
+    <Compile Include="WhatsApp\PrivacySettingItem.cs" />
+    <Compile Include="pages\PrivacySettingsPage.cs" />
+    <Compile Include="pages\ProfilePage.cs" />
+    <Compile Include="pages\ProfilePictureChooserPage.cs" />
+    <Compile Include="pages\PsaInfoPage.cs" />
+    <Compile Include="WhatsApp\PttDispatchMediaPlayer.cs" />
+    <Compile Include="WhatsApp\PttMessageViewModel.cs" />
+    <Compile Include="WhatsApp\PttPlaybackWrapper.cs" />
+    <Compile Include="WhatsApp\PushNameEntry.cs" />
+    <Compile Include="WhatsApp\QrScanner.cs" />
+    <Compile Include="WhatsApp\QuotedMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\ReceiptViewModel.cs" />
+    <Compile Include="WhatsApp\RecipientItemControl.cs" />
+    <Compile Include="WhatsApp\RecipientItemViewModel.cs" />
+    <Compile Include="pages\RecipientListPage.cs" />
+    <Compile Include="WhatsApp\RegexSearch.cs" />
+    <Compile Include="WhatsApp\ResolutionHelper.cs" />
+    <Compile Include="WhatsApp\RevokedMessageViewModel.cs" />
+    <Compile Include="WhatsApp\RevokedMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\RichTextBlock.cs" />
+    <Compile Include="WhatsApp\RoundButton.cs" />
+    <Compile Include="WhatsApp\RTLPhoneNumberFormatter.cs" />
+    <Compile Include="WhatsApp\SearchMethodBase.cs" />
+    <Compile Include="pages\SecuritySettingsPage.cs" />
+    <Compile Include="WhatsApp\SegmentBar.cs" />
+    <Compile Include="WhatsApp\SegmentedCircle.cs" />
+    <Compile Include="WhatsApp\SelectableMessageListItem.cs" />
+    <Compile Include="pages\SelectAlertPage.cs" />
+    <Compile Include="WhatsApp\SelectedItemToAccentBrushConverter.cs" />
+    <Compile Include="WhatsApp\SelectedRecipientItemControl.cs" />
+    <Compile Include="WhatsApp\ServerStatus.cs" />
+    <Compile Include="pages\SettingsPage.cs" />
+    <Compile Include="WhatsApp\SetupTwoFactor.cs" />
+    <Compile Include="pages\SetWallpaperPage.cs" />
+    <Compile Include="pages\ShareContactPage.cs" />
+    <Compile Include="WhatsApp\ShareContactPageViewModel.cs" />
+    <Compile Include="WhatsApp\ShareContent.cs" />
+    <Compile Include="pages\ShareLocationPage.cs" />
+    <Compile Include="WhatsApp\ShareOptions.cs" />
+    <Compile Include="WhatsApp\SimpleSound.cs" />
+    <Compile Include="WhatsApp\SimpleSoundBase`1.cs" />
+    <Compile Include="WhatsApp\SIPStates.cs" />
+    <Compile Include="WhatsApp\SortedLocaleGrouping.cs" />
+    <Compile Include="WhatsApp\StarredMessageBubbleContainer.cs" />
+    <Compile Include="pages\StarredMessagesPage.cs" />
+    <Compile Include="WhatsApp\StatusItemControl.cs" />
+    <Compile Include="WhatsApp\StatusPrivacySettingPickerWrapper.cs" />
+    <Compile Include="pages\StatusPrivacySettingsPage.cs" />
+    <Compile Include="WhatsApp\StatusReadRecipientViewModel.cs" />
+    <Compile Include="WhatsApp\StatusViewProgressBar.cs" />
+    <Compile Include="WhatsApp\SteppedSliderControl.cs" />
+    <Compile Include="WhatsApp\StepProgressBar.cs" />
+    <Compile Include="WhatsApp\StickerManager.cs" />
+    <Compile Include="WhatsApp\StickerMessageViewModel.cs" />
+    <Compile Include="WhatsApp\StickerMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\StickerPicker.cs" />
+    <Compile Include="WhatsApp\StickerPickerItem.cs" />
+    <Compile Include="WhatsApp\StickerPickerItemViewModel.cs" />
+    <Compile Include="WhatsApp\StickerPickerViewModel.cs" />
+    <Compile Include="WhatsApp\StickerRequestInfo.cs" />
+    <Compile Include="WhatsApp\StickerRow.cs" />
+    <Compile Include="WhatsApp\StickerRowContext.cs" />
+    <Compile Include="WhatsApp\Storyboarder.cs" />
+    <Compile Include="WhatsApp\SupportSearchResult.cs" />
+    <Compile Include="WhatsApp\SystemMessageViewModel.cs" />
+    <Compile Include="WhatsApp\SystemMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\SysTrayHelper.cs" />
+    <Compile Include="WhatsApp\TabHeaderControl.cs" />
+    <Compile Include="WhatsApp\Test\DeprecationTestPage.cs" />
+    <Compile Include="WhatsApp\Test\ServerPropertiesDebugPage.cs" />
+    <Compile Include="WhatsApp\TextBoxInputInterpreter.cs" />
+    <Compile Include="WhatsApp\TextMessageViewModel.cs" />
+    <Compile Include="WhatsApp\TextMessageViewPanel.cs" />
+    <Compile Include="pages\TextStatusComposePage.cs" />
+    <Compile Include="WhatsApp\TextStatusInputBar.cs" />
+    <Compile Include="WhatsApp\TextStatusInputBarViewModel.cs" />
+    <Compile Include="WhatsApp\TextTrimmingControl.cs" />
+    <Compile Include="WhatsApp\TextTrimmingControl2.cs" />
+    <Compile Include="WhatsApp\ThumbnailOverlays.cs" />
+    <Compile Include="WhatsApp\TimerBasedAudioRecording.cs" />
+    <Compile Include="WhatsApp\TimeSpentManager.cs" />
+    <Compile Include="WhatsApp\TimeSpentSessionData.cs" />
+    <Compile Include="WhatsApp\ToCapsConverter.cs" />
+    <Compile Include="WhatsApp\ToLowerConverter.cs" />
+    <Compile Include="pages\TonePickerPage.cs" />
+    <Compile Include="WhatsApp\TonePickerPageViewModel.cs" />
+    <Compile Include="WhatsApp\TrayItemViewModel.cs" />
+    <Compile Include="WhatsApp\TrieSearch.cs" />
+    <Compile Include="pages\TwoFactorPage.cs" />
+    <Compile Include="WhatsApp\UIUtils.cs" />
+    <Compile Include="WhatsApp\UnreadDividerViewModel.cs" />
+    <Compile Include="WhatsApp\UnreadDividerViewPanel.cs" />
+    <Compile Include="WhatsApp\UnsupportedMessageViewModel.cs" />
+    <Compile Include="WhatsApp\UnsupportedMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\UpdateVersion.cs" />
+    <Compile Include="WhatsApp\UriShareContent.cs" />
+    <Compile Include="WhatsApp\UrlMessageViewModel.cs" />
+    <Compile Include="WhatsApp\UrlMessageViewPanel.cs" />
+    <Compile Include="WhatsApp\UserItemControl.cs" />
+    <Compile Include="WhatsApp\UTF32Utils.cs" />
+    <Compile Include="WhatsApp\UtilsFrontend\IVideoPlaybackDownloadCallbacks.cs" />
+    <Compile Include="WhatsApp\UtilsFrontend\VideoOpenMode.cs" />
+    <Compile Include="WhatsApp\UtilsFrontend\VideoPlayback.cs" />
+    <Compile Include="WhatsApp\ValidateCode.cs" />
+    <Compile Include="WhatsApp\VerifiedNameRules.cs" />
+    <Compile Include="WhatsApp\verify\EnterCode.cs" />
+    <Compile Include="WhatsApp\verify\EnterSecurityCode.cs" />
+    <Compile Include="WhatsApp\verify\RegResultExtensions.cs" />
+    <Compile Include="WhatsApp\verify\SendCode.cs" />
+    <Compile Include="WhatsApp\verify\SMSCodeHelper.cs" />
+    <Compile Include="WhatsApp\verify\VerifyStart.cs" />
+    <Compile Include="WhatsApp\VideoMessageViewModel.cs" />
+    <Compile Include="pages\VideoRecorderPage.cs" />
+    <Compile Include="pages\ViewPicturePage.cs" />
+    <Compile Include="WhatsApp\VisualRequestEventArgs.cs" />
+    <Compile Include="WhatsApp\VoipStackAudioRecording.cs" />
+    <Compile Include="pages\WaAdminPage.cs" />
+    <Compile Include="WhatsApp\WaAdminPageViewModel.cs" />
+    <Compile Include="WhatsApp\WaAnimations.cs" />
+    <Compile Include="WhatsApp\WaAudioRouting.cs" />
+    <Compile Include="WhatsApp\WaAudioRouting8.cs" />
+    <Compile Include="WhatsApp\WaCallableContactsListTabData.cs" />
+    <Compile Include="WhatsApp\WACamera.cs" />
+    <Compile Include="WhatsApp\WaContactsListTabData.cs" />
+    <Compile Include="WhatsApp\WaIcons.cs" />
+    <Compile Include="pages\WallpaperGalleryPickerPage.cs" />
+    <Compile Include="WhatsApp\WallpaperPanel.cs" />
+    <Compile Include="WhatsApp\WallpaperPreviewControl.cs" />
+    <Compile Include="WhatsApp\WallpaperPreviewForeground.cs" />
+    <Compile Include="pages\WallpaperPreviewPage.cs" />
+    <Compile Include="WhatsApp\WallpaperStore.cs" />
+    <Compile Include="WhatsApp\WaRichTextRendering.cs" />
+    <Compile Include="WhatsApp\WaSelfStatusItemControl.cs" />
+    <Compile Include="WhatsApp\WaStatusList.cs" />
+    <Compile Include="WhatsApp\WaStatusViewControl.cs" />
+    <Compile Include="pages\WaStatusViewPage.cs" />
+    <Compile Include="WhatsApp\WaViewModels\BroadcastEditRecipientsPageViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\BroadcastInfoPageViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\CallLogItemViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\CallScreenViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\ChatItemViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\ChatPageViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\EditParticipantsPageViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\GroupCreationPageViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\GroupParticipantLogItemViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\GroupParticipantsPageViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\GroupParticipantViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\JidItemViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\LiveLocationParticipantViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\MessageResultViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\MultiParticipantsChatInfoPageViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\MultiParticipantsChatViewModelBase.cs" />
+    <Compile Include="WhatsApp\WaViewModels\PageViewModelBase.cs" />
+    <Compile Include="WhatsApp\WaViewModels\ProfilePageViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\SelfStatusThreadViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\StatusItemViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\StatusThreadItemViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\UserViewModel.cs" />
+    <Compile Include="WhatsApp\WaViewModels\WaViewModelBase.cs" />
+    <Compile Include="WhatsApp\WavWriter.cs" />
+    <Compile Include="pages\WebPhotoPickerPage.cs" />
+    <Compile Include="pages\WebSessionsPage.cs" />
+    <Compile Include="WhatsApp\WhiteBlackImage.cs" />
+    <Compile Include="WhatsApp\Wp8Map.cs" />
+    <Compile Include="WhatsApp\ZoomableImageFrame.cs" />
+    <Compile Include="WhatsApp\ZoomBox.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\anim-check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\anim-frame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\anim-laptop.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\anim-phone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\anim-qr-blurred.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\anim-qr-normal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\anim-scan-check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\anim-scan-frame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\assets\dark\active-connections-chrome.png" />
+    <Content Include="Images\assets\dark\active-connections-edge.png" />
+    <Content Include="Images\assets\dark\active-connections-firefox.png" />
+    <Content Include="Images\assets\dark\active-connections-ie.png" />
+    <Content Include="Images\assets\dark\active-connections-opera.png" />
+    <Content Include="Images\assets\dark\active-connections-safari.png" />
+    <Content Include="Images\assets\dark\active-connections-unknown.png" />
+    <Content Include="Images\assets\dark\active-connections.png" />
+    <Content Include="Images\assets\dark\archive.png" />
+    <Content Include="Images\assets\dark\biz-badge-confirmed.png" />
+    <Content Include="Images\assets\dark\biz-badge-unknown.png" />
+    <Content Include="Images\assets\dark\biz-badge-verified.png" />
+    <Content Include="Images\assets\dark\biz-category.png" />
+    <Content Include="Images\assets\dark\biz-email.png" />
+    <Content Include="Images\assets\dark\biz-hours.png" />
+    <Content Include="Images\assets\dark\biz-info.png" />
+    <Content Include="Images\assets\dark\biz-insta.png" />
+    <Content Include="Images\assets\dark\biz-location.png" />
+    <Content Include="Images\assets\dark\biz-website.png" />
+    <Content Include="Images\assets\dark\bluetooth.png" />
+    <Content Include="Images\assets\dark\broadcast.png" />
+    <Content Include="Images\assets\dark\cancel.png" />
+    <Content Include="Images\assets\dark\chevron.png" />
+    <Content Include="Images\assets\dark\copy.png" />
+    <Content Include="Images\assets\dark\default-contact-icon-240x240.jpg" />
+    <Content Include="Images\assets\dark\default-contact-icon-240x480.jpg" />
+    <Content Include="Images\assets\dark\default-contact-icon-480x480.jpg" />
+    <Content Include="Images\assets\dark\default-contact-icon.png" />
+    <Content Include="Images\assets\dark\default-group-icon.png" />
+    <Content Include="Images\assets\dark\delete.png" />
+    <Content Include="Images\assets\dark\doc-list-file.png" />
+    <Content Include="Images\assets\dark\double-chevron.png" />
+    <Content Include="Images\assets\dark\emoji-activity.png" />
+    <Content Include="Images\assets\dark\emoji-back.png" />
+    <Content Include="Images\assets\dark\emoji-flags.png" />
+    <Content Include="Images\assets\dark\emoji-food.png" />
+    <Content Include="Images\assets\dark\emoji-nature.png" />
+    <Content Include="Images\assets\dark\emoji-objects.png" />
+    <Content Include="Images\assets\dark\emoji-people.png" />
+    <Content Include="Images\assets\dark\emoji-recent.png" />
+    <Content Include="Images\assets\dark\emoji-symbols.png" />
+    <Content Include="Images\assets\dark\emoji-travel.png" />
+    <Content Include="Images\assets\dark\encrypted.png" />
+    <Content Include="Images\assets\dark\exclude-check.png" />
+    <Content Include="Images\assets\dark\eye.png" />
+    <Content Include="Images\assets\dark\forward.png" />
+    <Content Include="Images\assets\dark\gdpr-report-icon.png" />
+    <Content Include="Images\assets\dark\handset.png" />
+    <Content Include="Images\assets\dark\illustration-no-starred.png" />
+    <Content Include="Images\assets\dark\include-check.png" />
+    <Content Include="Images\assets\dark\inline-100-check.png" />
+    <Content Include="Images\assets\dark\inline-100-clock.png" />
+    <Content Include="Images\assets\dark\inline-100-double-check.png" />
+    <Content Include="Images\assets\dark\inline-100-error.png" />
+    <Content Include="Images\assets\dark\inline-broadcast.png" />
+    <Content Include="Images\assets\dark\inline-check.png" />
+    <Content Include="Images\assets\dark\inline-clock.png" />
+    <Content Include="Images\assets\dark\inline-double-check.png" />
+    <Content Include="Images\assets\dark\inline-error.png" />
+    <Content Include="Images\assets\dark\inline-pin.png" />
+    <Content Include="Images\assets\dark\inline-status.png" />
+    <Content Include="Images\assets\dark\inputbar-attach.png" />
+    <Content Include="Images\assets\dark\inputbar-color.png" />
+    <Content Include="Images\assets\dark\inputbar-emoji.png" />
+    <Content Include="Images\assets\dark\inputbar-font-bryndan.png" />
+    <Content Include="Images\assets\dark\inputbar-font-georgia.png" />
+    <Content Include="Images\assets\dark\inputbar-font-norican.png" />
+    <Content Include="Images\assets\dark\inputbar-font-oswald.png" />
+    <Content Include="Images\assets\dark\inputbar-font-segue.png" />
+    <Content Include="Images\assets\dark\inputbar-keyboard.png" />
+    <Content Include="Images\assets\dark\inputbar-mic.png" />
+    <Content Include="Images\assets\dark\inputbar-send.png" />
+    <Content Include="Images\assets\dark\inputbar-status-emoji.png" />
+    <Content Include="Images\assets\dark\inputbar-status-send.png" />
+    <Content Include="Images\assets\dark\keypad-backspace.png" />
+    <Content Include="Images\assets\dark\keypad-custom.png" />
+    <Content Include="Images\assets\dark\keypad-emoji.png" />
+    <Content Include="Images\assets\dark\keypad-gif.png" />
+    <Content Include="Images\assets\dark\keypad-search.png" />
+    <Content Include="Images\assets\dark\keypad-sticker.png" />
+    <Content Include="Images\assets\dark\left-arrow.png" />
+    <Content Include="Images\assets\dark\log-out.png" />
+    <Content Include="Images\assets\dark\message.png" />
+    <Content Include="Images\assets\dark\mute-call.png" />
+    <Content Include="Images\assets\dark\mute.png" />
+    <Content Include="Images\assets\dark\phone-solid.png" />
+    <Content Include="Images\assets\dark\phone.png" />
+    <Content Include="Images\assets\dark\pin.png" />
+    <Content Include="Images\assets\dark\powered-by-bing.png" />
+    <Content Include="Images\assets\dark\recent-calls.png" />
+    <Content Include="Images\assets\dark\retry.png" />
+    <Content Include="Images\assets\dark\security-settings-padlock.png" />
+    <Content Include="Images\assets\dark\slide-to-cancel-mask-chrome.png" />
+    <Content Include="Images\assets\dark\slide-to-cancel-mask.png" />
+    <Content Include="Images\assets\dark\speaker.png" />
+    <Content Include="Images\assets\dark\status.png" />
+    <Content Include="Images\assets\dark\sticker-download.png" />
+    <Content Include="Images\assets\dark\sticker-error.png" />
+    <Content Include="Images\assets\dark\sticker-reaction1.png" />
+    <Content Include="Images\assets\dark\sticker-reaction2.png" />
+    <Content Include="Images\assets\dark\sticker-reaction3.png" />
+    <Content Include="Images\assets\dark\sticker-reaction4.png" />
+    <Content Include="Images\assets\dark\sticker-recent.png" />
+    <Content Include="Images\assets\dark\sticker-saved.png" />
+    <Content Include="Images\assets\dark\title-msg.png" />
+    <Content Include="Images\assets\dark\title-phone.png" />
+    <Content Include="Images\assets\dark\unencrypted.png" />
+    <Content Include="Images\assets\dark\unmute.png" />
+    <Content Include="Images\assets\dark\unpin.png" />
+    <Content Include="Images\assets\dark\video-solid.png" />
+    <Content Include="Images\assets\dark\video.png" />
+    <Content Include="Images\assets\dark\volume-mute.png" />
+    <Content Include="Images\assets\dark\volume.png" />
+    <Content Include="Images\assets\dark\wa-callscreen-icon.png" />
+    <Content Include="Images\assets\dark\whatsapp-icon.png" />
+    <Content Include="Images\assets\dark\whatsapp-icon2.png" />
+    <Content Include="Images\assets\light\active-connections.png" />
+    <Content Include="Images\assets\light\biz-badge-confirmed.png" />
+    <Content Include="Images\assets\light\biz-badge-unknown.png" />
+    <Content Include="Images\assets\light\biz-badge-verified.png" />
+    <Content Include="Images\assets\light\biz-category.png" />
+    <Content Include="Images\assets\light\biz-email.png" />
+    <Content Include="Images\assets\light\biz-hours.png" />
+    <Content Include="Images\assets\light\biz-info.png" />
+    <Content Include="Images\assets\light\biz-insta.png" />
+    <Content Include="Images\assets\light\biz-location.png" />
+    <Content Include="Images\assets\light\biz-website.png" />
+    <Content Include="Images\assets\light\cancel.png" />
+    <Content Include="Images\assets\light\chevron.png" />
+    <Content Include="Images\assets\light\default-contact-icon-240x240.jpg" />
+    <Content Include="Images\assets\light\default-contact-icon-240x480.jpg" />
+    <Content Include="Images\assets\light\default-contact-icon-480x480.jpg" />
+    <Content Include="Images\assets\light\default-contact-icon.png" />
+    <Content Include="Images\assets\light\default-group-icon.png" />
+    <Content Include="Images\assets\light\doc-list-file.png" />
+    <Content Include="Images\assets\light\double-chevron.png" />
+    <Content Include="Images\assets\light\emoji-activity.png" />
+    <Content Include="Images\assets\light\emoji-back.png" />
+    <Content Include="Images\assets\light\emoji-flags.png" />
+    <Content Include="Images\assets\light\emoji-food.png" />
+    <Content Include="Images\assets\light\emoji-nature.png" />
+    <Content Include="Images\assets\light\emoji-objects.png" />
+    <Content Include="Images\assets\light\emoji-people.png" />
+    <Content Include="Images\assets\light\emoji-recent.png" />
+    <Content Include="Images\assets\light\emoji-search.png" />
+    <Content Include="Images\assets\light\emoji-symbols.png" />
+    <Content Include="Images\assets\light\emoji-travel.png" />
+    <Content Include="Images\assets\light\encrypted.png" />
+    <Content Include="Images\assets\light\exclude-check.png" />
+    <Content Include="Images\assets\light\gdpr-report-icon.png" />
+    <Content Include="Images\assets\light\illustration-no-starred.png" />
+    <Content Include="Images\assets\light\include-check.png" />
+    <Content Include="Images\assets\light\inline-check.png" />
+    <Content Include="Images\assets\light\inline-clock.png" />
+    <Content Include="Images\assets\light\inline-double-check.png" />
+    <Content Include="Images\assets\light\inline-error.png" />
+    <Content Include="Images\assets\light\inline-status.png" />
+    <Content Include="Images\assets\light\inputbar-attach.png" />
+    <Content Include="Images\assets\light\inputbar-emoji.png" />
+    <Content Include="Images\assets\light\inputbar-keyboard.png" />
+    <Content Include="Images\assets\light\inputbar-mic.png" />
+    <Content Include="Images\assets\light\inputbar-send.png" />
+    <Content Include="Images\assets\light\keypad-cancel.png" />
+    <Content Include="Images\assets\light\keypad-emoji.png" />
+    <Content Include="Images\assets\light\keypad-gif.png" />
+    <Content Include="Images\assets\light\keypad-search.png" />
+    <Content Include="Images\assets\light\keypad-sticker.png" />
+    <Content Include="Images\assets\light\left-arrow.png" />
+    <Content Include="Images\assets\light\powered-by-bing.png" />
+    <Content Include="Images\assets\light\retry.png" />
+    <Content Include="Images\assets\light\security-settings-padlock.png" />
+    <Content Include="Images\assets\light\slide-to-cancel-mask-chrome.png" />
+    <Content Include="Images\assets\light\slide-to-cancel-mask.png" />
+    <Content Include="Images\assets\light\status.png" />
+    <Content Include="Images\assets\light\sticker-download.png" />
+    <Content Include="Images\assets\light\sticker-error.png" />
+    <Content Include="Images\assets\light\sticker-reaction1.png" />
+    <Content Include="Images\assets\light\sticker-reaction2.png" />
+    <Content Include="Images\assets\light\sticker-reaction3.png" />
+    <Content Include="Images\assets\light\sticker-reaction4.png" />
+    <Content Include="Images\assets\light\sticker-recent.png" />
+    <Content Include="Images\assets\light\sticker-saved.png" />
+    <Content Include="Images\assets\light\unencrypted.png" />
+    <Content Include="Images\assets\notheme\add.png" />
+    <Content Include="Images\assets\notheme\attach-audio.png" />
+    <Content Include="Images\assets\notheme\attach-camera.png" />
+    <Content Include="Images\assets\notheme\attach-contact.png" />
+    <Content Include="Images\assets\notheme\attach-doc.png" />
+    <Content Include="Images\assets\notheme\attach-location.png" />
+    <Content Include="Images\assets\notheme\attach-picture.png" />
+    <Content Include="Images\assets\notheme\attach-video.png" />
+    <Content Include="Images\assets\notheme\attach.png" />
+    <Content Include="Images\assets\notheme\change-num-phone.png" />
+    <Content Include="Images\assets\notheme\check.png" />
+    <Content Include="Images\assets\notheme\doc-list-doc.png" />
+    <Content Include="Images\assets\notheme\doc-list-pdf.png" />
+    <Content Include="Images\assets\notheme\doc-list-ppt.png" />
+    <Content Include="Images\assets\notheme\doc-list-xls.png" />
+    <Content Include="Images\assets\notheme\emoji.png" />
+    <Content Include="Images\assets\notheme\encrypted-message.png" />
+    <Content Include="Images\assets\notheme\forward-arrow.png" />
+    <Content Include="Images\assets\notheme\gdpr-tos-bg.png" />
+    <Content Include="Images\assets\notheme\icon-livelocation.png" />
+    <Content Include="Images\assets\notheme\icon_verified.png" />
+    <Content Include="Images\assets\notheme\inline-audio.png" />
+    <Content Include="Images\assets\notheme\inline-blue-checks.png" />
+    <Content Include="Images\assets\notheme\inline-blue-mic.png" />
+    <Content Include="Images\assets\notheme\inline-contact.png" />
+    <Content Include="Images\assets\notheme\inline-doc.png" />
+    <Content Include="Images\assets\notheme\inline-gif.png" />
+    <Content Include="Images\assets\notheme\inline-green-mic.png" />
+    <Content Include="Images\assets\notheme\inline-livelocation-white.png" />
+    <Content Include="Images\assets\notheme\inline-location.png" />
+    <Content Include="Images\assets\notheme\inline-mic.png" />
+    <Content Include="Images\assets\notheme\inline-mute.png" />
+    <Content Include="Images\assets\notheme\inline-picture.png" />
+    <Content Include="Images\assets\notheme\inline-revoke-white.png" />
+    <Content Include="Images\assets\notheme\inline-sticker.png" />
+    <Content Include="Images\assets\notheme\inline-video.png" />
+    <Content Include="Images\assets\notheme\inputbar-mic-red.png" />
+    <Content Include="Images\assets\notheme\keyboard.png" />
+    <Content Include="Images\assets\notheme\link-icon.png" />
+    <Content Include="Images\assets\notheme\mic-black.png" />
+    <Content Include="Images\assets\notheme\mic-red.png" />
+    <Content Include="Images\assets\notheme\mic-subtle.png" />
+    <Content Include="Images\assets\notheme\mic-white.png" />
+    <Content Include="Images\assets\notheme\msgbubble-doc-icon.png" />
+    <Content Include="Images\assets\notheme\msgbubble-file-icon.png" />
+    <Content Include="Images\assets\notheme\msgbubble-pdf-icon.png" />
+    <Content Include="Images\assets\notheme\msgbubble-ppt-icon.png" />
+    <Content Include="Images\assets\notheme\msgbubble-xls-icon.png" />
+    <Content Include="Images\assets\notheme\payment-bg.png" />
+    <Content Include="Images\assets\notheme\restore-progress.png" />
+    <Content Include="Images\assets\notheme\revoked-message.png" />
+    <Content Include="Images\assets\notheme\sendmsg.png" />
+    <Content Include="Images\assets\notheme\tell-a-friend-icon.png" />
+    <Content Include="Images\assets\notheme\textbox-action-emoji.png" />
+    <Content Include="Images\assets\notheme\textbox-action-keyboard.png" />
+    <Content Include="Images\assets\notheme\tos-update.png" />
+    <Content Include="Images\assets\notheme\unsupported-message.png" />
+    <Content Include="Images\assets\notheme\whatsapp-avatar.png" />
+    <Content Include="Images\assets\notheme\x.png" />
+    <Content Include="Images\Background.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\backup-card.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\backup-onedrive.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\backup-phone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\backup-smile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\BadgeIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\camera-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\camera\crop-icon.png" />
+    <Content Include="Images\camera\gif-vid-toggle-background.png" />
+    <Content Include="Images\camera\icon-add-cam.png" />
+    <Content Include="Images\camera\icon-add-photos.png" />
+    <Content Include="Images\camera\icon-cam-autoflash-b.png" />
+    <Content Include="Images\camera\icon-cam-autoflash.png" />
+    <Content Include="Images\camera\icon-cam-capture-b.png" />
+    <Content Include="Images\camera\icon-cam-capture.png" />
+    <Content Include="Images\camera\icon-cam-flash.png" />
+    <Content Include="Images\camera\icon-cam-noflash.png" />
+    <Content Include="Images\camera\icon-cam-switch.png" />
+    <Content Include="Images\camera\icon-cam-tip.png" />
+    <Content Include="Images\camera\icon-chevron.png" />
+    <Content Include="Images\camera\icon-draw.png" />
+    <Content Include="Images\camera\icon-emoji.png" />
+    <Content Include="Images\camera\icon-open-gallery.png" />
+    <Content Include="Images\camera\icon-rotate.png" />
+    <Content Include="Images\camera\icon-send.png" />
+    <Content Include="Images\camera\icon-text.png" />
+    <Content Include="Images\camera\icon-trash.png" />
+    <Content Include="Images\camera\icon-undo.png" />
+    <Content Include="Images\camera\toggle-gif.png" />
+    <Content Include="Images\camera\toggle-video.png" />
+    <Content Include="Images\check-active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\chrome-1080p.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\contact-support-send-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\contact-support.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\crop-ratio.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\crop.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\download-active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\download.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\edit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\email.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\emoji.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\emojis\fullset\fullset-00.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-01.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-02.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-03.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-04.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-05.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-06.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-07.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-08.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-09.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-10.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-11.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-12.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-13.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-14.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-15.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-16.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-17.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-18.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-19.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-20.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-21.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-22.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-23.-64.png" />
+    <Content Include="Images\emojis\fullset\fullset-24.-64.png" />
+    <Content Include="Images\emojis\sticker-E022.png" />
+    <Content Include="Images\gallery-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gif-icon-square.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gif-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gift_box.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\giphy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-add-recipient.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-bgdata-restricted-black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-bgdata-restricted-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-cog.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-contact.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-currentlocation.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-faq.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-gallery-hr.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-search-web.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-update-store-black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-update-store.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-update.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-verification-failure.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon-verification-success.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\IconicTileMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\IconicTileSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\keypad_gif.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\keypad_search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\loc-drop-pin-dot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\loc-drop-pin-green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\loc-icon-pin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\loc-layers.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\loc-place-small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\loc-shadow-small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LockIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\log-out-1080p.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\logo-lr.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\map_loading.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\media-view-bottom-overlay.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\mic-blue-hd.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\mic-green-hd.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\mic-grey-hd.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\multisend-add-cam.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\multisend-add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\multisend-selected-mark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\navigate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\newgroup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\next-active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\next.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\nux_live_location.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\overflowdots.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pause-active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pause.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\phone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pin-to-start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Places\Dark\airport.png" />
+    <Content Include="Images\Places\Dark\amusement_park.png" />
+    <Content Include="Images\Places\Dark\art_gallery.png" />
+    <Content Include="Images\Places\Dark\atm.png" />
+    <Content Include="Images\Places\Dark\bar.png" />
+    <Content Include="Images\Places\Dark\beauty_salon.png" />
+    <Content Include="Images\Places\Dark\bicycle_store.png" />
+    <Content Include="Images\Places\Dark\bowling_alley.png" />
+    <Content Include="Images\Places\Dark\bus.png" />
+    <Content Include="Images\Places\Dark\cafe.png" />
+    <Content Include="Images\Places\Dark\campground.png" />
+    <Content Include="Images\Places\Dark\car_dealer.png" />
+    <Content Include="Images\Places\Dark\casino.png" />
+    <Content Include="Images\Places\Dark\civic_building.png" />
+    <Content Include="Images\Places\Dark\courthouse.png" />
+    <Content Include="Images\Places\Dark\dentist.png" />
+    <Content Include="Images\Places\Dark\doctor.png" />
+    <Content Include="Images\Places\Dark\electronics.png" />
+    <Content Include="Images\Places\Dark\fitness.png" />
+    <Content Include="Images\Places\Dark\flower.png" />
+    <Content Include="Images\Places\Dark\gas_station.png" />
+    <Content Include="Images\Places\Dark\generic_business.png" />
+    <Content Include="Images\Places\Dark\geocode.png" />
+    <Content Include="Images\Places\Dark\jewelry_store.png" />
+    <Content Include="Images\Places\Dark\library.png" />
+    <Content Include="Images\Places\Dark\lodging.png" />
+    <Content Include="Images\Places\Dark\monument.png" />
+    <Content Include="Images\Places\Dark\movies.png" />
+    <Content Include="Images\Places\Dark\museum.png" />
+    <Content Include="Images\Places\Dark\office-71.png" />
+    <Content Include="Images\Places\Dark\pet_store.png" />
+    <Content Include="Images\Places\Dark\police.png" />
+    <Content Include="Images\Places\Dark\political.png" />
+    <Content Include="Images\Places\Dark\post_office.png" />
+    <Content Include="Images\Places\Dark\repair.png" />
+    <Content Include="Images\Places\Dark\restaurant.png" />
+    <Content Include="Images\Places\Dark\school.png" />
+    <Content Include="Images\Places\Dark\store.png" />
+    <Content Include="Images\Places\Dark\supermarket.png" />
+    <Content Include="Images\Places\Dark\taxi.png" />
+    <Content Include="Images\Places\Dark\train.png" />
+    <Content Include="Images\Places\Dark\travel_agent.png" />
+    <Content Include="Images\Places\Dark\truck.png" />
+    <Content Include="Images\Places\Dark\university.png" />
+    <Content Include="Images\Places\Dark\wine.png" />
+    <Content Include="Images\Places\Dark\worship_general.png" />
+    <Content Include="Images\Places\Dark\zoo.png" />
+    <Content Include="Images\Places\Light\airport.png" />
+    <Content Include="Images\Places\Light\amusement_park.png" />
+    <Content Include="Images\Places\Light\aquarium.png" />
+    <Content Include="Images\Places\Light\art_gallery.png" />
+    <Content Include="Images\Places\Light\atm.png" />
+    <Content Include="Images\Places\Light\bar.png" />
+    <Content Include="Images\Places\Light\beauty_salon.png" />
+    <Content Include="Images\Places\Light\bicycle_store.png" />
+    <Content Include="Images\Places\Light\bowling_alley.png" />
+    <Content Include="Images\Places\Light\bus.png" />
+    <Content Include="Images\Places\Light\cafe.png" />
+    <Content Include="Images\Places\Light\campground.png" />
+    <Content Include="Images\Places\Light\car_dealer.png" />
+    <Content Include="Images\Places\Light\casino.png" />
+    <Content Include="Images\Places\Light\civic_building.png" />
+    <Content Include="Images\Places\Light\courthouse.png" />
+    <Content Include="Images\Places\Light\dentist.png" />
+    <Content Include="Images\Places\Light\doctor.png" />
+    <Content Include="Images\Places\Light\electronics.png" />
+    <Content Include="Images\Places\Light\fitness.png" />
+    <Content Include="Images\Places\Light\flower.png" />
+    <Content Include="Images\Places\Light\gas_station.png" />
+    <Content Include="Images\Places\Light\generic_business.png" />
+    <Content Include="Images\Places\Light\geocode.png" />
+    <Content Include="Images\Places\Light\jewelry_store.png" />
+    <Content Include="Images\Places\Light\library.png" />
+    <Content Include="Images\Places\Light\lodging.png" />
+    <Content Include="Images\Places\Light\monument.png" />
+    <Content Include="Images\Places\Light\movies.png" />
+    <Content Include="Images\Places\Light\museum.png" />
+    <Content Include="Images\Places\Light\office-71.png" />
+    <Content Include="Images\Places\Light\park-71.png" />
+    <Content Include="Images\Places\Light\pet_store.png" />
+    <Content Include="Images\Places\Light\police.png" />
+    <Content Include="Images\Places\Light\political.png" />
+    <Content Include="Images\Places\Light\post_office.png" />
+    <Content Include="Images\Places\Light\repair.png" />
+    <Content Include="Images\Places\Light\restaurant.png" />
+    <Content Include="Images\Places\Light\school.png" />
+    <Content Include="Images\Places\Light\store.png" />
+    <Content Include="Images\Places\Light\supermarket.png" />
+    <Content Include="Images\Places\Light\taxi.png" />
+    <Content Include="Images\Places\Light\train.png" />
+    <Content Include="Images\Places\Light\travel_agent.png" />
+    <Content Include="Images\Places\Light\university.png" />
+    <Content Include="Images\Places\Light\wine.png" />
+    <Content Include="Images\Places\Light\worship_general.png" />
+    <Content Include="Images\Places\Light\zoo.png" />
+    <Content Include="Images\play-active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\play-button-black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\play-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\play.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\powered-by-facebook-on-non-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\powered-by-facebook-on-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\powered-by-foursquare.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\prev.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\refresh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\reg-phone-icon-active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\reg-phone-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\reset.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\rotate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\sad-phone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\select.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\sendmsg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SquareTile150x150.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SquareTile40x40.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SquareTile71x71.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\stop-large.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\stop.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\tell-a-friend-icon-black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\tell-a-friend-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\tenor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Tile150x150.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Tile310x150.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Tile44x44.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Tile71x71.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\upload-active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\upload.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\voip\dark\icon_add.png" />
+    <Content Include="Images\voip\dark\icon_answer-call.png" />
+    <Content Include="Images\voip\dark\icon_bluetooth.png" />
+    <Content Include="Images\voip\dark\icon_call-end.png" />
+    <Content Include="Images\voip\dark\icon_camera.png" />
+    <Content Include="Images\voip\dark\icon_decline.png" />
+    <Content Include="Images\voip\dark\icon_message.png" />
+    <Content Include="Images\voip\dark\icon_mute.png" />
+    <Content Include="Images\voip\dark\icon_speaker.png" />
+    <Content Include="Images\voip\dark\icon_video.png" />
+    <Content Include="Images\voip\dark\icon_video_off.png" />
+    <Content Include="Images\voip\light\icon_add.png" />
+    <Content Include="Images\voip\light\icon_answer-call.png" />
+    <Content Include="Images\voip\light\icon_bluetooth.png" />
+    <Content Include="Images\voip\light\icon_call-end.png" />
+    <Content Include="Images\voip\light\icon_camera.png" />
+    <Content Include="Images\voip\light\icon_decline.png" />
+    <Content Include="Images\voip\light\icon_message.png" />
+    <Content Include="Images\voip\light\icon_mute.png" />
+    <Content Include="Images\voip\light\icon_speaker.png" />
+    <Content Include="Images\voip\light\icon_video.png" />
+    <Content Include="Images\voip\light\icon_video_off.png" />
+    <Content Include="Images\wallpaper-placeholder-black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\wallpaper-placeholder-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Wallpapers\10.jpg" />
+    <Content Include="Images\Wallpapers\12.jpg" />
+    <Content Include="Images\Wallpapers\13.jpg" />
+    <Content Include="Images\Wallpapers\20.jpg" />
+    <Content Include="Images\Wallpapers\21.jpg" />
+    <Content Include="Images\Wallpapers\22.jpg" />
+    <Content Include="Images\Wallpapers\23.jpg" />
+    <Content Include="Images\Wallpapers\24.jpg" />
+    <Content Include="Images\Wallpapers\3.jpg" />
+    <Content Include="Images\Wallpapers\34.png" />
+    <Content Include="Images\Wallpapers\39.jpg" />
+    <Content Include="Images\Wallpapers\4.jpg" />
+    <Content Include="Images\Wallpapers\40.jpg" />
+    <Content Include="Images\Wallpapers\41.jpg" />
+    <Content Include="Images\Wallpapers\5.jpg" />
+    <Content Include="Images\Wallpapers\8.jpg" />
+    <Content Include="Images\Wallpapers\9.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\10.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\12.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\13.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\20.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\21.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\22.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\23.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\24.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\3.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\34.png" />
+    <Content Include="Images\Wallpapers\Thumbnails\39.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\4.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\40.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\41.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\5.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\8.jpg" />
+    <Content Include="Images\Wallpapers\Thumbnails\9.jpg" />
+    <Content Include="Images\x-active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Controls\attachpanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\audioendpointswitchpanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\businessinfopanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\buttonflyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\buttonwp10.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\callhistorylist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\chatinfotabheader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\chatinputbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\chatlistcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\chatlistcontrollb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\cloudrestoreprogresscontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\contactcalllogview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\contactinfotabview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\docstabview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\emojikeyboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\emojipicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\emojipopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\emojirow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\emojitextbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\externalimagepicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\favoritelist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\gifpicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\imageeditcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\imageslideviewcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\imageviewcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\inappfloatingbannerview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\itemquicksearchcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\linkstabview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\livelocationpin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\mapcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\mapdraggablepin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\mapmylocation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\mapplacepin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\mapsign.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\mediamultiselector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\mediatabview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\mentionslistcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\messageboxcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\messagedeliverystateitemcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\messagelistcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ownstatuslist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\phonenumberentrycontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\pivotwithpreview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\playbackslider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\qrscanner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\roundbutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\segmentedcircle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\smalldownloadbutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\steppedslidercontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\stickerpicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\stickerpickeritem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\stickerrow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\tabheadercontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\textaswebcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\textstatusinputbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\wallpaperpreviewcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\wastatuslist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\wastatusviewcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\whiteblackimage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\zoomableimageframe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\addtogroupspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\archivedchatspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\backgrounddatadisabledpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\blocklistpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\broadcastlistinfopage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\broadcastlistmainpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\bulkcontactcardviewpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\callratingpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\callscreenpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\camerapage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\changedescriptionpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\changenumberentrypage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\changenumbernotifypage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\changenumberstartpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\changesubjectpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\chatmediapage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\chatpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\chatsearchpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\clockskewpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\cloudbackupcheckpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\commongroupspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\connectionhelp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\contactinfopage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\contactspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\contactsupportoutagepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\contactsupportpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\contactvcardpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\createfavorites.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\customtonespage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\editparticipantspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\eula.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\gdpragreementpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\groupcallinfopage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\groupcreationpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\groupinfopage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\groupinvitelinkpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\groupparticipantpickerpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\groupsettingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\historyrepair.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\historyrestore.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\identityverificationpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\imageeditpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\jiditempickerpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\listpickerpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\livelocationview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\locationview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\loginbanned.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\logininvalid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\lowspacewarning.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\mediagallerypage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\mediapickeralbumpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\mediapickerpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\messagedetailpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\mystatuspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\ownstatusespage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\phonecontactpickerpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\phonenumberentry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\picturepreviewpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\profilepicturechooserpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\psainfopage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\pushnameentry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\recipientlistpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\about.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\accountpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\autodownloadpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\chatbackuppage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\chatcountspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\chatsettingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\contactssettingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\deleteaccountpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\fontsizesettingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\gdprreportpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\livelocationsettingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\notificationsettingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\privacysettingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\profilepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\securitysettingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\selectalertpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\settings\statusprivacysettingspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\setwallpaperpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\sharecontactpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\sharecontent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\sharelocationpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\shareoptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\starredmessagespage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\textstatuscomposepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\tonepickerpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\twofactor\setuptwofactor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\twofactor\twofactorpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\twofactor\validatecode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\updateversion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\videoplayerpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\videorecorderpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\viewlicensepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\viewpicturepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\waadminpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\wallpapergallerypickerpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\wallpaperpreviewpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\wastatusviewpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\webphotopickerpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\websessionspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test\deprecationtestpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test\serverpropertiesdebugpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Verify\entercode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Verify\entersecuritycode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Verify\sendcode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Verify\verifystart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ConnectionFaqPages\ar.txt" />
+    <Content Include="Resources\ConnectionFaqPages\az.txt" />
+    <Content Include="Resources\ConnectionFaqPages\bg.txt" />
+    <Content Include="Resources\ConnectionFaqPages\ca.txt" />
+    <Content Include="Resources\ConnectionFaqPages\cs.txt" />
+    <Content Include="Resources\ConnectionFaqPages\da.txt" />
+    <Content Include="Resources\ConnectionFaqPages\de.txt" />
+    <Content Include="Resources\ConnectionFaqPages\el.txt" />
+    <Content Include="Resources\ConnectionFaqPages\en.txt" />
+    <Content Include="Resources\ConnectionFaqPages\es.txt" />
+    <Content Include="Resources\ConnectionFaqPages\et.txt" />
+    <Content Include="Resources\ConnectionFaqPages\fa.txt" />
+    <Content Include="Resources\ConnectionFaqPages\fi.txt" />
+    <Content Include="Resources\ConnectionFaqPages\fr.txt" />
+    <Content Include="Resources\ConnectionFaqPages\gu.txt" />
+    <Content Include="Resources\ConnectionFaqPages\he.txt" />
+    <Content Include="Resources\ConnectionFaqPages\hi.txt" />
+    <Content Include="Resources\ConnectionFaqPages\hr.txt" />
+    <Content Include="Resources\ConnectionFaqPages\hu.txt" />
+    <Content Include="Resources\ConnectionFaqPages\id.txt" />
+    <Content Include="Resources\ConnectionFaqPages\it.txt" />
+    <Content Include="Resources\ConnectionFaqPages\ja.txt" />
+    <Content Include="Resources\ConnectionFaqPages\ko.txt" />
+    <Content Include="Resources\ConnectionFaqPages\lt.txt" />
+    <Content Include="Resources\ConnectionFaqPages\lv.txt" />
+    <Content Include="Resources\ConnectionFaqPages\mk.txt" />
+    <Content Include="Resources\ConnectionFaqPages\ms.txt" />
+    <Content Include="Resources\ConnectionFaqPages\nb.txt" />
+    <Content Include="Resources\ConnectionFaqPages\nl.txt" />
+    <Content Include="Resources\ConnectionFaqPages\pl.txt" />
+    <Content Include="Resources\ConnectionFaqPages\pt_br.txt" />
+    <Content Include="Resources\ConnectionFaqPages\ro.txt" />
+    <Content Include="Resources\ConnectionFaqPages\ru.txt" />
+    <Content Include="Resources\ConnectionFaqPages\sk.txt" />
+    <Content Include="Resources\ConnectionFaqPages\sl.txt" />
+    <Content Include="Resources\ConnectionFaqPages\sr.txt" />
+    <Content Include="Resources\ConnectionFaqPages\ta.txt" />
+    <Content Include="Resources\ConnectionFaqPages\th.txt" />
+    <Content Include="Resources\ConnectionFaqPages\tr.txt" />
+    <Content Include="Resources\ConnectionFaqPages\uk.txt" />
+    <Content Include="Resources\ConnectionFaqPages\vi.txt" />
+    <Content Include="Resources\ConnectionFaqPages\zh_cn.txt" />
+    <Content Include="Resources\ConnectionFaqPages\zh_tw.txt" />
+    <Content Include="Resources\license.txt" />
+    <Content Include="Sounds\end_call.wav" />
+    <Content Include="Sounds\incoming.wav" />
+    <Content Include="Sounds\incomingshort.wav" />
+    <Content Include="Sounds\NokiaCalendar.mp3" />
+    <Content Include="Sounds\NokiaEmail.mp3" />
+    <Content Include="Sounds\NokiaMessage.mp3" />
+    <Content Include="Sounds\send_message.wav" />
+    <Content Include="Sounds\Shutter.wav" />
+    <Content Include="Sounds\voice_note_error.wav" />
+    <Content Include="Sounds\voice_note_start.wav" />
+    <Content Include="Sounds\voice_note_stop.wav" />
+    <Content Include="WhatsApp\Fonts\Bryndan-Write.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WhatsApp\Fonts\Norican-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WhatsApp\Fonts\Oswald-Heavy.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="certs\01.crt" />
+    <None Include="certs\02.crt" />
+    <None Include="certs\03.crt" />
+    <None Include="certs\04.crt" />
+    <None Include="certs\05.crt" />
+    <None Include="certs\06.crt" />
+    <None Include="certs\07.crt" />
+    <None Include="countries.tsv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Fonts\Bryndan-Write.ttf" />
+    <Content Include="Fonts\Norican-Regular.ttf" />
+    <Content Include="Fonts\Oswald-Heavy.ttf" />
+    <None Include="hosts">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Sounds\Alert-01.wma" />
+    <Content Include="Sounds\Alert-02.wma" />
+    <Content Include="Sounds\Alert-03.wma" />
+    <Content Include="Sounds\Alert-04.wma" />
+    <Content Include="Sounds\Alert-05.wma" />
+    <Content Include="Sounds\Alert-06.wma" />
+    <Content Include="Sounds\Alert-07.wma" />
+    <Content Include="Sounds\Alert-08.wma" />
+    <Content Include="Sounds\Alert-09.wma" />
+    <Content Include="Sounds\Alert-10.wma" />
+    <Content Include="Sounds\Alert_calendar.wma" />
+    <Content Include="Sounds\Ring01.wma" />
+    <Content Include="Sounds\Ring02.wma" />
+    <Content Include="Sounds\Ring03.wma" />
+    <Content Include="Sounds\Ring05.wma" />
+    <None Include="Sounds\silent" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WhatsAppCommon\WhatsAppCommon.csproj">
+      <Project>{716bfe27-bc34-4177-81fd-36346d615de5}</Project>
+      <Name>WhatsAppCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WhatsAppNative\WhatsAppNative.csproj">
+      <Project>{bc41828c-dd44-45c8-a247-81defa40d49b}</Project>
+      <Name>WhatsAppNative</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

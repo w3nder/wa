@@ -1,0 +1,264 @@
+﻿<!--
+Copyright (c) Microsoft Corporation.  All rights reserved.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:overlays="clr-namespace:Microsoft.Phone.Controls.Maps.Overlays"
+                    xmlns:core="clr-namespace:Microsoft.Phone.Controls.Maps.Core"
+                    xmlns:m="clr-namespace:Microsoft.Phone.Controls.Maps"
+                    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+
+    <!-- Default Style used for Pushpin -->
+    <Style TargetType="m:Pushpin">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:Pushpin">
+                    <Grid x:Name="ContentGrid">
+                        <StackPanel Orientation="Vertical">
+                            <Grid Background="{TemplateBinding Background}" HorizontalAlignment="Left" MinHeight="31" MinWidth="29">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" Margin="4"/>
+                            </Grid>
+                            <Polygon Fill="{TemplateBinding Background}" Points="0,0 29,0 0,29" Width="29" Height="29" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="PositionOrigin" Value="BottomLeft" />
+        <Setter Property="Background" Value="Black" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+
+    <!-- Default Style used for MapPolyline -->
+    <Style TargetType="m:MapPolyline">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:MapPolyline">
+                    <Grid x:Name="ContentGrid">
+                        <Polyline x:Name="EmbeddedShape" />
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for MapPolygon -->
+    <Style TargetType="m:MapPolygon">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:MapPolygon">
+                    <Grid x:Name="ContentGrid">
+                        <Polygon x:Name="EmbeddedShape" />
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for MapTileLayer -->
+    <Style TargetType="m:MapTileLayer">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:MapTileLayer">
+                    <Grid x:Name="ContentGrid" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for MapItemsControl -->
+    <Style TargetType="m:MapItemsControl">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <m:MapLayer />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for ShadowText -->
+    <Style TargetType="overlays:ShadowText">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="overlays:ShadowText">
+                    <Grid>
+                        <TextBlock x:Name="Text1"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   HorizontalAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Text="Text here"
+                                   TextAlignment="Right">
+                          <TextBlock.RenderTransform>
+                            <TranslateTransform X="1"
+                                                Y="1" />
+                          </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock x:Name="Text2"
+                                   FontWeight="Normal"
+                                   Foreground="White"
+                                   HorizontalAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Text="Text here"
+                                   TextAlignment="Right" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for Copyright -->
+    <Style TargetType="overlays:Copyright">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="overlays:Copyright">
+                    <Grid HorizontalAlignment="Right"
+                          VerticalAlignment="Bottom">
+                        <overlays:ShadowText x:Name="CopyrightContainer"
+                                             Text="© 2009 Microsoft Corporation"
+                                             FontSize="9" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for Logo -->
+    <Style TargetType="overlays:Logo">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="overlays:Logo">
+                    <Grid>
+                        <Image Source="/Microsoft.Phone.Controls.Maps;Component/Overlays/logo_powered_by.png"
+                               Stretch="None" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for Scale -->
+    <Style TargetType="overlays:Scale">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="overlays:Scale">
+                    <StackPanel Orientation="Vertical">
+                        <overlays:ShadowText x:Name="ScaleString"
+                                             ForegroundTop="White"
+                                             ForegroundBottom="Black"
+                                             HorizontalAlignment="Right"
+                                             VerticalAlignment="Top"
+                                             Text="300 yds"
+                                             FontSize="11" />
+                        <Grid Background="White">
+                            <Rectangle x:Name="ScaleRectangle"
+                                       Height="6"
+                                       Margin="1,1,1,1"
+                                       VerticalAlignment="Center"
+                                       Fill="#FF4cbeff"
+                                       Stroke="#FF1E1E1E"
+                                       StrokeThickness="1"
+                                       HorizontalAlignment="Center"
+                                       Width="200" />
+                        </Grid>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for LoadingErrorMessage -->
+    <Style TargetType="overlays:LoadingErrorMessage">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="overlays:LoadingErrorMessage">
+                    <Grid>
+                        <Border BorderBrush="White"
+                                BorderThickness="2"
+                                CornerRadius="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Padding="10">
+                            <TextBlock x:Name="ErrorMessage" TextWrapping="Wrap" TextAlignment="Center" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for ZoomBar -->
+    <Style TargetType="overlays:ZoomBar">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="overlays:ZoomBar">
+                    <Grid Background="Transparent">
+                        <Button Content="+"
+                                Margin="0,0,100,0"
+                                Width="80"
+                                Height="80"
+                                BorderBrush="Black"
+                                Foreground="Black"
+                                FontWeight="ExtraBold"
+                                x:Name="ZoomIn" />
+                        <Button Content="-"
+                                Margin="100,0,0,0"
+                                Width="80"
+                                Height="80"
+                                BorderBrush="Black"
+                                Foreground="Black"
+                                FontWeight="ExtraBold"
+                                x:Name="ZoomOut" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Style used for MapForeground -->
+    <Style TargetType="overlays:MapForeground">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="overlays:MapForeground">
+                    <Grid>
+                        <Grid IsHitTestVisible="True">
+                            <overlays:ZoomBar x:Name="ZoomBarElement"
+                                              Opacity=".75"
+                                              VerticalAlignment="Bottom"
+                                              HorizontalAlignment="Center" />
+                        </Grid>
+                        <Grid Margin="5,5,5,10"
+                              IsHitTestVisible="False">
+                            <overlays:Logo x:Name="LogoElement"
+                                           Opacity=".75"
+                                           VerticalAlignment="Bottom"
+                                           HorizontalAlignment="Left" />
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom">
+                                <overlays:Scale x:Name="ScaleElement"
+                                                DistanceUnit="Default"
+                                                HorizontalContentAlignment="Right"
+                                                HorizontalAlignment="Right" />
+                                <overlays:Copyright x:Name="CopyrightElement"
+                                                    Opacity="1.0"
+                                                    Margin="0,6,0,0"
+                                                    HorizontalContentAlignment="Right"
+                                                    HorizontalAlignment="Right" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

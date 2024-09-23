@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
+  <DefaultLanguage xmlns="" code="en-US" />
+  <Languages xmlns="">
+    <Language code="af" />
+    <Language code="ar" />
+    <Language code="az-Latn" />
+    <Language code="bg" />
+    <Language code="cs" />
+    <Language code="da" />
+    <Language code="de" />
+    <Language code="el" />
+    <Language code="es" />
+    <Language code="fa" />
+    <Language code="fi" />
+    <Language code="fr" />
+    <Language code="he" />
+    <Language code="hi" />
+    <Language code="hr" />
+    <Language code="hu" />
+    <Language code="id" />
+    <Language code="it" />
+    <Language code="lt" />
+    <Language code="lv" />
+    <Language code="mk" />
+    <Language code="ms" />
+    <Language code="nl" />
+    <Language code="pl" />
+    <Language code="pt-BR" />
+    <Language code="pt-PT" />
+    <Language code="ro" />
+    <Language code="ru" />
+    <Language code="sk" />
+    <Language code="sl" />
+    <Language code="sq" />
+    <Language code="sr-Latn" />
+    <Language code="sv" />
+    <Language code="sw" />
+    <Language code="th" />
+    <Language code="tr" />
+    <Language code="uk" />
+    <Language code="vi" />
+    <Language code="zh-CN" />
+    <Language code="zh-TW" />
+  </Languages>
+  <AppExtra xmlns="" AppPlatformVersion="8.0">
+    <Extra Name="SDOptOut" />
+  </AppExtra>
+  <App xmlns="" Title="WhatsApp Beta" RuntimeType="Silverlight" Version="2.18.370.0" Description="" BackUpOptOut="true" SDOptOut="true" NotificationService="WNS" ProductID="{6b587088-a2bd-4597-8416-6c77f0a3ec6d}" Genre="apps.normal" IsBeta="false" Author="WhatsApp Inc." Publisher="WhatsApp Inc." PublisherID="{bc29b09f-c297-48d6-b6b5-88c7234f4b6d}">
+    <IconPath IsRelative="true" IsResource="false">Icon1.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_OEMPUBLICDIRECTORY" />
+      <Capability Name="ID_CAP_VOIP" />
+      <Capability Name="ID_CAP_MAP" />
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
+      <Capability Name="ID_CAP_IDENTITY_USER" />
+      <Capability Name="ID_CAP_LOCATION" />
+      <Capability Name="ID_CAP_MICROPHONE" />
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_PHONEDIALER" />
+      <Capability Name="ID_CAP_SENSORS" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_ISV_CAMERA" />
+      <Capability Name="ID_CAP_CONTACTS" />
+      <Capability Name="ID_CAP_APPOINTMENTS" />
+      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
+      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
+      <Capability Name="ID_CAP_CELL_API_COMMON" />
+      <Capability Name="ID_CAP_CELL_API_UICC" />
+      <Capability Name="ID_CAP_CELL_API_UICC_LOWLEVEL" />
+      <Capability Name="ID_CAP_CELL_API_LOCATION" />
+      <Capability Name="ID_CAP_CELL_API_OEM_PASSTHROUGH" />
+      <Capability Name="ID_CAP_CELL_WNF" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO_FULL" />
+      <Capability Name="ID_CAP_OEM_DEPLOYMENT" />
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="PageSelect" ActivationPolicy="Resume" />
+      <ExtendedTask Name="BackgroundAgent">
+        <BackgroundServiceAgent Name="WhatsApp.AudioAgent" Source="WhatsAppCommon" Specifier="AudioStreamingAgent" Type="WhatsApp.AudioAgent" />
+        <BackgroundServiceAgent Name="WhatsApp.VoipAgent" Source="WhatsAppCommon" Specifier="ScheduledTaskAgent" Type="WhatsApp.VoipAgent" />
+        <BackgroundServiceAgent Name="WhatsApp.ForegroundLifetimeAgent" Source="WhatsAppCommon" Specifier="VoIPForegroundLifetimeAgent" Type="WhatsApp.ForegroundLifetimeAgent" />
+        <BackgroundServiceAgent Name="WhatsApp.CallInProgressAgent" Source="WhatsAppCommon" Specifier="VoIPCallInProgressAgent" Type="WhatsApp.CallInProgressAgent" />
+      </ExtendedTask>
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="PivotApp2Token" TaskName="_default">
+        <TemplateIconic>
+          <SmallImageURI IsRelative="true" IsResource="false">Images\IconicTileSmall.png</SmallImageURI>
+          <Count>0</Count>
+          <IconImageURI IsRelative="true" IsResource="false">Images\IconicTileMedium.png</IconImageURI>
+          <Title>WhatsApp</Title>
+          <HasLarge>true</HasLarge>
+          <DeviceLockImageURI IsRelative="true" IsResource="false">Images\LockIcon.png</DeviceLockImageURI>
+        </TemplateIconic>
+      </PrimaryToken>
+    </Tokens>
+    <Extensions>
+      <Protocol Name="whatsapp" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
+    </Extensions>
+    <ActivatableClasses>
+      <InProcessServer>
+        <Path>WhatsAppNative.dll</Path>
+        <ActivatableClass ActivatableClassId="WhatsAppNative.NativeWebp" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.NativeDeflate" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.SqliteShell" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.MediaMisc" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.Mp4Utils" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.Mbedtls" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.Transcoder" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.OpusEnc" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.SoundPort" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.AxolotlFastRatchetGroupCipherNative" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.AxolotlGroupCipherNative" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.AxolotlSessionCipherNative" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.AxolotlNative" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.Curve25519" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.NativeRegex" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.MediaLibraryWrapper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.RegHelper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.FieldStatsInterop" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.Sensor" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.KbdWatcher" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.Misc" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.HostBucket" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WASocket" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.OutOfProcRegistration" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.SignalingStruct" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.Voip" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WAWebAuthenticationManager" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WAWebTokenRequestResult" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WAWebTokenResponse" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WAWebProviderError" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WAWebAccount" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WAAccountSettingsPane" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WAWebAccountProviderInvokedEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WAWebAccountProvider" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.Backup" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.Sqlite" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.WebRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.RecToken" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WhatsAppNative.ByteBuffer" ThreadingModel="both" />
+      </InProcessServer>
+      <OutOfProcessServer ServerName="WhatsAppNative.OutOfProc">
+        <Path>WhatsAppNative.DLL</Path>
+        <Instancing>multipleInstances</Instancing>
+        <ActivatableClass ActivatableClassId="WhatsAppNative.OutOfProc.Server" />
+      </OutOfProcessServer>
+      <ProxyStub ClassId="{74b1c70c-9415-4d1e-bcd1-1a91dbc7e28c}">
+        <Path>WhatsAppProxyStub.DLL</Path>
+        <Interface Name="WhatsAppNative.OutOfProc.IOutOfProc" InterfaceId="{aa35a405-d402-4d35-9acf-fb383106a6c2}" />
+        <Interface Name="WhatsAppNative.IVoip" InterfaceId="{9d1072b2-b8ca-48d0-b10e-d5641edaeac9}" />
+        <Interface Name="WhatsAppNative.ICallInfo" InterfaceId="{e15ab768-ea0e-4fd8-83ea-234a811f0ecc}" />
+        <Interface Name="WhatsAppNative.IVoipCallbacks" InterfaceId="{d584883f-6487-40e8-ae02-68c25bb9d7cf}" />
+        <Interface Name="WhatsAppNative.IUserVoipCallbacks" InterfaceId="{06941e5b-edb9-4e49-8a6f-1356c3051ccc}" />
+        <Interface Name="WhatsAppNative.IVoipSignalingCallbacks" InterfaceId="{9CB02919-A6A7-4E5F-80D3-E8D6B6676DC6}" />
+      </ProxyStub>
+    </ActivatableClasses>
+    <ScreenResolutions>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+    </ScreenResolutions>
+  </App>
+</Deployment>

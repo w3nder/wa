@@ -1,0 +1,39 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WhatsApp.LowSpaceWarning"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </phone:PhoneApplicationPage.Resources>
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <local:PageTitlePanel x:Name="TitlePanel" Grid.Row="0" 
+                              SmallTitle="WHATSAPP" 
+                              LargeTitle="Low Storage Space"/>
+        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock x:Name="Content" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"
+                Text="Your phone is running low on storage. So WhatsApp can continue to work properly, free up to 100MB of space  by:
+
+                       
+                       1. Deleting apps you no longer use
+                       2. Deleting large videos from your camera roll
+                       3. Managing your storage in Settings > storage sense "/>
+        </StackPanel>
+        <Button x:Name="OkButton" Grid.Row="2" Margin="12,0,12,0" Content="OK" Click="Button_Click" />
+    </Grid>
+</phone:PhoneApplicationPage>

@@ -1,0 +1,55 @@
+﻿<UserControl 
+    x:Class="WhatsApp.ExternalImagePicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+
+    <Viewbox Stretch="None" x:Name="ZoomZoom">
+        <StackPanel Margin="24">
+            <Button x:Name="WallpaperGalleryButton" Style="{StaticResource BorderlessButton}" Padding="0" Margin="0,0,0,0" HorizontalContentAlignment="Stretch" toolkit:TiltEffect.IsTiltEnabled="True" Click="WallpaperGallery_Tap" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <local:RoundButton x:Name="WG_ButtonIcon" ButtonSize="44" VerticalAlignment="Center" IsActivatable="False"/>
+                    <TextBlock x:Name="WG_ButtonText" Style="{StaticResource PhoneTextExtraLargeStyle}" VerticalAlignment="Center" Margin="16,-10,0,0" FontSize="40"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="TakePhotoButton" Style="{StaticResource BorderlessButton}" Padding="0" Margin="0,24,0,0" HorizontalContentAlignment="Stretch" toolkit:TiltEffect.IsTiltEnabled="True" Click="TakePhoto_Tap" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <local:RoundButton x:Name="TP_ButtonIcon" ButtonSize="44" VerticalAlignment="Center" IsActivatable="False"/>
+                    <TextBlock x:Name="TP_ButtonText" Style="{StaticResource PhoneTextExtraLargeStyle}" VerticalAlignment="Center" Margin="16,-10,0,0" FontSize="40"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="TakeGroupPhotoButton" Style="{StaticResource BorderlessButton}" Padding="0" Margin="0,24,0,0" HorizontalContentAlignment="Stretch" toolkit:TiltEffect.IsTiltEnabled="True" Click="TakeGroupPhoto_Tap" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <local:RoundButton x:Name="TGP_ButtonIcon" ButtonSize="44" VerticalAlignment="Center" IsActivatable="False"/>
+                    <TextBlock x:Name="TGP_ButtonText" Style="{StaticResource PhoneTextExtraLargeStyle}" VerticalAlignment="Center" Margin="16,-10,0,0" FontSize="40"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ChooseFromAlbumsButton" Style="{StaticResource BorderlessButton}" Padding="0" Margin="0,24,0,0" HorizontalContentAlignment="Stretch" toolkit:TiltEffect.IsTiltEnabled="True" Click="ChooseFromAlbums_Tap" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <local:RoundButton x:Name="CFA_ButtonIcon" ButtonSize="44" VerticalAlignment="Center" IsActivatable="False"/>
+                    <TextBlock x:Name="CFA_ButtonText" Style="{StaticResource PhoneTextExtraLargeStyle}" VerticalAlignment="Center" Margin="16,-10,0,0" FontSize="40"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="SearchWebButton" Style="{StaticResource BorderlessButton}" Padding="0" Margin="0,24,0,0" HorizontalContentAlignment="Stretch" toolkit:TiltEffect.IsTiltEnabled="True" Click="SearchWeb_Click" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <local:RoundButton x:Name="SW_ButtonIcon" ButtonSize="44" VerticalAlignment="Center" IsActivatable="False"/>
+                    <TextBlock x:Name="SW_ButtonText" Style="{StaticResource PhoneTextExtraLargeStyle}" VerticalAlignment="Center" Margin="16,-10,0,0" FontSize="40"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="DeleteButton" Style="{StaticResource BorderlessButton}" Padding="0" Margin="0,24,0,0" HorizontalContentAlignment="Stretch" toolkit:TiltEffect.IsTiltEnabled="True" Click="Delete_Click" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <local:RoundButton x:Name="D_ButtonIcon" ButtonSize="44" VerticalAlignment="Center" IsActivatable="False"/>
+                    <TextBlock x:Name="D_ButtonText" Style="{StaticResource PhoneTextExtraLargeStyle}" VerticalAlignment="Center" Margin="16,-10,0,0" FontSize="40"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Viewbox>
+
+    <UserControl.RenderTransform>
+        <CompositeTransform/>
+    </UserControl.RenderTransform>
+</UserControl>

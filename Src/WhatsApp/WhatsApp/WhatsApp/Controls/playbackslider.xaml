@@ -1,0 +1,35 @@
+<UserControl x:Class="WhatsApp.PlaybackSlider"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="32" d:DesignWidth="136">
+    <Grid x:Name="LayoutRoot" MinHeight="32" Background="Transparent">
+        <toolkit:GestureService.GestureListener>
+            <toolkit:GestureListener DragStarted="Slider_DragStarted"
+                                     DragDelta="Slider_DragDelta"
+                                     DragCompleted="Slider_DragCompleted"/>
+        </toolkit:GestureService.GestureListener>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle x:Name="ProgressTrack" IsHitTestVisible="False" Fill="White" Opacity="0.4"
+                   Grid.ColumnSpan="3" Height="4" Margin="0,6,0,0" VerticalAlignment="Top"/>
+        <Rectangle x:Name="ProgressFill" IsHitTestVisible="False" Fill="White"
+                   Grid.Column="0" Height="4" Margin="0,6,0,0" Width="0" VerticalAlignment="Top"/>
+        <Ellipse x:Name="Scrubber" Grid.Column="1" Width="16" Height="16"
+                 Fill="White" CacheMode="BitmapCache"
+                 Visibility="Collapsed" VerticalAlignment="Top">
+            <Ellipse.RenderTransform>
+                <TranslateTransform X="-8"/>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+    </Grid>
+</UserControl>

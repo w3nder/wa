@@ -1,0 +1,15 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: Microsoft.OneDrive.Sdk.ClientType
+// Assembly: MsGraphSdk, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null
+// MVID: B6767127-13D0-4992-B741-2642C0E7F410
+// Assembly location: C:\Users\Admin\Desktop\RE\WABeta\MsGraphSdk.dll
+
+#nullable disable
+namespace Microsoft.OneDrive.Sdk
+{
+  public enum ClientType
+  {
+    Business,
+    Consumer,
+  }
+}

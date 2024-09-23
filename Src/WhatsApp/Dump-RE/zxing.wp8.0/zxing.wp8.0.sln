@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zxing.wp8.0", "zxing.wp8.0.csproj", "{12517373-22E6-41C0-B9E7-8164D874195E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12517373-22E6-41C0-B9E7-8164D874195E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12517373-22E6-41C0-B9E7-8164D874195E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12517373-22E6-41C0-B9E7-8164D874195E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12517373-22E6-41C0-B9E7-8164D874195E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

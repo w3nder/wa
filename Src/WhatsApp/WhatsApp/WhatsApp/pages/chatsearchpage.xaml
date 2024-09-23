@@ -1,0 +1,157 @@
+﻿<Page
+    x:Class="WhatsApp.ChatSearchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    
+    xmlns:local="clr-namespace:WhatsApp"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" Loaded="OnLoaded" Unloaded="OnUnloaded"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    
+    <Page.Resources>
+        <DataTemplate x:Key="MessageResultListHeaderTemplate">
+            <StackPanel Margin="0,12,0,12"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom">
+                <TextBlock Text="{Binding Key}"
+                           FontSize="22"
+                           FontWeight="SemiBold"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <local:ZoomBox x:Name="LayoutRootZoomBox">
+        <Grid x:Name="LayoutRoot">
+            <Grid.RenderTransform>
+                <CompositeTransform TranslateY="0"/>
+            </Grid.RenderTransform>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <local:EmojiTextBox x:Name="SearchField"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="24,3,24,0"
+                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+
+            <controls:Pivot x:Name="Pivot"
+                            Grid.Row="2"
+                            Margin="0,-12,0,0"
+                            SelectionChanged="Pivot_SelectionChanged">
+                <controls:Pivot.Template>
+                    <ControlTemplate TargetType="phone:Pivot">
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0"/>
+                                <RowDefinition Height="0"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <ContentControl x:Name="TitleElement" ContentTemplate="{TemplateBinding TitleTemplate}" Content="{TemplateBinding Title}" Height="0"/>
+                            <primitives:PivotHeadersControl x:Name="HeadersListElement" Grid.Row="1" Opacity="0"/>
+                            <ItemsPresenter x:Name="PivotItemPresenter" Margin="{TemplateBinding Padding}" Grid.Row="2"/>
+                        </Grid>
+                    </ControlTemplate>
+                </controls:Pivot.Template>
+                <controls:Pivot.HeaderTemplate>
+                    <DataTemplate/>
+                </controls:Pivot.HeaderTemplate>
+                
+                <controls:PivotItem x:Name="ChatsPivotItem"
+                                    Margin="24,0,0,0">
+                    <shim:LongListSelector x:Name="ChatResultsList"
+                                           Margin="0,12,0,0"
+                                           IsFlatList="True">
+                        <shim:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <local:ChatItemControl Margin="0,12,12,12"
+                                                       ViewModel="{Binding}"/>
+                            </DataTemplate>
+                        </shim:LongListSelector.ItemTemplate>
+                        <shim:LongListSelector.ListFooter>
+                            <StackPanel Margin="0,24,0,112">
+                                <TextBlock x:Name="ChatsFooterTooltip"
+                                           Margin="0"
+                                           TextWrapping="Wrap"
+                                           Style="{StaticResource PhoneTextNormalStyle}"
+                                           Foreground="{StaticResource PhoneSubtleBrush}"
+                                           FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                            </StackPanel>
+                        </shim:LongListSelector.ListFooter>
+                    </shim:LongListSelector>
+                </controls:PivotItem>
+                <controls:PivotItem x:Name="MessagesPivotItem"
+                                    Margin="24,0,0,0">
+                    <shim:LongListSelector x:Name="MessageResultsList"
+                                           Margin="0,12,0,0"
+                                           IsFlatList="True">
+                        <shim:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <local:MessageResultItemControl Margin="0,12,12,12"
+                                                                ViewModel="{Binding}"/>
+                            </DataTemplate>
+                        </shim:LongListSelector.ItemTemplate>
+                        <shim:LongListSelector.ListFooter>
+                            <StackPanel Margin="0,24,0,112">
+                                <TextBlock x:Name="MessagesFooterTooltip"
+                                           Margin="0"
+                                           TextWrapping="Wrap"
+                                           Style="{StaticResource PhoneTextNormalStyle}"
+                                           Foreground="{StaticResource PhoneSubtleBrush}"
+                                           FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                            </StackPanel>
+                        </shim:LongListSelector.ListFooter>
+                    </shim:LongListSelector>
+                </controls:PivotItem>
+                <controls:PivotItem x:Name="ContactsPivotItem"
+                                    Margin="24,0,0,0">
+                    <shim:LongListSelector x:Name="ContactResultsList"
+                                           Margin="0,12,0,0"
+                                           IsFlatList="True">
+                        <shim:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <local:UserItemControl Margin="0,12,12,12"
+                                                       ViewModel="{Binding}"/>
+                            </DataTemplate>
+                        </shim:LongListSelector.ItemTemplate>
+                        <shim:LongListSelector.ListFooter>
+                            <StackPanel Margin="0,24,0,112">
+                                <TextBlock x:Name="ContactsFooterTooltip"
+                                           Margin="0"
+                                           TextWrapping="Wrap"
+                                           Style="{StaticResource PhoneTextNormalStyle}"
+                                           Foreground="{StaticResource PhoneSubtleBrush}"
+                                           FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                            </StackPanel>
+                        </shim:LongListSelector.ListFooter>
+                    </shim:LongListSelector>
+                </controls:PivotItem>
+            </controls:Pivot>
+        </Grid>
+    </local:ZoomBox>
+
+</Page>

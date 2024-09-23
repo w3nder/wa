@@ -1,0 +1,13 @@
+Oups, il semble que vous n'avez pas de connection !
+<p>Si vous voyez cet écran, cela signifie que vous n'êtes pas connecté(e) à Internet. Pour vous aider à résoudre ce problème aussi vite que possible, suivez ces étapes de dépannage :</p>
+<ul>
+<li>Assurez-vous que votre appareil est dans une zone de couverture qui est prise en charge par votre opérateur mobile ou un réseau Wi-Fi. La connexion doit être stable et fiable.</li>
+<li>Assurez-vous que vous avez un forfait de données avec votre opérateur du réseau mobile ou une connexion Wi-Fi avec accès à Internet. REMARQUE : pour utiliser WhatsApp sur un Windows Phone, il est important d'avoir un forfait de données. Les appareils utilisés seulement sur Wi-Fi peuvent rencontrer des problèmes.</li>
+<li>Redémarrez votre téléphone (mettez hors tension, attendez 30 secondes, mettez en marche).</li>
+</ul>
+<p>Autre étapes de dépannage</p>
+<p>Si des sites Web et d'autres applications fonctionnent, mais WhatsApp ne peuvent pas se connecter, il est possible que votre configuration du réseau ne permet pas le type de connexions (connexions socket ou non-HTTP) nécessaires pour WhatsApp.</p>
+<ul>
+<li>Vérifiez les paramètres Nom de Point d'Accès (APN) de votre opérateur. Il peut y avoir un autre APN de votre opérateur qui permet des connexions non-HTTP comme WhatsApp. Pour savoir comment changer le paramètres APN sur votre appareil, visitez ici pour : <a href="https://www.windowsphone.com/fr-fr/How-to/wp7/start/cellular-settings">Windows Phone 7</a> et <a href="https://www.windowsphone.com/fr-fr/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>. Après vous changez les paramètres APN, veuillez assurer de redémarrer votre téléphone pour que les modifications prennent effet.</li>
+<li>Si vous avez un Windows Phone fabriqué par Nokia, essayez d'utiliser <a href="https://www.windowsphone.com/fr-fr/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">l'application Config Connexion</a> à partir de la Collection Nokia dans le Store (cette application peut ne pas être disponible dans certains pays).</li>
+</ul>

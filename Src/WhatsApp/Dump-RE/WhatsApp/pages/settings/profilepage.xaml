@@ -1,0 +1,171 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.ProfilePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"
+    Orientation="Portrait"
+    mc:Ignorable="d"
+    d:DesignHeight="768"
+    d:DesignWidth="480"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+        <local:ResolutionHelper x:Key="ResolutionHelper"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <local:ZoomBox ZoomFactor="{Binding ZoomFactor}">
+        <Grid x:Name="LayoutRoot" Margin="{Binding PageMargin}"
+              Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Grid.Row="0"
+                       Grid.RowSpan="2"
+                       Fill="Transparent"
+                       Tap="Background_Tap"/>
+
+            <local:PageTitlePanel Grid.Row="0"
+                                  SmallTitle="{Binding PageSmallTitle}"
+                                  LargeTitle="{Binding PageLargeTitle}"
+                                  Mode="NotZoomed"/>
+
+            <shim:LongListSelector x:Name="ScrollView"
+                                   Grid.Row="1"
+                                   IsFlatList="True">
+                <shim:LongListSelector.ListHeader>
+                    <Grid Margin="24,0,24,64"
+                          toolkit:TiltEffect.SuppressTilt="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image x:Name="ProfileImage"
+                               Grid.Column="0"
+                               Height="128"
+                               Width="128"
+                               Stretch="UniformToFill"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom"
+                               Margin="0,0,24,0"
+                               Tap="ProfilePic_Tap"
+                               Source="{Binding ProfilePicSource}"/>
+                        <Rectangle Grid.Column="0"
+                                   Height="128"
+                                   Width="128"
+                                   Fill="Black"
+                                   Opacity="0.2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Bottom"
+                                   Visibility="{Binding ProfilePicProgressBarVisibility}"/>
+                        <ProgressBar Grid.Column="0"
+                                          IsIndeterminate="True"
+                                          Width="128"
+                                          Margin="0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Foreground="White"
+                                          Visibility="{Binding ProfilePicProgressBarVisibility}"/>
+
+                        <TextBlock Grid.Column="1"
+                                   Margin="-1,0,0,56"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Bottom"
+                                   Text="{Binding NameTooltip}"
+                                   Style="{StaticResource PhoneTextTitle3Style}"/>
+                        <local:EmojiTextBox x:Name="PushNameBox"
+                                            Grid.Column="1"
+                                            Margin="0"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Bottom"
+                                            CounterHeight="32"
+                                            CounterLocation="TopRight"
+                                            TextWrapping="NoWrap"/>
+                    </Grid>
+                </shim:LongListSelector.ListHeader>
+
+                <shim:LongListSelector.ListFooter>
+                    <StackPanel Margin="24,0,24,112"
+                                toolkit:TiltEffect.SuppressTilt="True"
+                                Tap="Background_Tap">
+                        <TextBlock Text="{Binding StatusHeader}"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   FontSize="24"/>
+                        <Button Margin="0"
+                                Padding="0"
+                                Style="{StaticResource BorderlessButton}"
+                                Click="EditStatus_Tap"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Top">
+                            <Button.Content>
+                                <Grid Margin="0,6,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <local:RichTextBlock Grid.Column="0"
+                                                         Text="{Binding CurrentStatus}"
+                                                         TextWrapping="Wrap"
+                                                         Foreground="{StaticResource PhoneForegroundBrush}"
+                                                         Margin="-12,0,12,0"
+                                                         FontSize="24"/>
+                                    <local:RoundButton Grid.Column="1"
+                                                       ButtonSize="42"
+                                                       VerticalAlignment="Center"
+                                                       IsActivatable="True"
+                                                       ButtonIcon="../../Images/edit.png"
+                                                       Click="EditStatus_Tap"/>
+                                    <ProgressBar Grid.ColumnSpan="2"
+                                                      IsIndeterminate="True"
+                                                      VerticalAlignment="Top"
+                                                      Foreground="{StaticResource PhoneAccentBrush}"
+                                                      Visibility="{Binding StatusProgressBarVisibility}"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+
+                        <TextBlock Text="{Binding PhoneNumberHeader}"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   FontSize="24"
+                                   Margin="0,48,0,0"/>
+                        <TextBlock Text="{Binding PhoneNumberStr}"
+                                   FontSize="24"
+                                   Margin="0,6,0,0"/>
+                    </StackPanel>
+                </shim:LongListSelector.ListFooter>
+            </shim:LongListSelector>
+        </Grid>
+    </local:ZoomBox>
+</phone:PhoneApplicationPage>

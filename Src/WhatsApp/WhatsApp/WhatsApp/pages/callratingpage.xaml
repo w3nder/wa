@@ -1,0 +1,148 @@
+﻿<Page
+    x:Class="WhatsApp.CallRatingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <local:ZoomBox Grid.Row="0"
+                       ZoomFactor="{Binding ZoomFactor}"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal"
+                        Margin="24,24,24,0">
+                <Image Stretch="Uniform"
+                       Margin="0"
+                       Source="{Binding WhatsAppIconSource}"
+                       Width="25"
+                       Height="25"/>
+                <TextBlock VerticalAlignment="Bottom"
+                           TextWrapping="NoWrap"
+                           FontWeight="SemiBold"
+                           Margin="12,0,0,0"
+                           FontSize="23"
+                           Text="{Binding PageTitle}"/>
+            </StackPanel>
+        </local:ZoomBox>
+
+        <StackPanel Grid.Row="1"
+                    Margin="{Binding ContentPanelMargin}"
+                    VerticalAlignment="Center">
+            <TextBlock Text="{Binding RatingTooltipStr}"
+                       FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                       FontSize="32"
+                       TextWrapping="Wrap"/>
+            <StackPanel Margin="0,56,0,32"
+                        Width="300"
+                        HorizontalAlignment="Center">
+                <toolkit:Rating Height="80"
+                                Width="300"
+                                Margin="0"
+                                AllowHalfItemIncrement="False"
+                                AllowSelectingZero="False"
+                                HorizontalAlignment="Left"
+                                RatingItemCount="5"
+                                Value="{Binding RatingValue, Mode=TwoWay}">
+                    <toolkit:Rating.UnfilledItemStyle>
+                        <Style TargetType="toolkit:RatingItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="toolkit:RatingItem">
+                                        <TextBlock Text="&#x2606;"
+                                                   FontSize="64"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </toolkit:Rating.UnfilledItemStyle>
+                    <toolkit:Rating.FilledItemStyle>
+                        <Style TargetType="toolkit:RatingItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="toolkit:RatingItem">
+                                        <TextBlock Text="&#x2605;"
+                                                   FontSize="64"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </toolkit:Rating.FilledItemStyle>
+                </toolkit:Rating>
+                <TextBlock Text="{Binding RatingDescriptionStr}"
+                           Margin="0,12,0,0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="{StaticResource PhoneAccentBrush}"/>
+            </StackPanel>
+            <TextBlock Margin="0"
+                       Opacity="0.65"
+                       Text="{Binding FeedbackBoxTooltipStr}"/>
+            <toolkit:PhoneTextBox x:Name="FeedbackBox"
+                                  TextWrapping="Wrap"
+                                  InputScope="Text"
+                                  AcceptsReturn="True"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Margin="-12,0"
+                                  Padding="0"
+                                  MaxHeight="{Binding FeedbackBoxMaxHeight}"
+                                  HorizontalAlignment="Stretch"/>
+        </StackPanel>
+        <TextBlock Grid.Row="2" 
+            Margin="{Binding ContentPanelMargin}"
+            Padding="0,12,0,24"
+            TextWrapping="Wrap"
+            Tap="ViewCallSettings_Tap"
+            Style="{StaticResource PhoneTextSmallStyle}"
+            Visibility="{Binding ShowLowDataNotification}">
+                <Run Text="{Binding LowDataUsageEnabledStr}" /> 
+                <Run Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding WhatsAppSettingsStr}"/>.
+        </TextBlock>
+    </Grid>
+
+    <Page.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True"
+                              IsMenuEnabled="False">
+            <shell:ApplicationBarIconButton IsEnabled="False"
+                                            IconUri="/Images/check.png"
+                                            Text="SubmitButtonLabel"
+                                            Click="SubmitButton_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/assets/notheme/x.png"
+                                            Text="VoipRatingDismissButtonLabel"
+                                            Click="DismissButton_Click"/>
+        </shell:ApplicationBar>
+    </Page.ApplicationBar>
+
+</Page>

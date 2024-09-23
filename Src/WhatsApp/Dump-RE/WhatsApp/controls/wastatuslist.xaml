@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="WhatsApp.WaStatusList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:lls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:local="clr-namespace:WhatsApp"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <shim:JumpListItemBackgroundConverter x:Key="BackgroundConverter"/>
+        <shim:JumpListItemForegroundConverter x:Key="ForegroundConverter"/>
+    </UserControl.Resources>
+
+    <shim:LongListSelector x:Name="StatusList"
+                           IsFlatList="False"
+                           HorizontalAlignment="Stretch">
+        <shim:LongListSelector.ListHeader>
+            <Grid CacheMode="BitmapCache">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <local:WaSelfStatusItemControl x:Name="SelfStatusControl"
+                                                   Grid.Column="0"
+                                                   Margin="30,24,24,12"
+                                                   Tap="SelfStatusControl_Tap"/>
+                    <!-- Hard code a width here to ensure enough tap space -->
+                    <Grid x:Name="ExpandButton"
+                          Width="72"
+                          Grid.Column="1"
+                          Background="Transparent"
+                          Tap="ExpandButton_Tap"
+                          Margin="0,0,12,0">
+                        <TextBlock Text="⋯"
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+                
+                <local:OwnStatusList x:Name="OwnStatusList"
+                                     Grid.Row="1"
+                                     Margin="46,24,0,0"
+                                     Visibility="Collapsed"/>
+            </Grid>
+        </shim:LongListSelector.ListHeader>
+
+        <shim:LongListSelector.ListFooter>
+            <StackPanel Height="112"/>
+        </shim:LongListSelector.ListFooter>
+        
+        <shim:LongListSelector.GroupHeaderTemplate>
+            <DataTemplate>
+                <TextBlock Margin="24,8,0,12"
+                           Text="{Binding Key}"
+                           Foreground="{StaticResource PhoneAccentBrush}"
+                           FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                           FontWeight="SemiBold"/>
+            </DataTemplate>
+        </shim:LongListSelector.GroupHeaderTemplate>
+        
+        <shim:LongListSelector.ItemTemplate>
+            <DataTemplate>
+                <local:StatusItemControl Margin="30,12,24,12"
+                                         ViewModel="{Binding}"
+                                         Tap="Item_Tap"/>
+            </DataTemplate>
+        </shim:LongListSelector.ItemTemplate>
+    </shim:LongListSelector>
+</UserControl>

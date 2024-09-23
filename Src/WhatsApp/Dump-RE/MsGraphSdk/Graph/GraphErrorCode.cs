@@ -1,0 +1,73 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: Microsoft.Graph.GraphErrorCode
+// Assembly: MsGraphSdk, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null
+// MVID: B6767127-13D0-4992-B741-2642C0E7F410
+// Assembly location: C:\Users\Admin\Desktop\RE\WABeta\MsGraphSdk.dll
+
+#nullable disable
+namespace Microsoft.Graph
+{
+  public enum GraphErrorCode
+  {
+    AccessDenied,
+    ActivityLimitReached,
+    AccessRestricted,
+    AuthenticationCancelled,
+    AuthenticationFailure,
+    CannotSnapshotTree,
+    ChildItemCountExceeded,
+    EntityTagDoesNotMatch,
+    FragmentLengthMismatch,
+    FragmentOutOfOrder,
+    FragmentOverlap,
+    GeneralException,
+    InvalidAcceptType,
+    InvalidParameterFormat,
+    InvalidPath,
+    InvalidQueryOption,
+    InvalidRange,
+    InvalidRequest,
+    InvalidStartIndex,
+    ItemNotFound,
+    LockMismatch,
+    LockNotFoundOrAlreadyExpired,
+    LockOwnerMismatch,
+    MalformedEntityTag,
+    MalwareDetected,
+    MaxDocumentCountExceeded,
+    MaxFileSizeExceeded,
+    MaxFolderCountExceeded,
+    MaxFragmentLengthExceeded,
+    MaxItemCountExceeded,
+    MaxQueryLengthExceeded,
+    MaxStreamSizeExceeded,
+    NameAlreadyExists,
+    NotAllowed,
+    NotSupported,
+    ParameterIsTooLong,
+    ParameterIsTooSmall,
+    PathIsTooLong,
+    PathTooDeep,
+    PropertyNotUpdateable,
+    ResourceModified,
+    ResyncApplyDifferences,
+    ResyncRequired,
+    ResyncUploadDifferences,
+    ServiceNotAvailable,
+    ServiceReadOnly,
+    ThrottledRequest,
+    Timeout,
+    TooManyRedirects,
+    TooManyResultsRequested,
+    TooManyTermsInQuery,
+    TotalAffectedItemCountExceeded,
+    TruncationNotAllowed,
+    QuotaLimitReached,
+    Unauthenticated,
+    UploadSessionFailed,
+    UploadSessionIncomplete,
+    UploadSessionNotFound,
+    VirusSuspicious,
+    ZeroOrFewerResultsRequested,
+  }
+}

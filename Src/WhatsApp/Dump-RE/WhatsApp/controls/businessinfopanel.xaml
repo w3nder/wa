@@ -1,0 +1,308 @@
+﻿<UserControl x:Class="WhatsApp.BusinessInfoPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:WhatsApp"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <local:AssetStore x:Key="Assets"/>
+    </UserControl.Resources>
+
+    <StackPanel Margin="0"
+                HorizontalAlignment="Stretch">
+
+        <!-- Verified indicator -->
+        <Grid x:Name="VerifiedStatePanel"
+              Margin="0,0,0,16"
+              Tap="VerifiedStatePanel_Tap"
+              CacheMode="BitmapCache">
+            <Grid.RowDefinitions>
+                    <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <local:JidNameControl 
+                FontSize="24"
+                HorizontalAlignment="Left"
+                Visibility="Collapsed" 
+                x:Name="ExtraVerifiedName"
+                Margin="0,0,0,4"
+                Grid.Row="0"/>
+            <TextBlock x:Name="VerifiedStateBlock"
+                       Grid.Row="1"
+                                 Padding="0"
+                                 Margin="0,0,-12,0"
+                                 FontSize="24"
+                                 TextWrapping="Wrap"/>
+        </Grid>
+
+        <Rectangle Height="1"
+                   Margin="0,4,0,16"
+                   HorizontalAlignment="Stretch"
+                   Fill="{StaticResource PhoneForegroundBrush}"
+                   Opacity="0.35"
+                   IsHitTestVisible="False"
+                   CacheMode="BitmapCache"/>
+
+        <!-- Verified indicator -->
+        <Grid x:Name="HoursPanel"
+              Margin="0,0,0,16"
+              Tap="HoursPanel_Tap"
+              Background="Transparent"
+              CacheMode="BitmapCache">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="HoursIcon"
+                   Grid.Column="0"
+                   VerticalAlignment="Top"
+                   Height="32"
+                   Width="32"
+                   Stretch="UniformToFill"
+                   Source="{Binding Path=BizHoursIcon, Source={StaticResource Assets}}"
+                   Margin="0,2,0,0"/>
+            <StackPanel Grid.Column="1"
+                        VerticalAlignment="Top"
+                        Margin="24,0,0,0">
+                <Grid x:Name="TodayHoursPanel">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".4*"/>
+                        <ColumnDefinition Width=".6*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="TodayDayBlock"
+                               Grid.Column="0"
+                               VerticalAlignment="Top"
+                               FontSize="24"
+                               TextWrapping="NoWrap"/>
+                    <TextBlock x:Name="TodayHoursBlock"
+                               Grid.Column="1"
+                               VerticalAlignment="Top"
+                               FontSize="24"
+                               TextWrapping="Wrap"/>
+                    <Image Grid.Column="1"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Right"
+                           Width="20"
+                           Stretch="UniformToFill"
+                           Source="{Binding Path=ChevronIcon, Source={StaticResource Assets}}"
+                           Margin="0,4,0,0"
+                           RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <ScaleTransform x:Name="ToggleHoursIconTranform" ScaleY="1" />
+                        </Image.RenderTransform>
+                    </Image>
+                </Grid>
+                <ItemsControl x:Name="OtherDaysHoursList"
+                              Margin="0"
+                              Visibility="Collapsed">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".4*"/>
+                                    <ColumnDefinition Width=".6*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           VerticalAlignment="Top"
+                                           FontSize="24"
+                                           TextWrapping="NoWrap"
+                                           Text="{Binding Key}"/>
+                                <TextBlock Grid.Column="1"
+                                           VerticalAlignment="Top"
+                                           FontSize="24"
+                                           TextWrapping="Wrap"
+                                           Text="{Binding Value}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+
+        <!-- Address -->
+        <Grid x:Name="AddressPanel"
+              Margin="0,0,0,16"
+              Tap="AddressPanel_Tap"
+              Background="Transparent"
+              CacheMode="BitmapCache"
+              Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="AddressIcon"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   VerticalAlignment="Top"
+                   Height="32"
+                   Width="32"
+                   Stretch="UniformToFill"
+                   Source="{Binding Path=BizLocationIcon, Source={StaticResource Assets}}"
+                   Margin="0,2,0,0"/>
+            <TextBlock x:Name="AddressBlock"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Margin="24,0,0,0"
+                       VerticalAlignment="Top"
+                       FontSize="24"
+                       TextWrapping="Wrap"/>
+            <local:MapControl x:Name="MapView"
+                              Grid.Row="1"
+                              Grid.Column="0"
+                              Grid.ColumnSpan="2"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Height="160"
+                              Margin="0,12,0,0"
+                              IsHitTestVisible="False"
+                              Visibility="Collapsed"/>
+        </Grid>
+
+        <!-- Category/vertical -->
+        <Grid x:Name="CategoryPanel"
+              Margin="0,0,0,16"
+              Visibility="Collapsed"
+              CacheMode="BitmapCache">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="CategoryIcon"
+                   Grid.Column="0"
+                   VerticalAlignment="Top"
+                   Height="32"
+                   Width="32"
+                   Stretch="UniformToFill"
+                   Source="{Binding Path=BizCategoryIcon, Source={StaticResource Assets}}"
+                   Margin="0,2,0,0"/>
+            <TextBlock x:Name="CategoryBlock"
+                       Grid.Column="1"
+                       Margin="24,0,0,0"
+                       VerticalAlignment="Top"
+                       FontSize="24"
+                       TextWrapping="Wrap"/>
+        </Grid>
+
+        <!-- Description -->
+        <Grid x:Name="DescriptionPanel"
+              Margin="0,0,0,16"
+              CacheMode="BitmapCache"
+              Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="DescriptionIcon"
+                   Grid.Column="0"
+                   VerticalAlignment="Top"
+                   Height="32"
+                   Width="32"
+                   Stretch="UniformToFill"
+                   Source="{Binding Path=BizInfoIcon, Source={StaticResource Assets}}"
+                   Margin="0,2,0,0"/>
+            <local:RichTextBlock x:Name="DescriptionBlock"
+                                 Grid.Column="1"
+                                 Margin="12,0,-12,0"
+                                 VerticalAlignment="Top"
+                                 FontSize="24"
+                                 AllowLinks="False"
+                                 AllowTextFormatting="False"/>
+        </Grid>
+
+        <!-- Email -->
+        <Grid x:Name="EmailPanel"
+              Margin="0,0,0,16"
+              Visibility="Collapsed"
+              CacheMode="BitmapCache">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="EmailIcon"
+                   Grid.Column="0"
+                   VerticalAlignment="Top"
+                   Height="32"
+                   Width="32"
+                   Stretch="UniformToFill"
+                   Source="{Binding Path=BizEmailIcon, Source={StaticResource Assets}}"
+                   Margin="0,2,0,0"/>
+            <TextBlock x:Name="EmailBlock"
+                       Grid.Column="1"
+                       Margin="24,0,0,0"
+                       VerticalAlignment="Top"
+                       FontSize="24"
+                       TextWrapping="Wrap"/>
+        </Grid>
+
+        <!-- Instagram -->
+        <Grid x:Name="InstagramPanel"
+              Margin="0,0,0,16"
+              Visibility="Collapsed"
+              Tap="InstagramPanel_Tap"
+              CacheMode="BitmapCache">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="InstagramIcon"
+                   Grid.Column="0"
+                   VerticalAlignment="Top"
+                   Height="32"
+                   Width="32"
+                   Stretch="UniformToFill"
+                   Source="{Binding Path=BizInstagramIcon, Source={StaticResource Assets}}"
+                   Margin="0,2,0,0"/>
+            <TextBlock x:Name="InstagramBlock"
+                       Grid.Column="1"
+                       Margin="24,0,0,0"
+                       VerticalAlignment="Top"
+                       FontSize="24"
+                       TextWrapping="Wrap"/>
+        </Grid>
+
+        <!-- Website(s) -->
+        <ListBoxItem x:Name="WebsitesPanel"
+                     Margin="0,0,0,16"
+                     CacheMode="BitmapCache"
+                     Visibility="Collapsed">
+            <Grid Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="WebsitesIcon"
+                       Grid.Column="0"
+                       VerticalAlignment="Top"
+                       Height="32"
+                       Width="32"
+                       Stretch="UniformToFill"
+                       Source="{Binding Path=BizWebsiteIcon, Source={StaticResource Assets}}"
+                   Margin="0,2,0,0"/>
+                <StackPanel x:Name="WebsiteLinksPanel"
+                            Grid.Column="1"
+                            Margin="24,0,0,0"
+                            VerticalAlignment="Top"/>
+            </Grid>
+        </ListBoxItem>
+
+        <!-- Bottom divider -->
+        <Rectangle Height="1"
+                   Margin="0,4,0,0"
+                   HorizontalAlignment="Stretch"
+                   Fill="{StaticResource PhoneForegroundBrush}"
+                   Opacity="0.35"
+                   IsHitTestVisible="False"
+                   CacheMode="BitmapCache"/>
+    </StackPanel>
+</UserControl>

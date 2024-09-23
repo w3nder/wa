@@ -1,0 +1,27 @@
+Oops, parece que você não possui conexão!
+<p>Se vocês está vendo esta tela, significa que você não está conectado à Internet. Para te ajudar a resolver este problema o mais rápido possível, por favor leia as informações abaixo:</p>
+<ul>
+<li>
+<p>Tenha certeza de que seu telefone está em uma área com cobertura de rede ou de Wi-Fi. A conexão tem que estar com sinal forte e precisa ser estável.</p>
+</li>
+<li>
+<p>Tenha certeza de que seu telefone possui um plano de dados ativo com a sua operadora ou que a sua conexão de Wi-Fi esteja funcionando. Atenção: Para usar o WhatsApp em um Windows Phone, é importante que você tenha um plano de dados. Aparelhos usando Wi-Fi somente, podem enfrentar problemas.</p>
+</li>
+<li>
+<p>Reinicie o seu telefone (desligue, espere por 30 segundos e o ligue novamente).</p>
+</li>
+</ul>
+<p>PASSOS ADICIONAIS</p>
+<p>Se outros aplicativos ou páginas estão conectando à internet sem nenhum problema, é possível que a configuração de APN do seu aparelho não tenha sido feita corretamente ou não permite este tipo de conexão (UDP ou non-HTTP).</p>
+<p>Faça o seguinte:</p>
+<ul>
+<li>
+<p>Verifique as configurações de APN  (Access Point Name) de sua operadora. Pode ser que exista uma APN diferente que permita uma conexão non-HTTP como o WhatsApp. Para saber o passo a passo de como mudar configurações de APN em seu aparelho, veja: <a href="https://www.windowsphone.com/pt-br//How-to/wp7/start/cellular-settings">Windows Phone 7</a> e <a href="https://www.windowsphone.com/pt-br//how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>.</p>
+</li>
+<li>
+<p>Após ter feito a mudança de APN, desligue o seu aparelho, espere 30 segundos e o ligue novamente, assim você terá certeza de que a mudança terá efeito. </p>
+</li>
+<li>
+<p>Se você possuí um Windows Phone fabricado pela Nokia, tente usar o aplicativo <a href="https://www.windowsphone.com/pt-br/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">Connection Setup app</a>. Você encontra este aplicativo na Loja em Nokia Collection (Pode ser que não esteja disponível em alguns países).</p>
+</li>
+</ul>

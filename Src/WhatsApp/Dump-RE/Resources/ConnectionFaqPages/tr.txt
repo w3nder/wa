@@ -1,0 +1,13 @@
+Bağlantınız yok gibi görünüyor!
+<p>Eğer bu ekranı görüyorsanız, internete bağlı olmadığınız anlamına gelir. Bu problemi en kısa sürede çözmenize yardım edebilmemiz için lütfen aşağıdaki adımları takip edin:</p>
+<ul>
+<li>Cihazınızın mobil operatörnüz tarafından desteklenen veya Wi-Fi ağ bağlantısı olan bir alan içinde olduğundan emin olun. Bağlantı sabit ve güvenilir olmalıdır.</li>
+<li>Operatör ağ bağlantınızla aktif bir veri planınız olduğundan veya çalışan internete sahip bir Wi-Fi ağ bağlantınız olduğundan emin olun. NOT: WhatsApp'ı Windows Phone'da kullanmak için bir veri planına sahip olmanız önemlidir. Sadece Wi-Fi kullanılan cihazlarda problemlerle karşılaşılabilir.</li>
+<li>Telefonunuzu yeniden başlatın (kapatın, 30 saniye bekleyin, açın).</li>
+</ul>
+<p>DAHA İLERİ HATA GİDERME</p>
+<p>İnternet siteleri ve diğer uygulamalar çalışıyorsa ama WhatsApp bağlanamıyorsa, ağ yapılandırmanızın WhatsApp için gerekli olan bağlantılara (soket veya HTTP-olmayan bağlantılar) izin vermiyor olma ihtimali vardır.</p>
+<ul>
+<li>Operatörünüzün erişim noktası (APN) ayarlarını kontrol edin. Operatörünüzün HTTP-olmayan WhatsApp gibi bağlantılar için izin verdiği farklı bir APN adresi olabilir. Cihazınızın APN ayarlarını nasıl değiştireceğinizi öğrenmek için lütfen burayı ziyaret edin: <a href="https://www.windowsphone.com/tr-TR/How-to/wp7/start/cellular-settings">Windows Phone 7</a> ve <a href="https://www.windowsphone.com/tr-tr/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a> için. APN ayarlarını değiştirdikten sonra lütfen değişikliklerin etki etmesi için telefonunuzu yeniden başlatın.</li>
+<li>Nokia tarafından üretilmiş bir Windows Phone'a sahipseniz Satış noktasındaki (Store) Nokia Bağlantısından <a href="https://www.windowsphone.com/tr-tr/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">Bağlantı Kurma uygulaması</a>'nı kullanın (bu uygulama bazı ülkelerde bulunmayabilir).</li>
+</ul>

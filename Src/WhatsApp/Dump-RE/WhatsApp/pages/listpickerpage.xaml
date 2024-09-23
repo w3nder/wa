@@ -1,0 +1,66 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.ListPickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"
+    Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.Opacity="0"
+    toolkit:TiltEffect.IsTiltEnabled="True">
+
+    <local:ZoomBox x:Name="RootZoomBox"
+                   Margin="0">
+        <Grid x:Name="LayoutRoot" Background="{Binding BackgroundBrush}"
+              Margin="0">
+            <Grid x:Name="ContentPanel"
+                  Margin="{Binding PageMargin}">
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            
+                <local:PageTitlePanel Grid.Row="0"
+                                      Mode="NotZoomed"
+                                      SmallTitle="{Binding PageTitle}"
+                                      KeepOriginalSubtitleCase="True"
+                                      Subtitle="{Binding Subtitle}"/>
+            
+                <shim:LongListSelector x:Name="OptionList"
+                                       Grid.Row="1"
+                                       Margin="24,36,0,0"
+                                       IsFlatList="True"
+                                       SelectionChanged="OptionList_SelectionChanged">
+                    <shim:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Text}"
+                                       FontSize="{StaticResource PhoneFontSizeExtraLarge}"
+                                       FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                                       Foreground="{Binding ForegroundBrush}"
+                                       Margin="0,0,24,24"/>
+                        </DataTemplate>
+                    </shim:LongListSelector.ItemTemplate>
+                
+                    <shim:LongListSelector.ListFooter>
+                        <StackPanel Height="112"/>
+                    </shim:LongListSelector.ListFooter>
+                </shim:LongListSelector>
+            </Grid>
+        </Grid>
+    </local:ZoomBox>
+
+</phone:PhoneApplicationPage>

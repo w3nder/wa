@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="WhatsApp.TonePickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:local="clr-namespace:WhatsApp"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"
+    Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.Opacity="0"
+    toolkit:TiltEffect.IsTiltEnabled="True">
+
+    <local:ZoomBox x:Name="RootZoomBox"
+                   Margin="0">
+        <Grid x:Name="LayoutRoot" Background="{Binding BackgroundBrush}"
+              Margin="0">
+            <Grid x:Name="ContentPanel"
+                  Margin="{Binding PageMargin}">
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <local:PageTitlePanel Grid.Row="0"
+                                      Mode="NotZoomed"
+                                      SmallTitle="{Binding PageTitle}"/>
+
+                <shim:LongListSelector x:Name="ToneList"
+                                       Grid.Row="1"
+                                       Margin="24,36,0,0"
+                                       IsFlatList="True">
+                    <shim:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,24">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Width="42"
+                                       Height="42"
+                                       Source="{Binding PlayButtonIcon}"
+                                       Tag="{Binding .}"
+                                       Margin="0,0,18,0"
+                                       Tap="Play_Tap"/>
+                                <TextBlock Grid.Column="1"
+                                           FontFamily="Segoe WP Light"
+                                           FontSize="36"
+                                           TextTrimming="None"
+                                           Margin="0,0,0,3"
+                                           TextWrapping="Wrap"
+                                           Tag="{Binding .}"
+                                           Text="{Binding ToneNameStr}"
+                                           Foreground="{Binding ForegroundBrush}"
+                                           Tap="Item_Tap"/>
+                            </Grid>
+                        </DataTemplate>
+                    </shim:LongListSelector.ItemTemplate>
+
+                    <shim:LongListSelector.ListFooter>
+                        <StackPanel Height="112">
+                            <StackPanel Margin="0"
+                                        Tap="ResetToDefault_Tap"
+                                        Visibility="{Binding ResetToDefaultVisibility}">
+                                <TextBlock FontFamily="Segoe WP Light"
+                                           FontSize="36"
+                                           TextTrimming="None"
+                                           Margin="0"
+                                           TextWrapping="Wrap"
+                                           Text="{Binding ResetToDefaultStr}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </shim:LongListSelector.ListFooter>
+                </shim:LongListSelector>
+
+                <MediaElement x:Name="MediaElement"
+                              Visibility="Collapsed"/>
+            </Grid>
+        </Grid>
+    </local:ZoomBox>
+
+</Page>

@@ -1,0 +1,188 @@
+﻿<Page
+    x:Class="WhatsApp.ContactInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Page.Resources>
+        <Storyboard x:Name="EnterProfileImage">
+            <DoubleAnimation Storyboard.TargetName="ContentPanel"
+                             Storyboard.TargetProperty="Opacity"
+                             From="1" To="0" Duration="00:00:00.1"/>
+            <DoubleAnimation x:Name="EnterTranslateX" Storyboard.TargetName="LargeImage"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+                             From="24" To="0" Duration="00:00:00.3">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation x:Name="EnterTranslateY" Storyboard.TargetName="LargeImage"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+                             From="16" To="0" Duration="00:00:00.3">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation x:Name="EnterScaleX" Storyboard.TargetName="LargeImage"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
+                             From="0.41666" To="1" Duration="00:00:00.3">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation x:Name="EnterScaleY" Storyboard.TargetName="LargeImage"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
+                             From="0.41666" To="1" Duration="00:00:00.3">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="ExitProfileImage">
+            <DoubleAnimation Storyboard.TargetName="ContentPanel"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="00:00:00.15" BeginTime="00:00:00.05"/>
+
+            <DoubleAnimation Storyboard.TargetName="LargeImage"
+                 Storyboard.TargetProperty="Opacity"
+                 From="1" To="0" Duration="00:00:00.2"/>
+
+            <DoubleAnimation x:Name="ExitTranslateX" Storyboard.TargetName="LargeImage"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+                             From="0" To="24" Duration="00:00:00.2">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation x:Name="ExitTranslateY" Storyboard.TargetName="LargeImage"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+                             From="0" To="16" Duration="00:00:00.2">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation x:Name="ExitScaleX" Storyboard.TargetName="LargeImage"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
+                             From="1" To="0.41666" Duration="00:00:00.2">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation x:Name="ExitScaleY" Storyboard.TargetName="LargeImage"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
+                             From="1" To="0.41666" Duration="00:00:00.2">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase Exponent="6" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <local:ResolutionHelper x:Key="ResolutionHelper"/>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Margin="0">
+        <Grid x:Name="ContentPanel"
+              Margin="0"
+              CacheMode="BitmapCache">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <local:PageTitlePanel Grid.Row="0"
+                                      KeepOriginalSubtitleCase="True"
+                                      SmallTitle="{Binding PageTitle}"
+                                      Mode="Zoomed"/>
+                <Image x:Name="VerifiedBadge" 
+                       Margin="-6,12,0,0"
+                       Visibility="Collapsed"
+                       VerticalAlignment="Center"
+                       Height="25.3"
+                       Width="25.3"/>
+            </StackPanel>
+
+            <controls:Pivot x:Name="Pivot"
+                            Grid.Row="2"
+                            Margin="0,-12,0,0"
+                            SelectionChanged="Pivot_SelectionChanged">
+                <controls:Pivot.Template>
+                    <ControlTemplate TargetType="phone:Pivot">
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0"/>
+                                <RowDefinition Height="0"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <ContentControl x:Name="TitleElement" ContentTemplate="{TemplateBinding TitleTemplate}" Content="{TemplateBinding Title}" Height="0"/>
+                            <primitives:PivotHeadersControl x:Name="HeadersListElement" Grid.Row="1" Opacity="0"/>
+                            <ItemsPresenter x:Name="PivotItemPresenter" Margin="{TemplateBinding Padding}" Grid.Row="2"/>
+                        </Grid>
+                    </ControlTemplate>
+                </controls:Pivot.Template>
+                <controls:Pivot.HeaderTemplate>
+                    <DataTemplate/>
+                </controls:Pivot.HeaderTemplate>
+            </controls:Pivot>
+        </Grid>
+
+        <local:ImageViewControl x:Name="LargeImage"
+                                Width="480"
+                                Height="480"
+                                Visibility="Collapsed"
+                                CacheMode="BitmapCache">
+            <local:ImageViewControl.RenderTransform>
+                <CompositeTransform/>
+            </local:ImageViewControl.RenderTransform>
+        </local:ImageViewControl>
+
+        <toolkit:ListPicker x:Name="InvitationPicker"
+                            CacheMode="BitmapCache"
+                            ExpansionMode="FullScreenOnly"
+                            Visibility="Collapsed">
+            <toolkit:ListPicker.FullModeItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Data}" Margin="0,12"
+                               FontSize="{StaticResource PhoneFontSizeExtraLarge}"
+                               FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                               Tag="{Binding}"/>
+                </DataTemplate>
+            </toolkit:ListPicker.FullModeItemTemplate>
+        </toolkit:ListPicker>
+    </Grid>
+
+</Page>

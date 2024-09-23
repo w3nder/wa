@@ -1,0 +1,13 @@
+Oeps, het lijkt erop dat je geen verbinding hebt!
+<p>Wanneer je dit scherm ziet, betekent het dat je geen verbinding met het internet hebt. Volg onderstaande stappen om dit probleem zo snel mogelijk op te lossen:</p>
+<ul>
+<li>Zorg ervoor dat je in een gebied bent waar je mobiele provider of Wi-Fi internet ondersteunt. Je hebt een stabiel en betrouwbaar netwerk nodig.</li>
+<li>Zorg ervoor dat je een data abonnement hebt bij je mobiele aanbieder of een Wi-Fi verbinding waarbij de internettoegang werkt. OPMERKING: Om WhatsApp op een Windows Phone te gebruiken is het belangrijk om een data abonnement te hebben. Apparaten met alleen Wi-Fi kunnen problemen ervaren.</li>
+<li>Zet je telefoon uit, wacht 30 second en zet je telefoon terug aan.</li>
+</ul>
+<p>AANVULLENDE PROBLEEM OPLOSSINGEN</p>
+<p>Mocht je wel verbinding hebben met andere websites en apps, maar geen verbinding WhatsApp. Dan kan het zijn dat je netwerkinstellingen het type verbinding niet toestaat dat noodzakelijk is voor het gebruik van WhatsApp.</p>
+<ul>
+<li>Controleer de instellingen voor de Access Point Name (APN) van je provider. Er is mogelijk een andere APN voor je provider die niet-HTTP verbindingen zoals WhatsApp toestaat. Zie hier hoe je de APN instellingen op jouw telefoon kunt wijzigen: <a href="https://www.windowsphone.com/nl-nl/How-to/wp7/start/cellular-settings">Windows Phone 7</a> en <a href="https://www.windowsphone.com/nl-nl/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>. Nadat je de APN instellingen hebt aangepast, zorg ervoor dat je je telefoon opnieuw opstart. </li>
+<li>Als je een Windows Phone van Nokia hebt, probeer dan de <a href="https://www.windowsphone.com/en-us/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">Connection Setup app</a> uit de Nokia Collection in Store (deze toepassing is mogelijk niet in alle landen beschikbaar).</li>
+</ul>

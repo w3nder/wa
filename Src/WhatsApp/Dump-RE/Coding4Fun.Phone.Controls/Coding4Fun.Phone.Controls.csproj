@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Admin\Desktop\RE\WABeta\Coding4Fun.Phone.Controls.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F2387F3E-3391-4D1C-8F15-E169BA9C21AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Coding4Fun.Phone.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <ApplicationVersion>1.6.1.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Coding4Fun.Phone.Controls</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="System\Windows\Controls\TemplatedVisualTreeExtensions.cs" />
+    <Compile Include="System\Windows\Controls\VisualTreeExtensions.cs" />
+    <Compile Include="PopUp`2.cs" />
+    <Compile Include="ActionPopUp`2.cs" />
+    <Compile Include="AboutPrompt.cs" />
+    <Compile Include="AboutPersonItem.cs" />
+    <Compile Include="ButtonBaseHelper.cs" />
+    <Compile Include="ChatBubble.cs" />
+    <Compile Include="ChatBubbleDirection.cs" />
+    <Compile Include="ChatBubbleTextBox.cs" />
+    <Compile Include="ColorBaseControl.cs" />
+    <Compile Include="ColorHexagonPicker.cs" />
+    <Compile Include="ColorPicker.cs" />
+    <Compile Include="ColorSlider.cs" />
+    <Compile Include="IButtonBase.cs" />
+    <Compile Include="ButtonBaseConstants.cs" />
+    <Compile Include="ImageTile.cs" />
+    <Compile Include="ImageTileAnimationTypes.cs" />
+    <Compile Include="ImageTileLayoutStates.cs" />
+    <Compile Include="ImageTileState.cs" />
+    <Compile Include="MetroFlow.cs" />
+    <Compile Include="MetroFlowData.cs" />
+    <Compile Include="MetroFlowItem.cs" />
+    <Compile Include="MovementMonitor.cs" />
+    <Compile Include="MovementMonitorEventArgs.cs" />
+    <Compile Include="ToggleButtonBase.cs" />
+    <Compile Include="OpacityToggleButton.cs" />
+    <Compile Include="SelectionTapEventArgs.cs" />
+    <Compile Include="SuperSlider.cs" />
+    <Compile Include="ColorSliderThumb.cs" />
+    <Compile Include="Tile.cs" />
+    <Compile Include="TileNotification.cs" />
+    <Compile Include="UserPrompt.cs" />
+    <Compile Include="MessagePrompt.cs" />
+    <Compile Include="InputPrompt.cs" />
+    <Compile Include="PasswordInputPrompt.cs" />
+    <Compile Include="MemoryCounter.cs" />
+    <Compile Include="PopUpEventArgs`2.cs" />
+    <Compile Include="PopUpResult.cs" />
+    <Compile Include="ProgressOverlay.cs" />
+    <Compile Include="RoundButton.cs" />
+    <Compile Include="RoundToggleButton.cs" />
+    <Compile Include="ToastPrompt.cs" />
+    <Compile Include="Binding\FrameworkElementBinding.cs" />
+    <Compile Include="Binding\TextBinding.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\StringToVisibilityConverter.cs" />
+    <Compile Include="Converters\ThemedImageConverter.cs" />
+    <Compile Include="Converters\ThemedInverseImageConverter.cs" />
+    <Compile Include="Converters\ThemedImageConverterHelper.cs" />
+    <Compile Include="Converters\VisibilityToBooleanConverter.cs" />
+    <Compile Include="Helpers\ColorExtentions.cs" />
+    <Compile Include="Helpers\HSV.cs" />
+    <Compile Include="Helpers\ControlHelper.cs" />
+    <Compile Include="Helpers\ColorSpace.cs" />
+    <Compile Include="Data\PhoneHelper.cs" />
+    <Compile Include="Clarity\Phone\Extensions\DialogService.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="media\icons\appbar.cancel.rest.png" />
+    <Resource Include="media\icons\appbar.check.rest.png" />
+    <Resource Include="themes\buttons\opacitytogglebutton.xaml" />
+    <Resource Include="themes\buttons\roundbutton.xaml" />
+    <Resource Include="themes\buttons\roundtogglebutton.xaml" />
+    <Resource Include="themes\buttons\tile.xaml" />
+    <Resource Include="themes\colors\colorhexagonpicker.xaml" />
+    <Resource Include="themes\colors\colorpicker.xaml" />
+    <Resource Include="themes\colors\colorslider.xaml" />
+    <Resource Include="themes\common\commonstyles.xaml" />
+    <Resource Include="themes\diagnostic\memorycounter.xaml" />
+    <Resource Include="themes\generic.xaml" />
+    <Resource Include="themes\other\chatbubble.xaml" />
+    <Resource Include="themes\other\chatbubbletextbox.xaml" />
+    <Resource Include="themes\other\imagetile.xaml" />
+    <Resource Include="themes\other\metroflow.xaml" />
+    <Resource Include="themes\other\progressoverlay.xaml" />
+    <Resource Include="themes\other\superslider.xaml" />
+    <Resource Include="themes\prompts\aboutpersonitem.xaml" />
+    <Resource Include="themes\prompts\aboutprompt.xaml" />
+    <Resource Include="themes\prompts\inputprompt.xaml" />
+    <Resource Include="themes\prompts\messageprompt.xaml" />
+    <Resource Include="themes\prompts\passwordinputprompt.xaml" />
+    <Resource Include="themes\prompts\phoneflipmenu.xaml" />
+    <Resource Include="themes\prompts\toastprompt.xaml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

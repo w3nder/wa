@@ -1,0 +1,316 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WhatsApp.RecipientListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="JumpListStyle"
+               TargetType="phone:LongListSelector">
+            <Setter Property="GridCellSize" Value="117,117"/>
+            <Setter Property="LayoutMode"
+                    Value="Grid"/>
+            <Setter Property="Margin"
+                    Value="0"/>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Background="{StaticResource PhoneAccentBrush}"
+                              Margin="12,12,0,0">
+                            <TextBlock DataContext="{Binding Key}"
+                                       Text="{Binding JumpListHeader}"
+                                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                       Foreground="White"
+                                       FontSize="32"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Bottom"
+                                       TextWrapping='Wrap'
+                                       Margin="6,0,0,6"/>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <local:AssetStore x:Key="Assets"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <local:ZoomBox x:Name="LayoutRootZoomBox">
+        <Grid x:Name="LayoutRoot">
+            <Grid.RenderTransform>
+                <CompositeTransform TranslateY="0"/>
+            </Grid.RenderTransform>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        CacheMode="BitmapCache">
+                <Grid Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <local:PageTitlePanel x:Name="PageTitle"
+                                          Grid.Column="0"
+                                          Mode="NotZoomed"
+                                          CacheMode="BitmapCache"
+                                          VerticalAlignment="Top"/>
+                    <TextBlock x:Name="SelectionSummaryBlock"
+                               Grid.Column="1"
+                               Margin="24,0,24,0"
+                               Foreground="{StaticResource PhoneSubtleBrush}"
+                               FontWeight="Light"
+                               FontSize="22"
+                               VerticalAlignment="Bottom"/>
+                </Grid>
+                <local:EmojiTextBox x:Name="SearchField"
+                                    Margin="24,12,24,12"
+                                    FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                                    CacheMode="BitmapCache"/>
+                <Rectangle Height="1"
+                           HorizontalAlignment="Stretch"
+                           Fill="{StaticResource PhoneForegroundBrush}"
+                           Opacity="0.35"
+                           Margin="24,0"
+                           IsHitTestVisible="False"/>
+            </StackPanel>
+
+            <ListBox x:Name="SelectedList"
+                     Grid.Row="1"
+                     VerticalAlignment="Top"
+                     Margin="0,12,0,0"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                     Visibility="Collapsed"
+                     SelectionChanged="SelectedList_SelectionChanged">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <local:SelectedRecipientItemControl ViewModel="{Binding}"
+                                                            Margin="24,0,6,12"
+                                                            RemoveClicked="OnSelectedItemRemoved"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+            <shim:LongListSelector x:Name="MainList"
+                                   Grid.Row="2"
+                                   Margin="0"
+                                   IsFlatList="False"
+                                   JumpListStyle="{StaticResource JumpListStyle}"
+                                   CacheMode="BitmapCache">
+                <shim:LongListSelector.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock DataContext="{Binding Key}"
+                                   Margin="24,12,24,12"
+                                   Text="{Binding Name}"
+                                   Foreground="{StaticResource PhoneAccentBrush}"
+                                   FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                                   FontWeight="SemiBold"/>
+                    </DataTemplate>
+                </shim:LongListSelector.GroupHeaderTemplate>
+                <shim:LongListSelector.GroupFooterTemplate>
+                    <DataTemplate>
+                        <Grid Tap="ViewMore_Tap"
+                              DataContext="{Binding Key}"
+                              Visibility="{Binding FooterVisibility}"
+                              HorizontalAlignment="Stretch"
+                              Background="Transparent">
+                            <TextBlock Text="{Binding ViewMoreText}"
+                                       Margin="24,12,24,12"
+                                       FontWeight="SemiBold"
+                                       FontSize="23"/>
+                        </Grid>
+                    </DataTemplate>
+                </shim:LongListSelector.GroupFooterTemplate>
+                <shim:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <local:RecipientItemControl Margin="24,6,24,18"
+                                                    ViewModel="{Binding}"
+                                                    Tap="Item_Tap"/>
+                    </DataTemplate>
+                </shim:LongListSelector.ItemTemplate>
+                <shim:LongListSelector.ListHeader>
+                    <StackPanel Margin="0">
+                        <Grid Margin="24,12,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <local:WaSelfStatusItemControl x:Name="StatusControl"
+                                                           Grid.Column="0"
+                                                           Margin="0,0,24,0"
+                                                           Visibility="Collapsed"/>
+                            <!-- Hard code a width here to ensure enough tap space -->
+                            <Grid x:Name="PrivacyButton"
+                                  Grid.Column="1"
+                                  Width="72"
+                                  Background="Transparent"
+                                  Tap="PrivacyButton_Tap"
+                                  Visibility="Collapsed"
+                                  Margin="0,0,12,0">
+                                <TextBlock Text="⋯"
+                                           Style="{StaticResource PhoneTextLargeStyle}"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+                        <Grid x:Name="StatusTooltipPanel"
+                              Background="{StaticResource PhoneAccentBrush}"
+                              Visibility="Collapsed"
+                              Margin="0,16,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="StatusTooltipBlock"
+                                       Grid.Column="0"
+                                       TextWrapping="Wrap"
+                                       Margin="24"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       FontSize="24"/>
+                            <Grid Grid.Column="1"
+                                  Background="Transparent"
+                                  Tap="TooltipDismissButton_Tap">
+                                <Image VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,0,6,0"
+                                       Height="48"
+                                       Width="48"
+                                       Stretch="UniformToFill"
+                                       Source="{Binding Path=DismissIconWhite, Source={StaticResource Assets}}"/>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </shim:LongListSelector.ListHeader>
+                <shim:LongListSelector.ListFooter>
+                    <StackPanel Height="112"
+                                Margin="24,0">
+                        <ProgressBar x:Name="LoadingProgressBar"
+                                          IsIndeterminate="True"
+                                          HorizontalAlignment="Stretch"
+                                          Visibility="Visible"/>
+                    </StackPanel>
+                </shim:LongListSelector.ListFooter>
+            </shim:LongListSelector>
+
+            <Grid x:Name="SearchResultsPanel"
+                  Grid.Row="2"
+                  Margin="0"
+                  Background="{StaticResource PhoneBackgroundBrush}"
+                  Visibility="Collapsed"
+                  CacheMode="BitmapCache">
+                <shim:LongListSelector x:Name="ResultList"
+                                       Margin="24,0,0,0"
+                                       IsFlatList="False">
+                    <shim:LongListSelector.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock DataContext="{Binding Key}"
+                                       Margin="0,12,0,12"
+                                       Text="{Binding Name}"
+                                       Foreground="{StaticResource PhoneAccentBrush}"
+                                       FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                                       FontWeight="SemiBold"/>
+                        </DataTemplate>
+                    </shim:LongListSelector.GroupHeaderTemplate>
+
+                    <shim:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <local:RecipientItemControl Margin="0,0,24,12"
+                                                        ViewModel="{Binding}"
+                                                        Tap="Item_Tap"/>
+                        </DataTemplate>
+                    </shim:LongListSelector.ItemTemplate>
+
+                    <shim:LongListSelector.ListFooter>
+                        <StackPanel Height="112">
+                            <TextBlock x:Name="ResultListFooterBlock"
+                                       Margin="0,48,0,0"
+                                       TextWrapping="Wrap"
+                                       Visibility="Collapsed"
+                                       Style="{StaticResource PhoneTextNormalStyle}"
+                                       Foreground="{StaticResource PhoneSubtleBrush}"
+                                       FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                        </StackPanel>
+                    </shim:LongListSelector.ListFooter>
+                </shim:LongListSelector>
+            </Grid>
+
+            <Grid x:Name="BottomBar"
+                  Grid.Row="2"
+                  Height="72"
+                  Margin="0"
+                  VerticalAlignment="Bottom"
+                  Background="{StaticResource PhoneChromeBrush}"
+                  Visibility="Collapsed"
+                  CacheMode="BitmapCache">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <local:RoundButton x:Name="SubmitButton"
+                                   Grid.Column="0"
+                                   ButtonSize="48"
+                                   ButtonIcon="/Images/check.png"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FlowDirection="LeftToRight"
+                                   Tap="Submit_Click"
+                                   Visibility="Collapsed"/>
+
+                <Grid x:Name="RecipientsPreview"
+                      Grid.Column="0"
+                      Margin="12,0,12,0"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      Visibility="Collapsed">
+                    <ScrollViewer x:Name="SelectedScrollViewer"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Disabled">
+                        <local:RichTextBlock x:Name="SelectedTextBlock"/>
+                    </ScrollViewer>
+                </Grid>
+
+                <Button x:Name="RightButton"
+                        Grid.Column="1"
+                        Margin="0,0,12,0"
+                        MinWidth="100"
+                        Click="Submit_Click"
+                        Padding="24,6"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Visibility="Collapsed">
+                </Button>
+            </Grid>
+        </Grid>
+    </local:ZoomBox>
+</phone:PhoneApplicationPage>

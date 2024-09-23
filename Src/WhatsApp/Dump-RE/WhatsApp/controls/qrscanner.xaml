@@ -1,0 +1,277 @@
+﻿<UserControl x:Class="WhatsApp.QrScanner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <Storyboard x:Name="CompleteAnimation">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Checkmark" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.75">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShadeBackground" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01.5">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Checkmark" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00.50" Value="1"/>
+                <LinearDoubleKeyFrame KeyTime="00:00:00.75" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Name="QrDemoStoryboard" RepeatBehavior="Forever">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScanFrame" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:05.6">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="QrDemo" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:05.6">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Computer" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:00"/>
+                <EasingDoubleKeyFrame Value="1" KeyTime="00:00:01">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame Value="0.6" KeyTime="00:00:02">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <DiscreteDoubleKeyFrame Value="0.6" KeyTime="00:00:05.2"/>
+                <EasingDoubleKeyFrame Value="0" KeyTime="00:00:05.6">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PhoneContainer" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="1" KeyTime="00:00:01"/>
+                <DiscreteDoubleKeyFrame Value="1" KeyTime="00:00:05.2"/>
+                <EasingDoubleKeyFrame Value="0" KeyTime="00:00:05.6">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ComputerXForm" Storyboard.TargetProperty="TranslateX">
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:01"/>
+                <EasingDoubleKeyFrame Value="-40" KeyTime="00:00:02">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PhoneContainerXForm" Storyboard.TargetProperty="TranslateX">
+                <DiscreteDoubleKeyFrame Value="350" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="350" KeyTime="00:00:01"/>
+                <EasingDoubleKeyFrame Value="60" KeyTime="00:00:02">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="4"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="QrXForm" Storyboard.TargetProperty="TranslateX">
+                <DiscreteDoubleKeyFrame Value="-140" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="-140" KeyTime="00:00:01"/>
+                <EasingDoubleKeyFrame Value="0" KeyTime="00:00:02">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PhoneContainerXForm" Storyboard.TargetProperty="TranslateY">
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:02.2"/>
+                <EasingDoubleKeyFrame Value="40" KeyTime="00:00:03.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="4"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame Value="0" KeyTime="00:00:03.8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="4"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="QrXForm" Storyboard.TargetProperty="TranslateY">
+                <DiscreteDoubleKeyFrame Value="1" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:02.2"/>
+                <EasingDoubleKeyFrame Value="-25" KeyTime="00:00:03.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="4"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame Value="0" KeyTime="00:00:03.8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="4"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="QrCode" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame Value="1" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="1" KeyTime="00:00:03.6"/>
+                <LinearDoubleKeyFrame Value="0" KeyTime="00:00:04.0"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="QrNormal" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:03.6"/>
+                <LinearDoubleKeyFrame Value="1" KeyTime="00:00:04.0"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SmallCheck" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:04.0"/>
+                <LinearDoubleKeyFrame Value="1" KeyTime="00:00:04.2"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SmallCheckXForm" Storyboard.TargetProperty="ScaleX">
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:04.0"/>
+                <EasingDoubleKeyFrame Value="1.5" KeyTime="00:00:04.4">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame Value="1.0" KeyTime="00:00:04.8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="4"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SmallCheckXForm" Storyboard.TargetProperty="ScaleY">
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:00"/>
+                <DiscreteDoubleKeyFrame Value="0" KeyTime="00:00:04.0"/>
+                <EasingDoubleKeyFrame Value="1.5" KeyTime="00:00:04.4">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame Value="1.0" KeyTime="00:00:04.8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="4"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+        </Storyboard>
+
+        <local:Localizable x:Key="Localizable"/>
+    </UserControl.Resources>
+
+    <Grid Height="480">
+        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.ColumnSpan="3" Fill="Black" Margin="0,1,0,-1"/>
+        <Rectangle x:Name="PreviewRect" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.ColumnSpan="3" FlowDirection="LeftToRight">
+            <Rectangle.Fill>
+                <VideoBrush x:Name="PreviewBrush" Stretch="UniformToFill">
+                    <VideoBrush.RelativeTransform>
+                        <CompositeTransform Rotation="90" CenterX="0.5" CenterY="0.5"/>
+                    </VideoBrush.RelativeTransform>
+                </VideoBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Image Grid.Row="1" Grid.Column="1" Source="../Images/anim-scan-frame.png" Width="400" Height="400" x:Name="ScanFrame"/>
+
+        <Rectangle Opacity="0.8" Fill="Black" x:Name="ShadeBackground" Visibility="Collapsed"/>
+
+        <Image Grid.Row="1" Grid.Column="1" Source="../Images/anim-scan-check.png" Width="212" Height="164" Visibility="Collapsed" x:Name="Checkmark"/>
+
+        <ProgressBar x:Name="QrWait" Visibility="Collapsed" />
+
+        <Grid x:Name="QrDemo" Visibility="Collapsed">
+            <Rectangle Opacity="0.8" Fill="Black"/>
+
+            <Image x:Name="Computer" Width="260" Source="../Images/anim-laptop.png">
+                <Image.RenderTransform>
+                    <CompositeTransform x:Name="ComputerXForm"/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Grid x:Name="PhoneContainer" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RenderTransform>
+                    <CompositeTransform x:Name="PhoneContainerXForm" TranslateX="60"/>
+                </Grid.RenderTransform>
+
+                <Image Height="340" Source="../Images/anim-phone.png" VerticalAlignment="Center"/>
+                <Image Height="100" Source="../Images/anim-frame.png" VerticalAlignment="Center"/>
+
+                <Grid x:Name="QrContainer">
+                    <Grid.Clip>
+                        <RectangleGeometry Rect="22,0,145,380"/>
+                    </Grid.Clip>
+                    <Image x:Name="QrCode" Width="100" Height="100" Source="../Images/anim-qr-blurred.png">
+                        <Image.RenderTransform>
+                            <CompositeTransform x:Name="QrXForm" TranslateX="-40"/>
+                        </Image.RenderTransform>
+                    </Image>
+
+                    <Image x:Name="QrNormal" Width="100" Height="100" Source="../Images/anim-qr-normal.png"/>
+
+                    <Image x:Name="SmallCheck" Width="60" Height="60" Source="../Images/anim-check.png" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <CompositeTransform x:Name="SmallCheckXForm"/>
+                        </Image.RenderTransform>
+                    </Image>
+                </Grid>
+            </Grid>
+
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" MinWidth="200" Content="{Binding Path=Strings.WebScanConfirm, Source={StaticResource Localizable}}" BorderBrush="White" Foreground="White" Click="DemoCollapse"/>
+        </Grid>
+    </Grid>
+</UserControl>

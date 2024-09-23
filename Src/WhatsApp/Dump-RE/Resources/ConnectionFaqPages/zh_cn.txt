@@ -1,0 +1,13 @@
+糟糕，您没有网络连接！
+<p>如果您看见此页，那代表您尚未连线到网络。如要尽快解决此问题，请跟随以下的故障排解步骤：</p>
+<ul>
+<li>请确定您有良好以及稳定的手机互联网连接讯号或 Wi-Fi 讯号。</li>
+<li>请确定您有一个有效的运营商网络数据计划或 Wi-Fi 网络连接没有问题。注意：如要在 Windows Phone 上使用 WhatsApp，用户必需配备有效的移动数据服务计划。仅限 Wi-Fi 连接的设备或会遇到连接问题。</li>
+<li>重启手机。（关机，稍等 30 秒钟，重启装置）</li>
+</ul>
+<p>其他故障排解方法</p>
+<p>如果在设备上其他的应用程序或网页没有问题，而只有 WhatsApp 无法连接，那有可能的是您的网络配置设置不允许 WhatsApp 某种的网络连接（例如：Socket 套接或非 HTTP 连接）。</p>
+<ul>
+<li>请检查您的运营商的 APN 存取点设置。您的运营商可能使用不同的 APN 存取点来允许 WhatsApp 的非 HTTP 网络连接。更多有关您的设备的 APN 存取点设置，请浏览：<a href="https://www.windowsphone.com/zh-cn/How-to/wp7/start/cellular-settings">Windows Phone 7</a> 和 <a href="https://www.windowsphone.com/zh-cn/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>。在更改 APN 存取点设置后，请重新启动设备。</li>
+<li>如果您使用的是 Nokia 的 Windows Phone 设备，请使用 Nokia Collection 在商店中提供的 <a href="https://www.windowsphone.com/zh-cn/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">连接设置软件</a>。（此应用软件未必支持某些国家。）</li>
+</ul>

@@ -1,0 +1,149 @@
+﻿<Page
+    x:Class="WhatsApp.ChatPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    
+    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.Opacity="0.0"
+    IsTabStop="True">
+
+    <Page.Resources>
+        <local:Localizable x:Key="Localizable"/>
+
+        <Storyboard x:Name="ChatTitleContinuumIn" SpeedRatio="1">
+            <DoubleAnimation Duration="00:00:00.350"
+                             Storyboard.TargetName="ChatTitleBlockProjection"
+                             Storyboard.TargetProperty="RotationX"
+                             From="-50" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseOut" Power="2"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ChatTitleBlockXForm"
+                                           Storyboard.TargetProperty="TranslateY">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.100" Value="-40">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="8"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.350" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut" Exponent="0.75"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="00:00:00.350"
+                             Storyboard.TargetName="ChatTitleBlockXForm"
+                             Storyboard.TargetProperty="ScaleX"
+                             From="1.5" To="1">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseOut" Power="2"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="00:00:00.350"
+                             Storyboard.TargetName="ChatTitleBlockXForm"
+                             Storyboard.TargetProperty="ScaleY"
+                             From="1.5" To="1">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseOut" Power="2"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="00:00:00.167"
+                             Storyboard.TargetName="ChatTitleBlock"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ChatSubtitleBlock"
+                                           Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00.050" Value="0"/>
+                <LinearDoubleKeyFrame KeyTime="00:00:00.350" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RenderTransform>
+            <CompositeTransform TranslateY="0"/> <!-- Needed for backward out animation -->
+        </Grid.RenderTransform>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Wallpaper panel goes here at row 0, it needs to be placed
+             as the first element, so that it'll be shown beneath others.
+        -->
+
+        <!-- Message list goes here at row 1, it needs to be placed between
+             wall paper panel and title panel so that it'll be over wallpaper
+             but under top banner.
+        -->
+
+        <!-- Title panel goes here at row 0, it needs to be placed after
+             message list.
+        -->
+
+        <!-- Spam reporting panel goes here at row 2, if needed -->
+
+        <!-- Chat input bar / read only panel goes here at row 3 -->
+      <Grid x:Name="ReadOnlyPanel"
+              Grid.Row="3"
+              Visibility="{Binding ReadOnlyPanelVisibility}"
+              Background="{StaticResource PhoneChromeBrush}"
+              Margin="0,0,0,-1"
+              CacheMode="BitmapCache"
+              VerticalAlignment="Bottom">
+
+            <RichTextBox x:Name="ReadOnlyHelpTextBox"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    TextWrapping="Wrap"
+                    Margin="8,0,8,0"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    FontSize="{StaticResource PhoneFontSizeSmall}" />
+
+        </Grid>
+
+        <!-- Proximity cover goes here at row 0, span 4, it needs to be the
+             last element, so it'll cover everything before it.
+        -->
+    </Grid>
+
+</Page>

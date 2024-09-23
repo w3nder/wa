@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Admin\Desktop\RE\WABeta\Microsoft.Phone.Controls.Toolkit.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2D165575-16E5-4F03-98D3-47A15343E1B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Microsoft.Phone.Controls.Toolkit</AssemblyName>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <ApplicationVersion>8.0.1.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Maps" />
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Runtime.WindowsRuntime" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Microsoft\Phone\Controls\IUpdateVisualState.cs" />
+    <Compile Include="Microsoft\Phone\Controls\AutoCompleteBox.cs" />
+    <Compile Include="Microsoft\Phone\Controls\AutoCompleteSearch.cs" />
+    <Compile Include="Microsoft\Phone\Controls\AutoCompleteFilterMode.cs" />
+    <Compile Include="Microsoft\Phone\Controls\AutoCompleteFilterPredicate`1.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ISelectionAdapter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PopulatedEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PopulatedEventHandler.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PopulatingEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PopulatingEventHandler.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PopupHelper.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SelectorSelectionAdapter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\BindingEvaluator`1.cs" />
+    <Compile Include="Microsoft\Phone\Controls\CultureInfoExtensions.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Extensions.cs" />
+    <Compile Include="Microsoft\Phone\Controls\InteractionHelper.cs" />
+    <Compile Include="Microsoft\Phone\Controls\LengthConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\MathHelpers.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PhoneHelper.cs" />
+    <Compile Include="Microsoft\Phone\Controls\MotionParameters.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PhysicsConstants.cs" />
+    <Compile Include="Microsoft\Phone\Controls\RoutedPropertyChangingEventArgs`1.cs" />
+    <Compile Include="Microsoft\Phone\Controls\RoutedPropertyChangingEventHandler`1.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SafeRaise.cs" />
+    <Compile Include="Microsoft\Phone\Controls\VisualStates.cs" />
+    <Compile Include="Microsoft\Phone\Controls\WeakEventListener`3.cs" />
+    <Compile Include="Microsoft\Phone\Controls\WeakReferenceHelper.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ContextMenu.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ContextMenuService.cs" />
+    <Compile Include="Microsoft\Phone\Controls\MenuItem.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Separator.cs" />
+    <Compile Include="Microsoft\Phone\Controls\CustomMessageBoxResult.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DismissingEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DailyDateTimeConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DateTimeFormatHelper.cs" />
+    <Compile Include="Microsoft\Phone\Controls\FullViewDateTimeConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\HourlyDateTimeConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ListViewDateTimeConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\RelativeTimeConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ThreadDateTimeConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DataSource.cs" />
+    <Compile Include="Microsoft\Phone\Controls\YearDataSource.cs" />
+    <Compile Include="Microsoft\Phone\Controls\MonthDataSource.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DayDataSource.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TwelveHourDataSource.cs" />
+    <Compile Include="Microsoft\Phone\Controls\MinuteDataSource.cs" />
+    <Compile Include="Microsoft\Phone\Controls\AmPmDataSource.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TwentyFourHourDataSource.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DateTimePickerBase.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DatePicker.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DateTimePickerResources.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DateTimeValueChangedEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ListPicker.cs" />
+    <Compile Include="Microsoft\Phone\Controls\RecurringDaysPicker.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TimePicker.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SlideInEffect.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ExpanderView.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ExpansionStates.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ExpandabilityStates.cs" />
+    <Compile Include="Microsoft\Phone\Controls\CustomMessageBox.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DismissedEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PhoneTextBox.cs" />
+    <Compile Include="Microsoft\Phone\Controls\HubTile.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ImageState.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TileSize.cs" />
+    <Compile Include="Microsoft\Phone\Controls\MultipleToSingleLineStringConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\VisibilityConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TileSizeToWidthConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TileSizeToHeightConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\HubTileService.cs" />
+    <Compile Include="Microsoft\Phone\Controls\GestureListener.cs" />
+    <Compile Include="Microsoft\Phone\Controls\GestureEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DragStartedGestureEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DragDeltaGestureEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DragCompletedGestureEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\FlickGestureEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\MultiTouchGestureEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PinchStartedGestureEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PinchGestureEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\NullToVisibilityConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TransferControl.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TransferMonitor.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TransferRequestState.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TransferType.cs" />
+    <Compile Include="Microsoft\Phone\Controls\LongListSelectorExtensions.cs" />
+    <Compile Include="Microsoft\Phone\Controls\GestureService.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ExpansionMode.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ListPickerItem.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ListPickerMode.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ItemsControlExtensions.cs" />
+    <Compile Include="Microsoft\Phone\Controls\MultiselectItem.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SelectionEnabledState.cs" />
+    <Compile Include="Microsoft\Phone\Controls\MultiselectList.cs" />
+    <Compile Include="Microsoft\Phone\Controls\PerformanceProgressBar.cs" />
+    <Compile Include="Microsoft\Phone\Controls\DatePickerPage.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TimePickerPage.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ListPickerPage.cs" />
+    <Compile Include="Microsoft\Phone\Controls\LongListMultiSelector.cs" />
+    <Compile Include="Microsoft\Phone\Controls\LongListMultiSelectorItem.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Rating.cs" />
+    <Compile Include="Microsoft\Phone\Controls\RatingItem.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TiltEffect.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TurnstileFeatherEffect.cs" />
+    <Compile Include="Microsoft\Phone\Controls\OffOnConverter.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ToggleSwitch.cs" />
+    <Compile Include="Microsoft\Phone\Controls\NavigationTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\NavigationInTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\NavigationOutTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TransitionFrame.cs" />
+    <Compile Include="Microsoft\Phone\Controls\ITransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Transition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\FeatheredTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TransitionElement.cs" />
+    <Compile Include="Microsoft\Phone\Controls\RollTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TransitionService.cs" />
+    <Compile Include="Microsoft\Phone\Controls\RotateTransitionMode.cs" />
+    <Compile Include="Microsoft\Phone\Controls\RotateTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SlideTransitionMode.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SwivelTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SwivelTransitionMode.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SlideTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TurnstileFeatherTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TurnstileFeatherTransitionMode.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TurnstileTransition.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Transitions.cs" />
+    <Compile Include="Microsoft\Phone\Controls\TurnstileTransitionMode.cs" />
+    <Compile Include="Microsoft\Phone\Controls\WrapPanel.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SpeechRecognizedEventArgs.cs" />
+    <Compile Include="Microsoft\Phone\Controls\SpeechTextBox.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\MenuBase.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\ILoopingSelectorDataSource.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\IDateTimePickerPage.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\DateTimePickerPageBase.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\DateTimeWrapper.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\ClipToBounds.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\LoopingSelector.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\LoopingSelectorItem.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\ToggleSwitchButton.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Primitives\RelativeAnimatingContentControl.cs" />
+    <Compile Include="Microsoft\Phone\Controls\LocalizedResources\ControlResources.cs" />
+    <Compile Include="Microsoft\Phone\Controls\Properties\Resources.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Services\QueryExtensions.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\CollectionChangeListener`1.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\MapItemsSourceChangeManager.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\MapChild.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\MapChildCollection.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\MapExtensions.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\MapExtensionsChildrenChangeManager.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\MapItemsControl.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\MapItemsControlChangeManager.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\MapOverlayItem.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\MapChildControl.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\Pushpin.cs" />
+    <Compile Include="Microsoft\Phone\Maps\Toolkit\UserLocationMarker.cs" />
+    <Compile Include="System\Windows\HierarchicalDataTemplate.cs" />
+    <Compile Include="System\Windows\Controls\ItemsControlHelper.cs" />
+    <Compile Include="System\Windows\Controls\NumericExtensions.cs" />
+    <Compile Include="System\Windows\Controls\TemplatedVisualTreeExtensions.cs" />
+    <Compile Include="System\Windows\Controls\TimeTypeConverter.cs" />
+    <Compile Include="System\Windows\Controls\TypeConverters.cs" />
+    <Compile Include="System\Windows\Controls\VisualTreeExtensions.cs" />
+    <Compile Include="System\Windows\Controls\HeaderedItemsControl.cs" />
+    <Compile Include="System\Windows\Controls\OrientedSize.cs" />
+    <Compile Include="Windows\Devices\Geolocation\GeocoordinateExtensions.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="datetimepickers\datepickerpage.xaml" />
+    <Resource Include="datetimepickers\timepickerpage.xaml" />
+    <Resource Include="images\microphone.png" />
+    <Resource Include="listpicker\listpickerpage.xaml" />
+    <Resource Include="themes\generic.xaml" />
+    <Resource Include="transitions\storyboards\roll.xaml" />
+    <Resource Include="transitions\storyboards\rotatein180clockwise.xaml" />
+    <Resource Include="transitions\storyboards\rotatein180counterclockwise.xaml" />
+    <Resource Include="transitions\storyboards\rotatein90clockwise.xaml" />
+    <Resource Include="transitions\storyboards\rotatein90counterclockwise.xaml" />
+    <Resource Include="transitions\storyboards\rotateout180clockwise.xaml" />
+    <Resource Include="transitions\storyboards\rotateout180counterclockwise.xaml" />
+    <Resource Include="transitions\storyboards\rotateout90clockwise.xaml" />
+    <Resource Include="transitions\storyboards\rotateout90counterclockwise.xaml" />
+    <Resource Include="transitions\storyboards\slidedownfadein.xaml" />
+    <Resource Include="transitions\storyboards\slidedownfadeout.xaml" />
+    <Resource Include="transitions\storyboards\slideleftfadein.xaml" />
+    <Resource Include="transitions\storyboards\slideleftfadeout.xaml" />
+    <Resource Include="transitions\storyboards\sliderightfadein.xaml" />
+    <Resource Include="transitions\storyboards\sliderightfadeout.xaml" />
+    <Resource Include="transitions\storyboards\slideupfadein.xaml" />
+    <Resource Include="transitions\storyboards\slideupfadeout.xaml" />
+    <Resource Include="transitions\storyboards\swivelbackwardin.xaml" />
+    <Resource Include="transitions\storyboards\swivelbackwardout.xaml" />
+    <Resource Include="transitions\storyboards\swivelforwardin.xaml" />
+    <Resource Include="transitions\storyboards\swivelforwardout.xaml" />
+    <Resource Include="transitions\storyboards\swivelfullscreenin.xaml" />
+    <Resource Include="transitions\storyboards\swivelfullscreenout.xaml" />
+    <Resource Include="transitions\storyboards\turnstilebackwardin.xaml" />
+    <Resource Include="transitions\storyboards\turnstilebackwardout.xaml" />
+    <Resource Include="transitions\storyboards\turnstileforwardin.xaml" />
+    <Resource Include="transitions\storyboards\turnstileforwardout.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Microsoft\Phone\Controls\LocalizedResources\ControlResources.resx" />
+    <EmbeddedResource Include="Microsoft\Phone\Controls\LocalizedResources\ControlResources\qps-ploc.resx" />
+    <EmbeddedResource Include="Microsoft\Phone\Controls\Properties\Resources.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

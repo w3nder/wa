@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="WhatsApp.StickerPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:local="clr-namespace:WhatsApp"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480"
+    d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+        </Style>
+
+        <DataTemplate x:Key="TrayItemTemplate">
+            <Button x:Name="TrayButton"
+                    Style="{StaticResource BorderlessButton}"
+                    Padding="0"
+                    Width="53"
+                    Height="60"
+                    Tag="{Binding}"
+                    Tap="TrayButton_Tap"
+                    CacheMode="BitmapCache">
+                <Grid>
+                    <Ellipse Width="40" Height="40" Fill="{Binding TrayButtonBackground}"/>
+                    <Image Source="{Binding TrayButtonImage}" Width="34" Height="34" />
+                </Grid>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StickerItemTemplate">
+            <local:StickerPickerItem />
+        </DataTemplate>
+
+        <Style TargetType="phone:PivotItem">
+            <Setter Property="Margin"
+                    Value="0" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0" x:Name="Tray"
+              Background="{StaticResource PhoneInactiveBrush}"
+              CacheMode="BitmapCache">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <ListBox x:Name="TrayButtonsList"
+                     CacheMode ="BitmapCache"
+                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <StaticResource ResourceKey="TrayItemTemplate" />
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
+    </Grid>
+</UserControl>

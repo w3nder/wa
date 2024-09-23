@@ -1,0 +1,201 @@
+﻿<Page
+    x:Class="WhatsApp.Pages.IdentityVerificationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WhatsApp"
+    
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Page.Resources>
+        <Storyboard x:Name="CompleteAnimation">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScanResult" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.75">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:06">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScanResult" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00.75" Value="1"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:05.75" Value="1"/>
+                <LinearDoubleKeyFrame KeyTime="00:00:06" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ResultXForm" Storyboard.TargetProperty="ScaleX">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00.75" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ResultXForm" Storyboard.TargetProperty="ScaleY">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00.75" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        
+        <Storyboard x:Name="ShowScannerStoryboard">
+            <DoubleAnimation Storyboard.TargetName="IdentityXForm" Storyboard.TargetProperty="TranslateY" From="0" To="800" Duration="00:00:00.400">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseIn" Exponent="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScannerXForm" Storyboard.TargetProperty="TranslateY">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00" Value="800"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00.400" Value="800"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.800" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Name="ShowIdentityStoryboard">
+            <DoubleAnimation Storyboard.TargetName="ScannerXForm" Storyboard.TargetProperty="TranslateY" From="0" To="800" Duration="00:00:00.400">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseIn" Exponent="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="IdentityXForm" Storyboard.TargetProperty="TranslateY">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00" Value="800"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00.400" Value="800"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.800" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        
+        <local:Localizable x:Key="Localizable"/>
+    </Page.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <local:PageTitlePanel x:Name="PageTitle" Grid.Row="0" Mode="Zoomed"/>
+
+        <ScrollViewer Grid.Row="1">
+            <Grid x:Name="ContentPanel">
+                <Grid x:Name="IdentityPanel" CacheMode="BitmapCache">
+                    <Grid.RenderTransform>
+                        <CompositeTransform x:Name="IdentityXForm"/>
+                    </Grid.RenderTransform>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Ellipse Grid.Row="0" Fill="White" Stroke="Black" StrokeThickness="2" Height="286" Width="286" Margin="24"/>
+                    <Image Grid.Row="0" x:Name="QrCodeImage" HorizontalAlignment="Center" Height="190" Width="190"/>
+                    <Grid Grid.Row="0" x:Name="ScanResult" CacheMode="BitmapCache" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <CompositeTransform x:Name="ResultXForm"/>
+                        </Grid.RenderTransform>
+                        <Ellipse Height="286" Width="286" Margin="24" x:Name="ScanBackground"/>
+                        <Image Width="260" Height="260" x:Name="ScanIcon"/>
+                    </Grid>
+                
+
+                    <ListBoxItem Grid.Row="1" Margin="24,24,24,12" HorizontalAlignment="Stretch" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <toolkit:ContextMenuService.ContextMenu>
+                            <toolkit:ContextMenu IsZoomEnabled="False">
+                                <toolkit:MenuItem Header="{Binding Path=Strings.Copy, Source={StaticResource Localizable}}"
+                                                      Tag="{Binding}" Click="CopyCode_Click"/>
+                            </toolkit:ContextMenu>
+                        </toolkit:ContextMenuService.ContextMenu>
+                        <StackPanel>
+                            <TextBlock x:Name="T0"  FontFamily="Segoe UI Mono" Style="{StaticResource PhoneTextNormalStyle}" FontSize="22" HorizontalAlignment="Center" Opacity="0.7"/>
+                            <TextBlock x:Name="T1"  FontFamily="Segoe UI Mono" Style="{StaticResource PhoneTextNormalStyle}" FontSize="22" HorizontalAlignment="Center" Opacity="0.7"/>
+                            <TextBlock x:Name="T2"  FontFamily="Segoe UI Mono" Style="{StaticResource PhoneTextNormalStyle}" FontSize="22" HorizontalAlignment="Center" Opacity="0.7"/>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <RichTextBox Grid.Row="2" x:Name="VerificationScanExplanation" TextWrapping="Wrap" Margin="24,12,24,24"/>
+                </Grid>
+
+                <Grid Grid.Row="1" x:Name="ScannerPanel" Visibility="Collapsed" Background="{StaticResource PhoneBackgroundBrush}" CacheMode="BitmapCache">
+                    <Grid.RenderTransform>
+                        <CompositeTransform x:Name="ScannerXForm"/>
+                    </Grid.RenderTransform>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel VerticalAlignment="Bottom" Margin="24,0">
+                        <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="0" Text="{Binding Path=Strings.WebScanCode, Source={StaticResource Localizable}}"/>
+                        <TextBlock TextWrapping="Wrap" Margin="0,24,0,24" Text="{Binding Path=Strings.VerificationScanInstruction, Source={StaticResource Localizable}}"></TextBlock>
+                    </StackPanel>
+
+                    <local:QrScanner Grid.Row="1" x:Name="Scanner" SkipDemo="True" QrScanned="Scanner_QrScanned"/>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+
+        <local:ZoomBox x:Name="TooltipZoomBox" Visibility="Collapsed" Grid.Row="1">
+            <Grid x:Name="ToolTipBackground" VerticalAlignment="Top">
+                <TextBlock x:Name="TooltipBlock" Margin="24" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+            </Grid>
+        </local:ZoomBox>
+    </Grid>
+
+    <Page.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True"/>
+    </Page.ApplicationBar>
+</Page>

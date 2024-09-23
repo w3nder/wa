@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="WhatsApp.CallHistoryList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:shim="clr-namespace:WhatsApp.CompatibilityShims"
+    xmlns:local="clr-namespace:WhatsApp"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <local:Localizable x:Key="Localizable"/>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <ProgressBar x:Name="LoadingProgressBar" IsIndeterminate="True"/>
+        <shim:LongListSelector x:Name="CallList"
+                               IsFlatList="True"
+                               Margin="0"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch">
+            <shim:LongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <local:CallLogItemControl Margin="24,24,24,0" ViewModel="{Binding}">
+                        <toolkit:ContextMenuService.ContextMenu>
+                            <toolkit:ContextMenu IsZoomEnabled="False">
+                                <toolkit:MenuItem Header="{Binding Path=Strings.Delete, Source={StaticResource Localizable}}"
+                                                  Tag="{Binding}" Click="Delete_Click"/>
+                            </toolkit:ContextMenu>
+                        </toolkit:ContextMenuService.ContextMenu>
+                    </local:CallLogItemControl>
+                </DataTemplate>
+            </shim:LongListSelector.ItemTemplate>
+        </shim:LongListSelector>
+    </Grid>
+</UserControl>

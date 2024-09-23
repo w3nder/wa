@@ -1,0 +1,13 @@
+Oops, wygląda na to, że nie masz połączenia z internetem!
+<p>Jeśli widzisz ten ekran, oznacza to, że Twój telefon nie jest połączony z internetem. Aby rozwiązać ten problem, wykonaj proszę poniższe kroki:</p>
+<ul>
+<li>Upewnij się, że siła sygnału Wi-Fi bądź sieci komórkowej jest mocna oraz że telefon jest na pewno podłączony do sieci</li>
+<li>Upewnij się, że masz aktywowane dane komórkowe u swojego operatora komórkowego lub że sieć Wi-Fi, z którą się łączysz ma aktywne połączenie z internetem. UWAGA: do używania aplikacji WhatsApp w telefonie Windows Phone konieczne są dane komórkowe; urządzenia posiadające jedynie Wi-Fi mogą napotykać problemy!</li>
+<li>Uruchom telefon ponownie (wyłącz, odczekaj 30 sekund i włącz ponownie)</li>
+</ul>
+<p>DALSZE PORADY</p>
+<p>Jeśli jesteś w stanie otwierać różne witryny internetowe, jednak nie możesz nawiązać połączenia z WhatsApp, możliwe jest, że Twoje ustawienia sieci nie zezwalają na pewien typ połączeń koniecznych dla WhatsApp (socket lub non-HTTP).</p>
+<ul>
+<li>Sprawdź ustawienia Access Point Name (APN) u swojego operatora komórkowego; ustawienia muszą zezwalać na połączenia typu non-HTTP. Aby dowiedzieć się jak zmienić ustawienia APN w Twoim telefonie, przejdź do odpowiedniej strony: <a href="https://www.windowsphone.com/pl-pl/How-to/wp7/start/cellular-settings">Windows Phone 7</a> lub <a href="https://www.windowsphone.com/pl-pl/how-to/wp8/connectivity/cellular-and-sim-settings">Windows Phone 8</a>. Po zmianie ustawień APN pamiętaj, aby uruchomić ponownie telefon, żeby dokonane zmiany zostały wprowadzone w życie.</li>
+<li>Jeśli Twój Windows Phone wyprodukowany jest przez firmę Nokia, wypróbuj aplikacji <a href="https://www.windowsphone.com/en-us/store/app/connection-setup/5edbdbbc-2ab2-df11-8a2f-00237de2db9e">Connection Setup</a> z Nokia Collection w Sklepie (aplikacja ta może nie być dostępna w niektórych krajach).</li>
+</ul>

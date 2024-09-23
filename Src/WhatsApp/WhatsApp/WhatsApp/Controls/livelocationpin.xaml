@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="WhatsApp.LiveLocationPin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="AccurateFill" Color="Green"/>
+        <SolidColorBrush x:Key="InaccurateFill" Color="Gray"/>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Grid x:Name="InnerLayout" Margin="0,-68, 0, 0">
+            <Ellipse x:Name="AccuracyEllipse" Width="200" Height="200" Fill="#3070FF00" Visibility="Collapsed" IsHitTestVisible="False"/>
+            <Ellipse Width="64" Height="64" Fill="White"/>
+            <Grid Name="PicturePanel"  Width="58" Height="58"/>
+            <Ellipse Margin="0,80,0,0" Width="8" Height="8" Fill="White"/>
+        </Grid>
+    </Grid>
+</UserControl>

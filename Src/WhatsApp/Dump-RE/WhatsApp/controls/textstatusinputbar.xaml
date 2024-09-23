@@ -1,0 +1,204 @@
+﻿<UserControl x:Class="WhatsApp.TextStatusInputBar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:local="clr-namespace:WhatsApp"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480"
+    d:DesignWidth="480"
+    toolkit:TiltEffect.IsTiltEnabled="True">
+
+    <UserControl.Resources>
+        <Style x:Key="TextStatusInputBox" TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid Background="{Binding TextBackground}">
+                            <Grid.ColumnDefinitions>
+                                <!-- Font button -->
+                                <ColumnDefinition Width="Auto"/>
+                                <!-- Background button -->
+                                <ColumnDefinition Width="Auto"/>
+                                <!-- Text box -->
+                                <ColumnDefinition Width="*"/>
+                                <!-- Send button -->
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0"
+                                  VerticalAlignment="Bottom"
+                                  Tap="FontButton_Tap"
+                                  Width="{Binding ActionButtonSize}"
+                                  Height="{Binding ActionButtonSize}"
+                                  Margin="0"
+                                  Background="Transparent"
+                                  Opacity="{Binding InnerActionButtonOpacity}">
+                                <Image Source="{Binding FontButtonIconSource}"
+                                       Stretch="Uniform"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Width="{Binding ActionButtonIconSize}"
+                                       Height="{Binding ActionButtonIconSize}"/>
+                            </Grid>
+                            <Grid Grid.Column="1"
+                                  VerticalAlignment="Bottom"
+                                  Tap="BackgroundButton_Tap"
+                                  Width="{Binding ActionButtonSize}"
+                                  Height="{Binding ActionButtonSize}"
+                                  Margin="0"
+                                  Background="Transparent"
+                                  Opacity="{Binding InnerActionButtonOpacity}">
+                                <Image Source="{Binding BackgroundButtonIconSource}"
+                                       Stretch="Uniform"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Width="{Binding ActionButtonIconSize}"
+                                       Height="{Binding ActionButtonIconSize}"/>
+                            </Grid>
+                            <ContentControl x:Name="ContentElement"
+                                            Grid.Column="2"
+                                            BorderThickness="0"
+                                            HorizontalContentAlignment="Stretch"
+                                            Margin="24,0,24,0"
+                                            Padding="0"
+                                            VerticalContentAlignment="Stretch"
+                                            VerticalAlignment="Center"
+                                            Opacity="0"/>
+                            <Rectangle Grid.Column="2"
+                                       Fill="{Binding TextBackground}"
+                                       VerticalAlignment="Stretch"
+                                       HorizontalAlignment="Stretch"/>
+                            <Grid Grid.Column="3"
+                                  VerticalAlignment="Bottom"
+                                  Tap="SendButton_Tap"
+                                  Width="{Binding ActionButtonSize}"
+                                  Height="{Binding ActionButtonSize}"
+                                  Margin="0"
+                                  Background="Transparent"
+                                  Visibility="{Binding InnerActionButtonVisibility}"
+                                  Opacity="{Binding SendButtonOpacity}">
+                                <Image Source="{Binding SendButtonIconSource}"
+                                       Stretch="Uniform"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FlowDirection="{Binding AppFlowDirection}"
+                                       Width="{Binding ActionButtonIconSize}"
+                                       Height="{Binding ActionButtonIconSize}"/>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid x:Name="MainPanel">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="EmojiButton"
+                    Grid.Column="0"
+                    Padding="0"
+                    Style="{StaticResource BorderlessButton}"
+                    HorizontalAlignment="Right"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Click="EmojiButton_Click"
+                    Width="{Binding ActionButtonSize}"
+                    Height="{Binding ActionButtonSize}">
+                <Button.Content>
+                    <Image x:Name="EmojiButtonIcon"
+                           Source="{Binding EmojiButtonIconSource}"
+                           Stretch="Uniform"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Width="{Binding ActionButtonIconSize}"
+                           Height="{Binding ActionButtonIconSize}"/>
+                </Button.Content>
+            </Button>
+
+            <TextBox x:Name="TextBox"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="3"
+                     MaxHeight="{Binding ActionButtonSize}"
+                     Margin="0"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     TextWrapping="Wrap"
+                     InputScope="Text"
+                     BorderThickness="0"
+                     AcceptsReturn="True"
+                     KeyDown="TextBox_KeyDown"
+                     KeyUp="TextBox_KeyUp"
+                     GotFocus="TextBox_GotFocus"
+                     LostFocus="TextBox_LostFocus"
+                     TextChanged="TextBox_TextChanged"
+                     Style="{StaticResource TextStatusInputBox}"/>
+
+            <Grid Grid.Column="1"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Bottom"
+                  Tap="FontButton_Tap"
+                  Width="{Binding ActionButtonSize}"
+                  Height="{Binding ActionButtonSize}"
+                  Margin="0"
+                  Background="Transparent"
+                  Opacity="{Binding OuterActionButtonOpacity}"
+                  IsHitTestVisible="{Binding OuterActionButtonHitTestVisible}">
+                <Image Source="{Binding FontButtonIconSource}"
+                                       Stretch="Uniform"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Width="{Binding ActionButtonIconSize}"
+                                       Height="{Binding ActionButtonIconSize}"/>
+            </Grid>
+            
+            <Grid Grid.Column="2"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Bottom"
+                  Tap="BackgroundButton_Tap"
+                  Width="{Binding ActionButtonSize}"
+                  Height="{Binding ActionButtonSize}"
+                  Margin="0"
+                  Background="Transparent"
+                  Opacity="{Binding OuterActionButtonOpacity}"
+                  IsHitTestVisible="{Binding OuterActionButtonHitTestVisible}">
+                <Image Source="{Binding BackgroundButtonIconSource}"
+                       Stretch="Uniform"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Width="{Binding ActionButtonIconSize}"
+                       Height="{Binding ActionButtonIconSize}"/>
+            </Grid>
+
+            <Grid Grid.Column="4"
+                  VerticalAlignment="Bottom"
+                  Tap="SendButton_Tap"
+                  Width="{Binding ActionButtonSize}"
+                  Height="{Binding ActionButtonSize}"
+                  Margin="0"
+                  Background="Transparent"
+                  Visibility="{Binding OuterActionButtonVisibility}"
+                  Opacity="{Binding SendButtonOpacity}">
+                <Image Source="{Binding SendButtonIconSource}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FlowDirection="{Binding AppFlowDirection}"
+                       Width="{Binding ActionButtonIconSize}"
+                       Height="{Binding ActionButtonIconSize}"
+                       Stretch="Uniform"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
